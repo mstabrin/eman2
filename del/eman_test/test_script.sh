@@ -1,3 +1,4 @@
+rm -rf test_00
 mkdir test_00
 e2simmx.py init_ref.hdf init_ptcls.hdf test_00/simmx.hdf -f --saveali --cmp=frc:maxres=25.0 --align=rotate_translate_tree --aligncmp=ccc --force --verbose=-1 --ralign=refine --raligncmp=ccc --parallel=thread:12
 e2classify.py test_00/simmx.hdf test_00/classmx.hdf -f --sep 1
