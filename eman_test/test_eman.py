@@ -83,6 +83,34 @@ def test_proc3d(options, path):
 		e2=e0.absi()
 		print "{:.5f}, {:.5f}".format(e2["mean"]-.579779, e2["maximum"]-13.88037)
 
+def test_theano():
+	print "--------------------------"
+	print "Testing Theano and GPU support..."
+	print "Currently EMAN only works with CUDA backend (instead of gpuarray)..."
+
+	import theano
+	import theano.tensor as T
+	from theano.tensor.nnet import conv
+	print "If GPU is activated, the previous line should start with \"Using gpu device X...\""
+
+	### matrix multiplication
+	a=theano.shared(np.ones((10,10),  dtype=theano.config.floatX))
+	b=theano.shared(np.ones((10,10),  dtype=theano.config.floatX))
+	c=T.sum(T.dot(a,b))-1000.
+
+	### convolution
+	a=theano.shared(np.ones((1,1, 10,10), dtype=theano.config.floatX))
+	b=theano.shared(np.ones((1,1, 5,5), dtype=theano.config.floatX))
+	conv_out = conv.conv2d(
+			input=a,
+			filters=b,
+			filter_shape=(1,1,5,5),
+			#image_shape=self.image_shape.eval(),
+			border_mode='full'
+	)
+
+	print "{:.3f}, {:.3f}".format(float(c.eval()), float(np.sum(conv_out.eval())-2500.))
+
 def main():
 	
 	usage="Test EMAN2 functionalities.. "
@@ -164,32 +192,7 @@ def main():
 	
 	
 	if options.testtheano>0:
-		print "--------------------------"
-		print "Testing Theano and GPU support..."
-		print "Currently EMAN only works with CUDA backend (instead of gpuarray)..."
-		
-		import theano
-		import theano.tensor as T
-		from theano.tensor.nnet import conv
-		print "If GPU is activated, the previous line should start with \"Using gpu device X...\""
-		
-		### matrix multiplication
-		a=theano.shared(np.ones((10,10),  dtype=theano.config.floatX))
-		b=theano.shared(np.ones((10,10),  dtype=theano.config.floatX))
-		c=T.sum(T.dot(a,b))-1000.
-		
-		### convolution
-		a=theano.shared(np.ones((1,1, 10,10), dtype=theano.config.floatX))
-		b=theano.shared(np.ones((1,1, 5,5), dtype=theano.config.floatX))
-		conv_out = conv.conv2d(
-					input=a,
-					filters=b,
-					filter_shape=(1,1,5,5),
-					#image_shape=self.image_shape.eval(),
-					border_mode='full'
-				)
-		
-		print "{:.3f}, {:.3f}".format(float(c.eval()), float(np.sum(conv_out.eval())-2500.))
+		test_theano()
 
 	test_simmx(options, path)
 
