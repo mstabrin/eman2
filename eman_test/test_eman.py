@@ -34,6 +34,24 @@ def test_classify(options, path):
 		e2=e0.absi()
 		print "{:.3f}, {:.3f}".format(e2["mean"]-2.962, e2["maximum"]-7.)
 
+def test_classaverage(nref, options, path):
+	print "--------------------------"
+	print "Class averaging..."
+	cmd="e2classaverage.py --input {} --classmx {}/classmx.hdf --decayedge --storebad --output {}/classes.hdf --ref {} --iter 1 -f --resultmx {}/clsresult.hdf --normproc normalize.edgemean --averager mean --keep 1. --cmp frc:maxres=25 --align rotate_translate_tree --aligncmp ccc --ralign refine --raligncmp ccc --parallel thread:{}".format(
+			options.ptcls, path, path, options.cls, path, options.threads)
+	run(cmd)
+	for i in range(nref):
+		e0=EMData("{}/classes.hdf".format(path),0)
+		if options.ref:
+			e1=EMData("{}/classes.hdf".format(options.ref), 0)
+			e0.sub(e1)
+			e2=e0.absi()
+			print "{:.3f}".format(e2["maximum"]),
+		else:
+			e2=e0.absi()
+			print "{:.3f}".format(e2["maximum"]-8.555),
+	print
+
 def main():
 	
 	usage="Test EMAN2 functionalities.. "
@@ -145,24 +163,8 @@ def main():
 	test_simmx(options, path)
 
 	test_classify(options, path)
-	
-	
-	print "--------------------------"
-	print "Class averaging..."
-	cmd="e2classaverage.py --input {} --classmx {}/classmx.hdf --decayedge --storebad --output {}/classes.hdf --ref {} --iter 1 -f --resultmx {}/clsresult.hdf --normproc normalize.edgemean --averager mean --keep 1. --cmp frc:maxres=25 --align rotate_translate_tree --aligncmp ccc --ralign refine --raligncmp ccc --parallel thread:{}".format(
-		options.ptcls, path, path, options.cls, path, options.threads)
-	run(cmd)
-	for i in range(nref):
-		e0=EMData("{}/classes.hdf".format(path),0)
-		if options.ref:
-			e1=EMData("{}/classes.hdf".format(options.ref), 0)
-			e0.sub(e1)
-			e2=e0.absi()
-			print "{:.3f}".format(e2["maximum"]),
-		else:
-			e2=e0.absi()
-			print "{:.3f}".format(e2["maximum"]-8.555),
-	print 
+
+	test_classaverage(nref, options, path)
 
 	print "--------------------------"
 	print "Making 3D..."
