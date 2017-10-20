@@ -52,6 +52,21 @@ def test_classaverage(nref, options, path):
 			print "{:.3f}".format(e2["maximum"]-8.555),
 	print
 
+def test_make3dpar(options, path):
+	print "--------------------------"
+	print "Making 3D..."
+	cmd="e2make3dpar.py --input {}/classes.hdf --sym d2 --output {}/threed.hdf --keep 1 --apix 2.55 --pad 208 --mode gauss_5 --threads {}".format(path, path, options.threads)
+	run(cmd)
+	e0=EMData("{}/threed.hdf".format(path))
+	if options.ref:
+		e1=EMData("{}/threed.hdf".format(options.ref))
+		e0.sub(e1)
+		e2=e0.absi()
+		print "{:.5f}, {:.5f}".format(e2["mean"], e2["maximum"])
+	else:
+		e2=e0.absi()
+		print "{:.5f}, {:.5f}".format(e2["mean"]-0.032509, e2["maximum"]-0.49397)
+
 def main():
 	
 	usage="Test EMAN2 functionalities.. "
@@ -166,19 +181,7 @@ def main():
 
 	test_classaverage(nref, options, path)
 
-	print "--------------------------"
-	print "Making 3D..."
-	cmd="e2make3dpar.py --input {}/classes.hdf --sym d2 --output {}/threed.hdf --keep 1 --apix 2.55 --pad 208 --mode gauss_5 --threads {}".format(path, path, options.threads)
-	run(cmd)
-	e0=EMData("{}/threed.hdf".format(path))
-	if options.ref:
-		e1=EMData("{}/threed.hdf".format(options.ref))
-		e0.sub(e1)
-		e2=e0.absi()
-		print "{:.5f}, {:.5f}".format(e2["mean"], e2["maximum"])
-	else:
-		e2=e0.absi()
-		print "{:.5f}, {:.5f}".format(e2["mean"]-0.032509, e2["maximum"]-0.49397)
+	test_make3dpar(options, path)
 	
 	print "--------------------------"
 	print "Post processing..."
