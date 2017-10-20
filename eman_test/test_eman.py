@@ -3,6 +3,22 @@
 from EMAN2 import *
 import numpy as np
 
+
+def test_simmx(options, path):
+	print "--------------------------"
+	print "Similarity matrix..."
+	cmd="e2simmx.py {} {} {}/simmx.hdf -f --saveali --cmp=frc:maxres=25.0 --align=rotate_translate_tree --aligncmp=ccc --force --verbose=0 --ralign=refine --raligncmp=ccc --parallel=thread:{}".format(options.cls, options.ptcls, path, options.threads)
+	run(cmd)
+	e0=EMData("{}/simmx.hdf".format(path),0)
+	if options.ref:
+		e1=EMData("{}/simmx.hdf".format(options.ref), 0)
+		e0.sub(e1)
+		e2=e0.absi()
+		print "{:.3f}, {:.3f}".format(e2["mean"], e2["maximum"])
+	else:
+		e2=e0.absi()
+		print "{:.3f}, {:.3f}".format(e2["mean"]-.241, e2["maximum"]-.539)
+
 def main():
 	
 	usage="Test EMAN2 functionalities.. "
@@ -110,22 +126,8 @@ def main():
 				)
 		
 		print "{:.3f}, {:.3f}".format(float(c.eval()), float(np.sum(conv_out.eval())-2500.))
-	
-	
-	
-	print "--------------------------"
-	print "Similarity matrix..."
-	cmd="e2simmx.py {} {} {}/simmx.hdf -f --saveali --cmp=frc:maxres=25.0 --align=rotate_translate_tree --aligncmp=ccc --force --verbose=0 --ralign=refine --raligncmp=ccc --parallel=thread:{}".format(options.cls, options.ptcls, path, options.threads)
-	run(cmd)
-	e0=EMData("{}/simmx.hdf".format(path),0)
-	if options.ref:
-		e1=EMData("{}/simmx.hdf".format(options.ref), 0)
-		e0.sub(e1)
-		e2=e0.absi()
-		print "{:.3f}, {:.3f}".format(e2["mean"], e2["maximum"])
-	else:
-		e2=e0.absi()
-		print "{:.3f}, {:.3f}".format(e2["mean"]-.241, e2["maximum"]-.539)
+
+	test_simmx(options, path)
 	
 	print "--------------------------"
 	print "Classification..."
@@ -192,10 +194,11 @@ def main():
 	print "Done. Time elapse: {:.3f}s".format(float(time.time()-t0))
 	
 	E2end(logid)
-	
+
 def run(cmd):
 	print cmd
 	launch_childprocess(cmd)
 	
+
 if __name__ == '__main__':
 	main()
