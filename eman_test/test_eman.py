@@ -19,6 +19,21 @@ def test_simmx(options, path):
 		e2=e0.absi()
 		print "{:.3f}, {:.3f}".format(e2["mean"]-.241, e2["maximum"]-.539)
 
+def test_classify(options, path):
+	print "--------------------------"
+	print "Classification..."
+	cmd="e2classify.py {}/simmx.hdf {}/classmx.hdf -f --sep 1".format(path, path)
+	run(cmd)
+	e0=EMData("{}/classmx.hdf".format(path),0)
+	if options.ref:
+		e1=EMData("{}/classmx.hdf".format(options.ref), 0)
+		e0.sub(e1)
+		e2=e0.absi()
+		print "{:.3f}, {:.3f}".format(e2["mean"], e2["maximum"])
+	else:
+		e2=e0.absi()
+		print "{:.3f}, {:.3f}".format(e2["mean"]-2.962, e2["maximum"]-7.)
+
 def main():
 	
 	usage="Test EMAN2 functionalities.. "
@@ -128,20 +143,8 @@ def main():
 		print "{:.3f}, {:.3f}".format(float(c.eval()), float(np.sum(conv_out.eval())-2500.))
 
 	test_simmx(options, path)
-	
-	print "--------------------------"
-	print "Classification..."
-	cmd="e2classify.py {}/simmx.hdf {}/classmx.hdf -f --sep 1".format(path, path)
-	run(cmd)
-	e0=EMData("{}/classmx.hdf".format(path),0)
-	if options.ref:
-		e1=EMData("{}/classmx.hdf".format(options.ref), 0)
-		e0.sub(e1)
-		e2=e0.absi()
-		print "{:.3f}, {:.3f}".format(e2["mean"], e2["maximum"])
-	else:
-		e2=e0.absi()
-		print "{:.3f}, {:.3f}".format(e2["mean"]-2.962, e2["maximum"]-7.)
+
+	test_classify(options, path)
 	
 	
 	print "--------------------------"
