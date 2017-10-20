@@ -153,6 +153,10 @@ def test_qt(e0, nx, options):
 	e1=from_numpy(m1)
 	print "{:.3f}, ".format(e1[nx/2, nx/2]-1)
 
+def run(cmd):
+	print cmd
+	launch_childprocess(cmd)
+
 def main():
 	
 	usage="Test EMAN2 functionalities.. "
@@ -212,10 +216,6 @@ def main():
 	
 	E2end(logid)
 
-def run(cmd):
-	print cmd
-	launch_childprocess(cmd)
-	
 
 if __name__ == '__main__':
 	main()
