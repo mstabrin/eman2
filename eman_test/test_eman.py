@@ -111,6 +111,48 @@ def test_theano():
 
 	print "{:.3f}, {:.3f}".format(float(c.eval()), float(np.sum(conv_out.eval())-2500.))
 
+def test_qt(e0, nx, options):
+	print "--------------------------"
+	print "Qt and GL support.."
+	from PyQt4 import QtGui
+	from PyQt4.QtCore import QTimer
+	from emapplication import EMApp
+	from emimage import EMImageWidget
+
+	class test_window(QtGui.QMainWindow):
+		def __init__(self, app, options):
+			QtGui.QWidget.__init__(self)
+			e=EMData(options.cls)
+			imgview = EMImageWidget(data=e, app=app)
+			imgview.show()
+			if options.ref:
+				d=EMData("{}/threed.hdf".format(options.ref))
+			else:
+				d=test_image_3d()
+			d3view=EMImageWidget(data=d, app=app)
+			d3view.show()
+
+			QTimer.singleShot(500, self.tick)
+
+		def tick(self):
+			app.quit()
+
+
+	app = EMApp()
+	twin=test_window(app,options)
+	twin.show()
+	app.exec_()
+
+	print "--------------------------"
+	print "Numpy support..."
+	m0=e0.numpy()
+	print "{:.3f}, {:.3f}, ".format(m0[nx/2, nx/2]-1.38199, e0[nx/2, nx/2]-1.38199),
+	m0[nx/2, nx/2]=0
+	print "{:.3f}, {:.3f}, ".format(m0[nx/2, nx/2], e0[nx/2, nx/2]),
+	m1=m0+1
+	e1=from_numpy(m1)
+	print "{:.3f}, ".format(e1[nx/2, nx/2]-1)
+
 def main():
 	
 	usage="Test EMAN2 functionalities.. "
@@ -149,46 +191,7 @@ def main():
 	print "{:.3f}, {:.3f}, {:.3f}, {:.3f}".format(nptcl-185, nref-8, nx-120, e0["maximum"]-3.565)
 
 	if options.testqt>0:
-		print "--------------------------"
-		print "Qt and GL support.."
-		from PyQt4 import QtGui
-		from PyQt4.QtCore import QTimer
-		from emapplication import EMApp
-		from emimage import EMImageWidget
-		
-		class test_window(QtGui.QMainWindow):
-			def __init__(self, app, options):
-				QtGui.QWidget.__init__(self)
-				e=EMData(options.cls)
-				imgview = EMImageWidget(data=e, app=app)
-				imgview.show()
-				if options.ref:
-					d=EMData("{}/threed.hdf".format(options.ref))
-				else:
-					d=test_image_3d()
-				d3view=EMImageWidget(data=d, app=app)
-				d3view.show()
-				
-				QTimer.singleShot(500, self.tick)
-				
-			def tick(self):
-				app.quit()
-				
-				
-		app = EMApp()
-		twin=test_window(app,options)
-		twin.show()
-		app.exec_()
-
-		print "--------------------------"
-		print "Numpy support..."
-		m0=e0.numpy()
-		print "{:.3f}, {:.3f}, ".format(m0[nx/2, nx/2]-1.38199, e0[nx/2, nx/2]-1.38199),
-		m0[nx/2, nx/2]=0
-		print "{:.3f}, {:.3f}, ".format(m0[nx/2, nx/2], e0[nx/2, nx/2]),
-		m1=m0+1
-		e1=from_numpy(m1)
-		print "{:.3f}, ".format(e1[nx/2, nx/2]-1)
+		test_qt(e0, nx, options)
 	
 	
 	if options.testtheano>0:
