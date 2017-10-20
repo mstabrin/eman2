@@ -67,6 +67,22 @@ def test_make3dpar(options, path):
 		e2=e0.absi()
 		print "{:.5f}, {:.5f}".format(e2["mean"]-0.032509, e2["maximum"]-0.49397)
 
+def test_proc3d(options, path):
+	print "--------------------------"
+	print "Post processing..."
+	cmd="e2proc3d.py {}/threed.hdf {}/threed_lp.hdf --process filter.lowpass.gauss:cutoff_freq=.08 --process normalize".format(path, path)
+	run(cmd)
+	e0=EMData("{}/threed_lp.hdf".format(path))
+	if options.ref:
+		e1=EMData("{}/threed_lp.hdf".format(options.ref))
+		e0.sub(e1)
+		e2=e0.absi()
+		print "{:.5f}, {:.5f}".format(e2["mean"], e2["maximum"])
+	else:
+
+		e2=e0.absi()
+		print "{:.5f}, {:.5f}".format(e2["mean"]-.579779, e2["maximum"]-13.88037)
+
 def main():
 	
 	usage="Test EMAN2 functionalities.. "
@@ -182,21 +198,8 @@ def main():
 	test_classaverage(nref, options, path)
 
 	test_make3dpar(options, path)
-	
-	print "--------------------------"
-	print "Post processing..."
-	cmd="e2proc3d.py {}/threed.hdf {}/threed_lp.hdf --process filter.lowpass.gauss:cutoff_freq=.08 --process normalize".format(path, path)
-	run(cmd)
-	e0=EMData("{}/threed_lp.hdf".format(path))
-	if options.ref:
-		e1=EMData("{}/threed_lp.hdf".format(options.ref))
-		e0.sub(e1)
-		e2=e0.absi()
-		print "{:.5f}, {:.5f}".format(e2["mean"], e2["maximum"])
-	else:
-		
-		e2=e0.absi()
-		print "{:.5f}, {:.5f}".format(e2["mean"]-.579779, e2["maximum"]-13.88037)
+
+	test_proc3d(options, path)
 	
 	
 	print "Done. Time elapse: {:.3f}s".format(float(time.time()-t0))
