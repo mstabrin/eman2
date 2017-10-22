@@ -1,0 +1,1721 @@
+**  pyqt4_to_pyqt5.log  Sunday 05. November 2017 19:14  **
+Args: ['../pyqt4topyqt5/pyqt4topyqt5.py', '.', '-o', '../eman2-qt5']
+
+Beginning into: /Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/doc/latex/rm_preamble.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/doc/modular_class_html/docgen.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/UnitTestGetComplexAt2D.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/UnitTestGetComplexAt3D.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/alignbystars.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/alignnrg.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/average.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/avsub.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/boxscale.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/breakbrick.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/build_ali_lst.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/clstoclsmx.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/cmpspeedtest.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/comparepairs.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/compute_deconvolution.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/convnet_pickparticle.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/crystal_index.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/ctf_first_zero.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/ctf_test.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/cudaerrors.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/cudaspeedtest.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/ddd_simulation.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/denoiseautoencoder.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/diffractsim.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/displaydemo.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/drawshape.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2alignmenttest.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2aligntest.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2boxer_movie.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2boxinfo_rescale.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2compare2pdb.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2convnet_classifyptcls.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2convnet_pickptcl_tensorflow.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2ctf2emx.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2cylinder.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2ddd_powspec.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2ddd_ptclaligner.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2extractctf.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2extractequalorient.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2fftsynth.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2figureplot.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2fixheader.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2framestats.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2fscallxtal.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2helixcoords2boxes.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2itercmd.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2maskimod.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2melonball.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2moviealigner.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2moviealigner2.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2moviealigner3.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2movieboxer.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2omitmaps.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2orthoproject.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2pathwalker_auto.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2plot_de_motion.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2plotfig.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2procnd_par.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2ptclfsc_multi.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2ptclzvssim.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2pw_pathrefine.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2pwhelixfit.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2pwsheetfit.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2pwstructuremodify.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2reboxer.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2simmxptclqual.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2simmxsort.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2simrecon.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2simulate.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2slicer.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2split3dstack.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_autocenter.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_bfactorplot.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_boxer22.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_boxer_old.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_coeffplot.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_coordsrefactor.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_ctf_old.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_eval_orient.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_extract_align.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_icethicknessplot.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_make3d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_meanintensityplot.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_radialdensityplot.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_reconfromtilts.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_rotationalplot.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_stackdif.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_subtilt_old.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_test.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_timetest.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_tomogramfiltrator.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_tomosimjobs.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_transformdistance.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2spt_variance.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2starfiletoboxfile.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2starfiletolstfile.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2symtest2d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2tomo_ctf_old.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2tomo_icongpu.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2tomogram_old.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2tomoseg.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/e2tvrecon2d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/em_sim.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/exhaustivealicmp.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/extractfsc.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/extracthelp.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/extractptclfromseg.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/feiraw2hdf.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/fftspeed.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/filespeedtest.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/findcenter.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/findholesinmap.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/focalpairalign.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/gmm_heterog.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/histogram.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/initmodel_sgd.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/local_correlation.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/make3dpar_rawptcls.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/makebigfromseq.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/mergeproject.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/mergeproject2.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/mergetomoseg.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/minicircle_stat.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/morphboxer.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/mouse_and_key_modifiers.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/movie_analyzer.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/movie_ccf.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/movietools.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/mpi_test.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/pathwalker_helixfit.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/pickptcl_2cls.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/pickrnaparticle.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/plotfsc.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/prepare_eulerxplor_from_spt.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/projection_manifold.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/rdisttest.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/reconstruct_fill.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/recoverctf.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/redo_convergence.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/refine_tomo.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/refinetomo_buildptcls.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/refinetomo_easy.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/removebad.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/ringfit.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/ringsim.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/ringstat.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/shrinkbigimage.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/simtomo.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/sizes.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/sortsimilar.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/speedprofile.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/spt_tomoctf.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/stackpixelstat.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/tasktest.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/telescope.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/test_eman_tiny.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/testscaleali.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/timerdemo.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/tomospeedtest.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/tomotrackbox.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/transalignavg.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/examples/transalignavg2.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/Anneal.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/EMAN2.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/EMAN2PAR.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/EMAN2_cppwrap.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/EMAN2_utils.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/EMAN2db.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/EMAN2jsondb.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/EMAN2star.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/Simplex.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/mpi_eman.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/em3Dfonts.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/em3Dhelloworld.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emanimationutil.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emapplication.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emboxerbase.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/embrowse.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/embrowser.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emdataitem3d.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emdatastorage.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emfoldhunterstat.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emform.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emglobjects.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emhist.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emimage.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emimage2d.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emimage3d.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emimage3diso.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emimage3dmorph.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emimage3dslice.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emimage3dsym.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emimage3dvol.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emimagemx.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emimageutil.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emitem3d.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emlights.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/empdbitem3d.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/empdbvaltool.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/empdbviewer.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emplot2d.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emplot3d.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/empmtabwidgets.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/empmwidgets.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emrctboxergui.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emrctstrategy.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emsave.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emscene3d.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emselector.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emshape.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emshapeitem3d.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emsprworkflow.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/emtprworkflow.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/expand_string.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/matching.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/pmicons.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/libpyEM/qtgui/valslider.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e22.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2RCTboxer.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2_real.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2a2d_align.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2a2d_average.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2a2d_stat.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2ali2img.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2align2d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2align3d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2avg_ffts.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2basis.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2bdb.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2boxadjust.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2boxer.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2boxer_old.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2buildsets.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2buildstacks.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2classaverage.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2classes_denovo.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2classesbyref.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2classextract.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2classify.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2classifykmeans.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2classifyligand.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2classifytree.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2classptcl.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2classvsproj.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2cmmtomrc.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2cmpxplor.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2ctf.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2ctf2eman1.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2ctf_auto.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2ctffind3util.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2ctfsim.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2ddd_movie.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2ddd_particles.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2display.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2emx.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2eotest.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2erasefiducials.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2euler_refine.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2eulerxplor.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2evalimage.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2evalparticles.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2evalrefine.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2extractsubparticles.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2fhstat.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2fileinfo.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2filtertool.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2findsubunit.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2flick.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2foldfitter.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2fsc.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2helical_recons.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2helixboxer.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2help.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2history.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2iminfo.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2import.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2initialmodel.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2initialmodel_hisym.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2make3d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2make3dpar.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2markbadparticles.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2maskbyclass.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2match.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2modeleval.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2montecarlorecon.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2motion.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2msa.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2parallel.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2pathwalker.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2pdb2mrc.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2pdbviewer.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2plotEulers.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2plotFSC.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2preferences.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2proc2d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2proc2dmulti.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2proc2dpar.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2proc3d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2proc3d_huge.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2procheader.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2procjson.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2proclst.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2procpdb.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2proctxt.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2procxml.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2project3d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2projectmanager.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2projectupdate21.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2ptcltrace.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2ptclvsmap.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2rawdata.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2rct.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2refine.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2refine2d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2refine2d_bispec.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2refine_easy.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2refine_evenodd.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2refine_postprocess.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2refine_split.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2refinefromfrealign.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2refinemulti.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2refinemultinoali.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2refinetofrealign.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2refinetorelion2d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2refinetorelion3d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2refinevariance.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2refmerge.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2reliontoeman.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2remoted.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2resolution.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2runfrealign.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2runresmap.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2scannereval.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2scp.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2segment3d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2seq2pdb.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2simmx.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2simmx2stage.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2simmxxplor.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2skelpath.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2sparxtoeman.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2speedtest.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_align.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_autoboxer.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_average.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_average_multi.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_binarytree.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_boxer.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_classaverage.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_fftamp.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_hac.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_intrafsc.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_isr.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_preproc.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_project.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_recompute.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_refinemsa.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_refinemulti.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_resolutionplot.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_scramblestack.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_simulation.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_stat.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_subtilt_from_imod.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_tiltstacker.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_translate.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_wedge.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2spt_wedgefill.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2ssehunter.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2ssematch.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2stackanim.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2stacksort.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2symbest.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2symsearch3d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2tilefile.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2tileimage.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2tiltvalidate.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2tomoaverage.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2tomogram.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2tomopreproc.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2tomoresolution.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2tomoseg_buildtrainset.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2tomoseg_convnet.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2tvrecon.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2unwrap3d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2version.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/e2workflow.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/programs/eman2.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/pyemtbx/__init__.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/pyemtbx/box.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/pyemtbx/boxertools.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/pyemtbx/exceptions.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/pyemtbx/imagetypes.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/pyemtbx/options.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/demo/align.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/demo/averager.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/demo/cmp.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/demo/processor1.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/demo/processor2.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/demo/processor3.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/demo/project.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/demo/reconstruction.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/demo/reconstructor.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/demo/scene3d_test.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/demo/test_image.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/demo/tomrc.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/emdata/exception1.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/emdata/storage_order_test.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/pyem/rt.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/pyem/test_aligner.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/pyem/test_averager.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/pyem/test_cmp.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/pyem/test_emdata.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/pyem/test_emdata_cuda.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/pyem/test_imageio.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/pyem/test_misc.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/pyem/test_processor.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/pyem/test_reconstructor.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/pyem/test_transform.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/pyem/test_typeconverter.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/pyem/test_utils.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/pyem/test_vec.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/pyem/test_xydata.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/pyem/testlib.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/rt/timetests/test_times.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/__init__.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sx.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sx3dvariability.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sx_real.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxali2d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxali2d_mref.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxali3d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxali_vol.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxave_ali.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxbmask.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxcenter_projections.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxchains.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxcompute_isac_avg.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxconsistency.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxcopyfromtif.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxcpy.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxcter.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxctf.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxfactcoords.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxfilrecons3d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxfilterlocal.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxfind_struct.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxfit_error.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxgenbuf.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxgui.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxgui_cter.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxgui_meridien.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxgui_unblur.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxhac_averages.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxhac_clustering.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxheader.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxhelical_demo.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxhelicon.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxhelicon_utils.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxheliconlocal.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxhelixboxer.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxihrsr.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sximgstat.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxisac2.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxk_means.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxk_means_groups.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxk_means_stable.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxlocal_ali2d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxlocal_ali3d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxlocal_ali3dm.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxlocres.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxmeridien.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxmontage.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxmref_ali2d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxmref_ali3d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxmref_alignment.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxmulti_ali2d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxmulti_assign.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxparams_2D_to_3D.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxparams_3D_to_2D.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxpca.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxpdb2em.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxpipe.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxplot_projs_distrib.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxprepare_2d_forPCA.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxprocess.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxproj_stability.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxproject3d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxrealignment.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxrecons3d_f.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxrecons3d_n.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxrelion2sparx.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxreproducibility.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxresample.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxrot_sym.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxrsort3d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxrviper.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxshiftali.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxsort3d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxsort3d_depth.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxsort3d_new.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxspliteigen.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxssnr3d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxstability.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxsummovie.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxtransform2d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxunblur.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxvar.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxvarimax.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxviper.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/bin/sxwindow.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/libpy/alignment.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/libpy/applications.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/libpy/development.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/libpy/filter.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/libpy/fundamentals.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/libpy/global_def.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/libpy/isac.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/libpy/logger.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/libpy/morphology.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/libpy/multi_shc.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/libpy/pixel_error.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/libpy/projection.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/libpy/reconstruction.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/libpy/sparx.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/libpy/statistics.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/libpy/user_functions.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/libpy/utilities.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/templates/3dg.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/templates/import_SPIDER_320.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/templates/import_SPIDER_refi.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/templates/install_sxpatch.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/templates/randomize2d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/templates/search_ali3d.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/templates/sxgui_template.py`
+  File updated.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/templates/wikiparser.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/3dg.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/aaa.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/aab.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/aac.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/aad.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/aae.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/aaf.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/aag.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/aah.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/aat.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/apmq.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/fourp.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/kbplot2.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/main_example.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/ormq.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/pdb_1.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/phasing.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/polar.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/sinh.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/test_ft.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/test_pw.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/2DA/2da.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/2DA/2db.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/2DA/2de.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/3DA/3da.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/3DA/3db.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/3DA/3de.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/3DA/3dg.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/3DA/rec2d_test.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/test/test_scripts/test_rot.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/tests/test_Util.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/tests/test_fundamentals.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/sparx/tests/test_pixel_error.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/tests/test_EMAN2DIR.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/tests/test_imports.py`
+  No changes needed.
+
+Processing file: `/Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman2-qt5/tests/test_imports_inner.py`
+  No changes needed.
+
