@@ -910,6 +910,9 @@ class TestProcessor(unittest.TestCase):
         
         e.process_inplace('math.localmax')
         
+    if platform.system() == "Windows":
+        test_math_localmax.broken = True
+
     def test_math_submax(self):
         """test math.submax processor ......................."""
         e = EMData()
