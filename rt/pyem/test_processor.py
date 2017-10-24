@@ -928,6 +928,9 @@ class TestProcessor(unittest.TestCase):
         
         e.process_inplace('mask.onlypeaks', {'npeaks':2})
         
+    if platform.system() == "Windows":
+        test_mask_onlypeaks.broken = True
+
     def no_test_eman1_filter_blockrange(self):
         """test eman1.filter.blockrange processor ..........."""
         e = EMData()
