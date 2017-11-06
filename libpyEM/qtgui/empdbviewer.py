@@ -1005,7 +1005,7 @@ class EMPDBInspector(QtGui.QWidget):
 
 		self.setLayout(vbl)
 		
-		self.text.textEdited[QString].connect(self.on_text_change)
+		self.text.textEdited['QString'].connect(self.on_text_change)
 		self.browse.clicked[bool].connect(self.on_browse)
 	
 	def on_text_change(self,text):

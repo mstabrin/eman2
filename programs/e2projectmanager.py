@@ -1719,7 +1719,7 @@ class PMGUIWidget(QtGui.QScrollArea):
 				widget = PMFSCTableWidget(option['name'], self.getDefault(option), self.getSharingMode(option), postional=self.getPositional(option), initdefault=self.getDefault(option, nodb=True))
 
 			# Setup each widget
-			widget.pmmessage[QString].connect(self._on_message)
+			widget.pmmessage['QString'].connect(self._on_message)
 			widget.setToolTip(option['help'])
 			self.widgethash[option['name']] = widget
 			self.widgetlist.append(widget)

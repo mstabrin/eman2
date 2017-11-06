@@ -729,8 +729,8 @@ class EMAsymmetricUnitInspector(EMSymInspector):
 		for e in combo_entries:
 			self.combo.addItem(e)
 
-		self.combo.currentIndexChanged[QString].connect(self.on_combo_change)
-		self.combo.currentIndexChanged[QString].connect(self.on_combo_change)
+		self.combo.currentIndexChanged['QString'].connect(self.on_combo_change)
+		self.combo.currentIndexChanged['QString'].connect(self.on_combo_change)
 
 		self.au_tab.vbl.addWidget(self.combo)
 		self.refine_dir = combo_entries[0]
