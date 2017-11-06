@@ -68,15 +68,15 @@ from emglobjects import EMOpenGLFlagsAndTools
 class EMImage2DWidget(EMGLWidget):
 	"""
 	"""
-	origin_update = QtCore.pyqtSignal(tuple)
+	origin_update = QtCore.pyqtSignal()
 	signal_scale = QtCore.pyqtSignal()
-	mousedown = QtCore.pyqtSignal(QtGui.QMouseEvent,tuple)
-	mousedrag = QtCore.pyqtSignal(QtGui.QMouseEvent,tuple)
-	mousemove = QtCore.pyqtSignal(QtGui.QMouseEvent,tuple)
-	mouseup = QtCore.pyqtSignal(QtGui.QMouseEvent,tuple)
-	mousewheel = QtCore.pyqtSignal(QtGui.QMouseEvent)
+	mousedown = QtCore.pyqtSignal()
+	mousedrag = QtCore.pyqtSignal()
+	mousemove = QtCore.pyqtSignal()
+	mouseup = QtCore.pyqtSignal()
+	mousewheel = QtCore.pyqtSignal()
 	increment_list_data = QtCore.pyqtSignal()
-	keypress = QtCore.pyqtSignal(QtGui.QKeyEvent)
+	keypress = QtCore.pyqtSignal()
 
 	allim=WeakKeyDictionary()
 

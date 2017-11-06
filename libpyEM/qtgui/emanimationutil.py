@@ -63,10 +63,8 @@ class Animator:
 		
 			self.update()
 		else:
-			try:
-				self.timer.timeout.disconnect(self.time_out)
-			except:
-				print("failed to disconnect timer")
+			self.timer.timeout.disconnect(self.time_out)
+			print("failed to disconnect timer")
 			
 			self.timer_enabled = False
 		

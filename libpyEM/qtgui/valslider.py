@@ -79,9 +79,9 @@ class ValSlider(QtGui.QWidget):
 	setValue(float) - to programatically change the value
 	emit valueChanged(float)
 	"""
-	enableChanged = QtCore.pyqtSignal(int)
-	valueChanged = QtCore.pyqtSignal(float)
-	textChanged = QtCore.pyqtSignal(float)
+	enableChanged = QtCore.pyqtSignal()
+	valueChanged = QtCore.pyqtSignal()
+	textChanged = QtCore.pyqtSignal()
 	signal_sliderReleased = QtCore.pyqtSignal(float)
 	signal_sliderPressed = QtCore.pyqtSignal(float)
 
@@ -449,9 +449,9 @@ class ValBox(QtGui.QWidget):
 class StringBox(QtGui.QWidget):
 	"""A ValBox but it takes arbitrary text. Basically maintains the label/enable functionality for a QLineEdit widget
 	"""
-	enableChanged = QtCore.pyqtSignal(int)
-	valueChanged = QtCore.pyqtSignal(float)
-	textChanged = QtCore.pyqtSignal(float)
+	enableChanged = QtCore.pyqtSignal()
+	valueChanged = QtCore.pyqtSignal()
+	textChanged = QtCore.pyqtSignal()
 
 	def __init__(self, parent=None, label=None, value="",labelwidth=30,showenable=-1):
 		#if not parent: raise Exception,"ValSliders must have parents"
