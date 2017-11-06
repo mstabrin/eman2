@@ -34,7 +34,7 @@ from __future__ import print_function
 from EMAN2 import *
 from EMAN2jsondb import js_open_dict
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QModelIndex
 from emapplication import EMApp
 from emimage2d import *
 from emimagemx import *
