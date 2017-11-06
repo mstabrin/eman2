@@ -68,6 +68,15 @@ from emglobjects import EMOpenGLFlagsAndTools
 class EMImage2DWidget(EMGLWidget):
 	"""
 	"""
+	origin_update = QtCore.pyqtSignal()
+	set_scale = QtCore.pyqtSignal()
+	mousedown = QtCore.pyqtSignal()
+	mousedrag = QtCore.pyqtSignal()
+	mousemove = QtCore.pyqtSignal()
+	mouseup = QtCore.pyqtSignal()
+	mousewheel = QtCore.pyqtSignal()
+	increment_list_data = QtCore.pyqtSignal()
+	keypress = QtCore.pyqtSignal()
 
 	allim=WeakKeyDictionary()
 
@@ -649,7 +658,7 @@ class EMImage2DWidget(EMGLWidget):
 		"""Set the display origin within the image"""
 		if self.origin==(x,y) : return
 		self.origin=(x,y)
-		if not quiet : self.emit(QtCore.SIGNAL("origin_update"),(x,y))
+		if not quiet : self.origin_update.emit((x,y))
 		self.updateGL()
 
 	def get_origin(self) : return self.origin
@@ -685,7 +694,7 @@ class EMImage2DWidget(EMGLWidget):
 		try:
 			self.origin=(newscale/self.scale*(self.width()/2.0+self.origin[0])-self.width()/2.0,newscale/self.scale*(self.height()/2.0+self.origin[1])-self.height()/2.0)
 			self.scale=newscale
-			if not quiet : self.emit(QtCore.SIGNAL("set_scale"),newscale)
+			if not quiet : self.set_scale.emit(newscale)
 			self.updateGL()
 		except: pass
 
@@ -1617,7 +1626,7 @@ class EMImage2DWidget(EMGLWidget):
 		else:
 			if self.mouse_mode_dict[self.mouse_mode] == "emit":
 				lc=self.scr_to_img(event.x(),event.y())
-				self.emit(QtCore.SIGNAL("mousedown"), event,lc)
+				self.mousedown.emit(event, lc)
 			elif self.mouse_mode_dict[self.mouse_mode] == "probe":
 				if event.buttons()&Qt.LeftButton:
 					lc=self.scr_to_img(event.x(),event.y())
@@ -1654,9 +1663,9 @@ class EMImage2DWidget(EMGLWidget):
 			if self.mouse_mode_dict[self.mouse_mode] == "emit":
 				lc=self.scr_to_img(event.x(),event.y())
 				if event.buttons()&Qt.LeftButton:
-					self.emit(QtCore.SIGNAL("mousedrag"), event,lc)
+					self.mousedrag.emit(event, lc)
 				else:
-					self.emit(QtCore.SIGNAL("mousemove"), event,lc)
+					self.mousemove.emit(event, lc)
 			elif self.mouse_mode_dict[self.mouse_mode] == "probe":
 				if event.buttons()&Qt.LeftButton:
 					lc=self.scr_to_img(event.x(),event.y())
@@ -1719,7 +1728,7 @@ class EMImage2DWidget(EMGLWidget):
 		else:
 			if self.mouse_mode_dict[self.mouse_mode] == "emit":
 				lc=self.scr_to_img(event.x(),event.y())
-				self.emit(QtCore.SIGNAL("mouseup"), event,lc)
+				self.mouseup.emit(event, lc)
 			elif self.mouse_mode_dict[self.mouse_mode] == "measure":
 				if event.buttons()&Qt.LeftButton:
 					self.add_shape("MEAS",EMShape(("line",.5,.1,.5,current_shapes["MEAS"].shape[4],current_shapes["MEAS"].shape[5],lc[0],lc[1],2)))
@@ -1733,7 +1742,7 @@ class EMImage2DWidget(EMGLWidget):
 		if not self.wheel_navigate:
 			if event.orientation() & Qt.Vertical:
 				if self.mouse_mode==0 and event.modifiers()&Qt.ShiftModifier:
-					self.emit(QtCore.SIGNAL("mousewheel"), event)
+					self.mousewheel.emit(event)
 					return
 				if event.delta() > 0:
 					self.set_scale( self.scale * self.mag )
@@ -1792,7 +1801,7 @@ class EMImage2DWidget(EMGLWidget):
 				self.updateGL()
 #			else:
 #				self.__key_mvt_animation(0,self.height()*.1)
-			self.emit(QtCore.SIGNAL("increment_list_data"),1)
+			self.increment_list_data.emit(1)
 
 		elif event.key() == Qt.Key_Down:
 			if self.list_data != None:
@@ -1800,7 +1809,7 @@ class EMImage2DWidget(EMGLWidget):
 				self.updateGL()
 #			else:
 #				self.__key_mvt_animation(0,-self.height()*.1)
-			self.emit(QtCore.SIGNAL("increment_list_data"),-1)
+			self.increment_list_data.emit(-1)
 
 		elif event.key() == Qt.Key_Right:
 			self.__key_mvt_animation(self.width()*.1,0)
@@ -1819,7 +1828,7 @@ class EMImage2DWidget(EMGLWidget):
 			self.updateGL()
 
 		else:
-			self.emit(QtCore.SIGNAL("keypress"), event)
+			self.keypress.emit(event)
 
 
 
@@ -1960,11 +1969,11 @@ class EMImageInspector2D(QtGui.QWidget):
 
 		self.mmtab.addTab(self.savetab,"Save")
 
-		QtCore.QObject.connect(self.stsnapbut,QtCore.SIGNAL("clicked(bool)"),self.do_snapshot)
-		QtCore.QObject.connect(self.stwholebut,QtCore.SIGNAL("clicked(bool)"),self.do_saveimg)
-		QtCore.QObject.connect(self.ststackbut,QtCore.SIGNAL("clicked(bool)"),self.do_savestack)
-		QtCore.QObject.connect(self.stmoviebut,QtCore.SIGNAL("clicked(bool)"),self.do_makemovie)
-		QtCore.QObject.connect(self.stanimgif,QtCore.SIGNAL("clicked(bool)"),self.do_makegifanim)
+		self.stsnapbut.clicked[bool].connect(self.do_snapshot)
+		self.stwholebut.clicked[bool].connect(self.do_saveimg)
+		self.ststackbut.clicked[bool].connect(self.do_savestack)
+		self.stmoviebut.clicked[bool].connect(self.do_makemovie)
+		self.stanimgif.clicked[bool].connect(self.do_makegifanim)
 
 		# Filter tab
 		self.filttab = QtGui.QWidget()
@@ -1984,12 +1993,12 @@ class EMImageInspector2D(QtGui.QWidget):
 
 		self.mmtab.addTab(self.filttab,"Filt")
 
-		self.procbox1.connect(self.procbox1,QtCore.SIGNAL("enableChanged"),self.do_filters)
-		self.procbox1.connect(self.procbox1,QtCore.SIGNAL("textChanged"),self.do_filters)
-		self.procbox2.connect(self.procbox2,QtCore.SIGNAL("enableChanged"),self.do_filters)
-		self.procbox2.connect(self.procbox2,QtCore.SIGNAL("textChanged"),self.do_filters)
-		self.procbox3.connect(self.procbox3,QtCore.SIGNAL("enableChanged"),self.do_filters)
-		self.procbox3.connect(self.procbox3,QtCore.SIGNAL("textChanged"),self.do_filters)
+		self.procbox1.enableChanged.connect(self.do_filters)
+		self.procbox1.textChanged.connect(self.do_filters)
+		self.procbox2.enableChanged.connect(self.do_filters)
+		self.procbox2.textChanged.connect(self.do_filters)
+		self.procbox3.enableChanged.connect(self.do_filters)
+		self.procbox3.textChanged.connect(self.do_filters)
 
 		# Probe tab
 		self.probetab = QtGui.QWidget()
@@ -2241,20 +2250,20 @@ class EMImageInspector2D(QtGui.QWidget):
 		#self.update_brightness_contrast()
 		self.busy=0
 
-		QtCore.QObject.connect(self.psbsing,QtCore.SIGNAL("clicked(bool)"),self.do_pspec_single)
-		QtCore.QObject.connect(self.psbstack,QtCore.SIGNAL("clicked(bool)"),self.do_pspec_stack)
-		QtCore.QObject.connect(self.scale, QtCore.SIGNAL("valueChanged"), target.set_scale)
-		QtCore.QObject.connect(self.mins, QtCore.SIGNAL("valueChanged"), self.new_min)
-		QtCore.QObject.connect(self.maxs, QtCore.SIGNAL("valueChanged"), self.new_max)
-		QtCore.QObject.connect(self.brts, QtCore.SIGNAL("valueChanged"), self.new_brt)
-		QtCore.QObject.connect(self.conts, QtCore.SIGNAL("valueChanged"), self.new_cont)
-		QtCore.QObject.connect(self.gammas, QtCore.SIGNAL("valueChanged"), self.new_gamma)
-		QtCore.QObject.connect(self.pyinp, QtCore.SIGNAL("returnPressed()"),self.do_python)
-		QtCore.QObject.connect(self.invtog, QtCore.SIGNAL("toggled(bool)"), target.set_invert)
-		QtCore.QObject.connect(self.histoequal, QtCore.SIGNAL("currentIndexChanged(int)"), target.set_histogram)
-		QtCore.QObject.connect(self.fftg, QtCore.SIGNAL("buttonClicked(int)"), target.set_FFT)
-		QtCore.QObject.connect(self.mmtab, QtCore.SIGNAL("currentChanged(int)"), target.set_mouse_mode)
-		QtCore.QObject.connect(self.auto_contrast_button, QtCore.SIGNAL("clicked(bool)"), target.auto_contrast)
+		self.psbsing.clicked[bool].connect(self.do_pspec_single)
+		self.psbstack.clicked[bool].connect(self.do_pspec_stack)
+		self.scale.valueChanged.connect(target.set_scale)
+		self.mins.valueChanged.connect(self.new_min)
+		self.maxs.valueChanged.connect(self.new_max)
+		self.brts.valueChanged.connect(self.new_brt)
+		self.conts.valueChanged.connect(self.new_cont)
+		self.gammas.valueChanged.connect(self.new_gamma)
+		self.pyinp.returnPressed.connect(self.do_python)
+		self.invtog.toggled[bool].connect(target.set_invert)
+		self.histoequal.currentIndexChanged[int].connect(target.set_histogram)
+		self.fftg.buttonClicked[int].connect(target.set_FFT)
+		self.mmtab.currentChanged[int].connect(target.set_mouse_mode)
+		self.auto_contrast_button.clicked[bool].connect(target.auto_contrast)
 
 		self.resize(400,440) # d.woolford thinks this is a good starting size as of Nov 2008 (especially on MAC)
 
@@ -2449,7 +2458,7 @@ class EMImageInspector2D(QtGui.QWidget):
 		self.stmaxsb.setRange(minimum,maximum)
 		self.stmaxsb.setValue(maximum)
 
-		QtCore.QObject.connect(self.image_range, QtCore.SIGNAL("valueChanged"), self.target().image_range_changed)
+		self.image_range.valueChanged.connect(self.target().image_range_changed)
 
 	def set_image_idx(self,val):
 		self.image_range.setValue(val)

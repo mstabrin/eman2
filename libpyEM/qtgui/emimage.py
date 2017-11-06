@@ -80,7 +80,7 @@ def get_app():
 	except:
 		tmr=QtCore.QTimer()
 		tmr.setInterval(250)
-		tmr.connect(tmr,QtCore.SIGNAL("timeout()"), image_update)
+		tmr.timeout.connect(image_update)
 		tmr.start()
 	
 		app.updtimer=tmr
