@@ -838,7 +838,7 @@ class EM3DAdvancedInspector(QtGui.QWidget,EMLightsInspectorBase):
 
 class EMImage3DModule(EMImage3DWidget):
 	def __init__(self, parent=None, image=None,application=None,winid=None):
-		import warnings	
+		import warnings
 		warnings.warn("convert EMImage3DModule to EMImage3DWidget", DeprecationWarning)
 		EMImage3DWidget.__init__(self, parent, image, application, winid)
 	
