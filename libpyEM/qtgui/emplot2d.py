@@ -59,7 +59,7 @@ def safe_float(x):
 	except: return 0.0
 
 import PyQt5
-from PyQt5 import QtCore, QtGui, QtOpenGL, QtWebKitWidgets, QtWidgets
+from PyQt5 import QtCore, QtGui, QtOpenGL, QtWebEngineWidgets, QtWidgets
 from PyQt5.QtOpenGL import QGLWidget
 from PyQt5.QtCore import Qt
 from OpenGL import GL,GLU
@@ -212,7 +212,7 @@ class EMPlot2DWidget(EMGLWidget):
 				try:
 					test = self.browser
 				except:
-					self.browser = QtWebKitWidgets.QWebView()
+					self.browser = QtWebEngineWidgets.QWebView()
 					self.browser.load(QtCore.QUrl("http://blake.bcm.edu/emanwiki/e2display"))
 					self.browser.resize(800,800)
 
@@ -1083,7 +1083,7 @@ class EMPolarPlot2DWidget(EMGLWidget):
 				try:
 					test = self.browser
 				except:
-					self.browser = QtWebKitWidgets.QWebView()
+					self.browser = QtWebEngineWidgets.QWebView()
 					self.browser.load(QtCore.QUrl("http://blake.bcm.edu/emanwiki/e2display"))
 					self.browser.resize(800,800)
 

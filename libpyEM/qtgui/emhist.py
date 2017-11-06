@@ -53,7 +53,7 @@ ploticon = [
 ]
 
 import PyQt5
-from PyQt5 import QtCore, QtGui, QtOpenGL, QtWebKitWidgets, QtWidgets
+from PyQt5 import QtCore, QtGui, QtOpenGL, QtWebEngineWidgets, QtWidgets
 from PyQt5.QtOpenGL import QGLWidget
 from PyQt5.QtCore import Qt
 from OpenGL import GL,GLU
@@ -184,7 +184,7 @@ class EMHistogramWidget(EMGLWidget):
 			try:
 				try: test = self.browser
 				except:
-					self.browser = QtWebKitWidgets.QWebView()
+					self.browser = QtWebEngineWidgets.QWebView()
 					self.browser.load(QtCore.QUrl("http://blake.bcm.edu/emanwiki/e2display"))
 					self.browser.resize(800,800)
 				if not self.browser.isVisible(): self.browser.show()

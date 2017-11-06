@@ -32,7 +32,7 @@ from __future__ import print_function
 #
 #
 
-from PyQt5 import QtCore, QtGui, QtOpenGL, QtWebKitWidgets, QtWidgets
+from PyQt5 import QtCore, QtGui, QtOpenGL, QtWebEngineWidgets, QtWidgets
 from PyQt5.QtCore import Qt
 import sys
 from emimageutil import EMParentWin
@@ -174,7 +174,7 @@ class EMGLWidget(QtOpenGL.QGLWidget):
 				try:
 					test = self.browser
 				except: 
-					self.browser = QtWebKitWidgets.QWebView()
+					self.browser = QtWebEngineWidgets.QWebView()
 					self.browser.load(QtCore.QUrl())
 					self.browser.resize(800,800)
 				
