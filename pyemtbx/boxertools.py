@@ -39,6 +39,13 @@ from EMAN2db import db_open_dict, db_close_dict, db_remove_dict, db_check_dict
 from EMAN2 import *
 import traceback
 
+try:
+    QString = unicode
+except NameError:
+    # Python 3
+    QString = str
+QStringList = list
+
 class EMProjectDB:
 	"""
 	It's implemented as a singleton
@@ -2246,8 +2253,8 @@ class Boxable:
 		
 		self.process = QtCore.QProcess()
 
-		program = QtCore.QString("e2refine2d.py")
-		args = QtCore.QStringList()
+		program = QString("e2refine2d.py")
+		args = QStringList()
 		args.append("--input="+tmpimage)
 		args.append("--ncls=25")
 		

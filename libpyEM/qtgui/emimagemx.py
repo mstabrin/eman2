@@ -32,8 +32,8 @@ from __future__ import print_function
 #
 #
 
-from PyQt4 import QtCore, QtGui, QtOpenGL
-from PyQt4.QtCore import Qt
+from PyQt5 import QtCore, QtGui, QtOpenGL, QtWidgets
+from PyQt5.QtCore import Qt
 from PyQt4.QtGui import QAction, QAbstractButton, QListWidgetItem
 from OpenGL import GL,GLU,GLUT
 from OpenGL.GL import *
@@ -51,8 +51,8 @@ import numpy
 from emimageutil import ImgHistogram, EMParentWin
 from weakref import WeakKeyDictionary
 from pickle import dumps,loads
-from PyQt4.QtGui import QImage
-from PyQt4.QtCore import QTimer
+from PyQt5.QtGui import QImage
+from PyQt5.QtCore import QTimer
 from libpyGLUtils2 import *
 
 from emglobjects import EMOpenGLFlagsAndTools,EMGLProjectionViewMatrices,EMBasicOpenGLObjects,init_glut
@@ -62,6 +62,8 @@ import weakref
 
 from emapplication import EMProgressDialog
 
+
+QStringList = list
 
 class EMMatrixPanel:
 	'''
@@ -416,11 +418,11 @@ class EMImageMXWidget(EMGLWidget, EMGLProjectionViewMatrices):
 		"""Saves the particles in a named set to a file"""
 		outset=self.get_set(name)
 		if len(outset)==None :
-			QtGui.QMessageBox.warning(None,"Error","The set: %s is empty"%(name))
+			QtWidgets.QMessageBox.warning(None,"Error","The set: %s is empty"%(name))
 			return
 		
 		# Get the output filespec
-		fsp=QtGui.QFileDialog.getSaveFileName(self, "Image Output File")
+		fsp=QtWidgets.QFileDialog.getSaveFileName(self, "Image Output File")[0]
 		fsp=str(fsp)
 		
 		badimg=[]
@@ -429,9 +431,9 @@ class EMImageMXWidget(EMGLWidget, EMGLProjectionViewMatrices):
 			except: badimg.append(i)
 
 		if len(badimg)>0 :
-			QtGui.QMessageBox.warning(None,"Error","Could not save images: %s"%(str(badimg)))
+			QtWidgets.QMessageBox.warning(None,"Error","Could not save images: %s"%(str(badimg)))
 		else:
-			QtGui.QMessageBox.information(None,"Save Succesful","%d images appended to %s"%(len(outset),fsp))
+			QtWidgets.QMessageBox.information(None,"Save Succesful","%d images appended to %s"%(len(outset),fsp))
 		
 
 	def get_set(self,name):
@@ -869,7 +871,7 @@ class EMImageMXWidget(EMGLWidget, EMGLProjectionViewMatrices):
 			nimg=sqrt(len(self.data))
 			x=self.data[0]["nx"]*sqrt(nimg)
 			y=self.data[0]["ny"]*sqrt(nimg)
-			xys=QtGui.QApplication.desktop().availableGeometry()
+			xys=QtWidgets.QApplication.desktop().availableGeometry()
 			mx=xys.width()*2/3
 			my=xys.height()*2/3
 			
@@ -1569,7 +1571,7 @@ class EMImageMXWidget(EMGLWidget, EMGLProjectionViewMatrices):
 		Overwrites existing data (the old file is removed)
 		'''
 
-		msg = QtGui.QMessageBox()
+		msg = QtWidgets.QMessageBox()
 		msg.setWindowTitle("Woops")
 		if self.data==None or len(self.data)==0:
 			msg.setText("there is no data to save" %fsp)
@@ -1648,11 +1650,11 @@ class EMImageMXWidget(EMGLWidget, EMGLProjectionViewMatrices):
 					i.write_image(i["source_path"],i["source_n"])
 #					print j,i["source_path"],i["source_n"]
 				except:
-					QtGui.QMessageBox.warning(None,"Error","Failed to save inverted image at: %s %d"%(i["source_path"],i["source_n"]))
+					QtWidgets.QMessageBox.warning(None,"Error","Failed to save inverted image at: %s %d"%(i["source_path"],i["source_n"]))
 					return
 
 
-			QtGui.QMessageBox.warning(None,"Images Saved","Images have been inverted on-disk")
+			QtWidgets.QMessageBox.warning(None,"Images Saved","Images have been inverted on-disk")
 			return
 
 		elif event.key()==Qt.Key_Up :
@@ -1816,7 +1818,7 @@ class EMImageMXWidget(EMGLWidget, EMGLProjectionViewMatrices):
 				except: idxse = []
 				name = d["class_ptcl_src"]
 				try:
-					progress = QtGui.QProgressDialog("Reading images from %s" %base_name(name), "Cancel", 0, len(idxs)+len(idxse),None)
+					progress = QtWidgets.QProgressDialog("Reading images from %s" %base_name(name), "Cancel", 0, len(idxs)+len(idxse),None)
 					progress.show()
 				except:
 					pass
@@ -1972,9 +1974,9 @@ class EMImageMXWidget(EMGLWidget, EMGLProjectionViewMatrices):
 
 	def wheelEvent(self, event):
 		if not self.data: return
-		if event.delta() > 0:
+		if event.angleDelta().y() > 0:
 			self.set_scale( self.scale * self.mag )
-		elif event.delta() < 0:
+		elif event.angleDelta().y() < 0:
 			self.set_scale(self.scale * self.invmag)
 		#self.resize_event(self.width(),self.height())
 		# The self.scale variable is updated now, so just update with that
@@ -2219,15 +2221,15 @@ class EMGLScrollBar:
 		self.down_arrow_color = self.scroll_bar_idle_color
 		self.target().updateGL()
 
-class EMImageInspectorMX(QtGui.QWidget):
+class EMImageInspectorMX(QtWidgets.QWidget):
 	def __init__(self,target, allow_opt_button=False):
-		QtGui.QWidget.__init__(self,None)
+		QtWidgets.QWidget.__init__(self,None)
 		self.setWindowIcon(QtGui.QIcon(get_image_directory() +"multiple_images.png"))
 
 		self.target=weakref.ref(target)
 		self.busy = 1
-		self.vals = QtGui.QMenu()
-		self.valsbut = QtGui.QPushButton("Values")
+		self.vals = QtWidgets.QMenu()
+		self.valsbut = QtWidgets.QPushButton("Values")
 		self.valsbut.setMenu(self.vals)
 
 		self.update_vals()
@@ -2236,14 +2238,14 @@ class EMImageInspectorMX(QtGui.QWidget):
 		action.setCheckable(1)
 		action.setChecked(1)
 
-		self.vbl = QtGui.QVBoxLayout(self)
-		self.vbl.setMargin(2)
+		self.vbl = QtWidgets.QVBoxLayout(self)
+		self.vbl.setContentsMargins(2, 2, 2, 2)
 		self.vbl.setSpacing(6)
 		self.vbl.setObjectName("vboxlayout")
 
 
-		self.hbl3 = QtGui.QHBoxLayout()
-		self.hbl3.setMargin(0)
+		self.hbl3 = QtWidgets.QHBoxLayout()
+		self.hbl3.setContentsMargins(0, 0, 0, 0)
 		self.hbl3.setSpacing(6)
 		self.hbl3.setObjectName("hboxlayout")
 		self.vbl.addLayout(self.hbl3)
@@ -2252,20 +2254,20 @@ class EMImageInspectorMX(QtGui.QWidget):
 		self.hist.setObjectName("hist")
 		self.hbl3.addWidget(self.hist)
 
-		self.vbl2 = QtGui.QVBoxLayout()
-		self.vbl2.setMargin(0)
+		self.vbl2 = QtWidgets.QVBoxLayout()
+		self.vbl2.setContentsMargins(0, 0, 0, 0)
 		self.vbl2.setSpacing(6)
 		self.vbl2.setObjectName("vboxlayout")
 		self.hbl3.addLayout(self.vbl2)
 
-		self.bsavedata = QtGui.QPushButton("Save")
+		self.bsavedata = QtWidgets.QPushButton("Save")
 		self.vbl2.addWidget(self.bsavedata)
 
 		if allow_opt_button:
-			self.opt_fit = QtGui.QPushButton("Opt. Fit")
+			self.opt_fit = QtWidgets.QPushButton("Opt. Fit")
 			self.vbl2.addWidget(self.opt_fit)
 
-		self.bsnapshot = QtGui.QPushButton("Snap")
+		self.bsnapshot = QtWidgets.QPushButton("Snap")
 		self.vbl2.addWidget(self.bsnapshot)
 		if get_platform() != "Linux":
 			self.bsnapshot.setEnabled(False)
@@ -2278,26 +2280,26 @@ class EMImageInspectorMX(QtGui.QWidget):
 
 
 		# This shows the mouse mode buttons
-		self.hbl2 = QtGui.QHBoxLayout()
-		self.hbl2.setMargin(0)
+		self.hbl2 = QtWidgets.QHBoxLayout()
+		self.hbl2.setContentsMargins(0, 0, 0, 0)
 		self.hbl2.setSpacing(6)
 		self.hbl2.setObjectName("hboxlayout")
 		self.vbl.addLayout(self.hbl2)
 
-		self.mapp = QtGui.QPushButton("App")
+		self.mapp = QtWidgets.QPushButton("App")
 		self.mapp.setCheckable(1)
 		self.hbl2.addWidget(self.mapp)
 
-		self.mDel = QtGui.QPushButton("Del")
+		self.mDel = QtWidgets.QPushButton("Del")
 		self.mDel.setCheckable(1)
 		self.hbl2.addWidget(self.mDel)
 
-		self.mdrag = QtGui.QPushButton("Drag")
+		self.mdrag = QtWidgets.QPushButton("Drag")
 		self.mdrag.setCheckable(1)
 		self.hbl2.addWidget(self.mdrag)
 
 
-		self.mouse_mode_but_grp=QtGui.QButtonGroup()
+		self.mouse_mode_but_grp=QtWidgets.QButtonGroup()
 		self.mouse_mode_but_grp.setExclusive(1)
 		self.mouse_mode_but_grp.addButton(self.mapp)
 		self.mouse_mode_but_grp.addButton(self.mDel)
@@ -2307,8 +2309,8 @@ class EMImageInspectorMX(QtGui.QWidget):
 		self.mapp.setChecked(True)
 
 
-		self.hbl = QtGui.QHBoxLayout()
-		self.hbl.setMargin(0)
+		self.hbl = QtWidgets.QHBoxLayout()
+		self.hbl.setContentsMargins(0, 0, 0, 0)
 		self.hbl.setSpacing(6)
 		self.hbl.setObjectName("hboxlayout")
 		self.vbl.addLayout(self.hbl)
@@ -2317,11 +2319,11 @@ class EMImageInspectorMX(QtGui.QWidget):
 
 		self.xyz = None
 
-		self.font_label = QtGui.QLabel("font size:")
+		self.font_label = QtWidgets.QLabel("font size:")
 		self.font_label.setAlignment(Qt.AlignRight|Qt.AlignVCenter)
 		self.hbl.addWidget(self.font_label)
 
-		self.font_size = QtGui.QSpinBox()
+		self.font_size = QtWidgets.QSpinBox()
 		self.font_size.setObjectName("nrow")
 		self.font_size.setRange(1,50)
 		self.font_size.setValue(int(self.target().get_font_size()))
@@ -2330,12 +2332,12 @@ class EMImageInspectorMX(QtGui.QWidget):
 		self.font_size.valueChanged[int].connect(self.target().set_font_size)
 
 
-		self.banim = QtGui.QPushButton("Animate")
+		self.banim = QtWidgets.QPushButton("Animate")
 		self.banim.setCheckable(True)
 		self.banim.setChecked(self.target().animation_enabled)
 		self.hbl.addWidget(self.banim)
 
-		self.tabwidget = QtGui.QTabWidget()
+		self.tabwidget = QtWidgets.QTabWidget()
 
 		self.tabwidget.addTab(self.get_image_manip_page(),"Main")
 
@@ -2381,7 +2383,7 @@ class EMImageInspectorMX(QtGui.QWidget):
 	def add_panel(self,widget,name):
 		self.tabwidget.addTab(widget,name)
 
-		button = QtGui.QPushButton(name)
+		button = QtWidgets.QPushButton(name)
 		button.setCheckable(1)
 		self.hbl2.addWidget(button)
 
@@ -2398,8 +2400,8 @@ class EMImageInspectorMX(QtGui.QWidget):
 	def enable_xyz(self):
 
 		if self.xyz == None:
-			self.xyz = QtGui.QComboBox()
-			self.xyz.addItems(QtCore.QStringList(["x","y","z"]))
+			self.xyz = QtWidgets.QComboBox()
+			self.xyz.addItems(QStringList(["x","y","z"]))
 			self.hbl.addWidget(self.xyz)
 			self.xyz.setCurrentIndex(2)
 			self.xyz.currentIndexChanged['QString'].connect(self.target().xyz_changed)
@@ -2414,9 +2416,9 @@ class EMImageInspectorMX(QtGui.QWidget):
 		self.target().animation_enabled = bool
 
 	def get_image_manip_page(self):
-		self.impage = QtGui.QWidget()
-		vbl = QtGui.QVBoxLayout(self.impage )
-		vbl.setMargin(2)
+		self.impage = QtWidgets.QWidget()
+		vbl = QtWidgets.QVBoxLayout(self.impage )
+		vbl.setContentsMargins(2, 2, 2, 2)
 		vbl.setSpacing(6)
 		vbl.setObjectName("get_image_manip_page")
 
@@ -2504,7 +2506,7 @@ class EMImageInspectorMX(QtGui.QWidget):
 			#QtGui.QMessageBox.warning ( self, "Framebuffer ?", "Could not read framebuffer")
 
 		# Get the output filespec
-		fsp=QtGui.QFileDialog.getSaveFileName(self, "Select File")
+		fsp=QtWidgets.QFileDialog.getSaveFileName(self, "Select File")[0]
 		fsp=str(fsp)
 
 		qim.save(fsp,None,90)
@@ -2600,12 +2602,12 @@ class EMMXDeletionManager:
 	def deleted_ptcls(self):
 		return self.deleted_idxs
 
-class EMMXSetsPanel(QtGui.QWidget):
+class EMMXSetsPanel(QtWidgets.QWidget):
 	'''
 	This is the set display panel
 	'''
 	def __init__(self,target):
-		QtGui.QWidget.__init__(self)
+		QtWidgets.QWidget.__init__(self)
 
 		self.target = weakref.ref(target) # this should be the EMImageMXWidget
 		self.busy = False
@@ -2614,18 +2616,18 @@ class EMMXSetsPanel(QtGui.QWidget):
 		self.itemflags=	Qt.ItemFlags(Qt.ItemIsEditable)|Qt.ItemFlags(Qt.ItemIsSelectable)|Qt.ItemFlags(Qt.ItemIsEnabled)|Qt.ItemFlags(Qt.ItemIsUserCheckable)
 
 		# now build the interface
-		hbl = QtGui.QHBoxLayout(self)
-		self.setlist=QtGui.QListWidget()
-		self.setlist.setSizePolicy(QtGui.QSizePolicy.Preferred,QtGui.QSizePolicy.Expanding)
+		hbl = QtWidgets.QHBoxLayout(self)
+		self.setlist=QtWidgets.QListWidget()
+		self.setlist.setSizePolicy(QtWidgets.QSizePolicy.Preferred,QtWidgets.QSizePolicy.Expanding)
 		hbl.addWidget(self.setlist)
 
-		vbl = QtGui.QVBoxLayout()
+		vbl = QtWidgets.QVBoxLayout()
 
-		self.new_set_button = QtGui.QPushButton("New")
+		self.new_set_button = QtWidgets.QPushButton("New")
 		vbl.addWidget(self.new_set_button)
-		self.delete_set_button = QtGui.QPushButton("delete")
+		self.delete_set_button = QtWidgets.QPushButton("delete")
 		vbl.addWidget(self.delete_set_button)
-		self.save_set_button = QtGui.QPushButton("Save")
+		self.save_set_button = QtWidgets.QPushButton("Save")
 		vbl.addWidget(self.save_set_button)
 
 		hbl.addLayout(vbl)
@@ -2667,7 +2669,7 @@ class EMMXSetsPanel(QtGui.QWidget):
 
 
 	def new_set(self,unused=None):
-		name,ok=QtGui.QInputDialog.getText( self, "Set Name", "Enter a name for the new set:")
+		name,ok=QtWidgets.QInputDialog.getText( self, "Set Name", "Enter a name for the new set:")
 		if not ok : return
 		name=str(name)
 		if name in self.target().sets :
@@ -2687,7 +2689,7 @@ class EMMXSetsPanel(QtGui.QWidget):
 		self.setlist.clear()
 
 		for i,k in enumerate(keys):
-			item=QtGui.QListWidgetItem(k)
+			item=QtWidgets.QListWidgetItem(k)
 			item.setFlags(self.itemflags)
 			item.setTextColor(self.target().setcolors[i%len(self.target().setcolors)])
 			self.setlist.addItem(item)
@@ -3198,7 +3200,7 @@ class EMDataListCache(EMMXDataCache):
 		if refresh: self.__refresh_cache()
 
 	def __refresh_cache(self):
-		app = QtGui.QApplication.instance()
+		app = QtWidgets.QApplication.instance()
 		app.setOverrideCursor(Qt.BusyCursor)
 
 		try:

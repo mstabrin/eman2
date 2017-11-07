@@ -40,8 +40,8 @@ from EMAN2 import *
 import numpy as np
 
 import weakref
-from PyQt4 import QtCore, QtGui
-from PyQt4.QtCore import Qt
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import Qt
 from eman2_gui.emapplication import get_application, EMApp
 from eman2_gui.emimage2d import EMImage2DWidget
 from eman2_gui.emimagemx import EMImageMXWidget
@@ -95,13 +95,13 @@ def main():
 	E2end(logid)
 	return
 
-class EMTomoBoxer(QtGui.QMainWindow):
+class EMTomoBoxer(QtWidgets.QMainWindow):
 	"""This class represents the EMTomoBoxer application instance.  """
 	keypress = QtCore.pyqtSignal(QtGui.QKeyEvent)
 	module_closed = QtCore.pyqtSignal()
 
 	def __init__(self,application,options,datafile=None):
-		QtGui.QWidget.__init__(self)
+		QtWidgets.QWidget.__init__(self)
 		self.initialized=False
 		self.app=weakref.ref(application)
 		self.options=options
@@ -132,8 +132,8 @@ class EMTomoBoxer(QtGui.QMainWindow):
 		self.mwin_average=self.mwin.addAction("Averaging")
 
 
-		self.setCentralWidget(QtGui.QWidget())
-		self.gbl = QtGui.QGridLayout(self.centralWidget())
+		self.setCentralWidget(QtWidgets.QWidget())
+		self.gbl = QtWidgets.QGridLayout(self.centralWidget())
 
 		# relative stretch factors
 		self.gbl.setColumnStretch(0,1)
@@ -153,11 +153,11 @@ class EMTomoBoxer(QtGui.QMainWindow):
 		self.gbl.addWidget(self.zyview,0,0)
 
 		# Select Z for xy view
-		self.wdepth = QtGui.QSlider()
+		self.wdepth = QtWidgets.QSlider()
 		self.gbl.addWidget(self.wdepth,1,2)
 
 		### Control panel area in upper left corner
-		self.gbl2 = QtGui.QGridLayout()
+		self.gbl2 = QtWidgets.QGridLayout()
 		self.gbl.addLayout(self.gbl2,1,0)
 
 		# box size
@@ -165,19 +165,19 @@ class EMTomoBoxer(QtGui.QMainWindow):
 		self.gbl2.addWidget(self.wboxsize,1,0,1,2)
 
 		# max or mean
-		self.wmaxmean=QtGui.QPushButton("MaxProj")
+		self.wmaxmean=QtWidgets.QPushButton("MaxProj")
 		self.wmaxmean.setCheckable(True)
 		self.gbl2.addWidget(self.wmaxmean,2,0)
 
 		# number slices
-		self.wnlayers=QtGui.QSpinBox()
+		self.wnlayers=QtWidgets.QSpinBox()
 		self.wnlayers.setMinimum(1)
 		self.wnlayers.setMaximum(256)
 		self.wnlayers.setValue(1)
 		self.gbl2.addWidget(self.wnlayers,2,1)
 
 		# Local boxes in side view
-		self.wlocalbox=QtGui.QCheckBox("Limit Side Boxes")
+		self.wlocalbox=QtWidgets.QCheckBox("Limit Side Boxes")
 		self.gbl2.addWidget(self.wlocalbox,3,0)
 
 		# scale factor
@@ -197,7 +197,7 @@ class EMTomoBoxer(QtGui.QMainWindow):
 		self.firsthbclick = None
 
 		# coordinate display
-		self.wcoords=QtGui.QLabel("X: " + str(self.get_x()) + "\t\t" + "Y: " + str(self.get_y()) + "\t\t" + "Z: " + str(self.get_z()))
+		self.wcoords=QtWidgets.QLabel("X: " + str(self.get_x()) + "\t\t" + "Y: " + str(self.get_y()) + "\t\t" + "Z: " + str(self.get_z()))
 		self.gbl2.addWidget(self.wcoords, 0, 0, 1, 2)
 
 		# file menu
@@ -583,7 +583,7 @@ class EMTomoBoxer(QtGui.QMainWindow):
 
 
 	def menu_file_open(self,tog):
-		QtGui.QMessageBox.warning(None,"Error","Sorry, in the current version, you must provide a file to open on the command-line.")
+		QtWidgets.QMessageBox.warning(None,"Error","Sorry, in the current version, you must provide a file to open on the command-line.")
 
 	def load_box_yshort(self, boxcoords):
 		if options.yshort:
@@ -592,7 +592,7 @@ class EMTomoBoxer(QtGui.QMainWindow):
 			return boxcoords
 
 	def menu_file_read_boxloc(self):
-		fsp=str(QtGui.QFileDialog.getOpenFileName(self, "Select output text file"))
+		fsp=str(QtWidgets.QFileDialog.getOpenFileName(self, "Select output text file"))[0]
 
 		f=open(fsp,"r")
 		for b in f:
@@ -607,7 +607,7 @@ class EMTomoBoxer(QtGui.QMainWindow):
 	def menu_file_save_boxloc(self):
 		shrinkf=self.shrink 								#jesus
 
-		fsp=str(QtGui.QFileDialog.getSaveFileName(self, "Select output text file"))
+		fsp=str(QtWidgets.QFileDialog.getSaveFileName(self, "Select output text file"))[0]
 
 		out=open(fsp,"w")
 		if self.helixboxer:
@@ -626,7 +626,7 @@ class EMTomoBoxer(QtGui.QMainWindow):
 		else:
 			defaultname="_".join([self.sets[i] for i in clsid])+".hdf"
 		
-		name,ok=QtGui.QInputDialog.getText( self, "Save particles", "Filename suffix:", text=defaultname)
+		name,ok=QtWidgets.QInputDialog.getText( self, "Save particles", "Filename suffix:", text=defaultname)
 		if not ok:
 			return
 		name=self.filetag+str(name)
@@ -646,7 +646,7 @@ class EMTomoBoxer(QtGui.QMainWindow):
 				print("{} exist. Overwritting...".format(f))
 				os.remove(f)
 		
-		progress = QtGui.QProgressDialog("Saving", "Abort", 0, len(self.boxes),None)
+		progress = QtWidgets.QProgressDialog("Saving", "Abort", 0, len(self.boxes),None)
 		
 		
 		boxsz=-1
@@ -1441,16 +1441,16 @@ def parse_setname(name):
 			
 	
 
-class EMBoxViewer(QtGui.QWidget):
+class EMBoxViewer(QtWidgets.QWidget):
 	"""This is a multi-paned view showing a single boxed out particle from a larger tomogram"""
 
 	def __init__(self):
-		QtGui.QWidget.__init__(self)
+		QtWidgets.QWidget.__init__(self)
 		self.setWindowTitle("Single Particle View")
 
 		self.resize(300,300)
 
-		self.gbl = QtGui.QGridLayout(self)
+		self.gbl = QtWidgets.QGridLayout(self)
 		self.xyview = EMImage2DWidget()
 		self.gbl.addWidget(self.xyview,0,1)
 
@@ -1549,26 +1549,26 @@ class EMBoxViewer(QtGui.QWidget):
 		self.zyview.close()
 
 
-class EMTomoBoxerOptions(QtGui.QWidget):
+class EMTomoBoxerOptions(QtWidgets.QWidget):
 	def __init__(self,target) :
-		QtGui.QWidget.__init__(self)
+		QtWidgets.QWidget.__init__(self)
 		#print "aaaaaaaa"
 		self.setWindowTitle("Options")
 		self.target=weakref.ref(target)
 		
-		self.gbl = QtGui.QGridLayout(self)
+		self.gbl = QtWidgets.QGridLayout(self)
 		#self.gbl.setMargin(2)
 		#self.gbl.setSpacing(6)
 		self.gbl.setObjectName("gbl")
 		
 		
-		self.erasercheckbox=QtGui.QCheckBox("Eraser")
+		self.erasercheckbox=QtWidgets.QCheckBox("Eraser")
 		self.gbl.addWidget(self.erasercheckbox,0,0)
 		
 		self.eraser_radius=ValBox(label="Radius:",value=64)
 		self.gbl.addWidget(self.eraser_radius,0,1)
 
-		self.tabwidget = QtGui.QTabWidget()
+		self.tabwidget = QtWidgets.QTabWidget()
 		self.gbl.addWidget(self.tabwidget,1,0,1,2)
 		
 	def add_panel(self,widget,name):
@@ -1577,12 +1577,12 @@ class EMTomoBoxerOptions(QtGui.QWidget):
 		return 
 
 #### Copied from emimagemx.py since some modification are needed...
-class EMTomoSetsPanel(QtGui.QWidget):
+class EMTomoSetsPanel(QtWidgets.QWidget):
 	'''
 	This is the set display panel
 	'''
 	def __init__(self,target):
-		QtGui.QWidget.__init__(self)
+		QtWidgets.QWidget.__init__(self)
 
 		self.target = weakref.ref(target) # this should be the EMImageMXWidget
 		self.busy = False
@@ -1592,20 +1592,20 @@ class EMTomoSetsPanel(QtGui.QWidget):
 		self.itemflags=	Qt.ItemFlags(Qt.ItemIsEditable)|Qt.ItemFlags(Qt.ItemIsSelectable)|Qt.ItemFlags(Qt.ItemIsEnabled)|Qt.ItemFlags(Qt.ItemIsUserCheckable)
 
 		# now build the interface
-		hbl = QtGui.QHBoxLayout(self)
-		self.setlist=QtGui.QListWidget()
-		self.setlist.setSizePolicy(QtGui.QSizePolicy.Preferred,QtGui.QSizePolicy.Expanding)
+		hbl = QtWidgets.QHBoxLayout(self)
+		self.setlist=QtWidgets.QListWidget()
+		self.setlist.setSizePolicy(QtWidgets.QSizePolicy.Preferred,QtWidgets.QSizePolicy.Expanding)
 		hbl.addWidget(self.setlist)
 
-		vbl = QtGui.QVBoxLayout()
+		vbl = QtWidgets.QVBoxLayout()
 
-		self.new_set_button = QtGui.QPushButton("New")
+		self.new_set_button = QtWidgets.QPushButton("New")
 		vbl.addWidget(self.new_set_button)
-		self.rename_set_button = QtGui.QPushButton("Rename")
+		self.rename_set_button = QtWidgets.QPushButton("Rename")
 		vbl.addWidget(self.rename_set_button)
-		self.save_set_button = QtGui.QPushButton("Save")
+		self.save_set_button = QtWidgets.QPushButton("Save")
 		vbl.addWidget(self.save_set_button)
-		self.delete_set_button = QtGui.QPushButton("Delete")
+		self.delete_set_button = QtWidgets.QPushButton("Delete")
 		vbl.addWidget(self.delete_set_button)
 
 		hbl.addLayout(vbl)
@@ -1645,14 +1645,14 @@ class EMTomoSetsPanel(QtGui.QWidget):
 	def delete_set(self,unused):
 		selections = self.setlist.selectedItems()
 		names=[str(i.text()) for i in selections]
-		cancel=QtGui.QMessageBox.warning(self, "Delete set", "Are you sure to delete {}? This will remove all particles in that class".format(names[0]), "Yes", "No")
+		cancel=QtWidgets.QMessageBox.warning(self, "Delete set", "Are you sure to delete {}? This will remove all particles in that class".format(names[0]), "Yes", "No")
 		if not cancel:
 			self.target().delete_set(names[0])
 		self.update_sets()
 
 
 	def new_set(self,unused=None):
-		name,ok=QtGui.QInputDialog.getText( self, "Set Name", "Enter a name for the new set:")
+		name,ok=QtWidgets.QInputDialog.getText( self, "Set Name", "Enter a name for the new set:")
 		if not ok : return
 		name=str(name)
 		if name in self.target().sets :
@@ -1667,7 +1667,7 @@ class EMTomoSetsPanel(QtGui.QWidget):
 		sels=[str(i.text()) for i in selections]
 		if len(sels)==0:
 			return
-		name,ok=QtGui.QInputDialog.getText( self, "Set Name", "Enter a name for the new set:")
+		name,ok=QtWidgets.QInputDialog.getText( self, "Set Name", "Enter a name for the new set:")
 		if not ok : return
 		name=str(name)
 		
@@ -1690,7 +1690,7 @@ class EMTomoSetsPanel(QtGui.QWidget):
 		for i,k in enumerate(keys):
 			
 			kname="{:02d} :: {}".format(int(k), self.target().sets[k])
-			item=QtGui.QListWidgetItem(kname)
+			item=QtWidgets.QListWidgetItem(kname)
 			item.setFlags(self.itemflags)
 			item.setTextColor(self.target().setcolors[i%len(self.target().setcolors)])
 			self.setlist.addItem(item)

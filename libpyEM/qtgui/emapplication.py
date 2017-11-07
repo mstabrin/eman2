@@ -32,8 +32,8 @@ from __future__ import print_function
 #
 #
 
-from PyQt4 import QtGui, QtCore, QtOpenGL
-from PyQt4.QtCore import Qt
+from PyQt5 import QtCore, QtGui, QtOpenGL, QtWebKitWidgets, QtWidgets
+from PyQt5.QtCore import Qt
 import sys
 from emimageutil import EMParentWin
 from EMAN2 import remove_directories_from_name, get_image_directory,get_3d_font_renderer, E2end,get_platform
@@ -41,7 +41,7 @@ import EMAN2db
 import weakref
 from libpyGLUtils2 import *
 
-try: from PyQt4 import QtWebKit
+try: from PyQt5 import QtWebKit
 except: pass
 
 class ModuleEventsManager: 
@@ -174,7 +174,7 @@ class EMGLWidget(QtOpenGL.QGLWidget):
 				try:
 					test = self.browser
 				except: 
-					self.browser = QtWebKit.QWebView()
+					self.browser = QtWebKitWidgets.QWebView()
 					self.browser.load(QtCore.QUrl())
 					self.browser.resize(800,800)
 				
@@ -234,7 +234,7 @@ get_application = em_app_instance.get_instance
 #def get_application() : return QtGui.qApp
 
 
-class EMApp(QtGui.QApplication):
+class EMApp(QtWidgets.QApplication):
 	def __init__(self):
 		self.children = []
 		
@@ -242,16 +242,16 @@ class EMApp(QtGui.QApplication):
 		self.timer_function = None
 		self.tmr = None
 		
-		QtGui.QApplication.__init__(self, sys.argv)
+		QtWidgets.QApplication.__init__(self, sys.argv)
 		
-		style=QtGui.QStyleFactory.create("Plastique")
+		style=QtWidgets.QStyleFactory.create("Plastique")
 		
 		if style==None:
 			print("Note: standard Plastique style not available, controls may be distorted. Using ", end=' ')
 			
 			# the first one should work, but we have the loop, just in case
-			for s in list(QtGui.QStyleFactory.keys()):
-				style=QtGui.QStyleFactory.create(s)
+			for s in list(QtWidgets.QStyleFactory.keys()):
+				style=QtWidgets.QStyleFactory.create(s)
 				if style!=None: 
 					print(s)
 					break
@@ -365,9 +365,9 @@ class EMApp(QtGui.QApplication):
 
 		
 	
-class EMProgressDialog(QtGui.QProgressDialog):
+class EMProgressDialog(QtWidgets.QProgressDialog):
 	def __init__(self,label_text,cancel_button_text, minimum, maximum, parent = None):
-		QtGui.QProgressDialog.__init__(self,label_text,cancel_button_text, minimum, maximum, parent)
+		QtWidgets.QProgressDialog.__init__(self,label_text,cancel_button_text, minimum, maximum, parent)
 		self.setWindowIcon(QtGui.QIcon(get_image_directory() + "/eman.png"))
 
 
@@ -383,7 +383,7 @@ class EMErrorMessageDisplay:
 		'''
 		error_message is a list of error messages
 		'''
-		msg = QtGui.QMessageBox()
+		msg = QtWidgets.QMessageBox()
 		msg.setWindowTitle(title)
 		msg.setWindowIcon(QtGui.QIcon(get_image_directory() + "/eman.png"))
 		mes = ""

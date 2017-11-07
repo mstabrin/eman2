@@ -826,11 +826,11 @@ def ctf_env_points(im_1d,bg_1d,ctf) :
 	return ret
 
 try:
-	from PyQt4 import QtCore, QtGui, QtOpenGL
-	from PyQt4.QtCore import Qt
+	from PyQt5 import QtCore, QtGui, QtOpenGL, QtWidgets
+	from PyQt5.QtCore import Qt
 	from eman2_gui.valslider import ValSlider
 except:
-	print("Warning: PyQt4 must be installed to use the --gui option")
+	print("Warning: PyQt5 must be installed to use the --gui option")
 	class dummy:
 		pass
 	class QWidget:
@@ -840,7 +840,7 @@ except:
 	QtGui=dummy()
 	QtGui.QWidget=QWidget
 
-class GUIctf(QtGui.QWidget):
+class GUIctf(QtWidgets.QWidget):
 	def __init__(self,application,data):
 		"""Implements the CTF fitting dialog using various EMImage and EMPlot2D widgets
 		'data' is a list of (filename,ctf,im_1d,bg_1d,im_2d,bg_2d)
@@ -858,7 +858,7 @@ class GUIctf(QtGui.QWidget):
 		
 		self.app = weakref.ref(application)
 		
-		QtGui.QWidget.__init__(self,None)
+		QtWidgets.QWidget.__init__(self,None)
 		self.setWindowIcon(QtGui.QIcon(get_image_directory() + "ctf.png"))
 		
 		self.data=data
@@ -876,18 +876,18 @@ class GUIctf(QtGui.QWidget):
 		self.guiim.mmode="app"
 
 		# This object is itself a widget we need to set up
-		self.hbl = QtGui.QHBoxLayout(self)
-		self.hbl.setMargin(0)
+		self.hbl = QtWidgets.QHBoxLayout(self)
+		self.hbl.setContentsMargins(0, 0, 0, 0)
 		self.hbl.setSpacing(6)
 		self.hbl.setObjectName("hbl")
 		
 		# plot list and plot mode combobox
-		self.vbl2 = QtGui.QVBoxLayout()
-		self.setlist=QtGui.QListWidget(self)
-		self.setlist.setSizePolicy(QtGui.QSizePolicy.Preferred,QtGui.QSizePolicy.Expanding)
+		self.vbl2 = QtWidgets.QVBoxLayout()
+		self.setlist=QtWidgets.QListWidget(self)
+		self.setlist.setSizePolicy(QtWidgets.QSizePolicy.Preferred,QtWidgets.QSizePolicy.Expanding)
 		self.vbl2.addWidget(self.setlist)
 		
-		self.splotmode=QtGui.QComboBox(self)
+		self.splotmode=QtWidgets.QComboBox(self)
 		self.splotmode.addItem("Bgsub & fit")
 		self.splotmode.addItem("Ptcl & BG power")
 		self.splotmode.addItem("SNR")
@@ -898,8 +898,8 @@ class GUIctf(QtGui.QWidget):
 		self.hbl.addLayout(self.vbl2)
 		
 		# ValSliders for CTF parameters
-		self.vbl = QtGui.QVBoxLayout()
-		self.vbl.setMargin(0)
+		self.vbl = QtWidgets.QVBoxLayout()
+		self.vbl.setContentsMargins(0, 0, 0, 0)
 		self.vbl.setSpacing(6)
 		self.vbl.setObjectName("vbl")
 		self.hbl.addLayout(self.vbl)
@@ -924,13 +924,13 @@ class GUIctf(QtGui.QWidget):
 		
 		self.scs=ValSlider(self,(0,5),"Cs (mm):",0,90)
 		self.vbl.addWidget(self.scs)
-		self.hbl_buttons = QtGui.QHBoxLayout()
-		self.saveparms = QtGui.QPushButton("Save parms")
-		self.recallparms = QtGui.QPushButton("Recall")
-		self.output = QtGui.QPushButton("Output")
+		self.hbl_buttons = QtWidgets.QHBoxLayout()
+		self.saveparms = QtWidgets.QPushButton("Save parms")
+		self.recallparms = QtWidgets.QPushButton("Recall")
+		self.output = QtWidgets.QPushButton("Output")
 		self.hbl_buttons.addWidget(self.saveparms)
 		self.hbl_buttons.addWidget(self.recallparms)
-		self.hbl_buttons2 = QtGui.QHBoxLayout()
+		self.hbl_buttons2 = QtWidgets.QHBoxLayout()
 		self.hbl_buttons2.addWidget(self.output)
 		self.vbl.addLayout(self.hbl_buttons)
 		self.vbl.addLayout(self.hbl_buttons2)

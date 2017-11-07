@@ -33,8 +33,8 @@ from __future__ import print_function
 #
 #
 
-from PyQt4 import QtCore, QtGui, QtOpenGL
-from PyQt4.QtCore import Qt
+from PyQt5 import QtCore, QtGui, QtOpenGL, QtWidgets
+from PyQt5.QtCore import Qt
 from OpenGL import GL,GLU,GLUT
 from OpenGL.GL import *
 from OpenGL.GLU import *
@@ -51,6 +51,12 @@ from libpyGLUtils2 import GLUtil
 from emglobjects import EMViewportDepthTools, Camera2, get_default_gl_colors,get_RGB_tab, EM3DModel
 from emimageutil import ImgHistogram, EMTransformPanel
 
+
+try:
+    QString = unicode
+except NameError:
+    # Python 3
+    QString = str
 
 MAG_INCREMENT_FACTOR = 1.1
 
@@ -368,34 +374,34 @@ class EMIsosurfaceModel(EM3DModel):
 		return self.get_inspector().mrcfileName
 		
 
-class EMIsoInspector(QtGui.QWidget):
+class EMIsoInspector(QtWidgets.QWidget):
 	def __init__(self,target,enable_browse=False) :
-		QtGui.QWidget.__init__(self,None)
+		QtWidgets.QWidget.__init__(self,None)
 
 		self.setWindowIcon(QtGui.QIcon(get_image_directory() +"desktop.png"))
 		self.target=weakref.ref(target)
 		self.rotation_sliders = EMTransformPanel(target,self)
 		
-		self.vbl = QtGui.QVBoxLayout(self)
-		self.vbl.setMargin(0)
+		self.vbl = QtWidgets.QVBoxLayout(self)
+		self.vbl.setContentsMargins(0, 0, 0, 0)
 		self.vbl.setSpacing(6)
 		self.vbl.setObjectName("vbl")
 		
 		self.mrcChanged = False #added by Muthu
 		
 		if enable_browse:
-			hblbrowse = QtGui.QHBoxLayout()
-			self.mrc_text = QtGui.QLineEdit()
+			hblbrowse = QtWidgets.QHBoxLayout()
+			self.mrc_text = QtWidgets.QLineEdit()
 			hblbrowse.addWidget(self.mrc_text)
-			self.mrc_browse = QtGui.QPushButton("Browse")
+			self.mrc_browse = QtWidgets.QPushButton("Browse")
 			hblbrowse.addWidget(self.mrc_browse)
 			self.vbl.addLayout(hblbrowse)
 
 			self.mrc_text.textEdited['QString'].connect(self.on_mrc_text_change)
 			self.mrc_browse.clicked[bool].connect(self.on_mrc_browse)
 
-		self.hbl = QtGui.QHBoxLayout()
-		self.hbl.setMargin(0)
+		self.hbl = QtWidgets.QHBoxLayout()
+		self.hbl.setContentsMargins(0, 0, 0, 0)
 		self.hbl.setSpacing(6)
 		self.hbl.setObjectName("hbl")
 		self.vbl.addLayout(self.hbl)
@@ -404,30 +410,30 @@ class EMIsoInspector(QtGui.QWidget):
 		self.hist.setObjectName("hist")
 		self.hbl.addWidget(self.hist)
 		
-		self.vbl2 = QtGui.QVBoxLayout()
-		self.vbl2.setMargin(0)
+		self.vbl2 = QtWidgets.QVBoxLayout()
+		self.vbl2.setContentsMargins(0, 0, 0, 0)
 		self.vbl2.setSpacing(6)
 		self.vbl2.setObjectName("vbl2")
 		self.hbl.addLayout(self.vbl2)
 		
-		self.wiretog = QtGui.QPushButton("Wire")
+		self.wiretog = QtWidgets.QPushButton("Wire")
 		self.wiretog.setCheckable(1)
 		self.vbl2.addWidget(self.wiretog)
 		
-		self.lighttog = QtGui.QPushButton("Light")
+		self.lighttog = QtWidgets.QPushButton("Light")
 		self.lighttog.setCheckable(1)
 		self.vbl2.addWidget(self.lighttog)
 		
-		self.cubetog = QtGui.QPushButton("Cube")
+		self.cubetog = QtWidgets.QPushButton("Cube")
 		self.cubetog.setCheckable(1)
 		self.vbl2.addWidget(self.cubetog)
 		
-		self.texturetog = QtGui.QPushButton("Texture")
+		self.texturetog = QtWidgets.QPushButton("Texture")
 		self.texturetog.setCheckable(1)
 		self.vbl2.addWidget(self.texturetog)
 		self.texture = False
 		
-		self.tabwidget = QtGui.QTabWidget()
+		self.tabwidget = QtWidgets.QTabWidget()
 		self.maintab = None
 		self.tabwidget.addTab(self.get_main_tab(), "Main")
 		self.texturetab = None
@@ -470,7 +476,7 @@ class EMIsoInspector(QtGui.QWidget):
 
 	def on_mrc_browse(self): #if enable_browse, added by muthu
 		import os
-		self.mrcfileName = QtGui.QFileDialog.getOpenFileName(self, "open file", os.getcwd(), "Text files (*.mrc)")
+		self.mrcfileName = QtWidgets.QFileDialog.getOpenFileName(self, "open file", os.getcwd(), "Text files (*.mrc)")[0]
 		if (self.mrcfileName == ""): return
 		mrcData = EMData(str(self.mrcfileName))
 		self.target().set_data(mrcData)
@@ -505,7 +511,7 @@ class EMIsoInspector(QtGui.QWidget):
 		custom["shininess"] = self.shininess.getValue()
 		self.target().colors["custom"] = custom
 
-		n = self.cbb.findText(QtCore.QString("custom"))
+		n = self.cbb.findText(QString("custom"))
 		if n < 0: return
 		self.cbb.setCurrentIndex(n)
 		self.target().updateGL()
@@ -558,11 +564,11 @@ class EMIsoInspector(QtGui.QWidget):
 		#return rgbtab
 	
 	def get_GL_tab(self):
-		self.gltab = QtGui.QWidget()
+		self.gltab = QtWidgets.QWidget()
 		gltab = self.gltab
 		
-		gltab.vbl = QtGui.QVBoxLayout(self.gltab )
-		gltab.vbl.setMargin(0)
+		gltab.vbl = QtWidgets.QVBoxLayout(self.gltab )
+		gltab.vbl.setContentsMargins(0, 0, 0, 0)
 		gltab.vbl.setSpacing(6)
 		gltab.vbl.setObjectName("GL")
 		
@@ -578,7 +584,7 @@ class EMIsoInspector(QtGui.QWidget):
 		self.glbrightness.setValue(0.0)
 		gltab.vbl.addWidget(self.glbrightness)
 	
-		self.material_tab_widget = QtGui.QTabWidget()
+		self.material_tab_widget = QtWidgets.QTabWidget()
 		self.ambient_tab = self.get_RGB_tab("ambient")
 		self.material_tab_widget.addTab(self.ambient_tab, "Ambient")
 		
@@ -598,17 +604,17 @@ class EMIsoInspector(QtGui.QWidget):
 		self.shininess.setValue(64)
 		gltab.vbl.addWidget(self.shininess)
 
-		self.hbl_color = QtGui.QHBoxLayout()
-		self.hbl_color.setMargin(0)
+		self.hbl_color = QtWidgets.QHBoxLayout()
+		self.hbl_color.setContentsMargins(0, 0, 0, 0)
 		self.hbl_color.setSpacing(6)
 		self.hbl_color.setObjectName("Material")
 		gltab.vbl.addLayout(self.hbl_color)
 		
-		self.color_label = QtGui.QLabel()
+		self.color_label = QtWidgets.QLabel()
 		self.color_label.setText('Material')
 		self.hbl_color.addWidget(self.color_label)
 		
-		self.cbb = QtGui.QComboBox(gltab)
+		self.cbb = QtWidgets.QComboBox(gltab)
 		self.hbl_color.addWidget(self.cbb)
 		
 		return gltab
@@ -620,10 +626,10 @@ class EMIsoInspector(QtGui.QWidget):
 	
 	def get_texture_tab(self):
 		if ( self.texturetab == None ):
-			self.texturetab = QtGui.QWidget()
+			self.texturetab = QtWidgets.QWidget()
 			texturetab = self.texturetab
-			texturetab.vbl = QtGui.QVBoxLayout(self.texturetab)
-			texturetab.vbl.setMargin(0)
+			texturetab.vbl = QtWidgets.QVBoxLayout(self.texturetab)
+			texturetab.vbl.setContentsMargins(0, 0, 0, 0)
 			texturetab.vbl.setSpacing(6)
 			texturetab.vbl.setObjectName("Main")
 		
@@ -653,10 +659,10 @@ class EMIsoInspector(QtGui.QWidget):
 	
 	def get_main_tab(self):
 		if ( self.maintab == None ):
-			self.maintab = QtGui.QWidget()
+			self.maintab = QtWidgets.QWidget()
 			maintab = self.maintab
-			maintab.vbl = QtGui.QVBoxLayout(self.maintab)
-			maintab.vbl.setMargin(0)
+			maintab.vbl = QtWidgets.QVBoxLayout(self.maintab)
+			maintab.vbl.setContentsMargins(0, 0, 0, 0)
 			maintab.vbl.setSpacing(6)
 			maintab.vbl.setObjectName("Main")
 			
@@ -665,17 +671,17 @@ class EMIsoInspector(QtGui.QWidget):
 			self.thr.setValue(0.5)
 			maintab.vbl.addWidget(self.thr)
 			
-			self.hbl_smp = QtGui.QHBoxLayout()
-			self.hbl_smp.setMargin(0)
+			self.hbl_smp = QtWidgets.QHBoxLayout()
+			self.hbl_smp.setContentsMargins(0, 0, 0, 0)
 			self.hbl_smp.setSpacing(6)
 			self.hbl_smp.setObjectName("Sample")
 			maintab.vbl.addLayout(self.hbl_smp)
 			
-			self.smp_label = QtGui.QLabel()
+			self.smp_label = QtWidgets.QLabel()
 			self.smp_label.setText('Sample Level')
 			self.hbl_smp.addWidget(self.smp_label)
 			
-			self.smp = QtGui.QSpinBox(maintab)
+			self.smp = QtWidgets.QSpinBox(maintab)
 			self.smp.setValue(1)
 			self.hbl_smp.addWidget(self.smp)
 	

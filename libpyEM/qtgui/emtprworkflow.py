@@ -33,6 +33,7 @@ from __future__ import print_function
 
 
 from emsprworkflow import *
+from PyQt5.QtWidgets import *
 from emform import *
 from emsave import EMFileTypeValidator
 from emapplication import error, EMErrorMessageDisplay

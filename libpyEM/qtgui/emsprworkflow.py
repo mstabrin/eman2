@@ -33,8 +33,8 @@ from __future__ import print_function
 
 from emform import EMFormWidget,EMParamTable,EMTableFormWidget
 from emdatastorage import ParamDef
-from PyQt4 import QtGui,QtCore
-from PyQt4.QtCore import Qt
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import Qt
 from EMAN2db import db_check_dict, db_open_dict,db_remove_dict,db_list_dicts,db_close_dict, e2getcwd
 from EMAN2 import *
 import os
@@ -341,7 +341,7 @@ class WorkFlowTask:
 		'''
 		Runs a QMessageBox asking for the user to select files for processing
 		'''
-		msg = QtGui.QMessageBox()
+		msg = QtWidgets.QMessageBox()
 		msg.setWindowTitle("Almost")
 		msg.setText("Please select files for processing")
 		msg.exec_()
@@ -462,7 +462,7 @@ class ChangeDirectoryTask(WorkFlowTask):
 	
 	def run_form(self):	
 		
-		fsp=QtGui.QFileDialog.getExistingDirectory(None, "Choose a directory")
+		fsp=QtWidgets.QFileDialog.getExistingDirectory(None, "Choose a directory")
 		fsp = str(fsp)
 		if os.path.exists(fsp):
 			os.chdir(fsp)
@@ -1682,7 +1682,7 @@ class EMParticleImportTask(ParticleWorkFlowTask):
 	def import_data(self,params):
 
 		get_application().setOverrideCursor(Qt.BusyCursor)
-		progress = QtGui.QProgressDialog("Importing files into database...", "Abort import", 0, len(params["name_map"]),None)
+		progress = QtWidgets.QProgressDialog("Importing files into database...", "Abort import", 0, len(params["name_map"]),None)
 		progress.show()
 		i = 0
 		progress.setValue(i)
@@ -2289,32 +2289,32 @@ class E2BoxerAutoTaskGeneral(E2BoxerAutoTask):
 		return params
 
 
-class OldBoxerRecoveryDialog(QtGui.QDialog):
+class OldBoxerRecoveryDialog(QtWidgets.QDialog):
 	def __init__(self):
 		'''
 		@param sym some kind of symmetry, such as "d7", "icos" etc
 		'''
-		QtGui.QDialog.__init__(self)
+		QtWidgets.QDialog.__init__(self)
 		self.setWindowTitle("Old Boxer Recovery")
 		self.setWindowIcon(QtGui.QIcon(get_image_directory() + "green_boxes.png"))
 
-		self.vbl = QtGui.QVBoxLayout(self)
-		self.vbl.setMargin(0)
+		self.vbl = QtWidgets.QVBoxLayout(self)
+		self.vbl.setContentsMargins(0, 0, 0, 0)
 		self.vbl.setSpacing(6)
 		self.vbl.setObjectName("vbl")
 		
-		text_edit = QtGui.QTextEdit("")
+		text_edit = QtWidgets.QTextEdit("")
 		text_edit.setReadOnly(True)
 		text_edit.setWordWrapMode(QtGui.QTextOption.WordWrap)
 		text_edit.setText("The workflow has detected you have data stored in the local database that was generated with an old version of e2boxer. You can recover it (recommended), in which case the old data is converted so it can be interpreted within the current framework. Alternatively you can just delete it, which means the box coordinates will be lost forever.")
 		self.vbl.addWidget(text_edit)
-		self.button_hbl = QtGui.QHBoxLayout()
-		self.recover = QtGui.QPushButton("Recover")
+		self.button_hbl = QtWidgets.QHBoxLayout()
+		self.recover = QtWidgets.QPushButton("Recover")
 		self.recover.setToolTip("The old database will be converted to a format recognized by the new boxer. The old database will then be deleted.")
 		self.recover.setDefault(True)
-		self.remove = QtGui.QPushButton("Remove")
+		self.remove = QtWidgets.QPushButton("Remove")
 		self.remove.setToolTip("The old database will be removed and all previous boxing results will be deleted from disk.")
-		self.cancel = QtGui.QPushButton("Cancel")
+		self.cancel = QtWidgets.QPushButton("Cancel")
 		self.cancel.setToolTip("The operation will be cancelled.")
 		self.button_hbl.addWidget(self.cancel )
 		self.button_hbl.addWidget(self.remove )
@@ -2343,7 +2343,7 @@ class OldBoxerRecoveryDialog(QtGui.QDialog):
 		Customized exec_ function
 		@return None if the user hit cancel or a dictionary containing important parameters if the user hit ok
 		'''
-		QtGui.QDialog.exec_(self)
+		QtWidgets.QDialog.exec_(self)
 		return self.ret_code
 
 def recover_old_boxer_database():
@@ -3728,7 +3728,7 @@ class E2MakeSetTask(E2ParticleExamineTask):
 				return False
 			
 		stacks_map = {}
-		progress = QtGui.QProgressDialog("Making virtual stacks...", "Abort import", 0, 1000,None)
+		progress = QtWidgets.QProgressDialog("Making virtual stacks...", "Abort import", 0, 1000,None)
 		progress.setWindowIcon(QtGui.QIcon(get_image_directory() + "/eman.png"))
 		progress.show()
 		n=-1
@@ -3812,7 +3812,7 @@ class E2MakeSetTask(E2ParticleExamineTask):
 		'''
 
 			
-		progress = QtGui.QProgressDialog("Importing files into database...", "Abort import", 0, len(filenames),None)
+		progress = QtWidgets.QProgressDialog("Importing files into database...", "Abort import", 0, len(filenames),None)
 		progress.setWindowIcon(QtGui.QIcon(get_image_directory() + "/eman.png"))
 		progress.show()
 
@@ -5314,7 +5314,7 @@ class E2RefineParticlesTaskBase(EMClassificationTools, E2Make3DTools):
 				
 			if fail: # we can't make a vstack
 				# potentially lots of e2proc2d
-				progress = QtGui.QProgressDialog("Importing files into database...", "Abort import", 0, len(filenames),None)
+				progress = QtWidgets.QProgressDialog("Importing files into database...", "Abort import", 0, len(filenames),None)
 				progress.show()
 	
 				i = 0

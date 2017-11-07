@@ -33,7 +33,7 @@ from __future__ import print_function
 
 from time import time
 
-from PyQt4 import QtCore
+from PyQt5 import QtCore
 from math import sin,acos
 from EMAN2 import Vec3f, Transform
 

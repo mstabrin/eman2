@@ -5,8 +5,8 @@ import numpy as np
 
 from OpenGL.GL import *
 from OpenGL.GLU import *
-from PyQt4 import QtGui, QtCore, QtOpenGL
-from PyQt4.QtCore import Qt
+from PyQt5 import QtCore, QtGui, QtOpenGL, QtWidgets
+from PyQt5.QtCore import Qt
 from eman2_gui.emimage2d import EMImage2DWidget
 from EMAN2 import *
 from eman2_gui.emapplication import EMApp
@@ -806,7 +806,7 @@ class Microscope(QtOpenGL.QGLWidget):
 	def mousePressEvent(self, QMouseEvent):
 		p=self.scr_to_img(QMouseEvent.pos())
 		self.startpy=p[1]
-		modifiers = QtGui.QApplication.keyboardModifiers()
+		modifiers = QtWidgets.QApplication.keyboardModifiers()
 		if modifiers == QtCore.Qt.ShiftModifier:
 			self.hold_shift=True
 		else:
@@ -907,10 +907,10 @@ class Microscope(QtOpenGL.QGLWidget):
 		print("Exit..")
 		exit()
 
-class MainWindow(QtGui.QMainWindow):
+class MainWindow(QtWidgets.QMainWindow):
 	
 	def __init__(self, mode=0, cs=0., twod=False):
-		QtGui.QMainWindow.__init__(self)
+		QtWidgets.QMainWindow.__init__(self)
 		
 		if twod:
 			self.twodview = EMImage2DWidget()

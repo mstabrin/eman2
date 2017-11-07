@@ -4,8 +4,8 @@ from __future__ import print_function
 from EMAN2 import *
 import numpy as np
 import weakref
-from PyQt4 import QtCore, QtGui
-from PyQt4.QtCore import Qt
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import Qt
 from eman2_gui.emapplication import get_application, EMApp
 from eman2_gui.emimage2d import EMImage2DWidget
 from eman2_gui.emshape import EMShape
@@ -36,13 +36,13 @@ def run(cmd):
 	launch_childprocess(cmd)
 	
 	
-class EMDrawWindow(QtGui.QMainWindow):
+class EMDrawWindow(QtWidgets.QMainWindow):
 
 	def __init__(self,application,options,datafile=None):
-		QtGui.QWidget.__init__(self)
+		QtWidgets.QWidget.__init__(self)
 		self.imgview = EMImage2DWidget()
-		self.setCentralWidget(QtGui.QWidget())
-		self.gbl = QtGui.QGridLayout(self.centralWidget())
+		self.setCentralWidget(QtWidgets.QWidget())
+		self.gbl = QtWidgets.QGridLayout(self.centralWidget())
 		
 		self.gbl.addWidget(self.imgview,0,0)
 		self.options=options

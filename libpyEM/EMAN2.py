@@ -32,6 +32,7 @@ from __future__ import print_function
 #
 
 import sys
+from PyQt5.QtWidgets import *
 from math import *
 from sys import exit
 import os
@@ -98,8 +99,8 @@ XYData.__len__=XYData.get_size
 
 try:
 	if __IPYTHON__ : GUIMode=True
-	import PyQt4
-	app=PyQt4.QtGui.qApp
+	import PyQt5
+	app=PyQt5.QtGui.qApp
 except:
 	GUIMode=False
 	app = 0

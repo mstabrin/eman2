@@ -79,7 +79,7 @@ class HistoryForm:
 		self.form = EMFormWidget(params=self.get_history_table())
 		self.form.setWindowTitle("EMAN2 history")
 		
-		from PyQt4 import QtGui,QtCore
+		from PyQt5 import QtCore, QtGui
 		self.form.setWindowIcon(QtGui.QIcon(get_image_directory() + "feather.png"))
 		self.form.resize(640,480)
 		self.form.emform_ok.connect(self.on_ok)

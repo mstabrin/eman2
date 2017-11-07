@@ -36,8 +36,8 @@ from EMAN2 import *
 from OpenGL import GL, GLU, GLUT
 from OpenGL.GL import *
 from OpenGL.GLU import *
-from PyQt4 import QtCore, QtGui, QtOpenGL
-from PyQt4.QtCore import Qt, QString
+from PyQt5 import QtCore, QtGui, QtOpenGL, QtWidgets
+from PyQt5.QtCore import Qt, QString
 from emapplication import EMApp, get_application
 from emglobjects import EM3DModel, EMGLWidget, Camera, Camera2, EMViewportDepthTools2, EMGLProjectionViewMatrices, get_default_gl_colors
 from emimageutil import EMTransformPanel
@@ -1295,27 +1295,27 @@ class SparseSymChoicesWidgets:
 		@param vbl a QtGui.QVBoxLayout - all widgets and layouts are added to it
 		'''
 		self.busy = True
-		self.button_hbl1 = QtGui.QHBoxLayout()
-		self.symtogdisplay = QtGui.QPushButton("Display Eulers")
+		self.button_hbl1 = QtWidgets.QHBoxLayout()
+		self.symtogdisplay = QtWidgets.QPushButton("Display Eulers")
 		self.symtogdisplay.setCheckable(1)
 		self.symtogdisplay.setChecked(1)
 		self.button_hbl1.addWidget(self.symtogdisplay)
 		
-		self.triangletog = QtGui.QPushButton("Display Triangles")
+		self.triangletog = QtWidgets.QPushButton("Display Triangles")
 		self.triangletog.setCheckable(1)
 		self.triangletog.setChecked(0)
 		self.button_hbl1.addWidget(self.triangletog)
 		
 		vbl.addLayout(self.button_hbl1)
 		
-		self.button_hbl2 = QtGui.QHBoxLayout()
+		self.button_hbl2 = QtWidgets.QHBoxLayout()
 		
-		self.arctog = QtGui.QPushButton("Display Arcs")
+		self.arctog = QtWidgets.QPushButton("Display Arcs")
 		self.arctog.setCheckable(1)
 		self.arctog.setChecked(1)
 		self.button_hbl2.addWidget(self.arctog)
 		
-		self.symtog = QtGui.QPushButton("All syms")
+		self.symtog = QtWidgets.QPushButton("All syms")
 		self.symtog.setCheckable(1)
 		self.button_hbl2.addWidget(self.symtog)
 		vbl.addLayout(self.button_hbl2)
@@ -1368,20 +1368,20 @@ class SparseSymChoicesWidgets:
 		Makes QtCore.QObject connections to functions of self.target() (see bottom of this function)
 		'''
 		self.busy = True
-		self.maintab = QtGui.QWidget()
+		self.maintab = QtWidgets.QWidget()
 		maintab = self.maintab
-		maintab.vbl = QtGui.QVBoxLayout(self.maintab)
-		maintab.vbl.setMargin(0)
+		maintab.vbl = QtWidgets.QVBoxLayout(self.maintab)
+		maintab.vbl.setContentsMargins(0, 0, 0, 0)
 		maintab.vbl.setSpacing(6)
 		maintab.vbl.setObjectName("Main")
 		
-		self.hbl_sym = QtGui.QHBoxLayout()
-		self.hbl_sym.setMargin(0)
+		self.hbl_sym = QtWidgets.QHBoxLayout()
+		self.hbl_sym.setContentsMargins(0, 0, 0, 0)
 		self.hbl_sym.setSpacing(6)
 		self.hbl_sym.setObjectName("Sym")
 		maintab.vbl.addLayout(self.hbl_sym)
 		
-		self.sym_combo = QtGui.QComboBox(maintab)
+		self.sym_combo = QtWidgets.QComboBox(maintab)
 		self.symmetries = []
 		self.symmetries.append(' Icosahedral ')
 		self.symmetries.append(' Octahedral ')
@@ -1403,13 +1403,13 @@ class SparseSymChoicesWidgets:
 		self.sym_combo.setCurrentIndex(idx_default)
 		self.hbl_sym.addWidget(self.sym_combo)
 		
-		self.sym_label = QtGui.QLabel()
+		self.sym_label = QtWidgets.QLabel()
 		self.sym_label.setText('C/D sym')
 		self.hbl_sym.addWidget(self.sym_label)
 		
 		self.pos_int_validator = QtGui.QIntValidator(self.widget())
 		self.pos_int_validator.setBottom(1)
-		self.sym_text = QtGui.QLineEdit()
+		self.sym_text = QtWidgets.QLineEdit()
 		self.sym_text.setValidator(self.pos_int_validator)
 		self.sym_text.setText("7")
 		self.sym_text.setFixedWidth(50)
@@ -1419,30 +1419,30 @@ class SparseSymChoicesWidgets:
 		self.set_sym(self.target().get_sym())
 		
 		if enable_orient_gen:
-			self.angle_label = QtGui.QComboBox()
+			self.angle_label = QtWidgets.QComboBox()
 			self.angle_label.addItem('Angle Based')
 			self.angle_label.addItem('Number Based')
 			self.hbl_sym.addWidget(self.angle_label)
 			
 			self.pos_double_validator = QtGui.QDoubleValidator(self.widget())
 			self.pos_double_validator.setBottom(0.05)
-			self.prop_text = QtGui.QLineEdit()
+			self.prop_text = QtWidgets.QLineEdit()
 			self.prop_text.setValidator(self.pos_double_validator)
 			self.prop_text.setText(str(self.target().get_prop()))
 			self.prop_text.setFixedWidth(50)
 			self.hbl_sym.addWidget(self.prop_text)
 			
-			self.hbl_sym2 = QtGui.QHBoxLayout()
-			self.hbl_sym2.setMargin(0)
+			self.hbl_sym2 = QtWidgets.QHBoxLayout()
+			self.hbl_sym2.setContentsMargins(0, 0, 0, 0)
 			self.hbl_sym2.setSpacing(6)
 			self.hbl_sym2.setObjectName("Sym2")
 			maintab.vbl.addLayout(self.hbl_sym2)
 			
-			self.og_label = QtGui.QLabel()
+			self.og_label = QtWidgets.QLabel()
 			self.og_label.setText('Strategy')
 			self.hbl_sym2.addWidget(self.og_label)
 			
-			self.strategy_label = QtGui.QComboBox()
+			self.strategy_label = QtWidgets.QComboBox()
 			l = dump_orientgens_list()
 				
 			n = len(l)
@@ -1452,11 +1452,11 @@ class SparseSymChoicesWidgets:
 			self.strategy_label.setCurrentIndex(n-1)
 			self.hbl_sym2.addWidget(self.strategy_label)
 			
-			self.mirror_checkbox = QtGui.QCheckBox("Mirror")
+			self.mirror_checkbox = QtWidgets.QCheckBox("Mirror")
 			self.hbl_sym2.addWidget(self.mirror_checkbox)
 			self.mirror_checkbox.setChecked(self.target().mirror_enabled())
 		else:
-			self.mirror_checkbox = QtGui.QCheckBox("Mirror")
+			self.mirror_checkbox = QtWidgets.QCheckBox("Mirror")
 			self.hbl_sym.addWidget(self.mirror_checkbox)
 			self.mirror_checkbox.setChecked(self.target().mirror_enabled())
 			
@@ -1590,7 +1590,7 @@ class SparseSymChoicesWidgets:
 		
 		return d
 
-class EMSymChoiceDialog(QtGui.QDialog):
+class EMSymChoiceDialog(QtWidgets.QDialog):
 	'''
 	This is a dialog one can use to get the parameters you can use for 
 	generating orientations evenly covering the asymmetric unit (etc)
@@ -1601,12 +1601,12 @@ class EMSymChoiceDialog(QtGui.QDialog):
 		'''
 		@param sym some kind of symmetry, such as "d7", "icos" etc
 		'''
-		QtGui.QDialog.__init__(self)		
+		QtWidgets.QDialog.__init__(self)		
 		self.setWindowTitle("Choose Distribution Parameters")
 		self.setWindowIcon(QtGui.QIcon(get_image_directory() + "eulerxplor.png"))
 
-		self.vbl = QtGui.QVBoxLayout(self)
-		self.vbl.setMargin(0)
+		self.vbl = QtWidgets.QVBoxLayout(self)
+		self.vbl.setContentsMargins(0, 0, 0, 0)
 		self.vbl.setSpacing(6)
 		self.vbl.setObjectName("vbl")
 		
@@ -1620,10 +1620,10 @@ class EMSymChoiceDialog(QtGui.QDialog):
 
 		self.vbl.addWidget(self.sym_widget,10)
 		
-		self.button_hbl = QtGui.QHBoxLayout()
-		self.ok = QtGui.QPushButton("Ok")
+		self.button_hbl = QtWidgets.QHBoxLayout()
+		self.ok = QtWidgets.QPushButton("Ok")
 		self.ok.setDefault(True)
-		self.cancel = QtGui.QPushButton("Cancel")
+		self.cancel = QtWidgets.QPushButton("Cancel")
 		self.button_hbl.addWidget(self.cancel )
 		self.button_hbl.addWidget(self.ok )
 		self.vbl.addLayout(self.button_hbl)
@@ -1655,14 +1655,14 @@ class EMSymChoiceDialog(QtGui.QDialog):
 		Customized exec_ function
 		@return None if the user hit cancel or a dictionary containing important parameters if the user hit ok
 		'''
-		QtGui.QDialog.exec_(self)
+		QtWidgets.QDialog.exec_(self)
 		return self.dialog_result
 		
 	
-class EMSymInspector(QtGui.QWidget):
+class EMSymInspector(QtWidgets.QWidget):
 	def __init__(self,target,enable_trace=True,enable_og=True) :
 		self.busy = True
-		QtGui.QWidget.__init__(self,None)
+		QtWidgets.QWidget.__init__(self,None)
 		self.setWindowIcon(QtGui.QIcon(get_image_directory() + "eulerxplor.png"))
 		self.target=weakref.ref(target)
 		
@@ -1670,8 +1670,8 @@ class EMSymInspector(QtGui.QWidget):
 		self.rotation_sliders = EMTransformPanel(self.target(),self)
 		self.enable_trace = enable_trace
 		self.enable_og = enable_og
-		self.vbl = QtGui.QVBoxLayout(self)
-		self.vbl.setMargin(0)
+		self.vbl = QtWidgets.QVBoxLayout(self)
+		self.vbl.setContentsMargins(0, 0, 0, 0)
 		self.vbl.setSpacing(6)
 		self.vbl.setObjectName("vbl")
 		
@@ -1681,7 +1681,7 @@ class EMSymInspector(QtGui.QWidget):
 		self.add_symmetry_options()
 		self.n3_showing = False
 		
-		self.tabwidget = QtGui.QTabWidget()
+		self.tabwidget = QtWidgets.QTabWidget()
 		self.tabwidget.addTab(self.get_display_tab(), "Display")
 		self.tabwidget.addTab(self.get_transform_tab(), "Transform")
 		self.vbl.addWidget(self.tabwidget)
@@ -1716,11 +1716,11 @@ class EMSymInspector(QtGui.QWidget):
 			return
 
 		if self.score_options_hbl == None:
-			self.score_options_hbl = QtGui.QHBoxLayout()
+			self.score_options_hbl = QtWidgets.QHBoxLayout()
 			self.score_options = self.__get_combo(options,default)
-			self.score_options_hbl.addWidget(QtGui.QLabel("Cylinder Score:",self))
+			self.score_options_hbl.addWidget(QtWidgets.QLabel("Cylinder Score:",self))
 			self.score_options_hbl.addWidget(self.score_options)
-			self.cylinder_log = QtGui.QCheckBox("log scale")
+			self.cylinder_log = QtWidgets.QCheckBox("log scale")
 			self.cylinder_log.setChecked(self.target().log_scale)
 			self.score_options_hbl.addWidget(self.cylinder_log)
 			self.display_tab.vbl.addLayout(self.score_options_hbl)
@@ -1772,8 +1772,8 @@ class EMSymInspector(QtGui.QWidget):
 		
 		
 	def get_transform_tab(self):
-		self.transform_tab = QtGui.QWidget()
-		self.transform_tab.vbl = QtGui.QVBoxLayout(self.transform_tab)
+		self.transform_tab = QtWidgets.QWidget()
+		self.transform_tab.vbl = QtWidgets.QVBoxLayout(self.transform_tab)
 		self.rotation_sliders.addWidgets(self.transform_tab.vbl)
 		
 		return self.transform_tab
@@ -1798,8 +1798,8 @@ class EMSymInspector(QtGui.QWidget):
 	
 	def get_display_tab(self):
 		
-		self.display_tab = QtGui.QWidget()
-		self.display_tab.vbl = QtGui.QVBoxLayout(self.display_tab)
+		self.display_tab = QtWidgets.QWidget()
+		self.display_tab.vbl = QtWidgets.QVBoxLayout(self.display_tab)
 				
 #		self.glcontrast = ValSlider(self.display_tab,(1.0,5.0),"GLShd:")
 #		self.glcontrast.setObjectName("GLShade")
@@ -1815,21 +1815,21 @@ class EMSymInspector(QtGui.QWidget):
 		keys = self.target().colors.keys()
 		keys.sort()
 		self.arc_color = self.__get_combo(keys,self.target().arc_color)
-		hbl1 = QtGui.QHBoxLayout()
-		hbl1.addWidget(QtGui.QLabel("Arc Color:",self))
+		hbl1 = QtWidgets.QHBoxLayout()
+		hbl1.addWidget(QtWidgets.QLabel("Arc Color:",self))
 		hbl1.addWidget(self.arc_color)
 		self.display_tab.vbl.addLayout(hbl1)
 		
 		self.tall_column_color = self.__get_combo(keys,self.target().tall_column_color)
-		hbl2 = QtGui.QHBoxLayout()
-		hbl2.addWidget(QtGui.QLabel("Higher Cylinder Color:",self))
+		hbl2 = QtWidgets.QHBoxLayout()
+		hbl2.addWidget(QtWidgets.QLabel("Higher Cylinder Color:",self))
 		hbl2.addWidget(self.tall_column_color)
 		self.display_tab.vbl.addLayout(hbl2)
 		
 		
 		self.small_column_color = self.__get_combo(keys,self.target().small_column_color)
-		hbl3 = QtGui.QHBoxLayout()
-		hbl3.addWidget(QtGui.QLabel("Lower Cylinder Color:",self))
+		hbl3 = QtWidgets.QHBoxLayout()
+		hbl3.addWidget(QtWidgets.QLabel("Lower Cylinder Color:",self))
 		hbl3.addWidget(self.small_column_color)
 		self.display_tab.vbl.addLayout(hbl3)
 		
@@ -1845,11 +1845,11 @@ class EMSymInspector(QtGui.QWidget):
 		self.arc_width_scale.setValue(self.target().arc_width_scale)
 		self.display_tab.vbl.addWidget(self.arc_width_scale)
 		
-		hbl_l = QtGui.QHBoxLayout()
-		arc_div_label = QtGui.QLabel("Arc Segments:")
+		hbl_l = QtWidgets.QHBoxLayout()
+		arc_div_label = QtWidgets.QLabel("Arc Segments:")
 		arc_div_label.setAlignment(Qt.AlignLeft|Qt.AlignVCenter)
 		hbl_l.addWidget(arc_div_label)
-		self.arc_divisions = QtGui.QSpinBox(self)
+		self.arc_divisions = QtWidgets.QSpinBox(self)
 		self.arc_divisions.setRange(1,1000)
 		self.arc_divisions.setValue(int(self.target().arc_segments))
 		hbl_l.addWidget(self.arc_divisions)
@@ -1868,7 +1868,7 @@ class EMSymInspector(QtGui.QWidget):
 		return self.display_tab
 	
 	def __get_combo(self,keys,default):
-		combo = QtGui.QComboBox()
+		combo = QtWidgets.QComboBox()
 		idx = 0
 		for i,k in enumerate(keys): 
 			combo.addItem(k)
@@ -1881,48 +1881,48 @@ class EMSymInspector(QtGui.QWidget):
 		self.sparse_syms_widgets.add_symmetry_options(self.vbl,self.enable_og)
 
 		if self.enable_trace:		
-			self.hbl_pt = QtGui.QHBoxLayout()
-			self.hbl_pt.setMargin(0)
+			self.hbl_pt = QtWidgets.QHBoxLayout()
+			self.hbl_pt.setContentsMargins(0, 0, 0, 0)
 			self.hbl_pt.setSpacing(6)
 			self.hbl_pt.setObjectName("Ptl Trace")
 			
 			
-			self.tracetog = QtGui.QPushButton("Trace")
+			self.tracetog = QtWidgets.QPushButton("Trace")
 			self.tracetog.setCheckable(1)
 			self.tracetog.setChecked(0)
 			self.hbl_pt.addWidget(self.tracetog)
 			
-			self.tracefile = QtGui.QLineEdit()
+			self.tracefile = QtWidgets.QLineEdit()
 			self.tracefile.setText("filename.txt")
 			self.tracefile.setFixedWidth(100)
 			self.hbl_pt.addWidget(self.tracefile)
 			self.tracefile.setEnabled(False)
 			
-			self.pt_label = QtGui.QLabel()
+			self.pt_label = QtWidgets.QLabel()
 			self.pt_label.setText('Range')
 			self.hbl_pt.addWidget(self.pt_label)
 			
 			self.pos_int_validator2 = QtGui.QIntValidator(self)
 			self.pos_int_validator2.setBottom(0)
-			self.lowrange = QtGui.QLineEdit()
+			self.lowrange = QtWidgets.QLineEdit()
 			self.lowrange.setValidator(self.pos_int_validator2)
 			self.lowrange.setText("1")
 			self.lowrange.setFixedWidth(50)
 			self.hbl_pt.addWidget(self.lowrange)
 			self.lowrange.setEnabled(False)
 			
-			self.pt_label_to = QtGui.QLabel()
+			self.pt_label_to = QtWidgets.QLabel()
 			self.pt_label_to.setText('to')
 			self.hbl_pt.addWidget(self.pt_label_to)
 			
-			self.highrange = QtGui.QLineEdit()
+			self.highrange = QtWidgets.QLineEdit()
 			self.highrange.setValidator(self.pos_int_validator2)
 			self.highrange.setText("1")
 			self.highrange.setFixedWidth(50)
 			self.hbl_pt.addWidget(self.highrange)
 			self.highrange.setEnabled(False)
 			
-			self.reducetog = QtGui.QPushButton("Reduce")
+			self.reducetog = QtWidgets.QPushButton("Reduce")
 			self.reducetog.setCheckable(1)
 			self.reducetog.setChecked(0)
 			self.hbl_pt.addWidget(self.reducetog)

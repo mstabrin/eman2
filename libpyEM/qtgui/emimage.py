@@ -32,8 +32,8 @@ from __future__ import print_function
 #
 #
 
-from PyQt4 import QtCore, QtGui, QtOpenGL
-from PyQt4.QtCore import Qt
+from PyQt5 import QtCore, QtGui, QtOpenGL, QtWidgets
+from PyQt5.QtCore import Qt
 from OpenGL import GL,GLU,GLUT
 from EMAN2 import Util,EMUtil,file_exists,IMAGE_UNKNOWN,gimme_image_dimensions3D,EMData
 import os
@@ -72,8 +72,8 @@ def get_app():
 	Deprecated
 	But being replaced by emapplication.get_application (in progress, April 15th 2009)
 	'''
-	app=QtGui.QApplication.instance()
-	if not app : app = QtGui.QApplication([])
+	app=QtWidgets.QApplication.instance()
+	if not app : app = QtWidgets.QApplication([])
 	
 	try: 
 		if app.updtimer : pass

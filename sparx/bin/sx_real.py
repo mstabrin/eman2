@@ -44,7 +44,7 @@ GUIUSE=True
 try:
 	if get_platform()=="Linux" and os.getenv("DISPLAY")==None: raise Exception
 
-	from PyQt4 import QtCore, QtGui, QtOpenGL
+	from PyQt5 import QtCore, QtOpenGL
 	from eman2_gui.emapplication import EMApp
 	import IPython.lib.inputhook
 

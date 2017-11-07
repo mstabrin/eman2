@@ -32,8 +32,8 @@ from __future__ import print_function
 #
 #
 
-import PyQt4
-from PyQt4 import QtCore, QtGui
+import PyQt5
+from PyQt5 import QtCore
 from emapplication import EMApp
 from emselector import EMBrowser
 
