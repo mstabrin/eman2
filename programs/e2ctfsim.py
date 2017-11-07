@@ -87,7 +87,7 @@ except:
 
 class MyListWidget(QtGui.QListWidget):
 	"""Exactly like a normal list widget but intercepts a few keyboard events"""
-	keypress = QtCore.pyqtSignal()
+	keypress = QtCore.pyqtSignal(QtGui.QKeyEvent)
 
 	def keyPressEvent(self,event):
 
