@@ -81,9 +81,8 @@ try:
 	from PyQt4.QtCore import Qt
 	from eman2_gui.emshape import *
 	from eman2_gui.valslider import ValSlider
-except:
-	print("Error: PyQt4 must be installed")
-	sys.exit(1)
+except ImportError:
+	raise
 
 class MyListWidget(QtGui.QListWidget):
 	"""Exactly like a normal list widget but intercepts a few keyboard events"""
