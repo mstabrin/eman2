@@ -32,6 +32,14 @@ class Win(object):
         self.dir = module_name
         self.main_form = get_main_form(module_name, *kargs, **kwargs)
     
+    def cycle(self, qtbot, form, clickButton=None):
+        form.raise_()
+        form.activateWindow()
+        if clickButton:
+            qtbot.mouseClick(form, clickButton)
+        qtbot.waitForWindowShown(form)
+        qtbot.wait(100)
+
 @pytest.fixture
 def win():
     return Win
