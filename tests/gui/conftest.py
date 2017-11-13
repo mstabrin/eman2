@@ -26,3 +26,12 @@ def main_form():
     # main_form = common.get_main_form()
     return get_main_form
     # main_form.close()
+
+class Win(object):
+    def __init__(self, module_name, args=[]):
+        self.dir = module_name
+        self.main_form = get_main_form(module_name, args)
+    
+@pytest.fixture
+def win():
+    return Win
