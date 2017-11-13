@@ -8,3 +8,7 @@ def pytest_configure(config):
 def pytest_unconfigure(config):
     import EMAN2
     del EMAN2._called_from_test
+
+@pytest.fixture
+def curdir(request):
+    return request.fspath.dirname
