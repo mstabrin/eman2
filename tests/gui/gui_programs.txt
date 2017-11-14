@@ -1,7 +1,5 @@
 e2RCTboxer.py
-e2_real.py
 e2boxer.py
-e2boxer_old.py
 e2cmpxplor.py
 e2ctf.py
 e2ctfsim.py
@@ -9,16 +7,12 @@ e2display.py
 e2eulerxplor.py
 e2evalimage.py
 e2evalparticles.py
-e2fhstat.py
 e2filtertool.py
 e2helixboxer.py
 e2history.py
 e2motion.py
-e2parallel.py
-e2pdbviewer.py
 e2projectmanager.py
 e2simmxxplor.py
 e2spt_boxer.py
 e2spt_wedge.py
 e2tiltvalidate.py
-eman2.py
