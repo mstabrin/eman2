@@ -1,18 +1,131 @@
-e2RCTboxer.py
-e2boxer.py
-e2cmpxplor.py
-e2ctf.py
-e2ctfsim.py
-e2display.py
-e2eulerxplor.py
-e2evalimage.py
-e2evalparticles.py
-e2filtertool.py
-e2helixboxer.py
-e2history.py
-e2motion.py
-e2projectmanager.py
-e2simmxxplor.py
-e2spt_boxer.py
-e2spt_wedge.py
-e2tiltvalidate.py
+1. e2RCTboxer.py
+2. e2boxer.py
+3. e2ctfsim.py
+4. e2display.py
+5. e2evalimage.py
+6. e2filtertool.py
+7. e2history.py
+
+8. e2projectmanager.py
+9. e2helixboxer.py     # ???? ask for data
+
+10. e2evalparticles.py    # ???
+11. e2motion.py         # ???? ask for data
+12. e2spt_boxer.py      # ask for data tomo
+13. e2spt_wedge.py      # ask for data
+
+=====================================================================================================================
+14. e2cmpxplor.py         ???
+=====================================================================================================================
+$ e2cmpxplor.py particles/BGal_000232__ctf_flip_lp14.hdf particles/BGal_000232.hdf
+Traceback (most recent call last):
+  File "/Users/shadow_walker/anaconda/envs/eman-env/bin/e2cmpxplor.py", line 383, in <module>
+    main()
+  File "/Users/shadow_walker/anaconda/envs/eman-env/bin/e2cmpxplor.py", line 63, in main
+    window = EM3DGLWidget() #TODO: see if this should be a subclass of EMSymViewerWidget instead
+NameError: global name 'EM3DGLWidget' is not defined
+
+
+=====================================================================================================================
+15. e2eulerxplor.py       ??? glClear error
+=====================================================================================================================
+$ e2eulerxplor.py
+Traceback (most recent call last):
+  File "/Users/shadow_walker/anaconda/envs/eman-env/lib/python2.7/site-packages/emimage3dsym.py", line 1237, in paintGL
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT )
+  File "/Users/shadow_walker/anaconda/envs/eman-env/lib/python2.7/site-packages/OpenGL/platform/baseplatform.py", line 402, in __call__
+    return self( *args, **named )
+  File "/Users/shadow_walker/anaconda/envs/eman-env/lib/python2.7/site-packages/OpenGL/error.py", line 232, in glCheckError
+    baseOperation = baseOperation,
+OpenGL.error.GLError: GLError(
+	err = 1286,
+	description = 'invalid framebuffer operation',
+	baseOperation = glClear,
+	cArguments = (17664,)
+)
+['refine_01']
+Traceback (most recent call last):
+  File "/Users/shadow_walker/anaconda/envs/eman-env/lib/python2.7/site-packages/emimage3dsym.py", line 1237, in paintGL
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT )
+  File "/Users/shadow_walker/anaconda/envs/eman-env/lib/python2.7/site-packages/OpenGL/error.py", line 232, in glCheckError
+    baseOperation = baseOperation,
+OpenGL.error.GLError: GLError(
+	err = 1286,
+	description = 'invalid framebuffer operation',
+	baseOperation = glClear,
+	cArguments = (17664,)
+)
+
+
+
+=====================================================================================================================
+16. e2ctf.py              ??? RuntimeError
+=====================================================================================================================
+$ e2ctf.py --gui micrographs/BGal_000232.hdf &
+[2] 95971
+(eman-env) shadow-walkers-MacBook-Pro:playground shadow_walker$ Using A/pix from header
+Traceback (most recent call last):
+  File "/Users/shadow_walker/anaconda/envs/eman-env/bin/e2ctf.py", line 2912, in newSet
+    else : self.guirealim.set_data([EMData()])
+  File "/Users/shadow_walker/anaconda/envs/eman-env/lib/python2.7/site-packages/emimage2d.py", line 463, in set_data
+    self.auto_contrast(inspector_update=False,display_update=False)
+  File "/Users/shadow_walker/anaconda/envs/eman-env/lib/python2.7/site-packages/emimage2d.py", line 530, in auto_contrast
+    mean=self.data.get_attr("mean")
+RuntimeError: NotExistingObjectException at /Users/shadow_walker/Files/eclipse_workspace/workspace_work/eman2/libEM/emdata_metadata.cpp:1148: error with 'mean': 'The requested key does not exist' caught
+=====================================================================================================================
+
+=====================================================================================================================
+17. e2tiltvalidate.py   # ask for data
+=====================================================================================================================
+$ e2tiltvalidate.py --volume 3DmapIP3R1_clip_188apix.mrc --untiltdata Ip3R_particles_02_0deg_ptcls_ctfflip.hdf --tiltdata Ip3R_particles_02_10deg_ptcls_ctfflip.hdf --gui &
+Traceback (most recent call last):
+  File "/Users/shadow_walker/anaconda/envs/eman-env/lib/python2.7/site-packages/EMAN2jsondb.py", line 567, in open_db
+    try : ret=JSDict(path)
+  File "/Users/shadow_walker/anaconda/envs/eman-env/lib/python2.7/site-packages/EMAN2jsondb.py", line 638, in __init__
+    self.sync()
+  File "/Users/shadow_walker/anaconda/envs/eman-env/lib/python2.7/site-packages/EMAN2jsondb.py", line 688, in sync
+    except: raise Exception("Error: Unable to open {} for writing".format(self.normpath))
+Exception: Error: Unable to open /perparticletilts.json for writing
+===========================
+Couldn't load tp from DB, not showing polar plot
+Couldn't open contour plot
+=====================================================================================================================
+=====================================================================================================================
+18. $ e2tiltvalidate.py --untiltdata=Ip3R_particles_02_0deg_ptcls_ctfflip.hdf --tiltdata=Ip3R_particles_02_10deg_ptcls_ctfflip.hdf --volume=3DmapIP3R1_clip_376apix.mrc --path=TiltValidate_04 --gui &
+=====================================================================================================================
+$ e2tiltvalidate.py --untiltdata=Ip3R_particles_02_0deg_ptcls_ctfflip.hdf --tiltdata=Ip3R_particles_02_10deg_ptcls_ctfflip.hdf --volume=3DmapIP3R1_clip_376apix.mrc --path=TiltValidate_04 --gui &
+[3] 70370
+(eman-env) shadow-walkers-MacBook-Pro:Ip3R shadow_walker$ Couldn't open contour plot
+Traceback (most recent call last):
+  File "/Users/shadow_walker/anaconda/envs/eman-env/bin/e2tiltvalidate.py", line 588, in <module>
+    main()
+  File "/Users/shadow_walker/anaconda/envs/eman-env/bin/e2tiltvalidate.py", line 106, in main
+    display_validation_plots(options.path, options.radcut, options.planethres, plotdatalabels=options.datalabels, color=options.datalabelscolor, plotzaxiscolor=options.colorzaxis)
+  File "/Users/shadow_walker/anaconda/envs/eman-env/bin/e2tiltvalidate.py", line 486, in display_validation_plots
+    plot = EMValidationPlot()
+  File "/Users/shadow_walker/anaconda/envs/eman-env/bin/e2tiltvalidate.py", line 525, in __init__
+    self.polarplot = EMPolarPlot2DWidget()
+  File "/Users/shadow_walker/anaconda/envs/eman-env/lib/python2.7/site-packages/emplot2d.py", line 1028, in __init__
+    self.setDataLabelsColor('#00ff00')
+AttributeError: 'EMPolarPlot2DWidget' object has no attribute 'setDataLabelsColor'
+=====================================================================================================================
+
+=====================================================================================================================
+19. e2simmxxplor.py       # ???
+=====================================================================================================================
+$ e2simmxxplor.py
+Traceback (most recent call last):
+  File "/Users/shadow_walker/anaconda/envs/eman-env/lib/python2.7/site-packages/emimage3dsym.py", line 1237, in paintGL
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT )
+  File "/Users/shadow_walker/anaconda/envs/eman-env/lib/python2.7/site-packages/OpenGL/platform/baseplatform.py", line 402, in __call__
+    return self( *args, **named )
+  File "/Users/shadow_walker/anaconda/envs/eman-env/lib/python2.7/site-packages/OpenGL/error.py", line 232, in glCheckError
+    baseOperation = baseOperation,
+OpenGL.error.GLError: GLError(
+	err = 1286,
+	description = 'invalid framebuffer operation',
+	baseOperation = glClear,
+	cArguments = (17664,)
+)
+None
+[['refine_01', 'sets/all__ctf_flip_lp14_even.lst', ['refine_01/projections_01_even.hdf', 'refine_01/projections_02_even.hdf', 'refine_01/proj_stg1_01_even.hdf', 'refine_01/proj_stg1_02_even.hdf'], ['refine_01/simmx_01_even.hdf', 'refine_01/simmx_02_even.hdf', 'refine_01/simmx_stg1_01_even.hdf', 'refine_01/simmx_stg1_02_even.hdf']], ['refine_01', 'sets/all__ctf_flip_lp14_odd.lst', ['refine_01/projections_01_odd.hdf', 'refine_01/projections_02_odd.hdf', 'refine_01/proj_stg1_01_odd.hdf', 'refine_01/proj_stg1_02_odd.hdf'], ['refine_01/simmx_01_odd.hdf', 'refine_01/simmx_02_odd.hdf', 'refine_01/simmx_stg1_01_odd.hdf', 'refine_01/simmx_stg1_02_odd.hdf']]]=====================================================================================================================
