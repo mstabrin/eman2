@@ -92,8 +92,6 @@ def main_loop(sys_argv=None):
 		dialog = embrowser.EMBrowserWidget(withmodal=False,multiselect=False)
 		dialog.show()
 		try: dialog.raise_()
-# 			QtCore.QObject.connect(dialog,QtCore.SIGNAL("ok"),on_browser_done)
-# 			QtCore.QObject.connect(dialog,QtCore.SIGNAL("cancel"),on_browser_cancel)
 		except: pass
 	
 	elif options.pdb:
@@ -142,9 +140,6 @@ def main_loop(sys_argv=None):
 main_loop = main
 
 def on_browser_done():
-	pass
-
-def on_browser_cancel():
 	pass
 
 def selectclass(rawfsp,mxfsp,event,lc):
