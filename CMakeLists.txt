@@ -368,3 +368,10 @@ add_custom_target(test-py-compile
 		COMMAND ${CMAKE_CTEST_COMMAND} -V -C Release -R py-compile
 		DEPENDS PythonFiles
 		)
+
+find_package(PyTest REQUIRED)
+
+add_custom_target(test-gui
+	COMMAND ${PYTEST_EXECUTABLE} -vs ${CMAKE_SOURCE_DIR}/tests/gui/
+	DEPENDS PythonFiles
+)
