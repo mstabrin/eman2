@@ -1,0 +1,12 @@
+[run]
+branch = True
+
+omit =
+    */numpy/*
+    */bsddb/*
+    */ctypes/*
+    */encodings/*
+    */argparse*
+    */bisect*
+    */shelve*
+    */numbers*
