@@ -85,23 +85,20 @@ def main_loop(sys_argv=None):
 	#gapp = app
 	#QtGui.QApplication(sys.argv)
 	win=[]
+	global dialog
 	
 	if len(args) < 1:
-		global dialog
 		file_list = []
 		dialog = embrowser.EMBrowserWidget(withmodal=False,multiselect=False)
-		dialog.show()
-		try: dialog.raise_()
-		except: pass
 	
 	elif options.pdb:
 		load_pdb(args,app)
 	
 	elif options.plot:
-		plot(args,app)
+		dialog=plot(args,app)
 		
 	elif options.hist:
-		hist(args,app)
+		dialog=hist(args,app)
 	
 	elif options.plot3d:
 		plot_3d(args,app)
@@ -134,6 +131,9 @@ def main_loop(sys_argv=None):
 	dialog.show()
 	dialog.raise_()
 	app.execute()
+	
+	
+	dialog.activateWindow()
 	
 	return dialog
 
@@ -184,7 +184,6 @@ def getmxim(fsp,fsp2,clsnum):
 def display_file(filename,app,force_2d=False):
 	w = EMWidgetFromFile(filename,application=app,force_2d=force_2d)
 	w.setWindowTitle(base_name(filename))
-	w.optimally_resize()
 	w.show()
 	w.raise_()
 	
@@ -198,7 +197,6 @@ def display(img,app,title="EMAN2 image"):
 		if file_exists(title):
 			w.set_file_name(title)
 	except: pass
-	w.optimally_resize()
 	w.show()
 	w.raise_()
 	return w
@@ -217,7 +215,7 @@ def hist(files,app):
 	histw=EMHistogramWidget(application=app)
 	for f in files:
 		histw.set_data_from_file(f,quiet=True)
-	histw.setWindowTitle(f)
+	histw.setWindowTitle("Histogram")
 	app.show_specific(histw)
 	return histw
 
