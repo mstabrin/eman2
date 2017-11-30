@@ -48,7 +48,15 @@ from PyQt4.QtCore import Qt
 
 app = EMApp()
 
+
 def main(sys_argv=None):
+	dialog = main_loop(sys_argv)
+
+	app.exec_()
+
+#	E2end(logid)
+
+def main_loop(sys_argv=None):
 	progname = os.path.basename(sys.argv[0])
 	usage = """prog [options] <image file> ...
 
@@ -137,8 +145,6 @@ def main(sys_argv=None):
 	app.execute()
 	
 	return dialog
-
-#	E2end(logid)
 
 main_loop = main
 
