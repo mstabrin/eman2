@@ -123,10 +123,8 @@ def main(sys_argv=None):
 	if options.gui:
 		if ENABLE_GUI:
 			logid=E2init(sys.argv,options.ppid)
-			helixboxer = EMHelixBoxerWidget(args, app, options.helix_width,options.save_ext)
-			helixboxer.show()
+			helixboxer = main_loop(args, options.helix_width, options.save_ext)
 			helixboxer.raise_()
-			app.execute()
 			E2end(logid)
 			
 			return helixboxer
@@ -156,6 +154,14 @@ def main(sys_argv=None):
 		elif len(args) > 1:
 			print('Multiple micrographs can only be specified with the "--gui" option')
 			return
+
+
+def main_loop(args, helix_width, save_ext):
+	helixboxer = EMHelixBoxerWidget(args, app, helix_width, save_ext)
+	helixboxer.show()
+	app.execute()
+	return helixboxer
+
 
 def counterGen():
 	"""
