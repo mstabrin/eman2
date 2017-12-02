@@ -2097,13 +2097,21 @@ first upgrade the project with e2projectupdate21.py. You can still use the e2dis
 GUI directly to browse the contents of old-style projects.""")
 		sys.exit(1)
 
-	pm = EMProjectManager()
-	pm.show()
-	try: pm.raise_()
-	except: pass
+	pm = main_loop()
 	app.execute()
 	
 	return pm
+
+
+def main_loop():
+	pm = EMProjectManager()
+	pm.show()
+	try:
+		pm.raise_()
+	except:
+		pass
+	return pm
+
 
 if __name__ == "__main__":
 	main()
