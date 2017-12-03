@@ -73,6 +73,8 @@ def main():
 	app.execute()
 
 #	E2end(logid)
+	
+	return control
 
 class EMClassPtclTool(QtGui.QWidget):
 	"""This class is a tab widget for inspecting particles within class-averages"""
