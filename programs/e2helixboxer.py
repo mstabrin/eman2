@@ -128,6 +128,8 @@ def main():
 			helixboxer.raise_()
 			app.execute()
 			E2end(logid)
+			
+			return helixboxer
 		else:
 			return
 	else:
