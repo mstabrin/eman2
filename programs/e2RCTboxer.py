@@ -104,11 +104,7 @@ Usage: e2RCTboxer.py untilted.hdf tilted.hdf options.
 		if options.write_boxes: rctproc.write_boxes()
 	else:
 		# Open Application, setup rct object, and run
-		rctboxer = RCTboxer(application, options.boxsize)	# Initialize the boxertools
-		rctboxer.load_untilt_image(args[0])		# Load the untilted image
-		rctboxer.load_tilt_image(args[1])		# Load the tilted image
-		rctboxer.init_control_pannel()
-		rctboxer.init_control_pannel_tools()			# Initialize control panel tools, this needs to be done last as loaded data maybe be used
+		rctboxer = main_loop(args, options.boxsize)
 		application.execute()
 		
 		return rctboxer
@@ -116,6 +112,16 @@ Usage: e2RCTboxer.py untilted.hdf tilted.hdf options.
 	# Clean up
 	E2end(logid)
 	js_close_dict(EMBOXERRCT_DB)
+
+
+def main_loop(args, boxsize):
+	rctboxer = RCTboxer(application, boxsize)  # Initialize the boxertools
+	rctboxer.load_untilt_image(args[0])  # Load the untilted image
+	rctboxer.load_tilt_image(args[1])  # Load the tilted image
+	rctboxer.init_control_pannel()
+	rctboxer.init_control_pannel_tools()  # Initialize control panel tools, this needs to be done last as loaded data maybe be used
+	return rctboxer
+
 
 class RCTprocessor:
 	"""
