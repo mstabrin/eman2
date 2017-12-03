@@ -281,7 +281,9 @@ def main():
 		gui=GUIBoxer(args,options.voltage,options.apix,options.cs,options.ac,options.boxsize,options.ptclsize,options.threads)
 		gui.show()
 		gui.raise_()
-		app.exec_()
+		app.execute()
+		
+		return gui
 
 	if options.write_dbbox:
 		write_boxfiles(args,boxsize)
