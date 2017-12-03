@@ -130,7 +130,9 @@ def main():
 	if options.fullrange:
 		revert_full_range(fullrangeparms)
 
-	app.exec_()
+	app.execute()
+	
+	return dialog
 
 #	E2end(logid)
 
