@@ -62,10 +62,7 @@ read into memory. Do not use it on large sets of particles !!!
 	
 	logid=E2init(sys.argv,options.ppid)
 	
-	window = EM3DGLWidget() #TODO: see if this should be a subclass of EMSymViewerWidget instead
-	explorer = EMCmpExplorer(window)
-	window.set_model(explorer)
-	explorer.set_data(args[0],args[1])
+	window = main_loop(args[0], args[1])
 
 	em_app.show()
 	em_app.execute()
@@ -73,6 +70,14 @@ read into memory. Do not use it on large sets of particles !!!
 	return window
 	
 	E2end(logid)
+
+
+def main_loop(args0, args1):
+	window = EM3DGLWidget()  # TODO: see if this should be a subclass of EMSymViewerWidget instead
+	explorer = EMCmpExplorer(window)
+	window.set_model(explorer)
+	explorer.set_data(args0, args1)
+	return window
 
 
 class EMCmpExplorer(EM3DSymModel):
