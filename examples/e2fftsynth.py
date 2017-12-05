@@ -66,11 +66,10 @@ This program allows the user to play around with Fourier synthesis graphically
 	app=EMApp()
 	win=GUIFourierSynth(app)
 	win.show()
-	try: 
-		win.raise_()
-		win.synthplot.raise_()
-	except: pass
-	app.exec_()
+	win.raise_()
+	win.synthplot.raise_()
+
+	app.execute()
 	
 class GUIFourierSynth(QtGui.QWidget):
 	"""This class represents an application for interactive Fourier synthesis"""
