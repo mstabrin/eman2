@@ -2099,6 +2099,5 @@ GUI directly to browse the contents of old-style projects.""")
 	#app = QtGui.QApplication(sys.argv)
 	pm = EMProjectManager()
 	pm.show()
-	try: pm.raise_()
-	except: pass
+	pm.raise_()
 	app.exec_()

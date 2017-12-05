@@ -100,15 +100,11 @@ power spectrum in various ways."""
 	gui=GUIEvalImage(args,options.voltage,options.apix,options.cs,options.ac,options.box,options.usefoldername,options.constbfactor,options.astigmatism,options.phaseplate)
 	gui.show()
 
-	try:
-		gui.wimage.raise_()
-		gui.wfft.raise_()
-		gui.wplot.raise_()
-		gui.raise_()
-	except: pass
+	gui.wimage.raise_()
+	gui.wfft.raise_()
+	gui.wplot.raise_()
+	gui.raise_()
 
-# 	try: gui.raise_()
-# 	except: pass
 	app.execute()
 
 	E2end(logid)
@@ -895,11 +891,10 @@ class GUIEvalImage(QtGui.QWidget):
 		self.wimage.show()
 		self.wfft.show()
 		self.wplot.show()
-		try:
-			self.wimage.raise_()
-			self.wfft.raise_()
-			self.wplot.raise_()
-		except: pass
+
+		self.wimage.raise_()
+		self.wfft.raise_()
+		self.wplot.raise_()
 
 		self.update_plot()
 

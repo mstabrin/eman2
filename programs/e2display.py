@@ -85,10 +85,9 @@ def main():
 		file_list = []
 		dialog = embrowser.EMBrowserWidget(withmodal=False,multiselect=False)
 		dialog.show()
-		try: dialog.raise_()
+		dialog.raise_()
 # 			QtCore.QObject.connect(dialog,QtCore.SIGNAL("ok"),on_browser_done)
 # 			QtCore.QObject.connect(dialog,QtCore.SIGNAL("cancel"),on_browser_cancel)
-		except: pass
 	
 	elif options.pdb:
 		load_pdb(args,app)
@@ -230,10 +229,9 @@ def display_file(filename,app,force_2d=False,usescenegraph=False):
 	w = EMWidgetFromFile(filename,application=app,force_2d=force_2d)
 	w.setWindowTitle(base_name(filename))
 	app.show_specific(w)
-	try: w.optimally_resize()
-	except: pass
-	try: w.raise_()
-	except: pass
+	w.optimally_resize()
+	w.raise_()
+	
 	return w
 
 def display(img,app,title="EMAN2 image"):

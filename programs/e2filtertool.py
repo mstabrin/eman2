@@ -81,8 +81,7 @@ def main():
 	control=EMFilterTool(datafile=args[0],apix=options.apix,force2d=False,verbose=options.verbose)
 #	control=EMFilterTool(datafile=args[0],apix=options.apix,force2d=options.force2d,verbose=options.verbose)
 	control.show()
-	try: control.raise_()
-	except: pass
+	control.raise_()
 
 	app.execute()
 #	E2end(logid)
