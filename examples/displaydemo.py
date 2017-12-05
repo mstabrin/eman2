@@ -65,6 +65,8 @@ class TestControl():
 		a=test_image(size=(512,512))
 		self.im2d.set_data(a)
 		self.im2d.show()
+		self.im2d.raise_()
+		self.im2d.activateWindow()
 
 
 	def down(self,event,lc):

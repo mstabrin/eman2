@@ -67,6 +67,9 @@ read into memory. Do not use it on large sets of particles !!!
 	explorer.set_data(args[0],args[1])
 
 	em_app.show()
+	window.show()
+	window.raise_()
+	window.activateWindow()
 	em_app.execute()
 	
 	E2end(logid)

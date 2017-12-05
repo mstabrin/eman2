@@ -45,6 +45,8 @@ def main():
 
 	widget=TestDisplay()
 	widget.show()
+	widget.raise_()
+	widget.activateWindow()
 
 	em_app.execute()
 
