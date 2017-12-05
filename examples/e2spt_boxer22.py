@@ -91,6 +91,7 @@ def main():
 
 
 	boxer.show()
+	boxer.raise_()
 	app.execute()
 	E2end(logid)
 	return
