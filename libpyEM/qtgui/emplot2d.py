@@ -75,7 +75,7 @@ from numpy import *
 from qtgui.valslider import *
 from cStringIO import StringIO
 import re
-import emimage2d
+from qtgui import emimage2d
 
 import matplotlib.pyplot as plt
 import matplotlib

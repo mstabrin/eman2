@@ -3021,8 +3021,8 @@ class EMBrowserWidget(QtGui.QWidget) :
 		# although this looks dumb it is necessary to break Python's issue with circular imports(a major weakness of Python IMO)
 
 		global emscene3d, emdataitem3d
-		import emscene3d
-		import emdataitem3d
+		from qtgui import emscene3d
+		from qtgui import emdataitem3d
 
 		QtGui.QWidget.__init__(self, parent)
 

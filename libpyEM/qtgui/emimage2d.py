@@ -46,7 +46,7 @@ import sys
 import numpy
 import struct
 from emimageutil import ImgHistogram, EMParentWin
-import emshape
+from qtgui import emshape
 from emshape import EMShape
 from weakref import WeakKeyDictionary
 import weakref
