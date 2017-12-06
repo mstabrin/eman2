@@ -46,9 +46,6 @@ import weakref
 import traceback
 from numpy import array,arange
 
-from eman2_gui.emapplication import EMApp
-app=EMApp()
-
 def main(sys_argv=None):
 	progname = os.path.basename(sys.argv[0])
 
@@ -83,6 +80,9 @@ try:
 	from PyQt4.QtCore import Qt
 	from eman2_gui.emshape import *
 	from eman2_gui.valslider import ValSlider
+	
+	from eman2_gui.emapplication import EMApp
+	app=EMApp()
 except:
 	print("Error: PyQt4 must be installed")
 	sys.exit(1)
