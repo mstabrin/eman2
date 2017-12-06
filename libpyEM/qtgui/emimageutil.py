@@ -36,7 +36,7 @@ from PyQt4.QtCore import Qt
 from math import *
 import numpy
 from EMAN2 import *
-from valslider import ValSlider
+from qtgui.valslider import ValSlider
 from emanimationutil import Animator
 import weakref
 import copy

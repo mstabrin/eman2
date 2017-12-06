@@ -43,7 +43,7 @@ from emglobjects import EM3DModel, EMGLWidget, Camera, Camera2, EMViewportDepthT
 from emimageutil import EMTransformPanel
 from math import *
 from time import *
-from valslider import ValSlider
+from qtgui.valslider import ValSlider
 from weakref import WeakKeyDictionary
 import weakref
 

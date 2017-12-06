@@ -43,7 +43,7 @@ from libpyGLUtils2 import GLUtil
 import math
 import os.path
 import sys
-from valslider import ValSlider, EMLightControls, CameraControls, EMSpinWidget, EMQTColorWidget, EMANToolButton
+from qtgui.valslider import ValSlider, EMLightControls, CameraControls, EMSpinWidget, EMQTColorWidget, EMANToolButton
 
 from OpenGL import GL
 from OpenGL.GL import *

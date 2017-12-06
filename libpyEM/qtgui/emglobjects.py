@@ -40,7 +40,7 @@ from PyQt4.QtCore import Qt
 from emapplication import EMGLWidget, get_application
 from libpyGLUtils2 import GLUtil
 from math import *
-from valslider import ValSlider
+from qtgui.valslider import ValSlider
 import numpy
 import weakref
 

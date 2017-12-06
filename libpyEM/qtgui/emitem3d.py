@@ -35,7 +35,7 @@ from OpenGL import GL
 from PyQt4 import QtCore, QtGui
 from EMAN2 import Transform, Vec4f, Vec3f
 from libpyGLUtils2 import GLUtil
-from valslider import ValSlider, EMSpinWidget
+from qtgui.valslider import ValSlider, EMSpinWidget
 import weakref
 import math
 import numpy
