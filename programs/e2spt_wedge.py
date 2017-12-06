@@ -64,9 +64,7 @@ def main(sys_argv=None):
 	stack=args[0]
 	
 	if not options.nogui:	
-		wedgeviewer = MissingWedgeViewer(stack, options.wedgeangle, wedgei=options.wedgei, wedgef=options.wedgef)
-		wedgeviewer.show()
-		wedgeviewer.raise_()
+		wedgeviewer = main_loop(stack, options.wedgeangle, wedgei=options.wedgei, wedgef=options.wedgef)
 		ret=em_app.execute()
 		
 		return wedgeviewer
@@ -108,6 +106,13 @@ def main(sys_argv=None):
 	return
 				
 	
+def main_loop(stack, wedgeangle, wedgei, wedgef):
+	wedgeviewer = MissingWedgeViewer(stack, wedgeangle, wedgei, wedgef)
+	wedgeviewer.show()
+	wedgeviewer.raise_()
+	return wedgeviewer
+
+
 def wedgestats(volume,angle, wedgei, wedgef):
 	vfft = volume.do_fft()
 	wedge = vfft.getwedge(angle, wedgei, wedgef)		
