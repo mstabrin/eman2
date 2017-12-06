@@ -48,11 +48,13 @@ from eman2_gui.emshape import EMShape
 from eman2_gui.valslider import ValSlider, ValBox
 
 	
+app = EMApp()
+
 def run(cmd):
 	print(cmd)
 	launch_childprocess(cmd)
 	
-def main():
+def main(sys_argv=None):
 	
 	usage="""
 	
@@ -96,7 +98,7 @@ def main():
 	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higner number means higher level of verboseness")
 
 
-	(options, args) = parser.parse_args()
+	(options, args) = parser.parse_args(sys_argv)
 	
 	logid=E2init(sys.argv)
 
@@ -120,7 +122,6 @@ def main():
 				print("done")
 
 	else:
-		app = EMApp()
 
 		#img=args[0]
 
@@ -136,6 +137,8 @@ def main():
 		boxer.show()
 		boxer.raise_()
 		app.execute()
+		
+		return boxer
 	
 	E2end(logid)
 
