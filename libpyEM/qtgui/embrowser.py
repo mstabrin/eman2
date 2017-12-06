@@ -42,9 +42,9 @@ from empdbitem3d import *
 from emplot2d import *
 from emhist import *
 from emplot3d import *
-from expand_string import expand_string
+from qtgui.expand_string import expand_string
 from libpyUtils2 import EMUtil
-from matching import matches_pats
+from qtgui.matching import matches_pats
 from string import lower
 from qtgui.valslider import StringBox
 import os
