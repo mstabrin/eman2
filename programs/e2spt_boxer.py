@@ -130,11 +130,8 @@ def main(sys_argv=None):
 			options.apix = imghdr['apix_x']
 
 		box = 32
-		
-		boxer=EMTomoBoxer(app,options,datafile=img)
 
-
-		boxer.show()
+		boxer = main_loop(options,datafile=img)
 		boxer.raise_()
 		app.execute()
 		
@@ -144,6 +141,11 @@ def main(sys_argv=None):
 
 	return
 
+
+def main_loop(options,datafile):
+	boxer = EMTomoBoxer(app, options, datafile)
+	boxer.show()
+	return boxer
 
 
 class EMTomoBoxer(QtGui.QMainWindow):
