@@ -6,6 +6,7 @@ set -e
 
 # Gather programs from CONDA_PREFIX
 progs=$(find "${CONDA_PREFIX}"/bin -name 'e2*.py' | xargs -n 1 basename)
+progs=( ${progs[@]} sphire )
 # Remove programs listed in "programs_no_test.txt"
 MYDIR="$(cd "$(dirname "$0")"; pwd -P)"
 progs_exclude=$(cat "${MYDIR}"/programs_no_test.txt | awk '{print $1}')
