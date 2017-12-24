@@ -1,3 +1,19 @@
+#!/usr/bin/env groovy
+
+import groovy.json.JsonOutput
+// Add whichever params you think you'd most want to have
+// replace the slackURL below with the hook url provided by
+// slack when you configure the webhook
+def notifyGithub(state) {
+    def githubURL = 'https://api.github.com/repos/cryoem/eman2/statuses'
+    def payload = JsonOutput.toJson([state        : state,
+                                     target_url   : "${BUILD_URL}",
+                                     description  : "The build succeeded!",
+                                     context      : "${JOB_NAME}"
+                                     ])
+    sh "curl -u eman-bot -X POST --data-urlencode \'payload=${payload}\' ${githubURL}"
+}
+
 def getJobType() {
     def causes = "${currentBuild.rawBuild.getCauses()}"
     def job_type = "UNKNOWN"
