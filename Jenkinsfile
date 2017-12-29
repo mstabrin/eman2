@@ -14,6 +14,37 @@ def notifyGithub(state) {
     sh "curl -u eman-bot -X POST --data-urlencode \'payload=${payload}\' ${githubURL}"
 }
 
+// TODO:
+// - Reconsider stage labels and job names to be more informative when visualizing
+// - Github status message when aborted
+// - Stage deploy and refactor stages
+// - Email notifications
+// - Release builds, per request or per push
+// - Jenkins build status badges in README
+// - Windows builds
+// - Documentation: envars set in script and on nodes, ...
+// - Allowing non-secure stuff (due to getting build cause)
+// - Read-only access to Jenkins server
+// - GUI and CUDA tests
+// - PublishHTML coverage
+// - List of plugins and automated Jenkins server installation: Build Trigger Badge Plugin, Embeddable Build Status Plugin, ...
+// - Eman-bot avatar
+// - Set java timezone on build machines
+// - Evaluate docker usage: Ubuntu, Debian, Scientific Linux, CUDA, ...
+// - Plugins to evaluate:
+//   - https://wiki.jenkins.io/display/JENKINS/ArtifactDeployer+Plugin
+//   - https://wiki.jenkins.io/display/JENKINS/thinBackup
+//   - https://wiki.jenkins.io/display/JENKINS/Global+Build+Stats+Plugin
+//   - https://wiki.jenkins.io/display/JENKINS/Configuration+Slicing+Plugin
+//   - https://wiki.jenkins.io/display/JENKINS/Green+Balls
+//   - https://wiki.jenkins.io/display/JENKINS/HTML+Publisher+Plugin
+//   - https://wiki.jenkins.io/display/JENKINS/SafeRestart+Plugin
+//   - https://wiki.jenkins.io/display/JENKINS/Disk+Usage+Plugin
+//   - https://wiki.jenkins.io/display/JENKINS/Task+Scanner+Plugin
+//   - https://wiki.jenkins.io/display/JENKINS/JobConfigHistory+Plugin
+//   - https://wiki.jenkins.io/display/JENKINS/Modern+Status+Plugin
+//----------------------------------------------------------------------------------------------------------------------
+
 def getJobType() {
     def causes = "${currentBuild.rawBuild.getCauses()}"
     def job_type = "UNKNOWN"
