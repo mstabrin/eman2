@@ -226,7 +226,8 @@ pipeline {
   
   post {
         always {
-          archive "${HOME}/workspace/*-installers/*.*"
+          sh "cp -a ${HOME}/workspace/*-installers ${WORKSPACE}"
+          archive "**/*-installers/*.*"
         }
         
     success {
