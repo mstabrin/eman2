@@ -225,6 +225,10 @@ pipeline {
   }
   
   post {
+        always {
+          archive "${HOME}/workspace/*-installers/*.*"
+        }
+        
     success {
       notifyGitHub('SUCCESS')
     }
