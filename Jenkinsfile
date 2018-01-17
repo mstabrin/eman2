@@ -102,6 +102,10 @@ def getHomeDir() {
     return result
 }
 
+def repoConfig() {
+    checkout([$class: 'GitSCM', branches: [[name: '*/*']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PruneStaleBranch'], [$class: 'CleanBeforeCheckout'], [$class: 'MessageExclusion', excludedMessage: '(?s).*\\[skip jenkins\\].*']], submoduleCfg: [], userRemoteConfigs: [[url: 'repo']]])
+}
+
 pipeline {
   agent {
     node { label 'jenkins-slave-1' }
