@@ -74,6 +74,9 @@ def isRequestedBuildStage() {
     return (stage_name_to_os(STAGE_NAME) == SLAVE_OS && (CI_BUILD == "1" || buildStage[STAGE_NAME] == "1"))
 }
 
+def getCurrentReleasePRNum() {
+    return '167'
+}
 def isSimpleBuild() {
     def buildOS = ['linux': CI_BUILD_LINUX,
                    'mac':   CI_BUILD_MAC,
@@ -81,6 +84,11 @@ def isSimpleBuild() {
                   ]
     
     return (CI_BUILD != "1" && buildOS[SLAVE_OS] != "1")
+
+      curl -u "eman-bot" https://api.github.com/repos/cryoem/eman2/issues/167/comments \
+      -d '{
+        "body": "Installer uploaded: eman2.${STAGE_NAME}.unstable.sh"
+      }'
 }
 
 def runJob() {
