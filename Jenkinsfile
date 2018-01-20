@@ -81,14 +81,13 @@ def isSimpleBuild() {
     def buildOS = ['linux': CI_BUILD_LINUX,
                    'mac':   CI_BUILD_MAC,
                    'win':   CI_BUILD_WIN
-                  ]
-    
-    return (CI_BUILD != "1" && buildOS[SLAVE_OS] != "1")
-
-      curl -u "eman-bot" https://api.github.com/repos/cryoem/eman2/issues/167/comments \
-      -d '{
-        "body": "Installer uploaded: eman2.${STAGE_NAME}.unstable.sh"
-      }'
+      withCredentials([string(credentialsId: 'eman-bot-token', variable: 'GITHUB_PR_TOKEN')]) {
+          // some block
+          sh "curl -u eman-bot:$GITHUB_PR_TOKEN https://api.github.com/repos/cryoem/eman2/issues/167/comments \
+          -d \'\{
+            \"body\": \"New $STAGE_NAME installer uploaded: eman2.${STAGE_NAME}.unstable.sh\"
+          \}\"
+      }
 }
 
 def runJob() {
