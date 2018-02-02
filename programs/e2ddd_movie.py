@@ -173,138 +173,13 @@ def main():
 
 	if options.dark != "":
 		print("Loading Dark Reference")
-		if "e2ddd_darkref" in options.dark:
-			dark = EMData(options.dark,-1)
-		else:
-			if options.dark[-4:].lower() in (".mrc") :
-				dark_hdr = EMData(options.dark,0,True)
-				nx = dark_hdr["nx"]
-				ny = dark_hdr["ny"]
-				nd = dark_hdr["nz"]
-				dark=EMData(options.dark,0,False,Region(0,0,0,nx,ny,1))
-			else:
-				nd=EMUtil.get_image_count(options.dark)
-				dark = EMData(options.dark,0)
-				nx = dark["nx"]
-				ny = dark["ny"]
-			if nd>1:
-				sigd=dark.copy()
-				sigd.to_zero()
-				a=Averagers.get("mean",{"sigma":sigd,"ignore0":1})
-				print("Summing Dark Frames")
-				for i in xrange(0,nd):
-					if options.verbose:
-						sys.stdout.write("({}/{})   \r".format(i+1,nd))
-						sys.stdout.flush()
-					if options.dark[-4:].lower() in (".mrc") :
-						t=EMData(options.dark,0,False,Region(0,0,i,nx,ny,1))
-					else:
-						t=EMData(options.dark,i)
-					t.process_inplace("threshold.clampminmax",{"minval":0,"maxval":t["mean"]+t["sigma"]*3.5,"tozero":1})
-					a.add_image(t)
-				dark=a.finish()
-				if options.debug: sigd.write_image(options.dark.rsplit(".",1)[0]+"_sig.hdf")
-				if options.fixbadpixels:
-					sigd.process_inplace("threshold.binary",{"value":sigd["sigma"]/10.0}) # Theoretically a "perfect" pixel would have zero sigma, but in reality, the opposite is true
-					dark.mult(sigd)
-				if options.debug: dark.write_image(options.dark.rsplit(".",1)[0]+"_sum.hdf")
-			#else: dark.mult(1.0/99.0)
-			dark.process_inplace("threshold.clampminmax.nsigma",{"nsigma":3.0})
-			dark2=dark.process("normalize.unitlen")
+		dark = EMData(options.dark)
 	else : dark=None
 
 	if options.gain != "":
 		print("Loading Gain Reference")
-		if "e2ddd_gainref" in options.gain:
-			gain = EMData(options.gain,-1)
-		else:
-			if options.k2: gain=EMData(options.gain)
-			else:
-				if options.gain[-4:].lower() in (".mrc") :
-					gain_hdr = EMData(options.gain,0,True)
-					nx = gain_hdr["nx"]
-					ny = gain_hdr["ny"]
-					nd = gain_hdr["nz"]
-					gain=EMData(options.gain,0,False,Region(0,0,0,nx,ny,1))
-				else:
-
-					nd=EMUtil.get_image_count(options.gain)
-					gain = EMData(options.gain,0)
-					nx = gain["nx"]
-					ny = gain["ny"]
-				if nd>1:
-					sigg=gain.copy()
-					sigg.to_zero()
-					a=Averagers.get("mean",{"sigma":sigg,"ignore0":1})
-					print("Summing Gain Frames")
-					for i in xrange(0,nd):
-						if options.verbose:
-							sys.stdout.write("({}/{})   \r".format(i+1,nd))
-							sys.stdout.flush()
-						if options.dark != "" and options.dark[-4:].lower() in (".mrc") :
-							t=EMData(options.gain,0,False,Region(0,0,i,nx,ny,1))
-						else:
-							t=EMData(options.gain,i)
-						#t.process_inplace("threshold.clampminmax.nsigma",{"nsigma":4.0,"tozero":1})
-						t.process_inplace("threshold.clampminmax",{"minval":0,"maxval":t["mean"]+t["sigma"]*3.5,"tozero":1})
-						a.add_image(t)
-					gain=a.finish()
-					if options.debug: sigg.write_image(options.gain.rsplit(".",1)[0]+"_sig.hdf")
-					if options.fixbadpixels:
-						sigg.process_inplace("threshold.binary",{"value":sigg["sigma"]/10.0}) # Theoretically a "perfect" pixel would have zero sigma, but in reality, the opposite is true
-						if dark!="" : 
-							try: sigg.mult(sigd)
-							except: pass
-						gain.mult(sigg)
-					if options.debug: gain.write_image(options.gain.rsplit(".",1)[0]+"_sum.hdf")
-				if options.de64:
-					gain.process_inplace( "threshold.clampminmax", { "minval" : gain[ 'mean' ] - 8.0 * gain[ 'sigma' ], "maxval" : gain[ 'mean' ] + 8.0 * gain[ 'sigma' ], "tomean" : True } )
-				else:
-					gain.process_inplace("math.reciprocal",{"zero_to":0.0})
-					#gain.mult(1.0/99.0)
-					#gain.process_inplace("threshold.clampminmax.nsigma",{"nsigma":3.0})
-
-			if dark!="" and options.gain != "" and options.gain_darkcorrected == False: gain.sub(dark) # dark correct the gain-reference
-
-			if options.de64:
-				mean_val = gain["mean"]
-				if mean_val <= 0.: mean_val=1.
-				gain.process_inplace("threshold.belowtominval",{"minval":0.01,"newval":mean_val})
-
-			gain.mult(1.0/gain["mean"])
-
-			if options.invert_gain: gain.process_inplace("math.reciprocal")
-	#elif options.gaink2 :
-	#	gain=EMData(options.gaink2)
-	else : gain=None
-
-	if options.rotate_gain and gain != None:
-		tf = Transform({"type":"2d","alpha":int(options.rotate_gain)})
-		gain.process_inplace("xform",{"transform":tf})
-
-	if options.reverse_gain: gain.process_inplace("xform.reverse",{"axis":"y"})
-
-	if options.rotate_dark and dark != None:
-		tf = Transform({"type":"2d","alpha":int(options.rotate_dark)})
-		dark.process_inplace("xform",{"transform":tf})
-
-	if options.reverse_dark: dark.process_inplace("xform.reverse",{"axis":"y"})
-
-	if gain:
-		gainname="{}/e2ddd_gainref.hdf".format(moviesdir)
-		gain.write_image(gainname,-1)
-		gainid=EMUtil.get_image_count(gainname)-1
-		gain["filename"]=gainname
-		gain["fileid"]=gainid
-		gain["raw"]=options.gain
-
-	if dark:
-		darkname="{}/e2ddd_darkref.hdf".format(moviesdir)
-		dark.write_image(darkname,-1)
-		darkid=EMUtil.get_image_count(darkname)-1
-		dark["filename"]=darkname
-		dark["fileid"]=darkid
-		dark["raw"] = options.dark
+		gain = EMData(options.gain)
+	else: gain = None
 
 	step = options.step.split(",")
 
@@ -321,39 +196,59 @@ def main():
 		print("Processing {}".format(base_name(fsp)))
 
 		# write movie and preprocessing info
-		db=js_open_dict(info_name(fsp,nodor=True))
-		#db["movie_name"]=fsp
-		if gain:
-			db["gain_name"]=gainname
-			db["gain_id"]=gainid
-			db["gain_raw"]=options.gain
-			if options.rotate_gain:
-				db["rotate_gain"] = options.rotate_gain
-			if options.reverse_gain:
-				db["reverse_gain"] = options.reverse_gain
-			if options.invert_gain:
-				db["invert_gain"] = options.invert_gain
-			if options.gain_darkcorrected:
-				db["gain_darkcorrected"] = options.gain_darkcorrected
-		if dark:
-			db["dark_name"]=darkname
-			db["dark_id"]=darkid
-			db["dark_raw"]=options.dark
-			if options.rotate_dark:
-				db["rotate_dark"]=options.rotate_dark
-			if options.reverse_dark:
-				db["reverse_dark"]=options.reverse_dark
-		if options.de64:
-			db["de64"] = options.de64
-		if options.k2:
-			db["k2"] = options.k2
-		if options.bad_rows:
-			db["bad_rows"] = options.bad_rows
-		if options.bad_columns:
-			db["bad_columns"] = options.bad_columns
-		if options.fixbadpixels:
-			db["fixbadpixels"] = options.fixbadpixels
-		db.close()
+		# db=js_open_dict(info_name(fsp,nodor=True))
+		# db["movie_name"]=fsp
+		# if gain:
+		# 	db["gain_name"]=options.gain
+		# 	if options.rotate_gain:
+		# 		db["rotate_gain"] = options.rotate_gain
+		# 	if options.reverse_gain:
+		# 		db["reverse_gain"] = options.reverse_gain
+		# 	if options.invert_gain:
+		# 		db["invert_gain"] = options.invert_gain
+		# 	if options.gain_darkcorrected:
+		# 		db["gain_darkcorrected"] = options.gain_darkcorrected
+		# if dark:
+		# 	db["dark_name"]=options.dark
+		# 	if options.rotate_dark:
+		# 		db["rotate_dark"]=options.rotate_dark
+		# 	if options.reverse_dark:
+		# 		db["reverse_dark"]=options.reverse_dark
+		# if options.de64:
+		# 	db["de64"] = options.de64
+		# if options.k2:
+		# 	db["k2"] = options.k2
+		# if options.bad_rows:
+		# 	db["bad_rows"] = options.bad_rows
+		# if options.bad_columns:
+		# 	db["bad_columns"] = options.bad_columns
+		# if options.fixbadpixels:
+		# 	db["fixbadpixels"] = options.fixbadpixels
+		# db.close()
+
+		dark = EMData(options.dark)
+		gain = EMData(options.gain)
+
+		dark.process_inplace("threshold.clampminmax.nsigma",{"nsigma":3.0})
+
+		if options.rotate_dark and dark != None:
+			tf = Transform({"type":"2d","alpha":int(options.rotate_dark)})
+			dark.process_inplace("xform",{"transform":tf})
+
+		if options.reverse_dark: 
+			dark.process_inplace("xform.reverse",{"axis":"y"})
+
+		if options.invert_gain: gain.process_inplace("math.reciprocal")
+
+		if options.rotate_gain and gain != None:
+			tf = Transform({"type":"2d","alpha":int(options.rotate_gain)})
+			gain.process_inplace("xform",{"transform":tf})
+
+		if options.reverse_gain: 
+			gain.process_inplace("xform.reverse",{"axis":"y"})
+
+		if dark!="" and options.gain != "" and options.gain_darkcorrected == False: 
+			gain.sub(dark) # dark correct the gain-reference
 
 		n = EMUtil.get_image_count(fsp)
 
