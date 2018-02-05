@@ -103,7 +103,7 @@ def main():
 			for i in xrange(nimg):
 
 				img=EMData(infile,i)
-				img["stage_tilt"] = angle
+				img["tilt_angle"] = angle
 				
 				db=js_open_dict(info_name(infile,nodir=True))
 				try: # this data may already be present
