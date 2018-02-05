@@ -5,85 +5,63 @@
 [
 
   {
-      "ICON": "multiple_images",
-      "NAME": "Raw Datas",
+      "ICON": "green_boxes",
+      "NAME": "Import Tools",
       "CHILDREN": [
-         {
-            "ICON": "multiple_images",
+          {
+            "ICON": "green_boxes",
             "WIZARD":"/lib/pmconfig/tomoimport.json",
             "PROGRAM": "e2import.py",
-            "MODE": "tilts",
-            "NAME": "Import Tilts Series",
+            "MODE": "serialem",
+            "NAME": "Import from SerialEM",
             "CHILDREN": []
-         },
-         {
-            "ICON": "multiple_images",
-            "MODE": "movies",
+          },
+          {
+            "ICON": "green_boxes",
+            "WIZARD":"/lib/pmconfig/tomoimport.json",
             "PROGRAM": "e2import.py",
-            "NAME": "Import Movies & Refs",
-            "CHILDREN": []
-         },
-         {
-            "ICON": "multiple_images",
-            "MODE": "tomo",
-            "PROGRAM": "e2ddd_movie.py",
-            "NAME": "Process Movie Data",
+            "MODE": "fei",
+            "NAME": "Import from FEI",
             "CHILDREN": []
           },
           {
-            "ICON": "multiple_images",
-            "MODE": "movies",
-            "PROGRAM": "e2rawdata.py",
-            "WIZARD":"/lib/pmconfig/rawdata.json",
-            "NAME": "Link Avg Movies & est Defocus",
-            "CHILDREN": []
-          },
-          {
-            "ICON": "multiple_images",
-            "PROGRAM": "e2buildstacks.py",
-            "MODE": "tomo",
-            "NAME": "Combine Aligned Tilts",
+            "ICON": "green_boxes",
+            "WIZARD":"/lib/pmconfig/tomoimport.json",
+            "PROGRAM": "e2import.py",
+            "MODE": "uscf",
+            "NAME": "Import from UCSF Tomo",
             "CHILDREN": []
           },
           {
             "ICON": "green_boxes",
             "PROGRAM": "e2import.py",
             "MODE": "tomos",
-            "NAME": "Import 3D Tomogram",
+            "NAME": "Import 3D Tomograms",
             "CHILDREN": []
-          }
+           }
       ]
   },
+
   {
-      "ICON": "multiple_images",
-      "NAME": "3D Reconstruction",
-      "CHILDREN": [
-          {
-            "ICON": "multiple_images",
-            "PROGRAM": "e2tomogram.py",
-            "MODE": "recon",
-            "NAME": "3D Reconstruction",
-            "CHILDREN": []
-          },
-          {
-            "ICON": "single_image",
-            "PROGRAM": "e2erasefiducials.py",
-            "MODE": "tiltseries",
-            "WIKIPAGE": "http://blake.bcm.tmc.edu/emanwiki/EMAN2/Programs/e2ctf_auto",
-            "NAME": "Fiducial Subtraction",
-            "NOTELEVEL": "1",
-            "CHILDREN": []
-          },
-          {
-            "ICON": "ctf",
-            "PROGRAM": "e2spt_ctf_old.py",
-            "MODE": "tomo",
-            "WIKIPAGE": "http://blake.bcm.tmc.edu/emanwiki/EMAN2/Programs/e2ctf_auto",
-            "NAME": "CTF Correction",
-            "NOTELEVEL": "1",
-            "CHILDREN": []
-          }
-      ]
+    "ICON": "multiple_images",
+    "MODE": "tomo",
+    "PROGRAM": "e2ddd_movie.py",
+    "NAME": "Process Movie Data",
+    "CHILDREN": []
+  },
+  {
+    "ICON": "multiple_images",
+    "PROGRAM": "e2buildstacks.py",
+    "MODE": "default",
+    "NAME": "Generate Tiltseries",
+    "CHILDREN": []
+  },
+  {
+    "ICON": "multiple_images",
+    "PROGRAM": "e2tomogram.py",
+    "MODE": "recon",
+    "NAME": "3D Reconstruction",
+    "CHILDREN": []
   },
   {
       "ICON": "single_image",

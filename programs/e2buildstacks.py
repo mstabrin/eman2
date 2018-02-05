@@ -55,31 +55,34 @@ def main():
 	parser = EMArgumentParser(usage=usage,version=EMANVERSION)
 	
 	parser.add_pos_argument(name="stack_files",help="List of images to be stacked", default="", guitype='filebox', browser="EMParticlesEditTable(withmodal=True,multiselect=True)",  row=0, col=0,rowspan=1, colspan=3, nosharedb=True,mode="tomo,default")
-	parser.add_argument("--output",type=str,help="Name of the output stack to build (including file extension)", default=None, guitype='strbox',row=2, col=0, rowspan=1, colspan=1, mode="default,tomo")
-	parser.add_argument("--tomo",action="store_true",default=False,help="Write results to 'tiltseries' directory in current project.", guitype='boolbox',row=2, col=2, rowspan=1, colspan=1,mode="tomo[True]")
+	parser.add_argument("--output",required=True,type=str,help="Name of the output stack to build (including file extension).", default=None, guitype='strbox',row=2, col=0, rowspan=1, colspan=1, mode="default,tomo")
+	parser.add_argument("--tilts",action="store_true",default=False,help="Write results to 'tiltseries' directory in current project.", guitype='boolbox',row=2, col=2, rowspan=1, colspan=1,mode="tomo[True]")
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-1)
 	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, help="verbose level [0-9], higner number means higher level of verboseness",default=1)
 	
 	(options, args) = parser.parse_args()
 	
-	if options.output==None :
-		print("--output is required (output file)")
-		sys.exit(1)
+	# if options.output==None:
+	# 	print("--output is required (output file)")
+	# 	sys.exit(1)
 
-	# remove existing output file
-	if os.path.exists(options.output) :
-		try: os.unlink(options.output)
-		except:
-			print("ERROR: Unable to remove ",options.output,". Cannot proceed")
-			sys.exit(1)
+
+
 	
-	if options.tomo:
+	if options.tilts:
 
 		stdir = os.path.join(".","tiltseries")
 		if not os.access(stdir, os.R_OK):
 			os.mkdir(stdir)
 
 		options.output = "{}/{}".format(stdir,options.output)
+
+		# remove existing output file
+		if os.path.exists(options.output) :
+			print("The file {} already exists.".format(options.output))
+			print("Please move, rename, or remove this file to generate an alternate version with this program.")
+			sys.exit(1)
+
 		n=0		# number of images in output file
 		
 		tlt_assoc = {}
@@ -121,6 +124,13 @@ def main():
 
 	else:
 
+		# remove existing output file
+		if os.path.exists(options.output) :
+			try: os.unlink(options.output)
+			except:
+				print("ERROR: Unable to remove ",options.output,". Cannot proceed")
+				sys.exit(1)
+
 		# if output is LSX format, we handle it differently, with a specific object for these files
 		if options.output[-4:].lower()==".lst" :
 			outfile=LSXFile(options.output)
@@ -141,9 +151,9 @@ def main():
 					img=EMData(infile,i)
 					img.write_image(options.output,n)
 				n+=1
+					
+		if options.verbose : print(n," total images written to ",options.output)
 				
-	if options.verbose : print(n," total images written to ",options.output)
-			
 			
 if __name__ == "__main__":
 	main()
