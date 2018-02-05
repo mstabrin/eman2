@@ -362,14 +362,15 @@ with the same name, you should specify only the .hed files (no renaming is neces
 		stdir = os.path.join(".","tiltseries")
 		if not os.access(stdir, os.R_OK):
 			os.mkdir("tiltseries")
-		
+
+		newname=os.path.join(moviesdir,os.path.basename(filename))
 		for filename in args:
-			tpos=filename.rfind('.')
-			if tpos>0: newname=os.path.join(stdir,os.path.basename(filename[:tpos]+'.hdf')) # use hdf file as output
-			else: newname=os.path.join(stdir,os.path.basename(filename))
 			if options.importation == "move":
 				os.rename(filename,newname)
 			if options.importation == "copy":
+				tpos=filename.rfind('.')
+				if tpos>0: newname=os.path.join(stdir,os.path.basename(filename[:tpos]+'.hdf'))
+				else: newname=os.path.join(stdir,os.path.basename(filename))
 				cmd="e2proc2d.py {} {} ".format(filename, newname)
 				if options.invert: cmd+=" --mult -1 --process normalize "
 				if options.tomoseg_auto:
