@@ -55,20 +55,18 @@ def main():
 	parser = EMArgumentParser(usage=usage,version=EMANVERSION)
 	
 	parser.add_pos_argument(name="stack_files",help="List of images to be stacked", default="", guitype='filebox', browser="EMParticlesEditTable(withmodal=True,multiselect=True)",  row=0, col=0,rowspan=1, colspan=3, nosharedb=True,mode="tomo,default")
-	parser.add_argument("--output",required=True,type=str,help="Name of the output stack to build (including file extension).", default=None, guitype='strbox',row=2, col=0, rowspan=1, colspan=1, mode="default,tomo")
+	parser.add_argument("--output",type=str,help="Name of the output stack to build (including file extension).", default=None, guitype='strbox',row=2, col=0, rowspan=1, colspan=1, mode="default,tomo")
 	parser.add_argument("--tilts",action="store_true",default=False,help="Write results to 'tiltseries' directory in current project.", guitype='boolbox',row=2, col=2, rowspan=1, colspan=1,mode="tomo[True]")
+	parser.add_argument("--angles",required=True,type=str,help="Name of tilt angles text file. Note, angles must correspond to stack file names in alphabetical/numerical order.", default=None, guitype='strbox',row=2, col=0, rowspan=1, colspan=1, mode="tomo")
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-1)
 	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, help="verbose level [0-9], higner number means higher level of verboseness",default=1)
 	
 	(options, args) = parser.parse_args()
 	
-	# if options.output==None:
-	# 	print("--output is required (output file)")
-	# 	sys.exit(1)
+	if options.output==None:
+		print("--output is required (output file)")
+		sys.exit(1)
 
-
-
-	
 	if options.tilts:
 
 		stdir = os.path.join(".","tiltseries")
@@ -121,7 +119,6 @@ def main():
 
 				img.write_image(options.output,n)
 				n+=1
-
 	else:
 
 		# remove existing output file

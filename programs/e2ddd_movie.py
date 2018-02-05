@@ -310,6 +310,13 @@ def main():
 	for fsp in args:
 		print("Processing {}".format(base_name(fsp)))
 
+		if options.import_movies:
+			if not os.path.isfile("{}/{}".format(moviesdir,os.path.basename(fsp))):
+				print("{} was not previously imported into this project. Importing to 'movies' now.")
+				newname=os.path.join(moviesdir,os.path.basename(fsp))
+				if newname[-4:] == ".mrc": newname+="s"
+				run("e2proc2d.py {} {} ".format(filename, newname))
+
 		# write reference image info to corresponding movie info.json files
 		db=js_open_dict(info_name(fsp,nodor=True))
 		if gain:
@@ -644,15 +651,15 @@ def process_movie(fsp,dark,gain,first,flast,step,options):
 
 		# store alignment parameters
 		db=js_open_dict(info_name(fsp,nodir=True))
-		db["ddd_ali_trans"]=[i for i in locs]
-		db["ddd_ali_qual"]=[q for q in quals]
-		db["ddd_ali_runtime"]=runtime
-		db["ddd_ali_precision"]=options.round
-		db["ddd_ali_optbox"]=options.optbox
-		db["ddd_ali_optstep"]=options.optstep
-		db["ddd_ali_optalpha"]=options.optalpha
-		db["ddd_ali_magnitude"]=drs
-		db["ddd_ali_relative_magnitude"]=reldrs
+		db["ddd_alitrans"]=[i for i in locs]
+		db["ddd_aliqual"]=[q for q in quals]
+		db["ddd_alitime"]=runtime
+		db["ddd_alimag"]=drs
+		db["ddd_alirelmag"]=reldrs
+		db["ddd_round"]=options.round
+		db["ddd_optbox"]=options.optbox
+		db["ddd_optstep"]=options.optstep
+		db["ddd_optalpha"]=options.optalpha
 		db.close()
 
 		# if options.plot:
@@ -670,10 +677,9 @@ def process_movie(fsp,dark,gain,first,flast,step,options):
 		# 		except: pass
 		# 	ax[2].set_title("CCF Peak Coordinates")
 
-	try:
-		# Load previous/current alignment params (or input translations) (BOX FORMAT, tab separated values):
+	try: # Load previous/current alignment params (or input translations) (BOX FORMAT, tab separated values):
 		db=js_open_dict(info_name(fsp,nodir=True))
-		locs = db["ddd_ali_trans"]
+		locs = db["ddd_alitrans"]
 		db.close()
 	except:
 		print("Error: Could not find prior alignment for {}. Exiting".format(fsp))

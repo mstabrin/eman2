@@ -20,23 +20,37 @@ def main():
 	e2tomogram.py <tilt series stack> [(--rawtlt) or (--tiltstep --zeroid)] [options]
 	
 	"""
+
 	parser = EMArgumentParser(usage=usage,version=EMANVERSION)
-	parser.add_argument("--rawtlt", type=str,help="Text file contains raw tilt angles", default=None)
-	parser.add_argument("--loadparam", type=str,help="Load from existing param file", default=None)
-	parser.add_argument("--zeroid", type=int,help="Index of the center tilt. Ignored when rawtlt is provided.", default=-1)
-	parser.add_argument("--npk", type=int,help="Number of landmarks to use.", default=20)
-	parser.add_argument("--tltstep", type=float,help="Step between tilts. Ignored when rawtlt is provided.", default=2.)
-	parser.add_argument("--tltax", type=float,help="Angle of the tilt axis. The program will calculate one if this option is not provided", default=None)
-	parser.add_argument("--pkeep", type=float,help="Fraction of landmarks to keep in the tracking.", default=.5)
-	parser.add_argument("--tltkeep", type=float,help="Fraction of tilts to keep in the reconstruction.", default=.9)
-	parser.add_argument("--minloss", type=float,help="Stop refinement when the loss is lower than this value.", default=1.)
-	parser.add_argument("--bxsz", type=int,help="Box size of the particles for tracking", default=-1)
-	parser.add_argument("--writetmp", action="store_true",help="Write intermidiate files", default=False)
-	parser.add_argument("--rmgold", action="store_true",help="Remove gold fiducials.", default=False)
-	parser.add_argument("--nofiducial", action="store_true",help="Fiducial-less mode. This will change a few internal parameters to make it work.", default=False)
-	parser.add_argument("--reconmode", type=str,help="Reconstruction mode. Choose from nearest_neighbor, gauss_2, gauss_3, and gauss_5.", default="gauss_2")
-	parser.add_argument("--threads", type=int,help="Number of threads", default=12)
-	parser.add_argument("--niter", type=int,help="Number of iterations", default=3)
+
+	parser.add_pos_argument(name="tiltseries",help="Specify the tilt series you intend to reconstruct.", default="", guitype='filebox', browser="EMBrowserWidget(withmodal=True,multiselect=False)", filecheck=False, row=0, col=0,rowspan=1, colspan=2,nosharedb=True)
+
+	parser.add_header(name="orblock1", help='Just a visual separation', title="Optional:", row=1, col=0, rowspan=1, colspan=2)
+
+
+	parser.add_argument("--rawtlt", type=str,help="Override tilt angles stored in project metadata and tiltseries header. Text file contains raw tilt angles.", default="", guitype='filebox', browser="EMBrowserWidget(withmodal=True,multiselect=False)", filecheck=False, row=3, col=0, rowspan=1, colspan=2)
+	parser.add_argument("--loadparam", type=str,help="Load from existing param file", default="", guitype='filebox', browser="EMBrowserWidget(withmodal=True,multiselect=False)", filecheck=False, row=4, col=0, rowspan=1, colspan=2)
+
+	parser.add_argument("--zeroid", type=int,help="Index of the center tilt. Ignored when rawtlt is provided.", default=-1,guitype='intbox',row=5, col=0, rowspan=1, colspan=1)
+	parser.add_argument("--tltstep", type=float,help="Step between tilts. Ignored when rawtlt is provided.", default=2.,guitype='floatbox',row=5, col=1, rowspan=1, colspan=1)
+	parser.add_argument("--tltax", type=float,help="Angle of the tilt axis. The program will calculate one if this option is not provided", default=None,guitype='floatbox',row=6, col=0, rowspan=1, colspan=1)
+	parser.add_argument("--tltkeep", type=float,help="Fraction of tilts to keep in the reconstruction.", default=.9,guitype='floatbox',row=6, col=1, rowspan=1, colspan=1)
+
+	parser.add_argument("--npk", type=int,help="Number of landmarks to use.", default=20,guitype='intbox',row=7, col=0, rowspan=1, colspan=1)
+	parser.add_argument("--pkeep", type=float,help="Fraction of landmarks to keep in the tracking.", default=.5,guitype='floatbox',row=7, col=1, rowspan=1, colspan=1)
+	
+	parser.add_argument("--bxsz", type=int,help="Box size of the particles for tracking", default=-1,guitype='intbox',row=8, col=0, rowspan=1, colspan=1)
+	parser.add_argument("--minloss", type=float,help="Stop refinement when the loss is lower than this value.", default=1.,guitype='floatbox',row=8, col=1, rowspan=1, colspan=1)
+
+	parser.add_argument("--rmgold", action="store_true",help="Remove gold fiducials.", default=False,guitype='boolbox',row=9, col=0, rowspan=1, colspan=1)
+	parser.add_argument("--nofiducial", action="store_true",help="Fiducial-less mode. This will change a few internal parameters to make it work.", default=False, guitype='boolbox',row=9, col=1, rowspan=1, colspan=1)
+
+	parser.add_argument("--writetmp", action="store_true",help="Write intermidiate files", default=False,guitype='boolbox',row=10, col=0, rowspan=1, colspan=1)
+
+	parser.add_argument("--reconmode", type=str,help="Reconstruction mode. Choose from nearest_neighbor, gauss_2, gauss_3, and gauss_5.", default="gauss_2", choices=["gauss_2","gauss_3","gauss_5"], choicelist='["gauss_2","gauss_3","gauss_5"]', guitype='combobox', row=10, col=1, rowspan=1, colspan=1)
+
+	parser.add_argument("--threads", type=int,help="Number of threads", default=12,guitype='intbox',row=11, col=0, rowspan=1, colspan=1)
+	parser.add_argument("--niter", type=int,help="Number of iterations", default=3,guitype='intbox',row=11, col=1, rowspan=1, colspan=1)
 	parser.add_argument("--verbose", type=int,help="Verbose", default=0)
 	
 	(options, args) = parser.parse_args()

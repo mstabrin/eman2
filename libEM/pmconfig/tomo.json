@@ -12,36 +12,33 @@
             "ICON": "green_boxes",
             "WIZARD":"/lib/pmconfig/tomoimport.json",
             "PROGRAM": "e2import.py",
-            "MODE": "serialem",
-            "NAME": "Import from SerialEM",
+            "MODE": "meta",
+            "NAME": "Import Metadata",
             "CHILDREN": []
           },
           {
-            "ICON": "green_boxes",
-            "WIZARD":"/lib/pmconfig/tomoimport.json",
+            "ICON": "multiple_images",
             "PROGRAM": "e2import.py",
-            "MODE": "fei",
-            "NAME": "Import from FEI",
+            "MODE": "movies",
+            "NAME": "Import Movies",
             "CHILDREN": []
-          },
-          {
-            "ICON": "green_boxes",
-            "WIZARD":"/lib/pmconfig/tomoimport.json",
+           },
+           {
+            "ICON": "multiple_images",
             "PROGRAM": "e2import.py",
-            "MODE": "uscf",
-            "NAME": "Import from UCSF Tomo",
+            "MODE": "tilts",
+            "NAME": "Import Tiltseries",
             "CHILDREN": []
-          },
-          {
-            "ICON": "green_boxes",
+           },
+           {
+            "ICON": "tomo_hunter",
             "PROGRAM": "e2import.py",
             "MODE": "tomos",
-            "NAME": "Import 3D Tomograms",
+            "NAME": "Import Tomograms",
             "CHILDREN": []
            }
       ]
   },
-
   {
     "ICON": "multiple_images",
     "MODE": "tomo",
@@ -59,7 +56,7 @@
   {
     "ICON": "multiple_images",
     "PROGRAM": "e2tomogram.py",
-    "MODE": "recon",
+    "MODE": "",
     "NAME": "3D Reconstruction",
     "CHILDREN": []
   },

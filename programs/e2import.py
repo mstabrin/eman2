@@ -41,43 +41,42 @@ def main():
 	usage = """prog [options] files
 	This program performs a variety of tasks for getting data or metadata from other programs into an EMAN2 project.
 
+	import_movies - imports DDD movie data for a cryoEM project (--importation copy recommended)
+
 	import_particles - will simply copy a set of per-micrograph particle files into EMAN2.1's preferred HDF format in particles/
 	import_boxes - will read EMAN1 '.box' files (text files containing coordinates) into appropriate info/*json files (see --box_type)
 	import_eman1 - will convert a typical EMAN1 phase-flipped start.hed/img file into an EMAN2 project (converting files, fixing CTF, splitting, ...)
 
-	import_tomos - imports subtomogams for a SPT project (see also --importation)
-	import_serialem - imports subtomogams for a SPT project (see also --importation)
+	import_tomos - flag to handle imported files as subtomogams for a SPT project (see also --importation)
+	import_serialem - flag to handle imported files as SerialEM mdoc files
+	import_fei - flag to handle imported files as FEI tomography metadata files
+	import_ucsftomo - flag to handle imported files as UCSF tomo metadata files
 	import_tiltseries - imports tilt series for a tomography project (--importation copy recommended)
-	import_tiltangles - imports tilt ang.es for corresponding tilt series (--importation copy recommended)
-
 	"""
 
 	parser = EMArgumentParser(usage=usage,version=EMANVERSION)
 
-	parser.add_pos_argument(name="import_files",help="List the files to import here.", default="", guitype='filebox', browser="EMBrowserWidget(withmodal=True,multiselect=True)",  row=0, col=0, rowspan=1, colspan=2, nosharedb=True, mode='coords,parts,tomos,eman1,movies,tilts')
+	parser.add_pos_argument(name="files",help="List the files to import here.", default="", guitype='filebox', browser="EMBrowserWidget(withmodal=True,multiselect=True)",  row=0, col=0, rowspan=1, colspan=2, nosharedb=True, mode='coords,parts,tomos,eman1,movies,tilts,meta')
 
-	parser.add_header(name="filterheader", help='Options below this label are specific to e2import', title="### e2import options ###", row=2, col=0, rowspan=1, colspan=2, mode='coords,parts,tomos')
+	parser.add_header(name="filterheader", help='Options below this label are specific to e2import', title="### e2import options ###", row=2, col=0, rowspan=1, colspan=2, mode='coords,parts')
 
-	# SPR Data
+	# Type Flags
+	parser.add_argument("--import_movies",action="store_true",help="Import DDD movies",default=False, guitype='boolbox', row=3, col=0, rowspan=1, colspan=1, mode='movies[True]')
+	parser.add_argument("--import_tiltseries",action="store_true",help="Import tiltseries",default=False, guitype='boolbox', row=3, col=0, rowspan=1, colspan=1, mode='tilts[True]')
+	parser.add_argument("--import_tomos",action="store_true",help="Import tomograms for segmentation and/or subtomogram averaging",default=False, guitype='boolbox', row=3, col=0, rowspan=1, colspan=1, mode='tomos[True]')
+	
+	parser.add_argument("--serialem_mdoc",action="store_true",help="Import metadata from corresponding SerialEM '.mdoc' files.",default=False, guitype='boolbox', row=1, col=0, rowspan=1, colspan=3, mode='meta')
+	parser.add_argument("--fei_tomo",action="store_true",help="Import metadata from corresponding FEI tomography files.",default=False, guitype='boolbox', row=2, col=0, rowspan=1, colspan=3, mode='meta')
+	parser.add_argument("--ucsf_tomo",action="store_true",help="Import metadata from corresponding UCSF Tomo files.",default=False, guitype='boolbox', row=3, col=0, rowspan=1, colspan=3, mode='meta')
+
 	parser.add_argument("--import_particles",action="store_true",help="Import particles",default=False, guitype='boolbox', row=3, col=0, rowspan=1, colspan=1, mode='parts[True]')
 	parser.add_argument("--import_eman1",action="store_true",help="This will import a phase-flipped particle stack from EMAN1",default=False, guitype='boolbox', row=3, col=0, rowspan=1, colspan=1, mode='eman1[True]')
 
-	# Tomo Data
-	parser.add_argument("--import_tomos",action="store_true",help="Import tomograms for segmentation and/or subtomogram averaging",default=False, guitype='boolbox', row=3, col=0, rowspan=1, colspan=1, mode='tomos[True]')
+	parser.add_argument("--importation",help="Specify import mode: move, copy or link",default='copy',guitype='combobox',choicelist='["move","copy","link"]',row=3,col=1,rowspan=1,colspan=1, mode='tomos["copy"],tilts["copy"],movies["move"]')
 
-	# Tiltseries
-	parser.add_argument("--serialem",action="store_true",help="Interpret input as a tiltseries produced by SerialEM.",default=False, guitype='boolbox', row=3, col=0, rowspan=1, colspan=1, mode='tilts[True]')
-	parser.add_argument("--import_mdoc",type=str,help="Import metadata from a corresponding SerialEM '.mdoc' file.\nIf not specified, this program will search for an MDOC file with the standard naming convention relative to 'input_tiltseries'\nImportant: this will ensure the correct tilt series order when reconstructing a motion corrected, bidrectional tilt series.",default="", guitype='filebox', browser="EMBrowserWidget(withmodal=True,multiselect=True)", row=1, col=0, rowspan=1, colspan=3, mode='tilts')
-
-	parser.add_argument("--import_movies",action="store_true",help="This will import a phase-flipped particle stack from EMAN1",default=False, guitype='boolbox', row=3, col=0, rowspan=1, colspan=1, mode='movies[True]')
-	parser.add_argument("--import_dark",type=str,help="Import dark correction image to be associated with imported movies",default="", guitype='filebox', browser="EMBrowserWidget(withmodal=True,multiselect=True)", row=1, col=0, rowspan=1, colspan=3, mode='movies')
-	parser.add_argument("--import_gain",type=str,help="Import gain normalization image to be associated with these files.",default="", guitype='filebox', browser="EMBrowserWidget(withmodal=True,multiselect=True)", row=2, col=0, rowspan=1, colspan=3, mode='movies')
-
-	parser.add_argument("--importation",help="Specify import mode: move, copy or link",default='copy',guitype='combobox',choicelist='["move","copy","link"]',row=3,col=1,rowspan=1,colspan=1, mode='tomos,tilts,movies["move"]')
-
-	parser.add_argument("--invert",action="store_true",help="Invert the contrast before importing tomograms",default=False, guitype='boolbox', row=4, col=1, rowspan=1, colspan=1, mode='tomos,tilts')
-	parser.add_argument("--shrink",type=int,help="Shrink tomograms before importing. Dose not work while not copying.",default=1, guitype='intbox', row=4, col=0, rowspan=1, colspan=1, mode='tomos')
-	parser.add_argument("--tomoseg_auto",action="store_true",help="Default process for tomogram segmentation, including lowpass, highpass, normalize, clampminmax.",default=True, guitype='boolbox', row=4, col=2, rowspan=1, colspan=1, mode='tomos,tilts')
+	parser.add_argument("--invert",action="store_true",help="Invert the contrast before importing tomograms",default=False, guitype='boolbox', row=4, col=0, rowspan=1, colspan=1, mode='tomos,tilts')
+	parser.add_argument("--tomoseg_auto",action="store_true",help="Default process for tomogram segmentation, including lowpass, highpass, normalize, clampminmax.",default=True, guitype='boolbox', row=4, col=1, rowspan=1, colspan=1, mode='tomos,tilts')
+	parser.add_argument("--shrink",type=int,help="Shrink tomograms before importing. Dose not work while not copying.",default=1, guitype='floatbox', row=4, col=2, rowspan=1, colspan=1, mode='tomos')
 	parser.add_argument("--preprocess",type=str,help="Other pre-processing operation before importing tomograms. Dose not work while not copying.",default="", guitype='strbox', row=5, col=0, rowspan=1, colspan=2, mode='tomos,tilts')
 
 	parser.add_argument("--import_boxes",action="store_true",help="Import boxes",default=False, guitype='boolbox', row=3, col=0, rowspan=1, colspan=1, mode='coords[True]')
@@ -309,40 +308,38 @@ with the same name, you should specify only the .hed files (no renaming is neces
 			else: run("e2proc2d.py {} particles/{}.hdf --inplace".format(fsp,base_name(fsp)))
 
 
+	# if options.import_dark or options.import_gain:
+	# 	dgdir = os.path.join(".","darkgain")
+	# 	if not os.access(dgdir, os.R_OK):
+	# 		os.mkdir(dgdir)
 
+	# 	if options.import_dark:
+	# 		darkname=os.path.join(dgdir,os.path.basename(options.import_dark))
+	# 		if darkname[-4:] == ".mrc": darkname+="s"
 
-	if options.import_dark or options.import_gain:
-		dgdir = os.path.join(".","darkgain")
-		if not os.access(dgdir, os.R_OK):
-			os.mkdir(dgdir)
-
-		if options.import_dark:
-			darkname=os.path.join(dgdir,os.path.basename(options.import_dark))
-			if darkname[-4:] == ".mrc": darkname+="s"
-
-			if options.importation == "move":
-				os.rename(options.dark,darkname)
-			if options.importation == "copy":
-				run("e2proc2d.py {} {} ".format(options.import_dark, darkname))
-			if options.importation == "link":
-				os.symlink(options.dark,darkname)
-			#db=js_open_dict(info_name(newname,nodir=True))
-			#db.close()
+	# 		if options.importation == "move":
+	# 			os.rename(options.dark,darkname)
+	# 		if options.importation == "copy":
+	# 			run("e2proc2d.py {} {} ".format(options.import_dark, darkname))
+	# 		if options.importation == "link":
+	# 			os.symlink(options.dark,darkname)
+	# 		#db=js_open_dict(info_name(newname,nodir=True))
+	# 		#db.close()
 		
-		if options.import_dark:
-			gainname=os.path.join(dgdir,os.path.basename(options.import_gain))
-			if gainname[-4:] == ".mrc": gainname+="s"
+	# 	if options.import_dark:
+	# 		gainname=os.path.join(dgdir,os.path.basename(options.import_gain))
+	# 		if gainname[-4:] == ".mrc": gainname+="s"
 
-			if options.importation == "move":
-				os.rename(options.dark,gainname)
-			if options.importation == "copy":
-				run("e2proc2d.py {} {} ".format(options.import_gain, gainname))
-			if options.importation == "link":
-				os.symlink(options.dark,gainname)
+	# 		if options.importation == "move":
+	# 			os.rename(options.dark,gainname)
+	# 		if options.importation == "copy":
+	# 			run("e2proc2d.py {} {} ".format(options.import_gain, gainname))
+	# 		if options.importation == "link":
+	# 			os.symlink(options.dark,gainname)
 
-			#db=js_open_dict(info_name(newname,nodir=True))
-			#db.close()
-		
+	# 		#db=js_open_dict(info_name(newname,nodir=True))
+	# 		#db.close()
+	
 	if options.import_movies:
 		moviesdir = os.path.join(".","movies")
 		if not os.access(moviesdir, os.R_OK):
@@ -357,12 +354,27 @@ with the same name, you should specify only the .hed files (no renaming is neces
 				run("e2proc2d.py {} {} ".format(filename, newname))
 			if options.importation == "link":
 				os.symlink(filename,newname)
-			db=js_open_dict(info_name(newname,nodir=True))
-			if options.import_dark: db["ddd_gainref"]=gainname
-			if options.import_dark: db["ddd_darkref"]=darkname
-			db.close()
 		print("Done.")
-	
+
+	# Import tilt series
+	if options.import_tiltseries:
+
+		stdir = os.path.join(".","tiltseries")
+		if not os.access(stdir, os.R_OK):
+			os.mkdir("tiltseries")
+		for filename in args: # copy automatically...always keep original data
+			tpos=filename.rfind('.')
+			if tpos>0: newname=os.path.join(stdir,os.path.basename(filename[:tpos]+'.hdf')) # use hdf file as output
+			else: newname=os.path.join(stdir,os.path.basename(filename))
+			cmd="e2proc3d.py {} {} ".format(filename, newname)
+			if options.invert: cmd+=" --mult -1 --process normalize "
+			if options.tomoseg_auto: 
+				cmd+=" --process filter.lowpass.gauss:cutoff_abs=.25 --process filter.highpass.gauss:cutoff_pixels=5 --process threshold.clampminmax.nsigma:nsigma=3 "
+			cmd+=options.preprocess
+			run(cmd)
+			print("Done.")
+
+
 	# Import tomograms
 	if options.import_tomos:
 		tomosdir = os.path.join(".","tomograms")
@@ -373,12 +385,10 @@ with the same name, you should specify only the .hed files (no renaming is neces
 				os.rename(filename,os.path.join(tomosdir,os.path.basename(filename)))
 			if options.importation == "copy":
 				### use hdf file as output
-
 				if options.shrink>1:
 					shrinkstr="_bin{:d}".format(options.shrink)
 				else:
 					shrinkstr=""
-
 				tpos=filename.rfind('.')
 				if tpos>0:
 					newname=os.path.join(tomosdir,os.path.basename(filename[:tpos]+shrinkstr+'.hdf'))
@@ -399,68 +409,36 @@ with the same name, you should specify only the .hed files (no renaming is neces
 				os.symlink(filename,os.path.join(tomosdir,os.path.basename(filename)))
 
 	# Import serialEM metadata
-	if options.import_mdoc:
-		mdoc = read_mdoc(options.import_mdoc)
-		
-		# check and correct project parameters from MDOC file contents
-		d = js_open_dict("info/project.json")
-		try: d.setval("global.apix",mdoc["PixelSpacing"],deferupdate=True)
-		except: pass
-		try: d.setval("global.microscope_voltage",mdoc["Voltage"],deferupdate=True)
-		except: pass
-		d.close()
+	if options.serialem_mdoc:
 
-		# raw = sorted([t for t in os.listdir("rawtilts")])
-		# for j,tlt in enumerate(raw):
-		# 	for z in range(mdoc["zval"]+1):
-		# 		if mdoc[z]["SubFramePath"] in base_name(tlt):
-		# 			d = js_open_dict(info_name(tlt))
-		# 			for k in mdoc[z].keys():
-		# 				d.setval(k,mdoc[z][k],deferupdate=True)
-		# 			d.close()
-		# 			break
-
-		for z in range(mdoc["zval"]+1):
-			tlt = mdoc[z]["SubFramePath"].rsplit("\\")[-1]+"_RawImages"
-			d = js_open_dict(info_name(tlt))
-			for k in mdoc[z].keys():
-				d.setval(k,mdoc[z][k],deferupdate=True)
+		for fn in args:
+			mdoc = read_mdoc(fn)
+			
+			# check and correct project parameters from MDOC file contents
+			d = js_open_dict("info/project.json")
+			try: d.setval("global.apix",mdoc["PixelSpacing"],deferupdate=True)
+			except: pass
+			try: d.setval("global.microscope_voltage",mdoc["Voltage"],deferupdate=True)
+			except: pass
 			d.close()
 
-	# Import tilt series
-	if options.serialem:
+			# for each referenced image, append pertinent keys/values to corresponding info.json
+			for z in range(mdoc["zval"]+1):
+				tlt = mdoc[z]["SubFramePath"].rsplit("\\")[-1]+"_RawImages"
+				d = js_open_dict(info_name(tlt))
+				for k in mdoc[z].keys():
+					d.setval(k,mdoc[z][k],deferupdate=True)
+				d.close()
 
-		tomosdir = os.path.join(".","orig")
-		if not os.access(tomosdir, os.R_OK):
-			os.mkdir("orig")
-		for filename in args:
-			if options.importation == "move":
-				os.rename(filename,os.path.join(tomosdir,os.path.basename(filename)))
-			if options.importation == "copy":
-				### use hdf file as output
-				if options.shrink>1:
-					shrinkstr="_bin{:d}".format(options.shrink)
-				else:
-					shrinkstr=""
-				tpos=filename.rfind('.')
-				if tpos>0:
-					newname=os.path.join(tomosdir,os.path.basename(filename[:tpos]+shrinkstr+'.hdf'))
-				else:
-					newname=os.path.join(tomosdir,os.path.basename(filename))
-				cmd="e2proc3d.py {} {} ".format(filename, newname)
-				if options.shrink>1:
-					cmd+=" --meanshrink {:d} ".format(options.shrink)
-				if options.invert:
-					cmd+=" --mult -1 --process normalize "
-				if options.tomoseg_auto:
-					cmd+=" --process filter.lowpass.gauss:cutoff_abs=.25 --process filter.highpass.gauss:cutoff_pixels=5 --process normalize --process threshold.clampminmax.nsigma:nsigma=3 "
-				cmd+=options.preprocess
-				run(cmd)
-				print("Done.")
-				#shutil.copy(filename,os.path.join(tomosdir,os.path.basename(filename)))
-			if options.importation == "link":
-				os.symlink(filename,os.path.join(tomosdir,os.path.basename(filename)))
+	# Import FEI metadata
+	if options.fei_tomo:
+		print("FEI tomography metadata not yet handled by this program.")
+		sys.exit(1)
 
+	# Import UCSF tomo metadata
+	if options.ucsf_tomo:
+		print("UCSF tomography metadata not yet handled by this program.")
+		sys.exit(1)
 
 	E2end(logid)
 
