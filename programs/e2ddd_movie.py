@@ -628,6 +628,33 @@ def process_movie(fsp,dark,gain,first,flast,step,options):
 		runtime = time()-start
 		print("Runtime: {:.1f} s".format(runtime))
 
+		drs = []
+		reldrs = []
+		if options.save_info:
+			out=open("{}_info.txt".format(fsp[:-4]),"w")
+			out.write("#i,dx,dy,dr,rel dr,qual\n")
+			for i in range(1,n):
+				dx,dy = traj[i]
+				dxlast,dylast = traj[i-1]
+				dr = hypot(dx,dy)
+				drs.append(dr)
+				reldr = hypot(dx-dxlast,dy-dylast)
+				reldrs.append(reldr)
+				out.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(i,dx,dy,dr,reldr,quals[i]))
+
+		# store alignment parameters
+		db=js_open_dict(info_name(fsp,nodir=True))
+		db["ddd_ali_trans"]=[i for i in locs]
+		db["ddd_ali_qual"]=[q for q in quals]
+		db["ddd_ali_runtime"]=runtime
+		db["ddd_ali_precision"]=options.round
+		db["ddd_ali_optbox"]=options.optbox
+		db["ddd_ali_optstep"]=options.optstep
+		db["ddd_ali_optalpha"]=options.optalpha
+		db["ddd_ali_magnitude"]=drs
+		db["ddd_ali_relative_magnitude"]=reldrs
+		db.close()
+
 		# if options.plot:
 		# 	import matplotlib.pyplot as plt
 		# 	fig,ax = plt.subplots(1,3,figsize=(12,3))
@@ -643,42 +670,10 @@ def process_movie(fsp,dark,gain,first,flast,step,options):
 		# 		except: pass
 		# 	ax[2].set_title("CCF Peak Coordinates")
 
-	drs = []
-	reldrs = []
-	if options.save_info:
-		out=open("{}_info.txt".format(fsp[:-4]),"w")
-		out.write("#i,dx,dy,dr,rel dr,qual\n")
-		for i in range(1,n):
-			dx,dy = traj[i]
-			dxlast,dylast = traj[i-1]
-			dr = hypot(dx,dy)
-			drs.append(dr)
-			reldr = hypot(dx-dxlast,dy-dylast)
-			reldrs.append(reldr)
-			out.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(i,dx,dy,dr,reldr,quals[i]))
-
-	# store alignment parameters
-	db=js_open_dict(info_name(fsp,nodir=True))
-	db["movieali_trans"]=[i for i in locs]
-	db["movieali_qual"]=[q for q in quals]
-	db["movieali_runtime"]=runtime
-	db["movieali_precision"]=options.round
-	db["movieali_optbox"]=options.optbox
-	db["movieali_optstep"]=options.optstep
-	db["movieali_optalpha"]=options.optalpha
-	db["movieali_magnitude"]=drs
-	db["movieali_relative_magnitude"]=reldrs
-	if options.k2: db["movieali_k2_flag"]=options.k2
-	if options.de64: db["movieali_de64_flag"]=options.de64
-	if options.bad_rows: db["movieali_bad_rows"]=options.bad_rows
-	if options.bad_columns: db["movieali_bad_columns"]=options.bad_columns
-	if options.normaxes: db["movieali_normaxes"] = options.normaxes
-	db.close()
-
 	try:
 		# Load previous/current alignment params (or input translations) (BOX FORMAT, tab separated values):
 		db=js_open_dict(info_name(fsp,nodir=True))
-		locs = db["movieali_trans"]
+		locs = db["ddd_ali_trans"]
 		db.close()
 	except:
 		print("Error: Could not find prior alignment for {}. Exiting".format(fsp))
