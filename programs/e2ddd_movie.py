@@ -83,11 +83,10 @@ def main():
 	parser.add_argument("--gain_darkcorrected", default=False, help="Do not dark correct gain image. False by default.",action="store_true",guitype='boolbox', row=8, col=1, rowspan=1, colspan=1, mode="align,tomo")
 	parser.add_argument("--invert_gain", default=False, help="Use reciprocal of input gain image",action="store_true",guitype='boolbox', row=8, col=2, rowspan=1, colspan=1, mode="align,tomo")
 
-	#parser.add_header(name="orblock3", help='Just a visual separation', title="- OR -", row=6, col=0, rowspan=1, colspan=3, mode="align,tomo")
-
 	parser.add_header(name="orblock4", help='Just a visual separation', title="Output: ", row=10, col=0, rowspan=2, colspan=1, mode="align,tomo")
 
 	parser.add_argument("--align_frames", action="store_true",help="Perform whole-frame alignment of the input stacks",default=False, guitype='boolbox', row=11, col=1, rowspan=1, colspan=1, mode='align[True],tomo[False]')
+	parser.add_argument("--realign", action="store_true",help="Align frames using previous alignment parameters.",default=False, guitype='boolbox', row=11, col=2, rowspan=1, colspan=1, mode='align[False],tomo[False]')
 
 	parser.add_argument("--allali", default=False, help="Average of all aligned frames.",action="store_true", guitype='boolbox', row=12, col=0, rowspan=1, colspan=1, mode='align[True],tomo[True]')
 	parser.add_argument("--noali", default=False, help="Average of non-aligned frames.",action="store_true", guitype='boolbox', row=12, col=1, rowspan=1, colspan=1, mode="align,tomo")
@@ -176,7 +175,7 @@ def main():
 		darkid = 0 # make reference ID (counter based on existing values)
 		for fn in os.listdir("movierefs"):
 			if "dark" in fn.lower(): darkid += 1
-		newfile = "movierefs_raw/darkref_{}.lst".format(darkid)
+		newfile = "movierefs_raw/tmp_dark{}.lst".format(darkid)
 		run("e2proclst.py {} --create {}".format(options.dark.replace(","," "),newfile))
 		options.dark = newfile
 
@@ -184,7 +183,7 @@ def main():
 		gainid = 0 # make reference ID (counter based on existing values)
 		for fn in os.listdir("movierefs"):
 			if "gain" in fn.lower(): gainid += 1
-		newfile = "movierefs_raw/gainref_{}.lst".format(gainid)
+		newfile = "movierefs_raw/tmp_gain{}.lst".format(gainid)
 		run("e2proclst.py {} --create {}".format(options.gain.replace(","," "),newfile))
 		options.gain = newfile
 
@@ -235,7 +234,12 @@ def main():
 		if options.reverse_dark: dark.process_inplace("xform.reverse",{"axis":"y"})
 
 		dfout = "movierefs/{}.hdf".format(base_name(options.dark))
+		tmp = options.dark
+		dfout = dfout.replace("movierefs_raw-","")
 		dark.write_image(dfout,0)
+		options.dark = gfout
+		os.remove(tmp)
+
 	else : dark=None
 
 	if options.gain != "":
@@ -304,7 +308,19 @@ def main():
 		if options.reverse_gain: gain.process_inplace("xform.reverse",{"axis":"y"})
 
 		gfout = "movierefs/{}.hdf".format(base_name(options.gain))
+		tmp = options.gain
+		gfout = gfout.replace("movierefs_raw-","")
 		gain.write_image(gfout,0)
+		options.gain = gfout
+		os.remove(tmp)
+
+	if len(options.gain.split(",")) > 1:
+		gainid = 0 # make reference ID (counter based on existing values)
+		for fn in os.listdir("movierefs"):
+			if "gain" in fn.lower(): gainid += 1
+		newfile = "movierefs_raw/tmp_gain{}.lst".format(gainid)
+		run("e2proclst.py {} --create {}".format(options.gain.replace(","," "),newfile))
+		options.gain = newfile
 		#sigg.write_image(dfout,1)
 
 	else: gain=None
@@ -334,7 +350,7 @@ def main():
 		db=js_open_dict(info_name(fsp,nodir=True))
 		db["data_source"]=fsp
 		if gain:
-			db["ddd_gain_reference"]=gfout
+			db["ddd_gain_reference"] = gfout
 			if options.rotate_gain:
 				db["ddd_rotate_gain"] = options.rotate_gain
 			if options.reverse_gain:
@@ -379,6 +395,7 @@ def main():
 
 		process_movie(fsp, dark, gain, first, flast, step, options)
 
+	print("Done")
 	E2end(pid)
 
 def process_movie(fsp,dark,gain,first,flast,step,options):
@@ -428,21 +445,18 @@ def process_movie(fsp,dark,gain,first,flast,step,options):
 	if options.frames and options.ext == "mrc": os.rename(outname,outname.replace(".mrcs",".mrc"))
 
 	if options.noali:
-		if options.tomo:
-			mgdirname = "rawtilts_noali"
-		else:
-			mgdirname = "micrographs_noali"
+		if options.tomo: mgdirname = os.path.join(".","tilts")
+		else: mgdirname = os.path.join(".","tilts")
 		try: os.mkdir(mgdirname)
 		except: pass
 		alioutname="{}/{}.hdf".format(mgdirname,base_name(fsp))
 		out=qsum(outim)
-		#write out the unaligned average movie
-		out.write_image(alioutname,0)
+		out.write_image(alioutname,0) #write out the unaligned average movie
 
 	t1 = time()-t
 	print("{:.1f} s".format(time()-t))
 
-	if options.align_frames :
+	if options.align_frames and not options.realign:
 
 		start = time()
 
@@ -691,76 +705,76 @@ def process_movie(fsp,dark,gain,first,flast,step,options):
 		# 		except: pass
 		# 	ax[2].set_title("CCF Peak Coordinates")
 
-	try: # Load previous/current alignment params (or input translations) (BOX FORMAT, tab separated values):
-		db=js_open_dict(info_name(fsp,nodir=True))
-		locs = db["ddd_alitrans"]
-		db.close()
-	except:
-		print("Error: Could not find prior alignment for {}. Exiting".format(fsp))
-		sys.exit(1)
+	if options.align_frames or options.realign:
+		try: 
+		# Load previous/current alignment params (or input translations) (BOX FORMAT, tab separated values):
+			db=js_open_dict(info_name(fsp,nodir=True))
+			locs = db["ddd_alitrans"]
+			db.close()
 
-	# shift frames
-	print("{:1.1f} s\nShift images".format(time()-t0))
-	for i,im in enumerate(outim):
-		if options.round == "int":
-			dx = int(round(locs[i*2],0))
-			dy = int(round(locs[i*2+1],0))
-			im.translate(dx,dy,0)
-		else: # float by default
-			dx = float(locs[i*2])
-			dy = float(locs[i*2+1])
-			im.translate(dx,dy,0)
+			# shift frames
+			print("{:1.1f} s\nShift images".format(time()-t0))
+			for i,im in enumerate(outim):
+				if options.round == "int":
+					dx = int(round(locs[i*2],0))
+					dy = int(round(locs[i*2+1],0))
+					im.translate(dx,dy,0)
+				else: # float by default
+					dx = float(locs[i*2])
+					dy = float(locs[i*2+1])
+					im.translate(dx,dy,0)
 
-	if options.normaxes:
-		for f in outim:
-			f.process_inplace("filter.xyaxes0",{"neighbor":1}) 
-		# or try padding before averaging and clip result to original box size?
+			if options.normaxes:
+				for f in outim:
+					f.process_inplace("filter.xyaxes0",{"neighbor":1}) 
+				# or try padding before averaging and clip result to original box size?
 
-	if options.tomo: mgdirname = os.path.join(".","alignedtilts") # how to associate tilts in tiltseries to avoid this temporary storage step?
-	else: mgdirname = os.path.join(".","micrographs")
+			if options.tomo: mgdirname = os.path.join(".","tilts")
+			else: mgdirname = os.path.join(".","micrographs")
 
-	if not os.access(mgdirname, os.R_OK): os.mkdir(mgdirname)
-	
-	if options.allali:
-		mglabel = "allali"
-		alioutname="{}/{}__{}.hdf".format(mgdirname,base_name(fsp),mglabel)
-		out=qsum(outim)
-		out.write_image(alioutname,0)
+			if not os.access(mgdirname, os.R_OK): os.mkdir(mgdirname)
+			
+			if options.allali:
+				mglabel = "allali"
+				alioutname="{}/{}__{}.hdf".format(mgdirname,base_name(fsp),mglabel)
+				out=qsum(outim)
+				out.write_image(alioutname,0)
 
-	if options.goodali:
-		mglabel = "goodali"
-		alioutname="{}/{}__{}.hdf".format(mgdirname,base_name(fsp),mglabel)
-		thr=(max(quals[1:])-min(quals))*0.4+min(quals)	# max correlation cutoff for inclusion
-		best=[im for i,im in enumerate(outim) if quals[i]>thr]
-		out=qsum(best)
-		print("Keeping {}/{} frames".format(len(best),len(outim)))
-		out["ali_index"] = 0
-		out.write_image(alioutname,0)
+			if options.goodali:
+				mglabel = "goodali"
+				alioutname="{}/{}__{}.hdf".format(mgdirname,base_name(fsp),mglabel)
+				thr=(max(quals[1:])-min(quals))*0.4+min(quals)	# max correlation cutoff for inclusion
+				best=[im for i,im in enumerate(outim) if quals[i]>thr]
+				out=qsum(best)
+				print("Keeping {}/{} frames".format(len(best),len(outim)))
+				out["ali_index"] = 0
+				out.write_image(alioutname,0)
 
-	if options.bestali:
-		mglabel = "bestali"
-		alioutname="{}/{}__{}.hdf".format(mgdirname,base_name(fsp),mglabel)
-		thr=(max(quals[1:])-min(quals))*0.6+min(quals)	# max correlation cutoff for inclusion
-		best=[im for i,im in enumerate(outim) if quals[i]>thr]
-		out=qsum(best)
-		print("Keeping {}/{} frames".format(len(best),len(outim)))
-		out["ali_index"] = 0
-		out.write_image(alioutname,0)
+			if options.bestali:
+				mglabel = "bestali"
+				alioutname="{}/{}__{}.hdf".format(mgdirname,base_name(fsp),mglabel)
+				thr=(max(quals[1:])-min(quals))*0.6+min(quals)	# max correlation cutoff for inclusion
+				best=[im for i,im in enumerate(outim) if quals[i]>thr]
+				out=qsum(best)
+				print("Keeping {}/{} frames".format(len(best),len(outim)))
+				out["ali_index"] = 0
+				out.write_image(alioutname,0)
 
-	if options.ali4to14:
-		mglabel = "4-14"
-		alioutname="{}/{}__{}.hdf".format(mgdirname,base_name(fsp),mglabel)
-		out=qsum(outim[4:14]) # skip the first 4 frames then keep 10
-		out.write_image(alioutname,0)
+			if options.ali4to14:
+				mglabel = "4-14"
+				alioutname="{}/{}__{}.hdf".format(mgdirname,base_name(fsp),mglabel)
+				out=qsum(outim[4:14]) # skip the first 4 frames then keep 10
+				out.write_image(alioutname,0)
 
-	if len(options.rangeali)>0:
-		rng=[int(i) for i in options.rangeali.split("-")]
-		alioutname="{}/{}__{}.hdf".format(mgdirname,base_name(fsp),mglabel)
-		out=qsum(outim[rng[0]:rng[1]+1])
-		out.write_image(alioutname,0)
+			if len(options.rangeali)>0:
+				rng=[int(i) for i in options.rangeali.split("-")]
+				alioutname="{}/{}__{}.hdf".format(mgdirname,base_name(fsp),mglabel)
+				out=qsum(outim[rng[0]:rng[1]+1])
+				out.write_image(alioutname,0)
 
-	print("Done")
-
+		except:
+			print("Error: Could not find prior alignment for {}. Exiting".format(fsp))
+	\
 # CCF calculation
 def calc_ccf_wrapper(options,N,box,step,dataa,datab,out,locs,ii,fsp):
 
