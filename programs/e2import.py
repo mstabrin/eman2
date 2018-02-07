@@ -62,6 +62,10 @@ def main():
 
 	# Type Flags
 	parser.add_argument("--import_movies",action="store_true",help="Import DDD movies",default=False, guitype='boolbox', row=3, col=0, rowspan=1, colspan=1, mode='movies[True]')
+
+	parser.add_argument("--darkrefs",help="Specify a comma separated list of dark refereence stacks/images to import. Files will be placed in movierefs_raw. See --importation for additional options.",default="", guitype='filebox', browser="EMBrowserWidget(withmodal=True,multiselect=True)", row=4, col=0, rowspan=1, colspan=2, mode='movies')
+	parser.add_argument("--gainrefs",help="Specify a comma separated list of gain refereence stacks/images to import. Files will be placed in movierefs_raw. See --importation for additional options.",default="", guitype='filebox', browser="EMBrowserWidget(withmodal=True,multiselect=True)", row=5, col=0, rowspan=1, colspan=2, mode='movies')
+
 	parser.add_argument("--import_tiltseries",action="store_true",help="Import tiltseries",default=False, guitype='boolbox', row=3, col=0, rowspan=1, colspan=1, mode='tilts[True]')
 	parser.add_argument("--import_tomos",action="store_true",help="Import tomograms for segmentation and/or subtomogram averaging",default=False, guitype='boolbox', row=3, col=0, rowspan=1, colspan=1, mode='tomos[True]')
 	
@@ -72,7 +76,7 @@ def main():
 	parser.add_argument("--import_particles",action="store_true",help="Import particles",default=False, guitype='boolbox', row=3, col=0, rowspan=1, colspan=1, mode='parts[True]')
 	parser.add_argument("--import_eman1",action="store_true",help="This will import a phase-flipped particle stack from EMAN1",default=False, guitype='boolbox', row=3, col=0, rowspan=1, colspan=1, mode='eman1[True]')
 
-	parser.add_argument("--importation",help="Specify import mode: move, copy or link",default='copy',guitype='combobox',choicelist='["move","copy","link"]',row=3,col=1,rowspan=1,colspan=1, mode='tomos["copy"],tilts["copy"],movies["move"]')
+	parser.add_argument("--importation",help="Specify import mode: move, copy or link",default='copy',guitype='combobox',choicelist='["move","copy","link"]',row=3,col=1,rowspan=1,colspan=1, mode='tomos["copy"],tilts["copy"],movies["move"]',choices=["move","copy","link"])
 
 	parser.add_argument("--invert",action="store_true",help="Invert the contrast before importing tomograms",default=False, guitype='boolbox', row=4, col=0, rowspan=1, colspan=1, mode='tomos,tilts')
 	parser.add_argument("--tomoseg_auto",action="store_true",help="Default process for tomogram segmentation, including lowpass, highpass, normalize, clampminmax.",default=True, guitype='boolbox', row=4, col=1, rowspan=1, colspan=1, mode='tomos,tilts')
@@ -306,54 +310,48 @@ with the same name, you should specify only the .hed files (no renaming is neces
 			if EMData(fsp,0,True)["nz"]>1 :
 				run("e2proc2d.py {} particles/{}.hdf --threed2twod --inplace".format(fsp,base_name(fsp)))
 			else: run("e2proc2d.py {} particles/{}.hdf --inplace".format(fsp,base_name(fsp)))
-
-
-	# if options.import_dark or options.import_gain:
-	# 	dgdir = os.path.join(".","darkgain")
-	# 	if not os.access(dgdir, os.R_OK):
-	# 		os.mkdir(dgdir)
-
-	# 	if options.import_dark:
-	# 		darkname=os.path.join(dgdir,os.path.basename(options.import_dark))
-	# 		if darkname[-4:] == ".mrc": darkname+="s"
-
-	# 		if options.importation == "move":
-	# 			os.rename(options.dark,darkname)
-	# 		if options.importation == "copy":
-	# 			run("e2proc2d.py {} {} ".format(options.import_dark, darkname))
-	# 		if options.importation == "link":
-	# 			os.symlink(options.dark,darkname)
-	# 		#db=js_open_dict(info_name(newname,nodir=True))
-	# 		#db.close()
 		
-	# 	if options.import_dark:
-	# 		gainname=os.path.join(dgdir,os.path.basename(options.import_gain))
-	# 		if gainname[-4:] == ".mrc": gainname+="s"
+	if options.gainrefs != "":
+		refsdir = os.path.join(".","movierefs_raw")
+		if not os.access(refsdir, os.R_OK):
+			os.mkdir(refsdir)
+		for ref in options.gainrefs.split(","):
+			refname=os.path.join(refsdir,os.path.basename(ref))
+			if refname[-4:] == ".mrc": refname+="s"
+			if not os.path.isfile(refname):
+				if options.importation == "move": os.rename(ref,refname)
+				if options.importation == "copy": run("e2proc2d.py {} {} ".format(ref, refname))
+				if options.importation == "link": os.symlink(ref,refname)
 
-	# 		if options.importation == "move":
-	# 			os.rename(options.dark,gainname)
-	# 		if options.importation == "copy":
-	# 			run("e2proc2d.py {} {} ".format(options.import_gain, gainname))
-	# 		if options.importation == "link":
-	# 			os.symlink(options.dark,gainname)
+	if options.darkrefs != "":
+		refsdir = os.path.join(".","movierefs_raw")
+		if not os.access(refsdir, os.R_OK):
+			os.mkdir(refsdir)
+		refsdir = os.path.join(".","movierefs_raw")
+		for ref in options.darkrefs.split(","):
+			refname=os.path.join(refsdir,os.path.basename(ref))
+			if refname[-4:] == ".mrc": refname+="s"
+			if not os.path.isfile(refname):
+				if options.importation == "move": os.rename(ref,refname)
+				if options.importation == "copy": run("e2proc2d.py {} {} ".format(ref, refname))
+				if options.importation == "link": os.symlink(ref,refname)
 
-	# 		#db=js_open_dict(info_name(newname,nodir=True))
-	# 		#db.close()
-	
 	if options.import_movies:
+
 		moviesdir = os.path.join(".","movies")
 		if not os.access(moviesdir, os.R_OK):
 			os.mkdir(moviesdir)
 
 		for filename in args:
 			newname=os.path.join(moviesdir,os.path.basename(filename))
-			if newname[-4:] == ".mrc": newname+="s"
-			if options.importation == "move":
-				os.rename(filename,newname)
-			if options.importation == "copy":
-				run("e2proc2d.py {} {} ".format(filename, newname))
-			if options.importation == "link":
-				os.symlink(filename,newname)
+			if not os.path.isfile(newname):
+				if newname[-4:] == ".mrc": newname+="s"
+				if options.importation == "move":
+					os.rename(filename,newname)
+				if options.importation == "copy":
+					run("e2proc2d.py {} {} ".format(filename, newname))
+				if options.importation == "link":
+					os.symlink(filename,newname)
 		print("Done.")
 
 	# Import tilt series
@@ -362,9 +360,9 @@ with the same name, you should specify only the .hed files (no renaming is neces
 		stdir = os.path.join(".","tiltseries")
 		if not os.access(stdir, os.R_OK):
 			os.mkdir("tiltseries")
-
-		newname=os.path.join(moviesdir,os.path.basename(filename))
+		
 		for filename in args:
+			newname=os.path.join(stdir,os.path.basename(filename))
 			if options.importation == "move":
 				os.rename(filename,newname)
 			if options.importation == "copy":
@@ -416,10 +414,8 @@ with the same name, you should specify only the .hed files (no renaming is neces
 
 	# Import serialEM metadata
 	if options.serialem_mdoc:
-
 		for fn in args:
 			mdoc = read_mdoc(fn)
-			
 			# check and correct project parameters from MDOC file contents
 			d = js_open_dict("info/project.json")
 			try: d.setval("global.apix",mdoc["PixelSpacing"],deferupdate=True)
@@ -427,7 +423,6 @@ with the same name, you should specify only the .hed files (no renaming is neces
 			try: d.setval("global.microscope_voltage",mdoc["Voltage"],deferupdate=True)
 			except: pass
 			d.close()
-
 			# for each referenced image, append pertinent keys/values to corresponding info.json
 			for z in range(mdoc["zval"]+1):
 				tlt = mdoc[z]["SubFramePath"].rsplit("\\")[-1]+"_RawImages"
@@ -464,24 +459,27 @@ def read_mdoc(mdoc):
 			elif p != "":
 				x,y = p.split("=")[:2]
 				x = x.strip()
-				if x == "TiltAngle": frames[zval]["tilt_angle"]=y
-				elif x == "Magnification": frames[zval]["magnification"] = y
-				elif x == "Intensity": frames[zval]["intensity"]=y
-				elif x == "SpotSize": frames[zval]["spot_size"]=y
-				elif x == "Defocus": frames[zval]["defocus"]=y
-				elif x == "ExposureTime": frames[zval]["exposure_time"]=y
-				elif x == "Binning": frames[zval]["binning"]=y
-				elif x == "ExposureDose": frames[zval]["exposure_dose"]=y
-				elif x == "RotationAngle": frames[zval]["rotation_angle"]=y
-				elif x == "StageZ": frames[zval]["stage_z"]=y
-				elif x == "CameraIndex": frames[zval]["camera_index"]=y
-				elif x == "DividedBy2": frames[zval]["divide_by_2"]=y
-				elif x == "MagIndex": frames[zval]["mag_index"]=y
-				elif x == "TargetDefocus": frames[zval]["target_defocus"]=y
-				elif x == "NumSubFrames": frames[zval]["sub_frame_count"]=y
-				elif x == "ImageShift": frames[zval]["image_shift"]=y
-				elif x == "StagePosition": frames[zval]["stage_position"]=y
-				elif x == "MinMaxMean": frames[zval]["min_max_mean"]=y
+				if x == "TiltAngle": frames[zval]["tilt_angle"]=float(y)
+				elif x == "Magnification": frames[zval]["magnification"] = int(y)
+				elif x == "Intensity": frames[zval]["intensity"]=float(y)
+				elif x == "SpotSize": frames[zval]["spot_size"]=int(y)
+				elif x == "Defocus": frames[zval]["defocus"]=float(y)
+				elif x == "ExposureTime": frames[zval]["exposure_time"]=float(y)
+				elif x == "Binning": frames[zval]["binning"]=float(y)
+				elif x == "ExposureDose": frames[zval]["exposure_dose"]=float(y)
+				elif x == "RotationAngle": frames[zval]["rotation_angle"]=float(y)
+				elif x == "StageZ": frames[zval]["stage_z"]=float(y)
+				elif x == "CameraIndex": frames[zval]["camera_index"]=int(y)
+				elif x == "DividedBy2": frames[zval]["divide_by_2"]=int(y)
+				elif x == "MagIndex": frames[zval]["mag_index"]=int(y)
+				elif x == "TargetDefocus": frames[zval]["target_defocus"]=float(y)
+				elif x == "ImageShift": frames[zval]["image_shift"]=map(float,y.split())
+				elif x == "StagePosition": frames[zval]["stage_position"]=map(float,y.split())
+				elif x == "MinMaxMean":
+					vals = map(float,y.split())
+					frames[zval]["min"]=vals[0]
+					frames[zval]["max"]=vals[1]
+					frames[zval]["mean"]=vals[2]
 				elif x == "SubFramePath":
 					sfp = base_name(y).split("-")[-1]
 					frames[zval]["SubFramePath"]=sfp
@@ -494,20 +492,20 @@ def read_mdoc(mdoc):
 				elif x == "PriorRecordDose": frames["prior_record_dose"] = y
 				elif x == "FrameDosesAndNumber": frames["frame_doses_and_number"] = y
 				elif x == "[T": frames["labels"].append(y.replace("]",""))
-				elif "PreexposureTime" in x: frames[zval]["preexposure_time"] = y
-				elif "TotalNumberOfFrames" in x: frames[zval]["frame_count"] = y
-				elif "FramesPerSecond" in x: frames[zval]["frames_per_second"] = y
+				elif "PreexposureTime" in x: frames[zval]["preexposure_time"] = float(y)
+				elif "TotalNumberOfFrames" in x: frames[zval]["frame_count"] = int(y)
+				elif "FramesPerSecond" in x: frames[zval]["frames_per_second"] = float(y)
 				elif "ProtectionCoverMode" in x: frames[zval]["protection_cover_mode"] = y
-				elif "ProtectionCoverOpenDelay" in x: frames[zval]["protection_cover_open_delay"] = y
-				elif "TemperatureDetector" in x: frames[zval]["detector_temperature"] = y
-				elif "FaradayPlatePeakReading" in x: frames[zval]["faraday_plate_peak_reading"] = y
+				elif "ProtectionCoverOpenDelay" in x: frames[zval]["protection_cover_open_delay"] = float(y)
+				elif "TemperatureDetector" in x: frames[zval]["detector_temperature"] = float(y)
+				elif "FaradayPlatePeakReading" in x: frames[zval]["faraday_plate_peak_reading"] = float(y)
 				elif "SensorModuleSerialNumber" in x: frames[zval]["sensor_module_serial_number"] = y
 				elif "ServerSoftwareVersion" in x: frames[zval]["server_software_version"] = y
 				elif "SensorReadoutDelay" in x: frames[zval]["sensor_readout_delay"] = y
 				else: frames["misc"].append(y) # catches any missed parameters
 
 	frames["zval"] = zval
-	return frames
+	return frames 
 
 def run(command):
 	"Mostly here for debugging, allows you to control how commands are executed (os.system is normal)"

@@ -38,7 +38,7 @@ import pprint
 import sys
 import os
 from sys import argv
-from time import sleep,time
+from time import sleep,time,ctime
 import threading
 import Queue
 import numpy as np
@@ -71,11 +71,11 @@ def main():
 
 	#parser.add_header(name="orblock2", help='Just a visual separation', title="- CHOOSE FROM -", row=3, col=0, rowspan=1, colspan=3, mode="align,tomo")
 
-	parser.add_argument("--dark",type=str,default="",help="Perform dark image correction using the specified image file",guitype='filebox',browser="EMDarkGainTable(withmodal=True,multiselect=True)", row=4, col=0, rowspan=1, colspan=3, mode="align,tomo")
+	parser.add_argument("--dark",type=str,default="",help="Perform dark image correction using the specified image file",guitype='filebox',browser="EMRawMovieRefsTable(withmodal=True,multiselect=True)", row=4, col=0, rowspan=1, colspan=3, mode="align,tomo")
 	parser.add_argument("--rotate_dark",  default = "0", type=str, choices=["0","90","180","270"], help="Rotate dark reference by 0, 90, 180, or 270 degrees. Default is 0. Transformation order is rotate then reverse.",guitype='combobox', choicelist='["0","90","180","270"]', row=5, col=0, rowspan=1, colspan=1, mode="align,tomo")
 	parser.add_argument("--reverse_dark", default=False, help="Flip dark reference along y axis. Default is False. Transformation order is rotate then reverse.",action="store_true",guitype='boolbox', row=5, col=1, rowspan=1, colspan=1, mode="align,tomo")
 
-	parser.add_argument("--gain",type=str,default="",help="Perform gain image correction using the specified image file",guitype='filebox',browser="EMDarkGainTable(withmodal=True,multiselect=True)", row=6, col=0, rowspan=1, colspan=3, mode="align,tomo")
+	parser.add_argument("--gain",type=str,default="",help="Perform gain image correction using the specified image file",guitype='filebox',browser="EMRawMovieRefsTable(withmodal=True,multiselect=True)", row=6, col=0, rowspan=1, colspan=3, mode="align,tomo")
 	parser.add_argument("--k2", default=False, help="Perform gain image correction on gain images from a Gatan K2. Note, these are the reciprocal of typical DDD gain images.",action="store_true",guitype='boolbox', row=7, col=0, rowspan=1, colspan=1, mode="align,tomo")
 	parser.add_argument("--rotate_gain", default = 0, type=str, choices=["0","90","180","270"], help="Rotate gain reference by 0, 90, 180, or 270 degrees. Default is 0. Transformation order is rotate then reverse.",guitype='combobox', choicelist='["0","90","180","270"]', row=7, col=1, rowspan=1, colspan=1, mode="align,tomo")
 	parser.add_argument("--reverse_gain", default=False, help="Flip gain reference along y axis (about x axis). Default is False. Transformation order is rotate then reverse.",action="store_true",guitype='boolbox', row=7, col=2, rowspan=1, colspan=1, mode="align,tomo")
@@ -121,11 +121,9 @@ def main():
 	parser.add_argument("--optstep", type=int,help="Step size to use during alignment optimization. Default is 224.",default=224,  guitype='intbox', row=26, col=1, rowspan=1, colspan=1, mode="align,tomo")
 	parser.add_argument("--optalpha", type=float,help="Penalization to apply during robust regression. Default is 0.1. If 0.0, unpenalized least squares will be performed (i.e., no trajectory smoothing).",default=0.1, guitype='floatbox', row=26, col=2, rowspan=1, colspan=1, mode="align,tomo")
 
-	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higner number means higher level of verboseness")
 	parser.add_argument("--debug", default=False, action="store_true", help="run with debugging output")
-	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-2)
 
-	# parser.add_argument('--import_refs', action="store_true",default=False,help="List the references to import into 'movierefs' without additional processing.", default="", guitype='boolbox', row=0, col=0,rowspan=1, colspan=3, mode="import[True],default[False]")
+	# parser.add_argument('--import_movies', action="store_true",default=False,help="List the references to import into 'movies' directory without additional processing.", default="", guitype='boolbox', row=0, col=0,rowspan=1, colspan=3, mode="import[True],default[False]")
 
 	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higner number means higher level of verboseness")
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-2)
@@ -146,6 +144,11 @@ def main():
 			print("No post alignment outputs specified. Try with --allali, --rangeali, --goodali, --bestali, or --ali4to14. Exiting.")
 			sys.exit(1)
 
+	moviesdir = os.path.join(".","movies")
+	if not os.access(moviesdir, os.R_OK):
+		print("Error: Could not locate movie data. Please import movie stacks using e2import.py.")
+		sys.exit(1)
+
 	if options.bad_columns == "": 
 		options.bad_columns = []
 	else: 
@@ -164,17 +167,28 @@ def main():
 			print("Error: --bad_rows contains nonnumeric input.")
 			sys.exit(1)
 
-	pid=E2init(sys.argv)
-
-	moviesdir = os.path.join(".","movies")
-	if not os.access(moviesdir, os.R_OK):
-		print("Error: Could not locate movie data. Please import movie stacks using e2import.py.")
-		sys.exit(1)
-
 	if options.dark != "" or options.gain != "":
 		refsdir = os.path.join(".","movierefs")
 		if not os.access(refsdir, os.R_OK):
 			os.mkdir(refsdir)
+
+	if len(options.dark.split(",")) > 1:
+		darkid = 0 # make reference ID (counter based on existing values)
+		for fn in os.listdir("movierefs"):
+			if "dark" in fn.lower(): darkid += 1
+		newfile = "movierefs_raw/darkref_{}.lst".format(darkid)
+		run("e2proclst.py {} --create {}".format(options.dark.replace(","," "),newfile))
+		options.dark = newfile
+
+	if len(options.gain.split(",")) > 1:
+		gainid = 0 # make reference ID (counter based on existing values)
+		for fn in os.listdir("movierefs"):
+			if "gain" in fn.lower(): gainid += 1
+		newfile = "movierefs_raw/gainref_{}.lst".format(gainid)
+		run("e2proclst.py {} --create {}".format(options.gain.replace(","," "),newfile))
+		options.gain = newfile
+
+	pid=E2init(sys.argv)
 
 	if options.dark != "":
 		print("Loading Dark Reference")
@@ -214,14 +228,13 @@ def main():
 		dark.process_inplace("threshold.clampminmax.nsigma",{"nsigma":3.0})
 		#dark2=dark.process("normalize.unitlen")
 
-
 		if options.rotate_dark and dark != None:
 			tf = Transform({"type":"2d","alpha":int(options.rotate_dark)})
 			dark.process_inplace("xform",{"transform":tf})
 
 		if options.reverse_dark: dark.process_inplace("xform.reverse",{"axis":"y"})
 
-		dfout = "{}/{}.hdf".format(refsdir,base_name(options.dark))
+		dfout = "movierefs/{}.hdf".format(base_name(options.dark))
 		dark.write_image(dfout,0)
 	else : dark=None
 
@@ -290,7 +303,7 @@ def main():
 
 		if options.reverse_gain: gain.process_inplace("xform.reverse",{"axis":"y"})
 
-		gfout = "{}/{}.hdf".format(moviesdir,base_name(options.gain))
+		gfout = "movierefs/{}.hdf".format(base_name(options.gain))
 		gain.write_image(gfout,0)
 		#sigg.write_image(dfout,1)
 
@@ -310,15 +323,16 @@ def main():
 	for fsp in args:
 		print("Processing {}".format(base_name(fsp)))
 
-		if options.import_movies:
-			if not os.path.isfile("{}/{}".format(moviesdir,os.path.basename(fsp))):
-				print("{} was not previously imported into this project. Importing to 'movies' now.")
-				newname=os.path.join(moviesdir,os.path.basename(fsp))
-				if newname[-4:] == ".mrc": newname+="s"
-				run("e2proc2d.py {} {} ".format(filename, newname))
+		# if options.import_movies:
+		# 	if not os.path.isfile("movies/{}".format(os.path.basename(fsp))):
+		# 		print("{} was not previously imported into this project. Importing to 'movies' now.")
+		# 		newname=os.path.join(moviesdir,os.path.basename(fsp))
+		# 		if newname[-4:] == ".mrc": newname+="s"
+		# 		run("e2proc2d.py {} {} ".format(filename, newname))
 
 		# write reference image info to corresponding movie info.json files
-		db=js_open_dict(info_name(fsp,nodor=True))
+		db=js_open_dict(info_name(fsp,nodir=True))
+		db["data_source"]=fsp
 		if gain:
 			db["ddd_gain_reference"]=gfout
 			if options.rotate_gain:
@@ -983,6 +997,17 @@ def qual(locs,ccfs):
 			locy = int(cen+locs[j*2+1]-locs[i*2+1])
 			nrg-=ccfs[(i,j)].sget_value_at_interp(locx,locy)*penalty
 	return nrg
+
+def run(command):
+	"Mostly here for debugging, allows you to control how commands are executed (os.system is normal)"
+
+	print("{}: {}".format(ctime(time()),command))
+	ret=launch_childprocess(command)
+
+	# We put the exit here since this is what we'd do in every case anyway. Saves replication of error detection code above.
+	if ret !=0 :
+		print("Error running: ",command)
+		sys.exit(1)
 
 if __name__ == "__main__":
 	main()

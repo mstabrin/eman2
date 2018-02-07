@@ -954,13 +954,13 @@ class EMMovieDataTable(EMBrowserWidget):
 	def setPath(self,path,silent=False):
 		super(EMMovieDataTable, self).setPath(path,silent=silent,inimodel=EMRawDataModel)
 
-class EMDarkGainTable(EMBrowserWidget):
+class EMRawMovieRefsTable(EMBrowserWidget):
 	""" Widget to display Raw Data """
-	def __init__(self, withmodal=False, multiselect=False, startpath="./darkgain"):
+	def __init__(self, withmodal=False, multiselect=False, startpath="./movierefs_raw"):
 		EMBrowserWidget.__init__(self, withmodal=withmodal, multiselect=multiselect, startpath=startpath)
 
 	def setPath(self,path,silent=False):
-		super(EMDarkGainTable, self).setPath(path,silent=silent,inimodel=EMRawDataModel)
+		super(EMRawMovieRefsTable, self).setPath(path,silent=silent,inimodel=EMRawDataModel)
 
 
 class EMRawDataModel(EMFileItemModel):
