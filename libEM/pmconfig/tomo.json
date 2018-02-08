@@ -26,6 +26,13 @@
            {
             "ICON": "multiple_images",
             "PROGRAM": "e2import.py",
+            "MODE": "rawtilts",
+            "NAME": "Import Tilts",
+            "CHILDREN": []
+           },
+           {
+            "ICON": "multiple_images",
+            "PROGRAM": "e2import.py",
             "MODE": "tilts",
             "NAME": "Import Tiltseries",
             "CHILDREN": []
@@ -49,8 +56,14 @@
   {
     "ICON": "multiple_images",
     "PROGRAM": "e2buildstacks.py",
-    "MODE": "default",
+    "MODE": "tomo",
     "NAME": "Generate Tiltseries",
+    "CHILDREN": []
+  },
+  {
+    "ICON": "multiple_images",
+    "PROGRAM": "e2tomo_tiltpreproc.py",
+    "NAME": "Preprocess Tiltseries",
     "CHILDREN": []
   },
   {

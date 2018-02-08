@@ -78,7 +78,7 @@ def main():
 	parser.add_argument("-C", "--check", action="store_true",help="Checks to make sure all image numbers are populated with images, and that all images have valid CTF parameters",default=False)
 	parser.add_argument("-c", "--count", action="store_true",help="Just show a count of the number of particles in each file",default=False)
 	parser.add_argument("-t", "--tilts", action="store_true",help="Print tilt angles from a SerialEM tilt series. Output can be used to generate .tlt files for other programs and packages.")
-	parser.add_argument("--rawtlt", action="store_true",help="Write raw tilt file (.tlt).",default=False,guitype="boolbox",row=1, col=0,rowspan=1, colspan=1,mode="rawtlt[True]")
+	parser.add_argument("--rawtlt", action="store_true",help="Write raw tilt file (.tlt) based on information in the header.",default=False,guitype="boolbox",row=1, col=0,rowspan=1, colspan=1,mode="rawtlt[True]")
 
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-2)
 	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higner number means higher level of verboseness")
@@ -144,9 +144,8 @@ def main():
 			keys=d.get_attr_dict().keys()
 			if 'SerialEM.tiltangles' in keys:
 				if options.rawtlt:
-					bn = base_name(imagefile).rsplit("-")
-					print(bn)
-					with open("{}/{}.tlt".format(bn[0],bn[1]),"w+") as tltf:
+					bn = base_name(imagefile)
+					with open("{}.tlt".format(bn),"w") as tltf:
 						for t in d['SerialEM.tiltangles']:
 							tltf.write("{}\n".format(round(t,2)))
 					sys.exit(1)

@@ -56,7 +56,7 @@ def main():
 
 	parser = EMArgumentParser(usage=usage,version=EMANVERSION)
 
-	parser.add_pos_argument(name="files",help="List the files to import here.", default="", guitype='filebox', browser="EMBrowserWidget(withmodal=True,multiselect=True)",  row=0, col=0, rowspan=1, colspan=2, nosharedb=True, mode='coords,parts,tomos,eman1,movies,tilts,meta')
+	parser.add_pos_argument(name="files",help="List the files to import here.", default="", guitype='filebox', browser="EMBrowserWidget(withmodal=True,multiselect=True)",  row=0, col=0, rowspan=1, colspan=2, nosharedb=True, mode='coords,parts,tomos,eman1,movies,tilts,meta,rawtilts')
 
 	parser.add_header(name="filterheader", help='Options below this label are specific to e2import', title="### e2import options ###", row=2, col=0, rowspan=1, colspan=2, mode='coords,parts')
 
@@ -66,6 +66,7 @@ def main():
 	parser.add_argument("--darkrefs",help="Specify a comma separated list of dark refereence stacks/images to import. Files will be placed in movierefs_raw. See --importation for additional options.",default="", guitype='filebox', browser="EMBrowserWidget(withmodal=True,multiselect=True)", row=4, col=0, rowspan=1, colspan=2, mode='movies')
 	parser.add_argument("--gainrefs",help="Specify a comma separated list of gain refereence stacks/images to import. Files will be placed in movierefs_raw. See --importation for additional options.",default="", guitype='filebox', browser="EMBrowserWidget(withmodal=True,multiselect=True)", row=5, col=0, rowspan=1, colspan=2, mode='movies')
 
+	parser.add_argument("--import_tilts",action="store_true",help="Import tilt images",default=False, guitype='boolbox', row=3, col=0, rowspan=1, colspan=1, mode='rawtilts[True]')
 	parser.add_argument("--import_tiltseries",action="store_true",help="Import tiltseries",default=False, guitype='boolbox', row=3, col=0, rowspan=1, colspan=1, mode='tilts[True]')
 	parser.add_argument("--import_tomos",action="store_true",help="Import tomograms for segmentation and/or subtomogram averaging",default=False, guitype='boolbox', row=3, col=0, rowspan=1, colspan=1, mode='tomos[True]')
 	
@@ -76,12 +77,12 @@ def main():
 	parser.add_argument("--import_particles",action="store_true",help="Import particles",default=False, guitype='boolbox', row=3, col=0, rowspan=1, colspan=1, mode='parts[True]')
 	parser.add_argument("--import_eman1",action="store_true",help="This will import a phase-flipped particle stack from EMAN1",default=False, guitype='boolbox', row=3, col=0, rowspan=1, colspan=1, mode='eman1[True]')
 
-	parser.add_argument("--importation",help="Specify import mode: move, copy or link",default='copy',guitype='combobox',choicelist='["move","copy","link"]',row=3,col=1,rowspan=1,colspan=1, mode='tomos["copy"],tilts["copy"],movies["move"]',choices=["move","copy","link"])
+	parser.add_argument("--importation",help="Specify import mode: move, copy or link",default='copy',guitype='combobox',choicelist='["move","copy","link"]',row=3,col=1,rowspan=1,colspan=1, mode='tomos["copy"],tilts["copy"],movies["move"],rawtilts["copy"]',choices=["move","copy","link"])
 
-	parser.add_argument("--invert",action="store_true",help="Invert the contrast before importing tomograms",default=False, guitype='boolbox', row=4, col=0, rowspan=1, colspan=1, mode='tomos,tilts')
-	parser.add_argument("--tomoseg_auto",action="store_true",help="Default process for tomogram segmentation, including lowpass, highpass, normalize, clampminmax.",default=True, guitype='boolbox', row=4, col=1, rowspan=1, colspan=1, mode='tomos,tilts')
+	parser.add_argument("--invert",action="store_true",help="Invert the contrast before importing tomograms",default=False, guitype='boolbox', row=4, col=0, rowspan=1, colspan=1, mode='tomos,tilts,rawtilts')
+	parser.add_argument("--tomoseg_auto",action="store_true",help="Default process for tomogram segmentation, including lowpass, highpass, normalize, clampminmax.",default=True, guitype='boolbox', row=4, col=1, rowspan=1, colspan=1, mode='tomos,tilts,rawtilts')
 	parser.add_argument("--shrink",type=int,help="Shrink tomograms before importing. Dose not work while not copying.",default=1, guitype='floatbox', row=4, col=2, rowspan=1, colspan=1, mode='tomos')
-	parser.add_argument("--preprocess",type=str,help="Other pre-processing operation before importing tomograms. Dose not work while not copying.",default="", guitype='strbox', row=5, col=0, rowspan=1, colspan=2, mode='tomos,tilts')
+	parser.add_argument("--preprocess",type=str,help="Other pre-processing operation before importing tomograms. Dose not work while not copying.",default="", guitype='strbox', row=5, col=0, rowspan=1, colspan=2, mode='tomos,tilts,rawtilts')
 
 	parser.add_argument("--import_boxes",action="store_true",help="Import boxes",default=False, guitype='boolbox', row=3, col=0, rowspan=1, colspan=1, mode='coords[True]')
 	parser.add_argument("--extension",type=str,help="Extension of the micrographs that the boxes match", default='dm3')
@@ -311,10 +312,12 @@ with the same name, you should specify only the .hed files (no renaming is neces
 				run("e2proc2d.py {} particles/{}.hdf --threed2twod --inplace".format(fsp,base_name(fsp)))
 			else: run("e2proc2d.py {} particles/{}.hdf --inplace".format(fsp,base_name(fsp)))
 		
-	if options.gainrefs != "":
-		refsdir = os.path.join(".","movierefs_raw")
+	if options.gainrefs != "" or options.darkrefs != "":
+		refsdir = os.path.join(".","movierefs")
 		if not os.access(refsdir, os.R_OK):
 			os.mkdir(refsdir)
+
+	if options.gainrefs != "":
 		for ref in options.gainrefs.split(","):
 			refname=os.path.join(refsdir,os.path.basename(ref))
 			if refname[-4:] == ".mrc": refname+="s"
@@ -324,10 +327,6 @@ with the same name, you should specify only the .hed files (no renaming is neces
 				if options.importation == "link": os.symlink(ref,refname)
 
 	if options.darkrefs != "":
-		refsdir = os.path.join(".","movierefs_raw")
-		if not os.access(refsdir, os.R_OK):
-			os.mkdir(refsdir)
-		refsdir = os.path.join(".","movierefs_raw")
 		for ref in options.darkrefs.split(","):
 			refname=os.path.join(refsdir,os.path.basename(ref))
 			if refname[-4:] == ".mrc": refname+="s"
@@ -353,6 +352,31 @@ with the same name, you should specify only the .hed files (no renaming is neces
 				if options.importation == "link":
 					os.symlink(filename,newname)
 		print("Done.")
+
+	# Import tilts
+	if options.import_tilts:
+
+		stdir = os.path.join(".","tilts")
+		if not os.access(stdir, os.R_OK):
+			os.mkdir("tilts")
+		
+		for filename in args:
+			newname=os.path.join(stdir,os.path.basename(filename))
+			if options.importation == "move":
+				os.rename(filename,newname)
+			if options.importation == "copy":
+				tpos=filename.rfind('.')
+				if tpos>0: newname=os.path.join(stdir,os.path.basename(filename[:tpos]+'.hdf'))
+				else: newname=os.path.join(stdir,os.path.basename(filename))
+				cmd="e2proc2d.py {} {} ".format(filename, newname)
+				if options.invert: cmd+=" --mult -1 --process normalize "
+				if options.tomoseg_auto:
+					cmd+=" --process filter.lowpass.gauss:cutoff_abs=.25 --process filter.highpass.gauss:cutoff_pixels=5 --process threshold.clampminmax.nsigma:nsigma=3 "
+				cmd+=options.preprocess
+				run(cmd)
+				print("Done.")
+			if options.importation == "link":
+				os.symlink(filename,newname)
 
 	# Import tilt series
 	if options.import_tiltseries:

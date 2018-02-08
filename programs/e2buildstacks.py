@@ -33,6 +33,7 @@ from __future__ import print_function
 #
 import os, re
 from EMAN2 import *
+import numpy as np
 
 def main():
 	progname = os.path.basename(sys.argv[0])
@@ -54,10 +55,12 @@ def main():
 	
 	parser = EMArgumentParser(usage=usage,version=EMANVERSION)
 	
-	parser.add_pos_argument(name="stack_files",help="List of images to be stacked", default="", guitype='filebox', browser="EMParticlesEditTable(withmodal=True,multiselect=True)",  row=0, col=0,rowspan=1, colspan=3, nosharedb=True,mode="tomo,default")
+	parser.add_pos_argument(name="stack_files",help="List of images to be stacked", default="", guitype='filebox', browser="EMParticlesEditTable(withmodal=True,multiselect=True)",  row=0, col=0,rowspan=1, colspan=3, nosharedb=True,mode="default")
+	parser.add_pos_argument(name="tilt_images",help="List of images to be stacked", default="", guitype='filebox', browser="EMTiltsTable(withmodal=True,multiselect=True)",  row=0, col=0,rowspan=1, colspan=3, nosharedb=True,mode="tomo")
 	parser.add_argument("--output",type=str,help="Name of the output stack to build (including file extension).", default=None, guitype='strbox',row=2, col=0, rowspan=1, colspan=1, mode="default,tomo")
-	parser.add_argument("--tilts",action="store_true",default=False,help="Write results to 'tiltseries' directory in current project.", guitype='boolbox',row=2, col=2, rowspan=1, colspan=1,mode="tomo[True]")
-	parser.add_argument("--angles",required=True,type=str,help="Name of tilt angles text file. Note, angles must correspond to stack file names in alphabetical/numerical order.", default=None, guitype='strbox',row=2, col=0, rowspan=1, colspan=1, mode="tomo")
+	parser.add_argument("--tilts",action="store_true",default=False,help="Write results to 'tiltseries' directory in current project.", guitype='boolbox',row=4, col=0, rowspan=1, colspan=1,mode="tomo[True]")
+	
+	parser.add_argument("--angles",type=str,help="Name of tilt angles text file.\nNote, angles must correspond to stack file names in alphabetical/numerical order.", default="", guitype='filebox', browser="EMBrowserWidget(withmodal=True,multiselect=True)",row=3, col=0, rowspan=1, colspan=1, mode="tomo")
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-1)
 	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, help="verbose level [0-9], higner number means higher level of verboseness",default=1)
 	
@@ -75,6 +78,9 @@ def main():
 
 		options.output = "{}/{}".format(stdir,options.output)
 
+		if options.output.split(".")[-1] not in [".hdf",".mrc",".mrcs"]:
+			options.output = options.output + ".hdf"
+
 		# remove existing output file
 		if os.path.exists(options.output) :
 			print("The file {} already exists.".format(options.output))
@@ -83,12 +89,28 @@ def main():
 
 		n=0		# number of images in output file
 		
+		if options.angles:
+
+			angles = np.loadtxt(options.angles)
+
+			try: 
+				angles = np.loadtxt(options.angles)
+			except: 
+				print("Error: Could not read tilt angles from {}".format(options.angles))
+				sys.exit(1)
+			if len(angles) != len(args):
+				print("Error: There are not enough tilt angles in this tilt angles file.")
+				sys.exit(1)
+				
 		tlt_assoc = {}
-		for arg in args:
-			db=js_open_dict(info_name(arg,nodir=True))
-			ang = float(db["tilt_angle"])
-			tlt_assoc[ang] = arg
-			db.close()
+		for i,arg in enumerate(args):
+			if options.angles:
+				tlt_assoc[angles[i]] = arg
+			else:
+				db=js_open_dict(info_name(arg,nodir=True))
+				ang = float(db["tilt_angle"])
+				tlt_assoc[ang] = arg
+				db.close()
 
 		ordered_angles = sorted([float(a) for a in tlt_assoc.keys()])
 		sorted_args = [tlt_assoc[a] for a in ordered_angles] # order args according to tilt angle parameter

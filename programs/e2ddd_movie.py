@@ -67,21 +67,24 @@ def main():
 
 	parser.add_pos_argument(name="movies",help="List the movies to align.", default="", guitype='filebox', browser="EMMovieDataTable(withmodal=True,multiselect=True)",  row=0, col=0,rowspan=1, colspan=3, mode="align,tomo")
 
-	parser.add_header(name="orblock1", help='Just a visual separation', title="Dark/Gain Correction", row=2, col=0, rowspan=2, colspan=3, mode="align,tomo")
+	parser.add_header(name="orblock1", help='Just a visual separation', title="Dark/Gain Correction", row=2, col=0, rowspan=1, colspan=3, mode="align,tomo")
 
 	#parser.add_header(name="orblock2", help='Just a visual separation', title="- CHOOSE FROM -", row=3, col=0, rowspan=1, colspan=3, mode="align,tomo")
 
-	parser.add_argument("--dark",type=str,default="",help="Perform dark image correction using the specified image file",guitype='filebox',browser="EMRawMovieRefsTable(withmodal=True,multiselect=True)", row=4, col=0, rowspan=1, colspan=3, mode="align,tomo")
+	parser.add_argument("--ref_label",type=str,default="",help="Optional: Specify a label for the averaged dark and gain references when using multiple, individual frames.\nA labeled will be written as movierefs/dark_<label>.hdf and movierefs/gain_<label>.hdf.\nNote: This option is ignored when using a single reference image/stack.",guitype='strbox', row=2, col=1, rowspan=1, colspan=2, mode="align,tomo")
+
+	parser.add_argument("--dark",type=str,default="",help="Perform dark image correction using the specified image file",guitype='filebox',browser="EMMovieRefsTable(withmodal=True,multiselect=True)", row=4, col=0, rowspan=1, colspan=3, mode="align,tomo")
+
 	parser.add_argument("--rotate_dark",  default = "0", type=str, choices=["0","90","180","270"], help="Rotate dark reference by 0, 90, 180, or 270 degrees. Default is 0. Transformation order is rotate then reverse.",guitype='combobox', choicelist='["0","90","180","270"]', row=5, col=0, rowspan=1, colspan=1, mode="align,tomo")
 	parser.add_argument("--reverse_dark", default=False, help="Flip dark reference along y axis. Default is False. Transformation order is rotate then reverse.",action="store_true",guitype='boolbox', row=5, col=1, rowspan=1, colspan=1, mode="align,tomo")
 
-	parser.add_argument("--gain",type=str,default="",help="Perform gain image correction using the specified image file",guitype='filebox',browser="EMRawMovieRefsTable(withmodal=True,multiselect=True)", row=6, col=0, rowspan=1, colspan=3, mode="align,tomo")
-	parser.add_argument("--k2", default=False, help="Perform gain image correction on gain images from a Gatan K2. Note, these are the reciprocal of typical DDD gain images.",action="store_true",guitype='boolbox', row=7, col=0, rowspan=1, colspan=1, mode="align,tomo")
-	parser.add_argument("--rotate_gain", default = 0, type=str, choices=["0","90","180","270"], help="Rotate gain reference by 0, 90, 180, or 270 degrees. Default is 0. Transformation order is rotate then reverse.",guitype='combobox', choicelist='["0","90","180","270"]', row=7, col=1, rowspan=1, colspan=1, mode="align,tomo")
-	parser.add_argument("--reverse_gain", default=False, help="Flip gain reference along y axis (about x axis). Default is False. Transformation order is rotate then reverse.",action="store_true",guitype='boolbox', row=7, col=2, rowspan=1, colspan=1, mode="align,tomo")
-	parser.add_argument("--de64", default=False, help="Perform gain image correction on DE64 data. Note, these should not be normalized.",action="store_true",guitype='boolbox', row=8, col=0, rowspan=1, colspan=1, mode="align,tomo")
-	parser.add_argument("--gain_darkcorrected", default=False, help="Do not dark correct gain image. False by default.",action="store_true",guitype='boolbox', row=8, col=1, rowspan=1, colspan=1, mode="align,tomo")
-	parser.add_argument("--invert_gain", default=False, help="Use reciprocal of input gain image",action="store_true",guitype='boolbox', row=8, col=2, rowspan=1, colspan=1, mode="align,tomo")
+	parser.add_argument("--gain",type=str,default="",help="Perform gain image correction using the specified image file",guitype='filebox',browser="EMMovieRefsTable(withmodal=True,multiselect=True)", row=6, col=0, rowspan=1, colspan=3, mode="align,tomo")
+	parser.add_argument("--k2", default=False, help="Perform gain image correction on gain images from a Gatan K2. Note, these are the reciprocal of typical DDD gain images.",action="store_true",guitype='boolbox', row=8, col=0, rowspan=1, colspan=1, mode="align,tomo")
+	parser.add_argument("--rotate_gain", default = 0, type=str, choices=["0","90","180","270"], help="Rotate gain reference by 0, 90, 180, or 270 degrees. Default is 0. Transformation order is rotate then reverse.",guitype='combobox', choicelist='["0","90","180","270"]', row=8, col=1, rowspan=1, colspan=1, mode="align,tomo")
+	parser.add_argument("--reverse_gain", default=False, help="Flip gain reference along y axis (about x axis). Default is False. Transformation order is rotate then reverse.",action="store_true",guitype='boolbox', row=8, col=2, rowspan=1, colspan=1, mode="align,tomo")
+	parser.add_argument("--de64", default=False, help="Perform gain image correction on DE64 data. Note, these should not be normalized.",action="store_true",guitype='boolbox', row=9, col=0, rowspan=1, colspan=1, mode="align,tomo")
+	parser.add_argument("--gain_darkcorrected", default=False, help="Do not dark correct gain image. False by default.",action="store_true",guitype='boolbox', row=9, col=1, rowspan=1, colspan=1, mode="align,tomo")
+	parser.add_argument("--invert_gain", default=False, help="Use reciprocal of input gain image",action="store_true",guitype='boolbox', row=9, col=2, rowspan=1, colspan=1, mode="align,tomo")
 
 	parser.add_header(name="orblock4", help='Just a visual separation', title="Output: ", row=10, col=0, rowspan=2, colspan=1, mode="align,tomo")
 
@@ -148,7 +151,7 @@ def main():
 		print("Error: Could not locate movie data. Please import movie stacks using e2import.py.")
 		sys.exit(1)
 
-	if options.bad_columns == "": 
+	if options.bad_columns == "":
 		options.bad_columns = []
 	else: 
 		try: 
@@ -157,14 +160,19 @@ def main():
 			print("Error: --bad_columns contains nonnumeric input.")
 			sys.exit(1)
 
-	if options.bad_rows == "": 
+	if options.bad_rows == "":
 		options.bad_rows = []
-	else: 
+	else:
 		try: 
 			options.bad_rows = [int(r) for r in options.bad_rows.split(",")]
 		except:
 			print("Error: --bad_rows contains nonnumeric input.")
 			sys.exit(1)
+
+	if options.align_frames and options.realign:
+		print("Error: Running --align_frames and --realign would remove any existing alignment.")
+		print("If you wish to do so, simply run with --align_frames only. Otherwise, use --realign.")
+		sys.exit(1)
 
 	if options.dark != "" or options.gain != "":
 		refsdir = os.path.join(".","movierefs")
@@ -172,18 +180,25 @@ def main():
 			os.mkdir(refsdir)
 
 	if len(options.dark.split(",")) > 1:
-		darkid = 0 # make reference ID (counter based on existing values)
-		for fn in os.listdir("movierefs"):
-			if "dark" in fn.lower(): darkid += 1
-		newfile = "movierefs_raw/tmp_dark{}.lst".format(darkid)
+		if options.ref_label != "":
+			newfile = "movierefs/gain_{}.lst".format(options.ref_label)
+		else:
+			count = 0
+			for f in os.listdir("movierefs"):
+				if "dark{}.hdf".format(count) in f: count += 1
+			newfile = "movierefs/dark_{}.lst".format(count)
 		run("e2proclst.py {} --create {}".format(options.dark.replace(","," "),newfile))
 		options.dark = newfile
 
 	if len(options.gain.split(",")) > 1:
-		gainid = 0 # make reference ID (counter based on existing values)
-		for fn in os.listdir("movierefs"):
-			if "gain" in fn.lower(): gainid += 1
-		newfile = "movierefs_raw/tmp_gain{}.lst".format(gainid)
+		if options.ref_label != "":
+			newfile = "movierefs/gain_{}.lst".format(options.ref_label)
+		else: 
+			count = 0
+			for f in os.listdir("movierefs"):
+				if "gain{}.hdf".format(count) in f: 
+					count += 1
+			newfile = "movierefs/gain_{}.lst".format(count)
 		run("e2proclst.py {} --create {}".format(options.gain.replace(","," "),newfile))
 		options.gain = newfile
 
@@ -233,12 +248,8 @@ def main():
 
 		if options.reverse_dark: dark.process_inplace("xform.reverse",{"axis":"y"})
 
-		dfout = "movierefs/{}.hdf".format(base_name(options.dark))
-		tmp = options.dark
-		dfout = dfout.replace("movierefs_raw-","")
-		dark.write_image(dfout,0)
-		options.dark = gfout
-		os.remove(tmp)
+		options.dark = "movierefs/{}.hdf".format(base_name(options.dark,nodir=True))
+		dark.write_image(options.dark,0)
 
 	else : dark=None
 
@@ -307,21 +318,8 @@ def main():
 
 		if options.reverse_gain: gain.process_inplace("xform.reverse",{"axis":"y"})
 
-		gfout = "movierefs/{}.hdf".format(base_name(options.gain))
-		tmp = options.gain
-		gfout = gfout.replace("movierefs_raw-","")
-		gain.write_image(gfout,0)
-		options.gain = gfout
-		os.remove(tmp)
-
-	if len(options.gain.split(",")) > 1:
-		gainid = 0 # make reference ID (counter based on existing values)
-		for fn in os.listdir("movierefs"):
-			if "gain" in fn.lower(): gainid += 1
-		newfile = "movierefs_raw/tmp_gain{}.lst".format(gainid)
-		run("e2proclst.py {} --create {}".format(options.gain.replace(","," "),newfile))
-		options.gain = newfile
-		#sigg.write_image(dfout,1)
+		options.gain = "movierefs/{}.hdf".format(base_name(options.gain,nodir=True))
+		gain.write_image(options.gain,0)
 
 	else: gain=None
 
@@ -350,7 +348,7 @@ def main():
 		db=js_open_dict(info_name(fsp,nodir=True))
 		db["data_source"]=fsp
 		if gain:
-			db["ddd_gain_reference"] = gfout
+			db["ddd_gain_reference"] = options.gain
 			if options.rotate_gain:
 				db["ddd_rotate_gain"] = options.rotate_gain
 			if options.reverse_gain:
@@ -360,7 +358,7 @@ def main():
 			if options.gain_darkcorrected:
 				db["ddd_gain_darkcorrected"] = options.gain_darkcorrected
 		if dark:
-			db["ddd_dark_reference"]=dfout
+			db["ddd_dark_reference"] = options.dark
 			if options.rotate_dark:
 				db["ddd_rotate_dark"]=options.rotate_dark
 			if options.reverse_dark:
@@ -449,7 +447,7 @@ def process_movie(fsp,dark,gain,first,flast,step,options):
 		else: mgdirname = os.path.join(".","tilts")
 		try: os.mkdir(mgdirname)
 		except: pass
-		alioutname="{}/{}.hdf".format(mgdirname,base_name(fsp))
+		alioutname="{}/{}__noali.hdf".format(mgdirname,base_name(fsp))
 		out=qsum(outim)
 		out.write_image(alioutname,0) #write out the unaligned average movie
 
@@ -623,71 +621,53 @@ def process_movie(fsp,dark,gain,first,flast,step,options):
 		runtime = time()-start
 		print("Runtime: {:.1f} s".format(runtime))
 
-		# if options.plot:
-		# 	import matplotlib.pyplot as plt
-		# 	fig,ax = plt.subplots(1,3,figsize=(12,3))
-		# 	ax[0].plot(traj[:,0],traj[:,1],c='b',alpha=0.5)
-		# 	ax[0].scatter(traj[:,0],traj[:,1],c='b',alpha=0.5)
-		# 	ax[0].set_title("Trajectory (x/y pixels)")
-		# 	ax[1].set_title("Quality (cumulative pairwise ccf value)")
-		# 	ax[1].plot(quals,'k')
-		# 	for k in peak_locs.keys():
-		# 		try:
-		# 			p = peak_locs[k]
-		# 			ax[2].scatter(p[0],p[1])
-		# 		except: pass
-		# 	ax[2].set_title("CCF Peak Coordinates")
+		# print("{:1.1f} s\nShift images".format(time()-t0))
+		# for i,im in enumerate(outim):
+		# 	if options.round == "int":
+		# 		dx = int(round(locs[i*2],0))
+		# 		dy = int(round(locs[i*2+1],0))
+		# 		im.translate(dx,dy,0)
+		# 	else: # float by default
+		# 		dx = float(locs[i*2])
+		# 		dy = float(locs[i*2+1])
+		# 		im.translate(dx,dy,0)
 
-		print("{:1.1f} s\nShift images".format(time()-t0))
-		for i,im in enumerate(outim):
-			if options.round == "int":
-				dx = int(round(locs[i*2],0))
-				dy = int(round(locs[i*2+1],0))
-				im.translate(dx,dy,0)
-			else: # float by default
-				dx = float(locs[i*2])
-				dy = float(locs[i*2+1])
-				im.translate(dx,dy,0)
+		# locs = traj.ravel()
+		# quals=[0]*n # quality of each frame based on its correlation peak summed over all images
+		# cen=options.optbox/2 #csum2[(0,1)]["nx"]/2
+		# for i in xrange(n-1):
+		# 	for j in xrange(i+1,n):
+		# 		val=csum2[(i,j)].sget_value_at_interp(int(cen+locs[j*2]-locs[i*2]),int(cen+locs[j*2+1]-locs[i*2+1]))*sqrt(float(n-fabs(i-j))/n)
+		# 		quals[i]+=val
+		# 		quals[j]+=val
 
-		locs = traj.ravel()
-		quals=[0]*n # quality of each frame based on its correlation peak summed over all images
-		cen=options.optbox/2 #csum2[(0,1)]["nx"]/2
-		for i in xrange(n-1):
-			for j in xrange(i+1,n):
-				val=csum2[(i,j)].sget_value_at_interp(int(cen+locs[j*2]-locs[i*2]),int(cen+locs[j*2+1]-locs[i*2+1]))*sqrt(float(n-fabs(i-j))/n)
-				quals[i]+=val
-				quals[j]+=val
+		# print("{:1.1f} s".format(time()-t0,n))
 
-		print("{:1.1f} s".format(time()-t0,n))
-
-		runtime = time()-start
-		print("Runtime: {:.1f} s".format(runtime))
+		# runtime = time()-start
+		# print("Runtime: {:.1f} s".format(runtime))
 
 		drs = []
 		reldrs = []
-		if options.save_info:
-			out=open("{}_info.txt".format(fsp[:-4]),"w")
-			out.write("#i,dx,dy,dr,rel dr,qual\n")
-			for i in range(1,n):
-				dx,dy = traj[i]
-				dxlast,dylast = traj[i-1]
-				dr = hypot(dx,dy)
-				drs.append(dr)
-				reldr = hypot(dx-dxlast,dy-dylast)
-				reldrs.append(reldr)
-				out.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(i,dx,dy,dr,reldr,quals[i]))
+		out=open("movies/{}_info.txt".format(base_name(fsp,nodir=True)),"w")
+		out.write("#i,dx,dy,dr,rel dr,qual\n")
+		for i in range(1,n):
+			dx,dy = traj[i]
+			dxlast,dylast = traj[i-1]
+			dr = hypot(dx,dy)
+			drs.append(dr)
+			reldr = hypot(dx-dxlast,dy-dylast)
+			reldrs.append(reldr)
+			out.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(i,dx,dy,dr,reldr,quals[i]))
 
 		# store alignment parameters
 		db=js_open_dict(info_name(fsp,nodir=True))
-		db["ddd_alitrans"]=[i for i in locs]
-		db["ddd_aliqual"]=[q for q in quals]
-		db["ddd_alitime"]=runtime
-		db["ddd_alimag"]=drs
-		db["ddd_alirelmag"]=reldrs
-		db["ddd_round"]=options.round
-		db["ddd_optbox"]=options.optbox
-		db["ddd_optstep"]=options.optstep
-		db["ddd_optalpha"]=options.optalpha
+		db["ddd_alignment_trans"]=[i for i in locs]
+		db["ddd_alignment_qual"]=[q for q in quals]
+		db["ddd_alignment_time"]=runtime
+		db["ddd_alignment_precision"]=options.round
+		db["ddd_alignment_optbox"]=options.optbox
+		db["ddd_alignment_optstep"]=options.optstep
+		db["ddd_alignment_optalpha"]=options.optalpha
 		db.close()
 
 		# if options.plot:
@@ -774,7 +754,7 @@ def process_movie(fsp,dark,gain,first,flast,step,options):
 
 		except:
 			print("Error: Could not find prior alignment for {}. Exiting".format(fsp))
-	\
+
 # CCF calculation
 def calc_ccf_wrapper(options,N,box,step,dataa,datab,out,locs,ii,fsp):
 

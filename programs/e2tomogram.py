@@ -50,7 +50,8 @@ def main():
 	parser.add_argument("--threads", type=int,help="Number of threads", default=12,guitype='intbox',row=11, col=0, rowspan=1, colspan=1)
 	parser.add_argument("--niter", type=int,help="Number of iterations", default=3,guitype='intbox',row=11, col=1, rowspan=1, colspan=1)
 	parser.add_argument("--verbose", type=int,help="Verbose", default=0)
-	
+	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-2)
+
 	(options, args) = parser.parse_args()
 	logid=E2init(sys.argv)
 
@@ -268,12 +269,10 @@ def main():
 	try: os.mkdir("tomograms")
 	except: pass
 	
-	
 	#### remove gold fiducials when needed
 	if options.rmgold and (not options.nofiducial):
 		imgs=remove_gold(imgs, allparams, threed, options)
 		inputtag=inputtag+"_rmgd.hdf"
-	
 	
 	outname="tomograms/" +bname + inputtag +".hdf"
 	
