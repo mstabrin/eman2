@@ -322,18 +322,27 @@ with the same name, you should specify only the .hed files (no renaming is neces
 			refname=os.path.join(refsdir,os.path.basename(ref))
 			if refname[-4:] == ".mrc": refname+="s"
 			if not os.path.isfile(refname):
-				if options.importation == "move": os.rename(ref,refname)
-				if options.importation == "copy": run("e2proc2d.py {} {} ".format(ref, refname))
-				if options.importation == "link": os.symlink(ref,refname)
+				if options.importation == "move": 
+					os.rename(ref,refname)
+				elif options.importation == "link":
+					print("Movie references must be moved or copied. Linking is not supported.")
+					sys.exit(1)
+				elif options.importation == "copy": 
+					run("e2proc2d.py {} {} ".format(ref, refname))
 
 	if options.darkrefs != "":
 		for ref in options.darkrefs.split(","):
 			refname=os.path.join(refsdir,os.path.basename(ref))
 			if refname[-4:] == ".mrc": refname+="s"
 			if not os.path.isfile(refname):
-				if options.importation == "move": os.rename(ref,refname)
-				if options.importation == "copy": run("e2proc2d.py {} {} ".format(ref, refname))
-				if options.importation == "link": os.symlink(ref,refname)
+				if options.importation == "move": 
+					os.rename(ref,refname)
+				elif options.importation == "link":
+					print("Movie references must be moved or copied. Linking is not supported.")
+					sys.exit(1)
+				elif options.importation == "copy": 
+					run("e2proc2d.py {} {} ".format(ref, refname))
+				
 
 	if options.import_movies:
 

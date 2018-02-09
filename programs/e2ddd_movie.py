@@ -67,7 +67,7 @@ def main():
 
 	parser.add_pos_argument(name="movies",help="List the movies to align.", default="", guitype='filebox', browser="EMMovieDataTable(withmodal=True,multiselect=True)",  row=0, col=0,rowspan=1, colspan=3, mode="align,tomo")
 
-	parser.add_header(name="orblock1", help='Just a visual separation', title="Dark/Gain Correction", row=2, col=0, rowspan=1, colspan=3, mode="align,tomo")
+	parser.add_header(name="orblock1", help='Just a visual separation', title="Dark/Gain Correction", row=2, col=0, rowspan=1, colspan=1, mode="align,tomo")
 
 	#parser.add_header(name="orblock2", help='Just a visual separation', title="- CHOOSE FROM -", row=3, col=0, rowspan=1, colspan=3, mode="align,tomo")
 
@@ -444,7 +444,7 @@ def process_movie(fsp,dark,gain,first,flast,step,options):
 
 	if options.noali:
 		if options.tomo: mgdirname = os.path.join(".","tilts")
-		else: mgdirname = os.path.join(".","tilts")
+		else: mgdirname = os.path.join(".","micrographs")
 		try: os.mkdir(mgdirname)
 		except: pass
 		alioutname="{}/{}__noali.hdf".format(mgdirname,base_name(fsp))
