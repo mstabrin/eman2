@@ -59,8 +59,7 @@ def main():
 	parser.add_pos_argument(name="tilt_images",help="List of images to be stacked", default="", guitype='filebox', browser="EMTiltsTable(withmodal=True,multiselect=True)",  row=0, col=0,rowspan=1, colspan=3, nosharedb=True,mode="tomo")
 	parser.add_argument("--output",type=str,help="Name of the output stack to build (including file extension).", default=None, guitype='strbox',row=2, col=0, rowspan=1, colspan=1, mode="default,tomo")
 	parser.add_argument("--tilts",action="store_true",default=False,help="Write results to 'tiltseries' directory in current project.", guitype='boolbox',row=4, col=0, rowspan=1, colspan=1,mode="tomo[True]")
-	
-	parser.add_argument("--angles",type=str,help="Name of tilt angles text file.\nNote, angles must correspond to stack file names in alphabetical/numerical order.", default="", guitype='filebox', browser="EMBrowserWidget(withmodal=True,multiselect=True)",row=3, col=0, rowspan=1, colspan=1, mode="tomo")
+	parser.add_argument("--rawtlt",type=str,help="Name of tilt angles text file.\nNote, angles must correspond to stack file names in alphabetical/numerical order.", default="", guitype='filebox', browser="EMBrowserWidget(withmodal=True,multiselect=True)",row=3, col=0, rowspan=1, colspan=1, mode="tomo")
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-1)
 	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, help="verbose level [0-9], higner number means higher level of verboseness",default=1)
 	
@@ -89,7 +88,7 @@ def main():
 
 		n=0		# number of images in output file
 		
-		if options.angles:
+		if options.rawtlt:
 
 			angles = np.loadtxt(options.angles)
 

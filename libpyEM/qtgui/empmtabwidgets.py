@@ -970,7 +970,6 @@ class EMTiltsTable(EMBrowserWidget):
 	def setPath(self,path,silent=False):
 		super(EMTiltsTable, self).setPath(path,silent=silent,inimodel=EMRawDataModel)
 
-
 class EMTiltseriesTable(EMBrowserWidget):
 	""" Widget to display Raw Data """
 	def __init__(self, withmodal=False, multiselect=False, startpath="./tiltseries"):
