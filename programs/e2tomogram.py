@@ -85,11 +85,12 @@ def main():
 		if os.path.isfile(info_name(args[0],nodir=True)):
 			db = js_open_dict(info_name(args[0],nodir=True))
 			try:
-				tlts = db["tilt_angles"]
+				tlts = map(float,db["tilt_angles"])
 			except:
 				print("ERROR: Could not find tilt angles in tiltseries metadata.")
 				print("Try re-importing this this tiltseries.")
 				sys.exit(1)
+
 		else:
 			print("ERROR: Could not find metadata entry for this tiltseries.")
 			print("Please import this tiltseries before running this program.")
