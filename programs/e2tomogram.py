@@ -10,9 +10,7 @@ from multiprocessing import Pool
 
 def main():
 
-	usage="""WARNING: This is an experimental program that may or may not work..
-	
-	This program takes an unaligned tilt series, performs fiducial (or fiducial-less) alignment, generate a tomogram and optionaly removes gold fiducials. Currently it only works on bin4 images smaller than 1Kx1K in size. Again this is an experimental program that has minimal functionality of tilt series alignment and reconstruction, and should only be used by people that are too lazy to use other software packages..
+	usage="""This program takes an unaligned tilt series, performs fiducial (or fiducial-less) alignment, generate a tomogram and optionaly removes gold fiducials. Currently it only works on bin4 images smaller than 1Kx1K in size. Again this is an experimental program that has minimal functionality of tilt series alignment and reconstruction, and should only be used by people that are too lazy to use other software packages..
 	
 	The program performs a rough alignment and generate a tomogram, then look for high density landmarks in the 3D volume, track them in 2D tilt series, refine the alignment and reconstruct the 3D volume again. This process is repeated a number of time until a final tomogram is generated.
 	
@@ -30,28 +28,32 @@ def main():
 
 	parser.add_argument("--rawtlt", type=str,help="Override tilt angles stored in project metadata and tiltseries header. Text file contains raw tilt angles.", default="", guitype='filebox', browser="EMBrowserWidget(withmodal=True,multiselect=False)", filecheck=False, row=3, col=0, rowspan=1, colspan=2)
 
-	parser.add_argument("--zeroid", type=int,help="Index of the center tilt. Ignored when rawtlt is provided.", default=None,guitype='intbox',row=4, col=0, rowspan=1, colspan=1)
-	parser.add_argument("--tltstep", type=float,help="Step between tilts. Ignored when rawtlt is provided.", default=None,guitype='floatbox',row=4, col=1, rowspan=1, colspan=1)
-	parser.add_argument("--tltax", type=float,help="Angle of the tilt axis. The program will calculate one if this option is not provided", default=None,guitype='floatbox',row=6, col=0, rowspan=1, colspan=1,mode="easy")
+	parser.add_argument("--zeroid", type=int,help="Index of the center tilt. Ignored when rawtlt is provided.", default=-1,guitype='intbox',row=4, col=0, rowspan=1, colspan=1)
+	parser.add_argument("--tltstep", type=float,help="Step between tilts. Ignored when rawtlt is provided.", default=1,guitype='floatbox',row=4, col=1, rowspan=1, colspan=1)
 
-	parser.add_argument("--loadparam", type=str,help="Load from existing param file", default="", guitype='filebox', browser="EMBrowserWidget(withmodal=True,multiselect=False)", filecheck=False, row=5, col=0, rowspan=1, colspan=2,mode="easy")
+	parser.add_argument("--loadparam", type=str,help="Load from existing param file", default="", guitype='filebox', browser="EMBrowserWidget(withmodal=True,multiselect=False)", filecheck=False, row=5, col=0, rowspan=1, colspan=2)
 
+	parser.add_argument("--tltax", type=float,help="Angle of the tilt axis. The program will calculate one if this option is not provided", default=None,guitype='floatbox',row=6, col=0, rowspan=1, colspan=1)
 	parser.add_argument("--tltkeep", type=float,help="Fraction of tilts to keep in the reconstruction.", default=.9,guitype='floatbox',row=6, col=1, rowspan=1, colspan=1,mode="easy")
+
 	parser.add_argument("--npk", type=int,help="Number of landmarks to use.", default=20,guitype='intbox',row=7, col=0, rowspan=1, colspan=1)
 	parser.add_argument("--pkeep", type=float,help="Fraction of landmarks to keep in the tracking.", default=.5,guitype='floatbox',row=7, col=1, rowspan=1, colspan=1)
+
 	parser.add_argument("--bxsz", type=int,help="Box size of the particles for tracking", default=-1,guitype='intbox',row=8, col=0, rowspan=1, colspan=1)
 	parser.add_argument("--minloss", type=float,help="Stop refinement when the loss is lower than this value.", default=1.,guitype='floatbox',row=8, col=1, rowspan=1, colspan=1)
+
 	parser.add_argument("--rmgold", action="store_true",help="Remove gold fiducials.", default=False,guitype='boolbox',row=9, col=0, rowspan=1, colspan=1,mode="easy")
 	parser.add_argument("--nofiducial", action="store_true",help="Fiducial-less mode. This will change a few internal parameters to make it work.", default=False, guitype='boolbox',row=9, col=1, rowspan=1, colspan=1,mode="easy")
 
-	parser.add_argument("--niter", type=int,help="Number of iterations", default=3,guitype='intbox',row=10, col=0, rowspan=1, colspan=1,mode="easy")
+	parser.add_argument("--niter", type=int,help="Number of iterations", default=3,guitype='intbox',row=10, col=0, rowspan=1, colspan=1,mode="easy[3]")
+	parser.add_argument("--writetmp", action="store_true",help="Write intermidiate files", default=False,guitype='boolbox',row=10, col=1, rowspan=1, colspan=1,mode="easy[True]")
 
-	parser.add_argument("--writetmp", action="store_true",help="Write intermidiate files", default=True,guitype='boolbox',row=10, col=1, rowspan=1, colspan=1,mode="easy")
+	parser.add_argument("--shrink", type=float,help="Mean-shrink tilt images by this integer value. We suggest using a value that converts image dimensions to approximately 1024x1024.", default=1,guitype='floatbox',row=6, col=0, rowspan=1, colspan=1,mode="easy[4]")
+	parser.add_argument("--reconmode", type=str,help="Reconstruction mode. Choose from nearest_neighbor, gauss_2, gauss_3, and gauss_5.", default="gauss_2", choices=["gauss_2","gauss_3","gauss_5"], choicelist='["gauss_2","gauss_3","gauss_5"]', guitype='combobox', row=11, col=1, rowspan=1, colspan=1)
 
-	parser.add_argument("--reconmode", type=str,help="Reconstruction mode. Choose from nearest_neighbor, gauss_2, gauss_3, and gauss_5.", default="gauss_2", choices=["gauss_2","gauss_3","gauss_5"], choicelist='["gauss_2","gauss_3","gauss_5"]', guitype='combobox', row=10, col=1, rowspan=1, colspan=1)
+	parser.add_argument("--threads", type=int,help="Number of threads", default=12,guitype='intbox',row=12, col=0, rowspan=1, colspan=1,mode="easy")
+	parser.add_argument("--verbose","-v", type=int,help="Verbose", default=0, mode="easy[3]", guitype="intbox", row=12,col=1, rowspan=1, colspan=1)
 
-	parser.add_argument("--threads", type=int,help="Number of threads", default=12,guitype='intbox',row=11, col=0, rowspan=1, colspan=1,mode="easy")
-	parser.add_argument("--verbose", type=int,help="Verbose", default=0)
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-2)
 
 	(options, args) = parser.parse_args()
@@ -85,7 +87,7 @@ def main():
 		if os.path.isfile(info_name(args[0],nodir=True)):
 			db = js_open_dict(info_name(args[0],nodir=True))
 			try:
-				tlts = map(float,db["tilt_angles"])
+				tlts = db["tilt_angles"]
 			except:
 				print("ERROR: Could not find tilt angles in tiltseries metadata.")
 				print("Try re-importing this this tiltseries.")
@@ -96,6 +98,8 @@ def main():
 			print("Please import this tiltseries before running this program.")
 			sys.exit(1)
 
+	tlts = np.asarray(map(float,db["tilt_angles"])).astype(np.float)
+
 	# elif options.zeroid != None and options.tltstep != None:
 	# 	#### generate tilt angles from tilt step size
 	# 	if options.zeroid<0:
@@ -103,19 +107,25 @@ def main():
 	# 	tlts=np.arange(num, dtype=float)*options.tltstep
 	# 	tlts-=tlts[options.zeroid]
 
+	num = len(tlts)
+	tlts=tlts[:num]
+
+	print("Read tilt angles from {:.1f} to {:.1f} with tilt step of {:.1f}".format(np.min(tlts), np.max(tlts), options.tltstep))
+	options.tlt_init=tlts.copy()
+
+	if options.zeroid == -1: options.zeroid = np.argmin(tlts**2)
+
 	print("Reading and pre-processing tilt stack...")
 	imgs=EMData.read_images(inputname)
 	for m in imgs:
+		m.process_inplace("math.fft.resample",{"n":options.shrink})
 		m.process_inplace("filter.highpass.gauss",{"cutoff_pixels":3})
 		m.process_inplace("filter.lowpass.gauss",{"cutoff_abs":.25})
 		m.process_inplace("normalize.edgemean")
 
 	num=len(imgs)
 	options.num=num
-
 	tlts=tlts[:num]
-	print("tilt angle from {:.1f} to {:.1f}, step {:.1f}".format(np.min(tlts), np.max(tlts), options.tltstep))
-	options.tlt_init=tlts.copy()
 
 	nx=imgs[0]["nx"]/2
 	ny=imgs[0]["ny"]/2
@@ -463,7 +473,7 @@ def calc_global_trans(imgs, options, excludes=[]):
 			if options.writetmp:
 				e1.write_image(tmpoutname,nid)
 			ts=e1a["xform.align2d"].get_trans()
-			if options.verbose: print("\t{:d}: {:.1f}, {:.1f}".format(nid, ts[0], ts[1]))
+			if options.verbose > 4: print("\t{:d}: {:.1f}, {:.1f}".format(nid, ts[0], ts[1]))
 			pretrans[nid, 0]=ts[0]
 			pretrans[nid, 1]=ts[1]
 	return imgout,pretrans
@@ -557,7 +567,7 @@ def make_tomogram(imgs, allparams, options, outname=None, premask=True, padr=1.2
 		# thread hasn't finished.
 		if thrtolaunch<len(thrds) :
 			while (threading.active_count()==options.threads ) : time.sleep(.1)
-			if options.verbose : print("Inserting slice {}/{}".format(thrtolaunch,len(thrds)))
+			if options.verbose > 4: print("Inserting slice {}/{}".format(thrtolaunch+1,len(thrds)))
 			thrds[thrtolaunch].start()
 			thrtolaunch+=1
 		else: time.sleep(1)
@@ -688,7 +698,7 @@ def locate_peaks(threed, options, returnall=False):
 	ppk=[nnpk[np.random.randint(len(nnpk))]] #### just introduce some randomness into the system..
 	for i in range(options.npk-1):
 		ii=np.argmax(np.min(scidist.cdist(ps, ppk), axis=1))
-		if options.verbose:print(ps[ii], ss[ii])
+		if options.verbose > 4:print(ps[ii], ss[ii])
 		ppk.append(ps[ii])
 	ppk=np.array(ppk)
 	return ppk
@@ -742,7 +752,7 @@ def make_samples(imgs, allparams, options, refinepos=False, outname=None, errtlt
 
 			threed.translate(-com[0], -com[1], -com[2])
 			for i in range(3): pks[pid, i]+=com[i]
-			if options.verbose:print(pid, com)
+			if options.verbose > 4:print(pid, com)
 
 
 		pj=threed.project("standard", Transform({"type":"eman", "alt":90}))
@@ -776,7 +786,7 @@ def make_samples(imgs, allparams, options, refinepos=False, outname=None, errtlt
 			pj1.mult(-1)
 			pj1.translate(-xysft[0],-xysft[1], 0)
 
-			if options.verbose:print(pid, zsft,xysft)
+			if options.verbose > 4:print(pid, zsft,xysft)
 
 
 		if outname:pj1.write_image(outname, pid*2)
@@ -834,7 +844,7 @@ def refine_trans(imgs, allparams, options, pkrg=[], err_tilt=[]):
 	ret=pl.map(do_refine_trans, jobs)
 	for r in ret:
 		nid, pm, loss = r
-		if options.verbose:
+		if options.verbose > 4:
 			print("\t tlt: {:d}, trans: {:.1f}, {:.1f}, loss: {:.2f}".format(nid, pm[0],pm[1], loss))
 		ttparams[nid,:2]=pm.copy()
 	allparams=np.hstack([ttparams.flatten(), pks.flatten(), miscglobal])
@@ -876,7 +886,7 @@ def refine_angle(imgs, allparams, options, pkrg=[], err_tilt=[]):
 	ret=pl.map(do_refine_angle, jobs)
 	for r in ret:
 		nid, pm, loss = r
-		if options.verbose:
+		if options.verbose > 4:
 
 			print("\t tlt: {:d}, angle: {:.1f}, {:.1f}, {:.1f}, loss: {:.2f}".format(nid, float(pm[0]), float(pm[1]), float(pm[2]), float(loss)))
 		ttparams[nid,2:]=pm.copy()
@@ -926,7 +936,7 @@ def remove_gold(imgs, allparams, threed, options):
 		# thread hasn't finished.
 		if thrtolaunch<len(thrds) :
 			while (threading.active_count()==options.threads ) : time.sleep(.1)
-			if options.verbose : print("Starting on tilt {}/{}".format(thrtolaunch,len(thrds)))
+			if options.verbose > 4 : print("Starting on tilt {}/{}".format(thrtolaunch+1,len(thrds)))
 			thrds[thrtolaunch].start()
 			thrtolaunch+=1
 		else: time.sleep(1)
