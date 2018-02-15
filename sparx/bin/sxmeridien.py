@@ -364,7 +364,7 @@ def AI_continuation(fff, anger = -1.0, shifter = -1.0, chout = False):
 				Tracker["currentres"], Tracker["fsc143"], Tracker["constants"]["pixel_size"]*Tracker["constants"]["nnxo"]/float(Tracker["currentres"]), \
 				Tracker["constants"]["pixel_size"]*Tracker["constants"]["nnxo"]/float(Tracker["fsc143"])))
 	else:
-		Tracker["nxstep"] = max(Tracker["nxstep"], l01-l05+5)
+		if(Tracker["mainiteration"] > 3):  Tracker["nxstep"] = max(Tracker["nxstep"], l01-l05+5)
 		if(Tracker["state"] == "FINAL" or Tracker["state"] == "RESTRICTED"): Tracker["large_at_Nyquist"] = (fff[Tracker["nxinit"]//2] > 0.1 or fff[Tracker["nxinit"]//2-1] > 0.2)
 		else:   Tracker["large_at_Nyquist"] = fff[Tracker["nxinit"]//2-1] > 0.2
 
@@ -1571,27 +1571,27 @@ def calculate_2d_params_for_centering(kwargs):
 	main_node = kwargs["main_node"]
 	number_of_images_in_stack = kwargs["number_of_images_in_stack"]
 	nproc = kwargs["nproc"]
-	
+
 	target_radius = kwargs["target_radius"]
 	# target_nx = kwargs["target_nx"]
 	radi = kwargs["radi"]
-	
+
 	center_method = kwargs["center_method"]
-	
+
 	nxrsteps = kwargs["nxrsteps"]
-	
-	
+
+
 	# stack_processed_by_ali2d_base__filename = kwargs["stack_processed_by_ali2d_base__filename"]
 	command_line_provided_stack_filename = kwargs["command_line_provided_stack_filename"]
-	
+
 	# masterdir = kwargs["masterdir"]
-	
+
 	options_skip_prealignment = kwargs["options_skip_prealignment"]
 	options_CTF = kwargs["options_CTF"]
-	
+
 	mpi_comm = kwargs["mpi_comm"]
 	#################################################################################################################################################################
-	
+
 	if options_skip_prealignment:
 		if(Blockdata["myid"] == 0):
 			print("=========================================")
