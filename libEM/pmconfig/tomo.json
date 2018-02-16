@@ -158,7 +158,7 @@
       },
       {
         "ICON": "ctf",
-        "PROGRAM": "spt_tomoctf.py",
+        "PROGRAM": "e2spt_tomoctf.py",
         "NAME": "CTF Correction",
         "CHILDREN": []
       },
@@ -203,30 +203,30 @@
             "CHILDREN": []
           }
         ]
-      }
-    ]
-  },
-  {
-    "ICON":"resolution",
-    "NAME":"Validation and Analysis",
-    "CHILDREN":[
-      {
-        "ICON": "green_boxes",
-        "PROGRAM": "e2spt_simulation.py",
-        "NAME": "Tomo Simulation",
-        "CHILDREN": []
       },
       {
-        "ICON": "resolution",
-        "PROGRAM": "e2spt_resolutionplot.py",
-        "NAME": "Calc Multiple FSC",
-        "CHILDREN": []
-      },
-      {
-        "ICON": "resolution",
-        "PROGRAM": "e2spt_stat.py",
-        "NAME": "Calc Quality vs. Reference",
-        "CHILDREN": []
+        "ICON":"resolution",
+        "NAME":"Validation and Analysis",
+        "CHILDREN":[
+          {
+            "ICON": "green_boxes",
+            "PROGRAM": "e2spt_simulation.py",
+            "NAME": "Tomo Simulation",
+            "CHILDREN": []
+          },
+          {
+            "ICON": "resolution",
+            "PROGRAM": "e2spt_resolutionplot.py",
+            "NAME": "Calc Multiple FSC",
+            "CHILDREN": []
+          },
+          {
+            "ICON": "resolution",
+            "PROGRAM": "e2spt_stat.py",
+            "NAME": "Calc Quality vs. Reference",
+            "CHILDREN": []
+          }
+        ]
       }
     ]
   }
