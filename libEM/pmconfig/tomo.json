@@ -163,40 +163,46 @@
         "CHILDREN": []
       },
       {
+        "ICON":"green_boxes",
+        "NAME":"Heterogeneity Analysis",
+        "CHILDREN":[
+          {
+            "ICON": "green_boxes",
+            "PROGRAM": "e2spt_classaverage.py",
+            "NAME": "3D Class Averaging",
+            "CHILDREN": []
+          },
+          {
+            "ICON": "green_boxes",
+            "PROGRAM": "e2spt_refinemulti.py",
+            "NAME": "Mult-Reference Refinement",
+            "CHILDREN": []
+          },
+          {
+            "ICON": "green_boxes",
+            "PROGRAM": "e2spt_average_multi.py",
+            "NAME": "Mult-Reference Averaging",
+            "CHILDREN": []
+          }
+        ]
+      },
+      {
         "ICON": "tomo_hunter",
-        "PROGRAM": "e2spt_subtilt_from_imod.py",
-        "NAME": "Extract 2D particles",
-        "CHILDREN": []
-      },
-      {
-        "ICON": "single_image_3d",
-        "PROGRAM": "e2spt_make3d.py",
-        "NAME": "Reconstruction from 2D particles",
-        "CHILDREN": []
-      }
-    ]
-  },
-  {
-    "ICON":"resolution",
-    "NAME":"Heterogeneity Analysis",
-    "CHILDREN":[
-      {
-        "ICON": "green_boxes",
-        "PROGRAM": "e2spt_classaverage.py",
-        "NAME": "3D Class Averaging",
-        "CHILDREN": []
-      },
-      {
-        "ICON": "green_boxes",
-        "PROGRAM": "e2spt_refinemulti.py",
-        "NAME": "Mult-Reference Refinement",
-        "CHILDREN": []
-      },
-      {
-        "ICON": "green_boxes",
-        "PROGRAM": "e2spt_average_multi.py",
-        "NAME": "Mult-Reference Averaging",
-        "CHILDREN": []
+        "NAME": "Extract from IMOD",
+        "CHILDREN": [
+          {
+            "ICON": "tomo_hunter",
+            "PROGRAM": "e2spt_subtilt_from_imod.py",
+            "NAME": "Extract 2D particles",
+            "CHILDREN": []
+          },
+          {
+            "ICON": "single_image_3d",
+            "PROGRAM": "e2spt_make3d.py",
+            "NAME": "Reconstruction from 2D particles",
+            "CHILDREN": []
+          }
+        ]
       }
     ]
   },
@@ -213,7 +219,7 @@
       {
         "ICON": "resolution",
         "PROGRAM": "e2spt_resolutionplot.py",
-        "NAME": "Calc Multi FSC",
+        "NAME": "Calc Multiple FSC",
         "CHILDREN": []
       },
       {
