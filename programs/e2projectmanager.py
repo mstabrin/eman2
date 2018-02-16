@@ -203,7 +203,7 @@ class EMProjectManager(QtGui.QMainWindow):
 		# To add a new mode add an item to the list, and then add the json file in fuction: makeStackedWidget
 		self.modeCB.addItem("SPR")
 		self.modeCB.addItem("Tomo")
-		self.modeCB.addItem("SPT")
+		#self.modeCB.addItem("SPT")
 
 		box.addWidget(workflowcontrollabel)
 		box.addWidget(self.modeCB)
@@ -285,7 +285,7 @@ class EMProjectManager(QtGui.QMainWindow):
 		self.tree_stacked_widget.setMinimumWidth(300)
 		self.tree_stacked_widget.addWidget(self.makeTreeWidget(os.getenv("EMAN2DIR")+'/lib/pmconfig/spr.json', 'Single Particle Refinement'))
 		self.tree_stacked_widget.addWidget(self.makeTreeWidget(os.getenv("EMAN2DIR")+'/lib/pmconfig/tomo.json', 'Tomography'))
-		self.tree_stacked_widget.addWidget(self.makeTreeWidget(os.getenv("EMAN2DIR")+'/lib/pmconfig/spt.json', 'Subtomogram Averaging'))
+		#self.tree_stacked_widget.addWidget(self.makeTreeWidget(os.getenv("EMAN2DIR")+'/lib/pmconfig/spt.json', 'Subtomogram Averaging'))
 
 		return self.tree_stacked_widget
 

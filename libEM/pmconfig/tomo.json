@@ -113,7 +113,6 @@
     "CHILDREN":[
       {
         "ICON": "green_boxes",
-        "WIZARD":"/lib/pmconfig/tomoboxer.json",
         "MODE": "boxing",
         "WIKIPAGE": "http://blake.bcm.tmc.edu/emanwiki/EMAN2/Programs/e2spt_boxer",
         "PROGRAM": "e2spt_boxer.py",
@@ -121,58 +120,48 @@
         "CHILDREN": []
       },
       {
-        "ICON": "green_boxes",
-        "WIZARD":"/lib/pmconfig/wedge.json",
-        "PROGRAM": "e2wedge.py",
-        "NAME": "Examine Missing Wedges",
+        "ICON": "single_image_3d",
+        "PROGRAM": "e2spt_sgd.py",
+        "NAME": "Make Initial Model",
         "CHILDREN": []
       },
       {
         "ICON": "tomo_hunter",
-        "WIZARD":"/lib/pmconfig/classaverage3d.json",
-        "WIKIPAGE": "http://blake.bcm.tmc.edu/emanwiki/EMAN2/Programs/e2spt_classaverage",
-        "PROGRAM": "e2spt_classaverage.py",
-        "MODE": "alignment",
+        "PROGRAM": "e2spt_align.py",
         "NAME": "Alignment",
-        "NOTELEVEL": "1",
         "CHILDREN": []
       },
       {
         "ICON": "single_image_3d",
         "MODE":"align",
-        "WIZARD":"/lib/pmconfig/symsearch.json",
-        "PROGRAM": "e2symsearch3d.py",
-        "NAME": "Align to Symmetry Axis",
-        "NOTELEVEL": "1",
-        "CHILDREN": []
-      },
-      {
-        "ICON": "tomo_hunter",
-        "WIZARD":"/lib/pmconfig/symaligner.json",
-        "PROGRAM": "e2classaveragebysym.py",
-        "NAME": "Symmetry-based Alignment",
-        "NOTELEVEL": "1",
-        "CHILDREN": []
-      },
-      {
-        "ICON": "tomo_hunter",
-        "WIZARD":"/lib/pmconfig/breaksym.json",
-        "WIKIPAGE": "http://blake.bcm.tmc.edu/emanwiki/EMAN2/Programs/e2spt_classaverage",
-        "PROGRAM": "e2spt_classaverage.py",
-        "MODE": "breaksym",
-        "NAME": "Break Sym Alignment",
-        "NOTELEVEL": "1",
+        "PROGRAM": "e2spt_average.py",
+        "NAME": "Averaging",
         "CHILDREN": []
       },
       {
         "ICON": "single_image_3d",
-        "WIZARD":"/lib/pmconfig/tomores.json",
-        "PROGRAM": "e2tomoresolution.py",
-        "NAME": "Estimate Resolution via FSC",
-        "NOTELEVEL": "1",
+        "PROGRAM": "e2refine_postprocess.py",
+        "NAME": "Post-processing",
+        "CHILDREN": []
+      },
+      {
+        "ICON": "ctf",
+        "PROGRAM": "spt_tomoctf.py",
+        "NAME": "CTF Correction",
+        "CHILDREN": []
+      },
+      {
+        "ICON": "tomo_hunter",
+        "PROGRAM": "e2spt_subtilt_from_imod.py",
+        "NAME": "Extract 2D particles",
+        "CHILDREN": []
+      },
+      {
+        "ICON": "single_image_3d",
+        "PROGRAM": "e2spt_make3d.py",
+        "NAME": "Reconstruction from 2D",
         "CHILDREN": []
       }
     ]
   }
-
 ]
