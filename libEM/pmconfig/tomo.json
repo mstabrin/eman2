@@ -3,7 +3,6 @@
 /* The available keys can be found by browsing the JSON files of looking at e2 projectmanager.py */
 
 [
-
   {
       "ICON": "green_boxes",
       "NAME": "Raw Data",
@@ -19,6 +18,12 @@
             "ICON": "multiple_images",
             "PROGRAM": "e2buildstacks.py",
             "MODE": "tomo",
+            "NAME": "Combine Tilt Images",
+            "CHILDREN": []
+          },
+          {
+            "ICON": "multiple_images",
+            "PROGRAM": "e2spt_tiltstacker.py",
             "NAME": "Combine Tilt Images",
             "CHILDREN": []
           },
@@ -128,14 +133,21 @@
       {
         "ICON": "tomo_hunter",
         "PROGRAM": "e2spt_align.py",
-        "NAME": "Alignment",
+        "NAME": "Align to Reference",
         "CHILDREN": []
       },
       {
         "ICON": "single_image_3d",
         "MODE":"align",
         "PROGRAM": "e2spt_average.py",
-        "NAME": "Averaging",
+        "NAME": "Average Aligned Volumes",
+        "CHILDREN": []
+      },
+      {
+        "ICON": "single_image_3d",
+        "MODE":"align",
+        "PROGRAM": "e2spt_project.py",
+        "NAME": "Generate Z Projections",
         "CHILDREN": []
       },
       {
@@ -159,7 +171,55 @@
       {
         "ICON": "single_image_3d",
         "PROGRAM": "e2spt_make3d.py",
-        "NAME": "Reconstruction from 2D",
+        "NAME": "Reconstruction from 2D particles",
+        "CHILDREN": []
+      }
+    ]
+  },
+  {
+    "ICON":"resolution",
+    "NAME":"Heterogeneity Analysis",
+    "CHILDREN":[
+      {
+        "ICON": "green_boxes",
+        "PROGRAM": "e2spt_classaverage.py",
+        "NAME": "3D Class Averaging",
+        "CHILDREN": []
+      },
+      {
+        "ICON": "green_boxes",
+        "PROGRAM": "e2spt_refinemulti.py",
+        "NAME": "Mult-Reference Refinement",
+        "CHILDREN": []
+      },
+      {
+        "ICON": "green_boxes",
+        "PROGRAM": "e2spt_average_multi.py",
+        "NAME": "Mult-Reference Averaging",
+        "CHILDREN": []
+      }
+    ]
+  },
+  {
+    "ICON":"resolution",
+    "NAME":"Validation and Analysis",
+    "CHILDREN":[
+      {
+        "ICON": "green_boxes",
+        "PROGRAM": "e2spt_simulation.py",
+        "NAME": "Tomo Simulation",
+        "CHILDREN": []
+      },
+      {
+        "ICON": "resolution",
+        "PROGRAM": "e2spt_resolutionplot.py",
+        "NAME": "Calc Multi FSC",
+        "CHILDREN": []
+      },
+      {
+        "ICON": "resolution",
+        "PROGRAM": "e2spt_stat.py",
+        "NAME": "Calc Quality vs. Reference",
         "CHILDREN": []
       }
     ]
