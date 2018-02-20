@@ -124,7 +124,7 @@ def main():
 	parser.add_argument("--debug", default=False, action="store_true", help="run with debugging output")
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-2)
 
-	# parser.add_argument("--fixbadpixels",action="store_true",default=False,help="Tries to identify bad pixels in the dark/gain reference, and fills images in with sane values instead", guitype='boolbox', row=17, col=1, rowspan=1, colspan=1, mode='align[True]')
+	parser.add_argument("--fixbadpixels",action="store_true",default=False,help="Tries to identify bad pixels in the dark/gain reference, and fills images in with sane values instead", guitype='boolbox', row=17, col=1, rowspan=1, colspan=1, mode='align[True]')
 	# parser.add_argument("--normaxes",action="store_true",default=False,help="Tries to erase vertical/horizontal line artifacts in Fourier space by replacing them with the mean of their neighboring values.",guitype='boolbox', row=17, col=2, rowspan=1, colspan=1, mode='align')
 	#parser.add_argument("--frames",action="store_true",default=False,help="Save the dark/gain corrected frames. Note that frames will be overwritten if identical --suffix is already present.", guitype='boolbox', row=19, col=0, rowspan=1, colspan=1, mode="align,tomo")
 	#parser.add_argument("--suffix",type=str,default="proc",help="Specify a unique suffix for output frames. Default is 'proc'. Note that the output of --frames will be overwritten if identical suffix is already present.",guitype='strbox', row=19, col=2, rowspan=1, colspan=1, mode="align,tomo")
@@ -381,11 +381,12 @@ def main():
 		db.close()
 
 	# the user may provide multiple movies to process at once
-	for idx,(fsp,angle) in enumerate(zip(sorted(args),angles)):
+	for idx,fsp in enumerate(sorted(args)):
 		print("Processing {}".format(base_name(fsp,nodir=True)))
 
 		if options.tomo:
 			# write reference image info to corresponding movie info.json files
+			angle = angles[idx]
 			db=js_open_dict(info_name(options.tomo_name,nodir=True))
 			db[angle] = {"data_source":fsp}
 		else:
@@ -435,19 +436,21 @@ def main():
 
 		if flast > n : flast = n
 
-		process_movie(fsp, dark, gain, first, flast, step, idx, angle, options)
+		if not options.tomo: angle=None
+
+		process_movie(options, fsp, dark, gain, first, flast, step, idx, angle)
 
 	print("Done")
 	E2end(pid)
 
 
-def process_movie(fsp,dark,gain,first,flast,step,idx,angle,options):
+def process_movie(options,fsp,dark,gain,first,flast,step,idx,angle):
 	cwd = os.getcwd()
 	
 	if options.frames:
 		if options.ext == "mrc":
-			outname="{}/{}_{}.{}".format(cwd,base_name(fsp,nodir=True),options.suffix,"mrcs") #Output contents vary with options
-		else: outname="{}/{}_{}.{}".format(cwd,base_name(fsp,nodir=True),options.suffix,options.ext) #Output contents vary with options
+			outname="{}/{}_proc.mrcs".format(cwd,base_name(fsp,nodir=True))#,options.suffix,"mrcs") #Output contents vary with options
+		else: outname="{}/{}_proc.{}".format(cwd,base_name(fsp,nodir=True),options.suffix,options.ext) #Output contents vary with options
 	else: outname="{}/{}.{}".format(cwd,base_name(fsp,nodir=True),options.ext)
 
 	if fsp[-4:].lower() in (".mrc"):
