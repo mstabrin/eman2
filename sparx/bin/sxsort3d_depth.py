@@ -5175,9 +5175,13 @@ def get_input_from_sparx_ref3d(log_main):# case one
 	from string import atoi
 	if Tracker["constants"]["minimum_grp_size"] ==-1:
 		Tracker["constants"]["minimum_grp_size"] = Tracker["constants"]["total_stack"]//Tracker["constants"]["img_per_grp"]*(100//Blockdata["symclass"].nsym)
-	else: 
-		Tracker["constants"]["minimum_grp_size"] = max(Tracker["constants"]["minimum_grp_size"], \
-		   Tracker["constants"]["total_stack"]//Tracker["constants"]["img_per_grp"]*100//Blockdata["symclass"].nsym)
+	else:
+		if Tracker["constants"]["minimum_grp_size"] < Tracker["constants"]["total_stack"]//Tracker["constants"]["img_per_grp"]*(100//Blockdata["symclass"].nsym):
+			Tracker["constants"]["minimum_grp_size"] = Tracker["constants"]["total_stack"]//Tracker["constants"]["img_per_grp"]*(100//Blockdata["symclass"].nsym)
+			if(Blockdata["myid"] == Blockdata["main_node"]):
+				log_main.add("User provided minimum_grp_size is replaced by %d"%Tracker["constants"]["minimum_grp_size"])		
+	if Tracker["constants"]["minimum_grp_size"] >= Tracker["constants"]["img_per_grp"]:
+		ERROR("User provided img_per_grp is too small", "get_input_from_sparx_ref3d", 1, Blockdata["myid"])
 	# Now copy oldparamstruture
 	copy_oldparamstructure_from_meridien_MPI(selected_iter, log_main)
 	return import_from_sparx_refinement
@@ -5224,9 +5228,13 @@ def get_input_from_datastack(log_main):# Case three
 	
 	if Tracker["constants"]["minimum_grp_size"] ==-1:
 		Tracker["constants"]["minimum_grp_size"] = Tracker["constants"]["total_stack"]//Tracker["constants"]["img_per_grp"]*(100//Blockdata["symclass"].nsym)
-	else: 
-		Tracker["constants"]["minimum_grp_size"] = max(Tracker["constants"]["minimum_grp_size"], \
-		   Tracker["constants"]["total_stack"]//Tracker["constants"]["img_per_grp"]*100//Blockdata["symclass"].nsym)
+	else:
+		if Tracker["constants"]["minimum_grp_size"] < Tracker["constants"]["total_stack"]//Tracker["constants"]["img_per_grp"]*(100//Blockdata["symclass"].nsym):
+			Tracker["constants"]["minimum_grp_size"] = Tracker["constants"]["total_stack"]//Tracker["constants"]["img_per_grp"]*(100//Blockdata["symclass"].nsym)
+			if(Blockdata["myid"] == Blockdata["main_node"]):
+				log_main.add("User provided minimum_grp_size is replaced by %d"%Tracker["constants"]["minimum_grp_size"])		
+	if Tracker["constants"]["minimum_grp_size"] >= Tracker["constants"]["img_per_grp"]:
+		ERROR("User provided img_per_grp is too small", "get_input_from_sparx_ref3d", 1, Blockdata["myid"])
 
 	###
 	Tracker["refang"], Tracker["rshifts"], Tracker["delta"] = None, None, None
