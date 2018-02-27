@@ -1126,7 +1126,7 @@ def do_one_way_anova_scipy(clusters, value_list, name_of_variable="variable", lo
 	f_ratio = msa/mse
 	log_main.add('                              ANOVA of %s'%name_of_variable)
 	log_main.add('{:5} {:^12} {:^12} '.format('ANOVA', 'F-value',  'Significance'))
-	log_main.add('{:5} {:12.2f} {:12.2f}'.format('ANOVA', res[0], res[1])*100.)
+	log_main.add('{:5} {:12.2f} {:12.2f}'.format('ANOVA', res[0], res[1]*100.))
 	log_main.add(' ')
 
 	log_main.add('ANOVA:  %s mean of all clusters: %f'%(name_of_variable, round(global_mean/(float(nsamples)), 4)))
