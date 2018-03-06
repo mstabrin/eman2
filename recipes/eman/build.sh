@@ -2,6 +2,8 @@
 
 set -xe
 
+env | sort
+
 if [ "${CONDA_BUILD_STATE}" == "BUILD" ];then
     source "${RECIPE_DIR}"/unset_env_vars.sh
 fi

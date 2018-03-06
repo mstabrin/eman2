@@ -18,6 +18,8 @@ export PREFIX=${PWD}
 
 rm -vf ${CONDA_PREFIX}/bin/e2*.py
 
+env | sort
+
 conda info -a
 conda list
 
