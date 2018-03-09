@@ -18,13 +18,10 @@ def notifyGithub(state) {
 // - Reconsider stage labels and job names to be more informative when visualizing
 // - Github status message when aborted
 // - Stage deploy and refactor stages
-// - Email notifications
 // - Release builds, per request or per push
 // - Jenkins build status badges in README
-// - Windows builds
 // - Documentation: envars set in script and on nodes, ...
 // - Allowing non-secure stuff (due to getting build cause)
-// - Read-only access to Jenkins server
 // - GUI and CUDA tests
 // - PublishHTML coverage
 // - List of plugins and automated Jenkins server installation: Build Trigger Badge Plugin, Embeddable Build Status Plugin, ...
