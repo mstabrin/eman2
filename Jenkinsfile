@@ -15,10 +15,6 @@ def notifyGithub(state) {
 }
 
 // TODO:
-// - Reconsider stage labels and job names to be more informative when visualizing
-// - Github status message when aborted
-// - Stage deploy and refactor stages
-// - Release builds, per request or per push
 // - Jenkins build status badges in README
 // - Documentation: envars set in script and on nodes, ...
 // - Allowing non-secure stuff (due to getting build cause)
