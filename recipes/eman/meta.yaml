@@ -38,14 +38,9 @@ requirements:
     ] %}
     
     build:
-        {% for req in reqs_common %}
-        - {{ req }}
-        {% endfor %}
-    
-    run:
-        {% for req in reqs_common %}
-        - {{ req }}
-        {% endfor %}
+        - cmake
+        - {{ compiler('cxx') }}
+        - {{ cdt('mesa-libgl-devel') }}     # [linux]
 
 build:
   script_env:
