@@ -19,5 +19,8 @@ make install
 make test-verbose
 
 if [ "$JOB_NAME" != "Centos7" ];then
+    if [ "${CONDA_BUILD_STATE}" == "BUILD" ];then
+        rm -rfv ${SRC_DIR}/tests/gui/__pycache__
+    fi
     make test-gui
 fi
