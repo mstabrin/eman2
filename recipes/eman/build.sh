@@ -17,4 +17,7 @@ cmake $SRC_DIR
 make -j${CPU_COUNT}
 make install
 make test-verbose
-make test-gui
+
+if [ "$JOB_NAME" != "Centos7" ];then
+    make test-gui
+fi
