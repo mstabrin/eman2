@@ -78,15 +78,18 @@ def main(sys_argv=None):
 
 #	logid=E2init(sys.argv,options.ppid)
 
+	control = main_loop(datafile=args[0],apix=options.apix,force2d=False,verbose=options.verbose)
+
+	app.execute()
+#	E2end(logid)
+
+def main_loop(datafile=None,apix=0.0,force2d=False,verbose=0):
 	pix_init()
-	control=EMFilterTool(datafile=args[0],apix=options.apix,force2d=False,verbose=options.verbose)
+	control=EMFilterTool(datafile,apix,force2d,verbose)
 #	control=EMFilterTool(datafile=args[0],apix=options.apix,force2d=options.force2d,verbose=options.verbose)
 	control.show()
 	try: control.raise_()
 	except: pass
-
-	app.execute()
-#	E2end(logid)
 
 	return control
 
