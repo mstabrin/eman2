@@ -98,7 +98,15 @@ power spectrum in various ways."""
 
 	logid=E2init(sys.argv,options.ppid)
 
-	gui=GUIEvalImage(args,options.voltage,options.apix,options.cs,options.ac,options.box,options.usefoldername,options.constbfactor,options.astigmatism,options.phaseplate)
+	gui=main_loop(args,options.voltage,options.apix,options.cs,options.ac,options.box,options.usefoldername,options.constbfactor,options.astigmatism,options.phaseplate)
+	app.execute()
+
+	E2end(logid)
+
+	return gui
+
+def main_loop(images,voltage=None,apix=None,cs=None,ac=10.0,box=512,usefoldername=False,constbfactor=-1,fitastig=False,phaseplate=False):
+	gui=GUIEvalImage(images,voltage,apix,cs,ac,box,usefoldername,constbfactor,fitastig,phaseplate)
 	gui.show()
 
 	try:
@@ -110,9 +118,6 @@ power spectrum in various ways."""
 
 # 	try: gui.raise_()
 # 	except: pass
-	app.execute()
-
-	E2end(logid)
 	
 	return gui
 
