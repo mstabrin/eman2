@@ -279,8 +279,7 @@ def main(sys_argv=None):
 			print("=====================================")
 			print("ERROR: GUI mode unavailable without PyQt4")
 			sys.exit(1)
-		gui=GUIBoxer(args,options.voltage,options.apix,options.cs,options.ac,options.boxsize,options.ptclsize,options.threads)
-		gui.show()
+		gui=main_loop(args,options.voltage,options.apix,options.cs,options.ac,options.boxsize,options.ptclsize,options.threads)
 		gui.raise_()
 		app.execute()
 		
@@ -295,6 +294,13 @@ def main(sys_argv=None):
 		print("Particles written to particles/*_ptcls.hdf")
 
 	E2end(logid)
+
+def main_loop(imagenames,voltage=None,apix=None,cs=None,ac=10.0,box=256,ptcl=200,threads=4):
+	gui=GUIBoxer(imagenames,voltage,apix,cs,ac,box,ptcl,threads)
+	gui.show()
+	gui.raise_()
+	
+	return gui
 
 def write_boxfiles(files,boxsize):
 	"""This function will write a boxfiles/*.box file for each provided micrograph filename based on box locations
