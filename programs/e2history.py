@@ -61,13 +61,19 @@ def main(sys_argv=None):
 	(options, args) = parser.parse_args(sys_argv)
 	
 	if options.gui:
-		hist = HistoryForm(app,os.getcwd())
-		app.show()
+		hist = main_loop()
 		app.execute()
 		
 		return hist
 		
 	else: print_to_std_out(options.all)
+
+def main_loop(args=None):
+	hist = HistoryForm(app,os.getcwd())
+	hist.form.show()
+	hist.form.raise_()
+	
+	return hist
 
 class HistoryForm:
 	def __init__(self,application,wd):
