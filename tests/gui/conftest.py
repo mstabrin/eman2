@@ -41,6 +41,8 @@ class Win(object):
             qtbot.mouseClick(form, clickButton)
         qtbot.waitForWindowShown(form)
         qtbot.wait(100)
+    
+    def snap(self, qtbot, form):
         fname = '%s.png'%os.path.join(self.dir,str(self.counter))
         qpxmap = QPixmap.grabWindow(form.winId())
         qtbot.wait(100)
