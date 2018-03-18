@@ -40,12 +40,13 @@ class Win(object):
         if clickButton:
             qtbot.mouseClick(form, clickButton)
         qtbot.waitForWindowShown(form)
-        qtbot.wait(100)
+        qtbot.wait(500)
     
     def snap(self, qtbot, form):
         fname = '%s.png'%os.path.join(self.dir,str(self.counter))
+        qtbot.wait(500)
         qpxmap = QPixmap.grabWindow(form.winId())
-        qtbot.wait(100)
+        qtbot.wait(500)
         qpxmap.save(fname,'png')
         print("Click!: %s"%fname)
         qtbot.wait(100)
