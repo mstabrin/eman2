@@ -48,7 +48,6 @@ class Win(object):
         qpxmap = QPixmap.grabWindow(form.winId())
         qtbot.wait(500)
         qpxmap.save(fname,'png')
-        print("Click!: %s"%fname)
         qtbot.wait(100)
         self.counter += 1
 
