@@ -2,6 +2,8 @@ import pytest
 from PyQt4.QtGui import QPixmap
 from PyQt4.QtCore import Qt
 import os
+import filecmp
+from subprocess import check_call
 
 
 def pytest_configure(config):
@@ -62,6 +64,13 @@ class Win(object):
         qtbot.wait(500)
         qpxmap.save(fname,'png')
         qtbot.wait(100)
+
+        refs_dir = '/Users/shadow_walker/Files/eclipse_workspace/workspace_work/eman2/tests/gui/refs'
+        ref_file = os.path.join(refs_dir, self.dir, str(self.counter) + '.png')
+        
+        print("{}: {} and {}".format(filecmp.cmp(ref_file, fname), ref_file, fname))
+        check_call(["perceptualdiff", ref_file, fname])
+        
         self.counter += 1
 
 @pytest.fixture
