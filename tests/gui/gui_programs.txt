@@ -1,18 +1,8 @@
-1. e2RCTboxer.py
-2. e2boxer.py
-3. e2ctfsim.py
 4. e2display.py
-5. e2evalimage.py
-6. e2filtertool.py
-7. e2history.py
 
-8. e2projectmanager.py
-9. e2helixboxer.py     # ???? ask for data
 
 10. e2evalparticles.py    # ???
 11. e2motion.py         # ???? ask for data
-12. e2spt_boxer.py      # ask for data tomo
-13. e2spt_wedge.py      # ask for data
 
 =====================================================================================================================
 14. e2cmpxplor.py         ???
