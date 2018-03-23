@@ -137,6 +137,8 @@ def main(sys_argv=None):
 
 #	E2end(logid)
 
+main_loop = main
+
 def set_full_range():
 	'''
 	Turns all auto contrasting flags to False etc.
