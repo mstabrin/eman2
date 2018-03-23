@@ -1,3 +1,11 @@
+1. Minimal input files
+    a. test image
+    b. test boxer
+    c. 3D vol ???
+    d. intermediate minimal files for the whole workflow
+2. Synthetic micrographs
+    a. tilted-untilted
+
 4. e2display.py
 
 
