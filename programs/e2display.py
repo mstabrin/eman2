@@ -75,7 +75,6 @@ def main_loop(sys_argv=None):
 	parser.add_argument("--plot",action="store_true",default=False,help="Data file(s) should be plotted rather than displayed in 2-D")
 	parser.add_argument("--hist",action="store_true",default=False,help="Data file(s) should be plotted as a histogram rather than displayed in 2-D.")
 	parser.add_argument("--plot3d",action="store_true",default=False,help="Data file(s) should be plotted rather than displayed in 3-D")
-	parser.add_argument("--fullrange",action="store_true",default=False,help="A specialized flag that disables auto contrast for the display of particles stacks and 2D images only.")
 	parser.add_argument("--newwidget",action="store_true",default=False,help="Use the new 3D widgetD. Highly recommended!!!!")
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-2)
 	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higner number means higher level of verboseness")
@@ -87,8 +86,6 @@ def main_loop(sys_argv=None):
 	#gapp = app
 	#QtGui.QApplication(sys.argv)
 	win=[]
-	if options.fullrange:
-		fullrangeparms = set_full_range()
 	
 	if len(args) < 1:
 		global dialog
@@ -137,9 +134,6 @@ def main_loop(sys_argv=None):
 				sys.exit(1)
 			dialog = display_file(i,app,options.singleimage,usescenegraph=options.newwidget)
 	
-	if options.fullrange:
-		revert_full_range(fullrangeparms)
-
 	dialog.show()
 	dialog.raise_()
 	app.execute()
@@ -147,53 +141,6 @@ def main_loop(sys_argv=None):
 	return dialog
 
 main_loop = main
-
-def set_full_range():
-	'''
-	Turns all auto contrasting flags to False etc.
-	This is just a convenience function for users who do no want to use e2preferences.
-	This makes sense if the user would like auto contrasting to be on or off at the same time (i.e. at one moment they
-	want it off, and at the next they want it on, on a regular basis).
-	Note if auto contrast is on that it is not difficult to manipulate the contrast settings manually anyway.
-	Regular users are advised to just use e2preferences.
-	@return the current settings - so the calling function can call revert_full_range
-	'''
-	current_settings = {}
-	#global HOMEDB
-	#HOMEDB=EMAN2db.EMAN2DB.open_db()
-	#HOMEDB.open_dict("display_preferences")
-	#db = HOMEDB.display_preferences
-	#auto_contrast = db.get("display_2d_auto_contrast",dfl=True)
-	#db["display_2d_auto_contrast"] = False
-	#current_settings["display_2d_auto_contrast"] = auto_contrast
-	current_settings["display_2d_auto_contrast"] = True
-
-	#stack_auto_contrast = db.get("display_stack_auto_contrast",dfl=True)
-	#stack_np_for_auto = db.get("display_stack_np_for_auto",dfl=5)
-
-	#db["display_stack_auto_contrast"] = False
-	#current_settings["display_stack_auto_contrast"] = stack_auto_contrast
-	current_settings["display_stack_auto_contrast"] = True
-
-	#db["display_stack_np_for_auto"] = -1
-	#current_settings["display_stack_np_for_auto"] = stack_np_for_auto
-	current_settings["display_stack_np_for_auto"] = -1
-
-	return current_settings
-
-def revert_full_range(d):
-	'''
-	Reverts the call to set_full_range.
-	@param d - that which was returned by set_full_range
-	'''
-	#global HOMEDB
-	#HOMEDB=EMAN2db.EMAN2DB.open_db()
-	#HOMEDB.open_dict("display_preferences")
-	#db = HOMEDB.display_preferences
-
-	#for key,value in d.items():
-		#db[key] = d[key]
-	pass
 
 def on_browser_done():
 	pass
