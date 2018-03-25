@@ -103,7 +103,10 @@ def main():
 	# Run the GUI if in GUI mode
 	#print options
 	if options.gui:
+		from eman2_gui.emapplication import EMApp
+		app = EMApp()
 		display_validation_plots(options.path, options.radcut, options.planethres, plotdatalabels=options.datalabels, color=options.datalabelscolor, plotzaxiscolor=options.colorzaxis)
+		app.execute()
 		exit(0)
 		
 	if not (options.volume or options.eulerfile):
@@ -452,7 +455,6 @@ except:
 
 def display_validation_plots(path, radcut, planethres, plotdatalabels=False, color='#00ff00', plotzaxiscolor=False):
 	from eman2_gui.emimage2d import EMImage2DWidget
-	from eman2_gui.emapplication import EMApp
 	r = []
 	theta = []
 	datap = []
@@ -481,7 +483,6 @@ def display_validation_plots(path, radcut, planethres, plotdatalabels=False, col
 		print("Couldn't open contour plot")
 	
 	if not data and not (theta and r): return
-	app = EMApp()
 	if theta and r:
 		plot = EMValidationPlot()
 		plot.set_data((theta,r),50,radcut,datap)
@@ -492,7 +493,8 @@ def display_validation_plots(path, radcut, planethres, plotdatalabels=False, col
 	if data:
 		image = EMImage2DWidget(data)
 		image.show()
-	app.exec_()
+
+main_loop = display_validation_plots
 
 # Compute a RGB value to represent a data range. Basically convert Hue to GSB with I=0.33 and S=1.0
 def computeRGBcolor(value, minval, maxval):
