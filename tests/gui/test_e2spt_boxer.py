@@ -1,7 +1,7 @@
 import os
 
 def test_display_initial_gui(qtbot, win, curdir):
-    datafile = os.path.join(curdir, "e2spt_boxer", "e15pp_tomo_bin2.mrc")
+    datafile = os.path.join(curdir, "e2spt_boxer", "00bin32.hdf")
     options = type('', (), {})
     options.apix = 0.0
     options.invert = False
