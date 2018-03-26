@@ -7,5 +7,11 @@ def test_cli(qtbot, win, curdir):
     qtbot.addWidget(main_form)
     
     win.cycle(qtbot, main_form)
+    win.clickButton(qtbot, main_form, main_form.bmdel)
+    win.clickButton(qtbot, main_form, main_form.bmgref)
+    win.clickButton(qtbot, main_form, main_form.bmbref)
+    win.clickButton(qtbot, main_form, main_form.bmbgref)
+    win.clickButton(qtbot, main_form, main_form.bmmanual)
+    
     win.cycle(qtbot, main_form.wimage, Qt.LeftButton)
     win.cycle(qtbot, main_form.wparticles)
