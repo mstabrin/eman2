@@ -375,3 +375,8 @@ add_custom_target(test-gui
 	COMMAND ${PYTEST_EXECUTABLE} -vs ${CMAKE_SOURCE_DIR}/tests/gui/
 	DEPENDS PythonFiles
 )
+
+add_custom_target(test-gui-last-failed
+	COMMAND ${PYTEST_EXECUTABLE} -vs ${CMAKE_SOURCE_DIR}/tests/gui/ --lf
+	DEPENDS PythonFiles
+)
