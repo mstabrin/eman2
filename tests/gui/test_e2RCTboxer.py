@@ -4,8 +4,8 @@ import os
 
 def test_display_initial_gui(qtbot, win, curdir):
     args=[
-        os.path.join(curdir, "e2RCTboxer", "00.hdf"),
-        os.path.join(curdir, "e2RCTboxer", "10.hdf"),
+        os.path.join(curdir, "data", "e2RCTboxer", "00.hdf"),
+        os.path.join(curdir, "data", "e2RCTboxer", "10.hdf"),
     ]
     
     win = win('e2RCTboxer', args, 256)
