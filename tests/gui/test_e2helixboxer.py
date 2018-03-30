@@ -3,7 +3,7 @@ import os
 
 
 def test_display_initial_gui(qtbot, win, curdir):
-    win = win('e2helixboxer', ['%s'%os.path.join(curdir, 'e2boxer', 'test_box.hdf')], 100, "hdf")
+    win = win('e2helixboxer', ['%s'%os.path.join(curdir, 'data', 'e2boxer', 'test_box.hdf')], 100, "hdf")
     main_form = win.main_form
     
     win.cycle(qtbot, main_form.main_image)
