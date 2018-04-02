@@ -1043,7 +1043,10 @@ class EMPolarPlot2DWidget(EMGLWidget):
 
 	def paintGL(self):
 
-		GL.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT)
+		try:
+			GL.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT)
+		except:
+			pass
 
 		GL.glMatrixMode(GL.GL_MODELVIEW)
 		GL.glLoadIdentity()
@@ -1433,7 +1436,9 @@ class EMPolarPlot2DWidget(EMGLWidget):
 
 		if render :
 			glEndList()
-			glCallList(self.main_display_list)
+			try:
+				glCallList(self.main_display_list)
+			except: pass
 
 		if lighting : glEnable(GL_LIGHTING)
 
