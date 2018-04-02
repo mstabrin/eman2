@@ -493,6 +493,8 @@ def display_validation_plots(path, radcut, planethres, plotdatalabels=False, col
 	if data:
 		image = EMImage2DWidget(data)
 		image.show()
+		
+	return plot
 
 main_loop = display_validation_plots
 
