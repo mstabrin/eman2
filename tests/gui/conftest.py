@@ -1,5 +1,6 @@
 import pytest
 from PyQt4.QtGui import QPixmap
+from PyQt4.QtCore import Qt
 import os
 
 
@@ -41,6 +42,11 @@ class Win(object):
             qtbot.mouseClick(form, clickButton)
         qtbot.waitForWindowShown(form)
         qtbot.wait(500)
+        
+    def clickButton(self, qtbot, form, btn, clickButton=Qt.LeftButton):
+        qtbot.mouseClick(btn, clickButton)
+        qtbot.wait(100)
+        self.snap(qtbot, form)
     
     def snap(self, qtbot, form):
         fname = '%s.png'%os.path.join(self.dir,str(self.counter))
