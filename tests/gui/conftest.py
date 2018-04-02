@@ -41,7 +41,8 @@ class Win(object):
         if clickButton:
             qtbot.mouseClick(form, clickButton)
         qtbot.waitForWindowShown(form)
-        qtbot.wait(500)
+        qtbot.wait(100)
+        self.snap(qtbot, form)
         
     def clickButton(self, qtbot, form, btn, clickButton=Qt.LeftButton):
         qtbot.mouseClick(btn, clickButton)
