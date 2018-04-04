@@ -372,7 +372,9 @@ add_custom_target(test-py-compile
 find_package(PyTest REQUIRED)
 
 add_custom_target(test-gui
-	COMMAND ${PYTEST_EXECUTABLE} -vs ${CMAKE_SOURCE_DIR}/tests/gui/
+	COMMAND ${PYTEST_EXECUTABLE} -vs ${CMAKE_SOURCE_DIR}/tests/gui/test_e2projectmanager.py
+	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/tests/gui/data/bgal
+#	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/../eman-test-data/bgal
 	DEPENDS PythonFiles
 )
 
@@ -382,10 +384,11 @@ add_custom_target(test-gui-last-failed
 )
 
 add_custom_target(test-gui-coverage
-	COMMAND ${PYTEST_EXECUTABLE} -vs ${CMAKE_SOURCE_DIR}/tests/gui/ --confcutdir=${CMAKE_SOURCE_DIR}/tests/gui/
+	COMMAND ${PYTEST_EXECUTABLE} -vs ${CMAKE_SOURCE_DIR}/tests/gui/test_e2projectmanager.py --confcutdir=${CMAKE_SOURCE_DIR}/tests/gui/
 				--cov=${EMAN_PREFIX}/bin/
 				--cov=eman2_gui
 				--cov-config=${CMAKE_SOURCE_DIR}/tests/gui/.coveragerc
 				--cov-report html:cov_html
+	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/tests/gui/data/bgal
 	DEPENDS PythonFiles
 )

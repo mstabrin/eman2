@@ -665,6 +665,8 @@ class EMProjectManager(QtGui.QMainWindow):
 		return data
 
 	def _tree_widget_click(self, item, col):
+		print("In _tree_widget_click",item, col)
+		print(item.text(0))
 		# Display the progrma GUI
 		if item.getProgram():
 			self._set_GUI(item.getProgram(), item.getMode())
@@ -1628,6 +1630,7 @@ class PMProgramWidget(QtGui.QTabWidget):
 		self.helptexteditbox.setWordWrapMode(QtGui.QTextOption.WordWrap)
 		self.helptexteditbox.setReadOnly(True)
 		self.helptexteditbox.viewport().setCursor(QtCore.Qt.ArrowCursor)
+		print("In __init__: ", self.pm().getProgram())
 		self.helptexteditbox.setText(self.pm().loadUsage(self.pm().getProgram()))
 		self.addTab(self.helptexteditbox, "Help")
 
