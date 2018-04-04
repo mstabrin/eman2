@@ -2101,7 +2101,7 @@ GUI directly to browse the contents of old-style projects.""")
 		sys.exit(1)
 
 	pm = main_loop()
-	app.execute()
+	app.exec_()
 	
 	return pm
 
