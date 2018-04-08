@@ -523,7 +523,15 @@ class EMArgumentParser(argparse.ArgumentParser):
 
 	def parse_args(self):
 		""" Masquerade as optpaser parse options """
+		# print("--generate_doc" in self._option_string_actions)
+		# exit(0)
 		if "--generate_doc" in self._option_string_actions:
+		# if True:
+			# print(self.optionslist)
+			# print(self.tablist)
+			# print(type(parsedargs))
+			# print(dir(parsedargs))
+			# print(parsedargs.__dict__)
 			print("||{}||{}||{}||".format("option", "type", "description"))
 			for key in self._option_string_actions:
 				val = self._option_string_actions[key]
