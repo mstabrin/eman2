@@ -1,7 +1,12 @@
-|| ||iteration||int||Refinement iteration to plot||
-|| ||pointwidth||float||The relative scale of the points plotted. The absoule size is dpenedent on particle count||
-|| ||sym||bool||Set the symmetry; if no value is given then the model is assumed to have no symmetry.
+||option||type||description||
+||--nothetaticklabels|| ||Disable Theta tick labels||
+||--norticklabels|| ||Disable radius tick labels||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--iteration||int||Refinement iteration to plot||
+||--sym|| ||Set the symmetry; if no value is given then the model is assumed to have no symmetry.
 Choices are: i, c, d, tet, icos, or oct.||
-|| ||norticklabels||bool||Disable radius tick labels||
-|| ||nothetaticklabels||bool||Disable Theta tick labels||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--pointwidth||float||The relative scale of the points plotted. The absoule size is dpenedent on particle count||
+||-h, --help|| ||show this help message and exit||

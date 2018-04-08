@@ -1,6 +1,11 @@
-|| ||wedgeangle||float||Missing wedge angle||
-|| ||wedgei||float||Missingwedge begining||
-|| ||wedgef||float||Missingwedge ending||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-|| ||nogui||bool||Do not launch the GUI and set the average of the missing wedge statistics on all the volumes.||
-|| ||averagestats||bool||Do not launch the GUI and set the average of the missing wedge statistics on all the volumes.||
+||option||type||description||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--wedgeangle||float||Missing wedge angle||
+||--wedgei||float||Missingwedge begining||
+||--wedgef||float||Missingwedge ending||
+||--averagestats|| ||Do not launch the GUI and set the average of the missing wedge statistics on all the volumes.||
+||-h, --help|| ||show this help message and exit||
+||--nogui|| ||Do not launch the GUI and set the average of the missing wedge statistics on all the volumes.||

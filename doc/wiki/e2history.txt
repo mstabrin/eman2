@@ -1,4 +1,11 @@
-||-g||gui||bool||Open history in an interface with a sortable table.||
-||-a||all||bool||Show for all directories.||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||option||type||description||
+||--gui, -g|| ||Open history in an interface with a sortable table.||
+||--all, -a|| ||Show for all directories.||
+||-h, --help|| ||show this help message and exit||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--gui, -g|| ||Open history in an interface with a sortable table.||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--all, -a|| ||Show for all directories.||
+||-h, --help|| ||show this help message and exit||

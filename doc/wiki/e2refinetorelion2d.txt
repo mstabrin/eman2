@@ -1,21 +1,27 @@
-|| ||numclasses||int||# of classes||
-|| ||ctfcorrect||bool||(T/F)Do CTF Correction?||
-|| ||dataphaseflipped||bool||(T/F)Has the data been phase flipped already?||
-|| ||ignoretofirstpeak||bool||(T/F)Ignore CTF's until the first peak?||
-|| ||numiter||int||# of iterations to refine||
-|| ||regparam||float||Regularization Parameter T (weights experimental data vs. prior||
-|| ||particle_mask_diameter||float||Diameter of the soft circular image mask (in Angstroms)||
-|| ||maskzeroes||bool||(T/F) For individual particles, the area outside a circle with the radius of the particle will be set to zeros prior to taking the Fourier transform||
-|| ||solventmask||string||Location of the mask to be used||
-|| ||inplaneang||float||In-plane angular sampling||
-|| ||offsetrange||float||Offset search range (pix)||
-|| ||offsetstep||float||Offset search step (pix)||
-|| ||threads||int||# of threads||
-|| ||verbosity||int||Set the level of verbosity for the code||
-|| ||voltage||int||(Expert Option) Voltage of the Microscope (kV)||
-|| ||cs||float||(Expert Option) Spherical Aberration||
-|| ||apix||float||(Expert Option) Angstrom per pixel||
-|| ||defocus||float||(Expert Option) Defocus in A||
-|| ||ampcont||float||(Expert Option) Amplitude Constrast. 10% = .1||
-|| ||echo||bool||Echo Relion Command to terminal only||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+Running e2refinetorelion2d.py
+||option||type||description||
+||--voltage||int||(Expert Option) Voltage of the Microscope (kV)||
+||--solventmask||str||Location of the mask to be used||
+||--offsetstep||float||Offset search step (pix)||
+||--echo|| ||Echo Relion Command to terminal only||
+||--regparam||float||Regularization Parameter T (weights experimental data vs. prior||
+||--offsetrange||float||Offset search range (pix)||
+||--cs||float||(Expert Option) Spherical Aberration||
+||-h, --help|| ||show this help message and exit||
+||--numiter||int||# of iterations to refine||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbosity||int||Set the level of verbosity for the code||
+||--threads||int||# of threads||
+||--version|| ||show program's version number and exit||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--particle_mask_diameter||float||Diameter of the soft circular image mask (in Angstroms)||
+||--inplaneang||float||In-plane angular sampling||
+||--dataphaseflipped|| ||(T/F)Has the data been phase flipped already?||
+||--maskzeroes|| ||(T/F) For individual particles, the area outside a circle with the radius of the particle will be set to zeros prior to taking the Fourier transform||
+||--numclasses||int||# of classes||
+||--ampcont||float||(Expert Option) Amplitude Constrast. 10% = .1||
+||--defocus||float||(Expert Option) Defocus in A||
+||--ignoretofirstpeak|| ||(T/F)Ignore CTF's until the first peak?||
+||--ctfcorrect|| ||(T/F)Do CTF Correction?||
+||--apix||float||(Expert Option) Angstrom per pixel||
+||-h, --help|| ||show this help message and exit||

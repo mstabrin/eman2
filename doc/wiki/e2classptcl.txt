@@ -1,3 +1,8 @@
-|| ||vstack||bool||Will output to a bdb virtual stack instead of copying the image data. Input images must have been BDB for this to work.||
-|| ||classes||string||Comma separated list of class-numbers to extract particles for||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||option||type||description||
+||--vstack|| ||Will output to a bdb virtual stack instead of copying the image data. Input images must have been BDB for this to work.||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--classes||str||Comma separated list of class-numbers to extract particles for||
+||-h, --help|| ||show this help message and exit||

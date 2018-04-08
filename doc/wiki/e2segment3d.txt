@@ -1,13 +1,19 @@
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
-|| ||process||string||The name and parameters of a processor to perform the segmentation. 'e2help.py processor segment -v 1' for a full list. Default=segment.kmeans:ampweight=1:nseg=50:thr=0.8 ||
-|| ||output||string||Name of output file for segmentation map||
-|| ||segout||string||Output stack for individual segmented volumes||
-|| ||chimeraout||string||Name of file to write center of segments in UCSF Chimera marker format.||
-|| ||pdbout||string||Name of file to write center of segments in PDB format.||
-|| ||txtout||string||Name of file to write center of segments in text format (n	x	y	z, with coordinates in pixels, 0,0,0 in the corner)||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-|| ||shifttocenter||bool||Shift the output pdb to center of the density map||
-|| ||helixfile||string||Start with existing secondary structure.||
-|| ||edgefile||string||Write an edge file for pathwalker.py. Only avaliable while using existing secondary structures.||
-|| ||sym||string||Symmetry of the target complex. Note the number of segment is per unit.||
-|| ||asymunit||bool||Write points of only one asymmetrical unit.||
+||option||type||description||
+||--chimeraout||str||Name of file to write center of segments in UCSF Chimera marker format.||
+||--output||str||Name of output file for segmentation map||
+||--shifttocenter|| ||Shift the output pdb to center of the density map||
+||--process||str||The name and parameters of a processor to perform the segmentation. 'e2help.py processor segment -v 1' for a full list. Default=segment.kmeans:ampweight=1:nseg=50:thr=0.8 ||
+||--pdbout||str||Name of file to write center of segments in PDB format.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--sym||str||Symmetry of the target complex. Note the number of segment is per unit.||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--edgefile||str||Write an edge file for pathwalker.py. Only avaliable while using existing secondary structures.||
+||--txtout||str||Name of file to write center of segments in text format (n	x	y	z, with coordinates in pixels, 0,0,0 in the corner)||
+||--segout||str||Output stack for individual segmented volumes||
+||--asymunit|| ||Write points of only one asymmetrical unit.||
+||-h, --help|| ||show this help message and exit||
+||--helixfile||str||Start with existing secondary structure.||

@@ -1,2 +1,35 @@
-parser.add_argument('--img2process', type=str, default='', help="""Path to the stack 
-		that needs to be processed to match img2match. If you want to process multiple stacks
+||option||type||description||
+||--threshold||str||EMAN2 processor to be used
+		to threshold the img2process. See available thresholds by typing 
+		e2help.py processors --verbose=10
+		at the command line.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--preprocess||str||Any processor (as in e2proc3d.py) to be applied to the edited img2process.||
+||--normproc||str||Normalization processor applied to 
+		particles before alignment. Default is None. If normalize.mask is used, 
+		results of the mask option will be passed in automatically.||
+||--mirror|| ||Will generate a mirrored copy of the edited img2process.||
+||--lowpass||str||A lowpass filtering processor (as in e2proc3d.py) be applied to the edited img2process.||
+||-h, --help|| ||show this help message and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--shrink||float||This will scale the img2process
+		by the factor specified. This does NOT need to be an integer. You can enter 1.5, 2.7, etc.
+		any decimal number > 1.0 is valid.||
+||--version|| ||show program's version number and exit||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--img2process||str||Path to the stack 
+		that needs to be processed to match img2match. If you want to process multiple stacks 
+		or files, just separate them by commas --imgs2process=vo1.mrc,vol2.hdf,file.pdb||
+||--mask||str||Mask processor applied to particles before alignment. Default is None||
+||--highpass||str||A highpass filtering processor (as in e2proc3d.py) to be applied to the edited img2process.||
+||--output||str||Specify the name of the file to which the edited img2process will be written.||
+||--img2match||str||Path to the image or stack of images which --img2process will match after processing. Not compulsory if --apix is provided.||
+||--sym||str||Will apply the specified symmetry to the edited img2process.||
+||--apix||float||If specified, the program 
+		will assume this is the correct apix for --img2match if --img2match is provided,
+		so the current value will be overwritten if --img2match is in .hdf format. 
+		This value will also be used to scale the images in --img2process.||
+||--boxsize||int||If NOT specified, the reference's box size will match that of the data. If specified, both the reference and the data will be resized.||
+||-h, --help|| ||show this help message and exit||
+||--sharpfiltres||float||If specified, the edited img2process will be sharply filtered to this resolution.||

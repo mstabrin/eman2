@@ -1,11 +1,14 @@
-|| ||tomo||string||File name of reconstructed tomograms||
-|| ||ptclin||string||File name of input 3D particles.||
-|| ||edf||string||IMOD .edf file name||
-|| ||tlt||string||imod tlt file name||
-|| ||xtilt||float||imod xtilt value (from tomopitch.log)||
-|| ||unbin||float||Unbin factor from input particles/tomogram to raw tilt. If unspecified, the program will calculate from the Apix of the header.||
-|| ||boxsz||int||Box size of extracted 2D particles.||
-|| ||ptclout||string||File name of output 2D extracted particles.||
-|| ||ctffile||string||estimated ctf||
-|| ||defcol||int||which column of ctf file is the defocus||
-|| ||weight||bool||Weight the particles by the variance of defocus||
+||option||type||description||
+||--defcol||int||which column of ctf file is the defocus||
+||--unbin||float||Unbin factor from input particles/tomogram to raw tilt. If unspecified, the program will calculate from the Apix of the header.||
+||--weight|| ||Weight the particles by the variance of defocus||
+||--ptclout||str||File name of output 2D extracted particles.||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--ctffile||str||estimated ctf||
+||--ptclin||str||File name of input 3D particles.||
+||--tomo||str||File name of reconstructed tomograms||
+||--edf||str||IMOD .edf file name||
+||-h, --help|| ||show this help message and exit||
+||--boxsz||int||Box size of extracted 2D particles.||

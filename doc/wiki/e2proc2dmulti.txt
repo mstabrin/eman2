@@ -1,21 +1,27 @@
-|| ||postfix||string||Adds this string to each input filename to produce output filename (avoid overwriting)||
-|| ||allparticles||bool||Will process all particle sets stored in BDB in the particles subdirectory||
-|| ||apix||float||A/pixel for S scaling||
-|| ||clip||string||Specify the output size in pixels xsize,ysize[,xcenter,ycenter], images can be made larger or smaller.||
-|| ||process||string||apply a processor named 'processorname' with all its parameters/values.||
-|| ||autoinvert||bool||Automatically decides whether to invert each stack of images to make particles white (EMAN2 convention). Decision is made for an entire stack. Non-inverted images will NOT BET PROCESSED AT ALL !||
-|| ||mult||float||Multiply image by a constant. mult=-1 to invert contrast.||
-|| ||meanshrink||int||Reduce an image size by an integral scaling factor using average. Clip is not required.||
-|| ||medianshrink||int||Reduce an image size by an integral scaling factor, uses median filter. Clip is not required.||
-|| ||multfile||string||Multiplies the volume by another volume of identical size. This can be used to apply masks, etc.||
-|| ||norefs||bool||Skip any input images which are marked as references (usually used with classes.*)||
-|| ||radon||bool||Do Radon transform||
-|| ||randomize||string||Randomly rotate/translate the image. Specify: da,dxy,flip  da is a uniform distribution over +-da degrees, dxy is a uniform distribution on x/y, if flip is 1, random handedness changes will occur||
-|| ||rotate||float||Rotate clockwise (in degrees)||
-|| ||fp||int||This generates rotational/translational 'footprints' for each input particle, the number indicates which algorithm to use (0-6)||
-|| ||scale||float||Scale by specified scaling factor. Clip must also be specified to change the dimensions of the output map.||
-|| ||selfcl||int||Output file will be a 180x180 self-common lines map for each image.||
-|| ||translate||string||Translate by x,y pixels||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-|| ||writejunk||bool||Writes the image even if its sigma is 0.||
+||option||type||description||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--translate||str||Translate by x,y pixels||
+||--randomize||str||Randomly rotate/translate the image. Specify: da,dxy,flip  da is a uniform distribution over +-da degrees, dxy is a uniform distribution on x/y, if flip is 1, random handedness changes will occur||
+||--scale||float||Scale by specified scaling factor. Clip must also be specified to change the dimensions of the output map.||
+||--selfcl||int||Output file will be a 180x180 self-common lines map for each image.||
+||--multfile||str||Multiplies the volume by another volume of identical size. This can be used to apply masks, etc.||
+||-h, --help|| ||show this help message and exit||
+||--writejunk|| ||Writes the image even if its sigma is 0.||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--clip||str||Specify the output size in pixels xsize,ysize[,xcenter,ycenter], images can be made larger or smaller.||
+||--version|| ||show program's version number and exit||
+||--autoinvert|| ||Automatically decides whether to invert each stack of images to make particles white (EMAN2 convention). Decision is made for an entire stack. Non-inverted images will NOT BET PROCESSED AT ALL !||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--allparticles|| ||Will process all particle sets stored in BDB in the particles subdirectory||
+||--postfix||str||Adds this string to each input filename to produce output filename (avoid overwriting)||
+||--norefs|| ||Skip any input images which are marked as references (usually used with classes.*)||
+||--radon|| ||Do Radon transform||
+||--medianshrink||int||Reduce an image size by an integral scaling factor, uses median filter. Clip is not required.||
+||--meanshrink||int||Reduce an image size by an integral scaling factor using average. Clip is not required.||
+||--rotate||float||Rotate clockwise (in degrees)||
+||--process||str||apply a processor named 'processorname' with all its parameters/values.||
+||--mult||float||Multiply image by a constant. mult=-1 to invert contrast.||
+||--apix||float||A/pixel for S scaling||
+||--fp||int||This generates rotational/translational 'footprints' for each input particle, the number indicates which algorithm to use (0-6)||
+||-h, --help|| ||show this help message and exit||

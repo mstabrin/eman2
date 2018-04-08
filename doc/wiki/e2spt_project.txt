@@ -1,11 +1,17 @@
-|| ||threads||int||Number of alignment threads to run in parallel on a single computer. This is the only parallelism supported by e2spt_align at present.||
-|| ||iter||int||Iteration number within path. Default = start a new iteration||
-|| ||simthr||float||Similarity is smaller for better 'quality' particles. Specify the highest value to include from e2spt_hist.py. Default -0.1||
-|| ||replace||string||Replace the input subtomograms used for alignment with the specified file (used when the aligned particles were masked or filtered)||
-|| ||minalt||float||Minimum alignment altitude to include. Default=0||
-|| ||maxalt||float||Maximum alignment altitude to include. Deafult=180||
-|| ||symalimasked||string||This will translationally realign each asymmetric unit to the specified (usually masked) reference ||
-|| ||sym||string||Symmetry of the input. Must be aligned in standard orientation to work properly.||
-|| ||path||string||Path to a folder containing current results (default = highest spt_XX)||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||option||type||description||
+||--threads||int||Number of alignment threads to run in parallel on a single computer. This is the only parallelism supported by e2spt_align at present.||
+||--maxalt||float||Maximum alignment altitude to include. Deafult=180||
+||--replace||str||Replace the input subtomograms used for alignment with the specified file (used when the aligned particles were masked or filtered)||
+||--minalt||float||Minimum alignment altitude to include. Default=0||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--path||str||Path to a folder containing current results (default = highest spt_XX)||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--symalimasked||str||This will translationally realign each asymmetric unit to the specified (usually masked) reference ||
+||--sym||str||Symmetry of the input. Must be aligned in standard orientation to work properly.||
+||--iter||int||Iteration number within path. Default = start a new iteration||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--simthr||float||Similarity is smaller for better 'quality' particles. Specify the highest value to include from e2spt_hist.py. Default -0.1||
+||-h, --help|| ||show this help message and exit||

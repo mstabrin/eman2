@@ -1,8 +1,14 @@
-|| ||ncls||int||Default=3. Number of classes to sort the particle stack into. In theory, a minimum of 2 conformational classes and 1 'garbage' class should be used.||
-|| ||nbasis||int||Basis vectors to use||
-|| ||input||string||The name of the volumes stack that HAVE BEEN ALIGNED to a common reference||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
-|| ||filter||int||Resolution (integer, in Angstroms) at which you want to apply a gaussian lowpass filter to the tomogram prior to loading it for boxing||
-|| ||preprocess||string||A processor (as in e2proc3d.py) to be applied to the tomogram before opening it. 
+||option||type||description||
+||--input||str||The name of the volumes stack that HAVE BEEN ALIGNED to a common reference||
+||--ncls||int||Default=3. Number of classes to sort the particle stack into. In theory, a minimum of 2 conformational classes and 1 'garbage' class should be used.||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--filter||int||Resolution (integer, in Angstroms) at which you want to apply a gaussian lowpass filter to the tomogram prior to loading it for boxing||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--preprocess||str||A processor (as in e2proc3d.py) to be applied to the tomogram before opening it. 
 For example, a specific filter with specific parameters you might like. 
 Type 'e2proc3d.py --processors' at the commandline to see a list of the available processors and their usage||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--nbasis||int||Basis vectors to use||
+||-h, --help|| ||show this help message and exit||

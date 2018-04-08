@@ -1,28 +1,33 @@
-|| ||untiltdata||string||Stack of untilted images||
-|| ||tiltdata||string||Stack of tilted images||
-|| ||volume||string||3D volume to validate||
-|| ||maxtiltangle||float||Maximum tiltangle permitted when finding tilt distances||
-|| ||quaternion||bool||Use Quaterions for tilt distance computation||
-|| ||sym||string||The recon symmetry||
-|| ||docontourplot||bool||Compute a contour plot||
-|| ||tiltrange||int||The angular tiltrange to search||
-|| ||align||string||The name of a aligner to be used in comparing the aligned images||
-|| ||cmp||string||The name of a 'cmp' to be used in comparing the aligned images||
-|| ||delta||float||The angular step size for alingment||
-|| ||shrink||int||Optionally shrink the input particles by an integer amount prior to computing similarity scores. For speed purposes. Defulat = 0, no shrinking||
-|| ||simcmp||string||The name of a 'cmp' to be used in comparing the aligned images (default=ccc)||
-|| ||simalign||string||The name of an 'aligner' to use prior to comparing the images (default=rotate_translate)||
-|| ||simaligncmp||string||Name of the aligner along with its construction arguments (default=ccc)||
-|| ||simralign||string||The name and parameters of the second stage aligner which refines the results of the first alignment||
-|| ||simraligncmp||string||The name and parameters of the comparitor used by the second stage aligner. (default=dot).||
-|| ||parallel||string||Parallelism string||
-|| ||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
-|| ||path||string||The folder the results are placed||
-|| ||radcut||float||For use in the GUI, truncate the polar plot after R. -1 = no truncation||
-|| ||gui||bool||Start the GUI for viewing the tiltvalidate plots||
-|| ||planethres||float||Maximum out of plane threshold for the tiltaxis. 0 = perfectly in plane, 1 = normal to plane||
-|| ||datalabelscolor||string||Set the color of the data labels. Any vaild matplotlib color is ok||
-|| ||datalabels||bool||Add data labels to the plot||
-|| ||colorzaxis||bool||Color scatter dots by Z axis||
-|| ||eulerfile||string||Euler angles file, to create tiltdistance from pre-aligned particles. Format is: imgnum, name, az, alt, phi||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||option||type||description||
+||--tiltdata||str||Stack of tilted images||
+||--parallel||str||Parallelism string||
+||--verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||--docontourplot|| ||Compute a contour plot||
+||--path||str||The folder the results are placed||
+||--volume||str||3D volume to validate||
+||--radcut||float||For use in the GUI, truncate the polar plot after R. -1 = no truncation||
+||-h, --help|| ||show this help message and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--simaligncmp||str||Name of the aligner along with its construction arguments (default=ccc)||
+||--sym||str||The recon symmetry||
+||--shrink||int||Optionally shrink the input particles by an integer amount prior to computing similarity scores. For speed purposes. Defulat = 0, no shrinking||
+||--simalign||str||The name of an 'aligner' to use prior to comparing the images (default=rotate_translate)||
+||--maxtiltangle||float||Maximum tiltangle permitted when finding tilt distances||
+||--untiltdata||str||Stack of untilted images||
+||--datalabelscolor||str||Set the color of the data labels. Any vaild matplotlib color is ok||
+||--datalabels|| ||Add data labels to the plot||
+||--quaternion|| ||Use Quaterions for tilt distance computation||
+||--version|| ||show program's version number and exit||
+||--simraligncmp||str||The name and parameters of the comparitor used by the second stage aligner. (default=dot).||
+||--simcmp||str||The name of a 'cmp' to be used in comparing the aligned images (default=ccc)||
+||--gui|| ||Start the GUI for viewing the tiltvalidate plots||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--cmp||str||The name of a 'cmp' to be used in comparing the aligned images||
+||--colorzaxis|| ||Color scatter dots by Z axis||
+||--simralign||str||The name and parameters of the second stage aligner which refines the results of the first alignment||
+||--eulerfile||str||Euler angles file, to create tiltdistance from pre-aligned particles. Format is: imgnum, name, az, alt, phi||
+||--align||str||The name of a aligner to be used in comparing the aligned images||
+||--tiltrange||int||The angular tiltrange to search||
+||--planethres||float||Maximum out of plane threshold for the tiltaxis. 0 = perfectly in plane, 1 = normal to plane||
+||-h, --help|| ||show this help message and exit||
+||--delta||float||The angular step size for alingment||

@@ -1,12 +1,15 @@
-|| ||threads||int||Number of alignment threads to run in parallel on a single computer||
-|| ||goldstandard||float||If specified, will phase randomize the even and odd references past the specified resolution (in A, not 1/A)||
-|| ||goldcontinue||bool||Will use even/odd refs corresponding to specified reference to continue refining without phase randomizing again||
-|| ||saveali||bool||Save a stack file (aliptcls_XX.hdf) containing the aligned particles.||
-|| ||path||string||Path to a folder with existing e2a2d_align results (default = 2da_XX)||
-|| ||iter||int||Iteration number within path. Default = highest existing iteration||
-|| ||scorebestset||int||Will extract the N particles with the best scores to make a new set||
-|| ||scorebands||int||If specified will generate averages over N bands of 'score' values, including only particles in each band.||
-|| ||scorebandsali||int||If specified will generate averages over N bands of 'score' values, including only particles in each band, and iteratively realigning in each band.||
-|| ||scoreprogressive||int||If specified will generate progressive averages over N bands of 'score' values, including all particles starting with the best through the progressive bands.||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||option||type||description||
+||--scorebestset||int||Will extract the N particles with the best scores to make a new set||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--scorebandsali||int||If specified will generate averages over N bands of 'score' values, including only particles in each band, and iteratively realigning in each band.||
+||--saveali|| ||Save a stack file (aliptcls_XX.hdf) containing the aligned particles.||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--path||str||Path to a folder with existing e2a2d_align results (default = 2da_XX)||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--scoreprogressive||int||If specified will generate progressive averages over N bands of 'score' values, including all particles starting with the best through the progressive bands.||
+||--scorebands||int||If specified will generate averages over N bands of 'score' values, including only particles in each band.||
+||--iter||int||Iteration number within path. Default = highest existing iteration||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||-h, --help|| ||show this help message and exit||

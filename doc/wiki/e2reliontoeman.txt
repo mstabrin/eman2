@@ -1,6 +1,12 @@
-|| ||apix||float||The angstrom per pixel of the input particles.||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
-|| ||fixeddefocus||bool||Defocus and astigmatism are used unchanged from STAR file||
-|| ||refinedefocus||bool||Will refit defocus to +-0.1 micron then further optimize using SSNR||
-|| ||refitdefocus||bool||Will use EMAN2 CTF fitting to refit the defocus values within +-0.1 micron, astigmatism unchanged||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||option||type||description||
+||--refinedefocus|| ||Will refit defocus to +-0.1 micron then further optimize using SSNR||
+||--fixeddefocus|| ||Defocus and astigmatism are used unchanged from STAR file||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--apix||float||The angstrom per pixel of the input particles.||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-h, --help|| ||show this help message and exit||
+||--refitdefocus|| ||Will use EMAN2 CTF fitting to refit the defocus values within +-0.1 micron, astigmatism unchanged||

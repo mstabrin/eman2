@@ -1,13 +1,19 @@
-|| ||newpath||string||Path to the classified results. Default = multinoali_XX||
-|| ||oldpath||string||Path to the original refinement||
-||--model||models||string||Comma separated list of reference maps used for classification. If a single map is provided, data will be split into two groups based on similarity to the single map.||
-|| ||simcmp||string||The name of a 'cmp' to be used in comparing the aligned images. eg- frc:minres=80:maxres=20. Default=ccc||
-|| ||threads||int||Number of threads.||
-|| ||randomphase||float||Randomize initial model to certain frequency.||
-|| ||parallel||string||Parallel option.||
-|| ||iter||int||Number of iterations.||
-|| ||mask||string||Name of an optional mask file. The mask is applied to the input models to focus the classification on a particular region of the map. Consider e2classifyligand.py instead.||
-|| ||breaksym||bool||breaksym||
-|| ||symcopy||bool||symcopy||
-|| ||nomask||bool||no mask||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||option||type||description||
+||--models, --model||str||Comma separated list of reference maps used for classification. If a single map is provided, data will be split into two groups based on similarity to the single map.||
+||--threads||int||Number of threads.||
+||--nomask|| ||no mask||
+||--symcopy|| ||symcopy||
+||--breaksym|| ||breaksym||
+||--randomphase||float||Randomize initial model to certain frequency.||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--oldpath||str||Path to the original refinement||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--models, --model||str||Comma separated list of reference maps used for classification. If a single map is provided, data will be split into two groups based on similarity to the single map.||
+||--iter||int||Number of iterations.||
+||--parallel||str||Parallel option.||
+||--mask||str||Name of an optional mask file. The mask is applied to the input models to focus the classification on a particular region of the map. Consider e2classifyligand.py instead.||
+||--newpath||str||Path to the classified results. Default = multinoali_XX||
+||-h, --help|| ||show this help message and exit||
+||--simcmp||str||The name of a 'cmp' to be used in comparing the aligned images. eg- frc:minres=80:maxres=20. Default=ccc||

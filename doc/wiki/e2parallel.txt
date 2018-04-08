@@ -1,12 +1,16 @@
-|| ||server||string||Specifies host of the server to connect to||
-|| ||port||int||Specifies server port, default is automatic assignment||
-|| ||clientpath||string||Scratch directory for DC clients. Default is current directory.||
-|| ||clientid||int||Internal use only||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
-|| ||taskin||string||Internal use only. Used when executing local threaded tasks.||
-|| ||taskout||string||Internal use only. Used when executing local threaded tasks.||
-|| ||scratchdir||string||Internal use only. Used by the MPI client||
-|| ||cache||bool||Internal use only. Used by the MPI client||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-|| ||cpus||int||Number of CPUs/Cores for the clients to use on the local machine||
-|| ||idleonly||bool||Will only use CPUs on the local machine when idle||
+||option||type||description||
+||--clientid||int||Internal use only||
+||--cache|| ||Internal use only. Used by the MPI client||
+||--port||int||Specifies server port, default is automatic assignment||
+||--clientpath||str||Scratch directory for DC clients. Default is current directory.||
+||--server||str||Specifies host of the server to connect to||
+||-h, --help|| ||show this help message and exit||
+||--taskout||str||Internal use only. Used when executing local threaded tasks.||
+||--version|| ||show program's version number and exit||
+||--taskin||str||Internal use only. Used when executing local threaded tasks.||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||-h, --help|| ||show this help message and exit||
+||--scratchdir||str||Internal use only. Used by the MPI client||

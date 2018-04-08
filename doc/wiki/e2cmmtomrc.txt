@@ -1,4 +1,12 @@
-||-A||apix||float||A/voxel||
-||-R||res||float||Resolution in A, equivalent to Gaussian lowpass with 1/e width at 1/res||
-||-B||box||int||Box size in pixels||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||option||type||description||
+||--apix, -A||float||A/voxel||
+||--box, -B||int||Box size in pixels||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--box, -B||int||Box size in pixels||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--apix, -A||float||A/voxel||
+||--res, -R||float||Resolution in A, equivalent to Gaussian lowpass with 1/e width at 1/res||
+||--res, -R||float||Resolution in A, equivalent to Gaussian lowpass with 1/e width at 1/res||
+||-h, --help|| ||show this help message and exit||

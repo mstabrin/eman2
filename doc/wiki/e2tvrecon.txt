@@ -1,2 +1,37 @@
-parser.add_argument("--tiltseries", default=None, help="""The input projections. 
-		Project should usually have the xform.projection header attribute, which is
+||option||type||description||
+||--parallel||str||Default=thread:1. 
+		See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
+||--tiltseries|| ||The input projections. 
+		Project should usually have the xform.projection header attribute, which is 
+		used for slice insertion||
+||--output|| ||Output reconstructed 
+		tomogram file name.||
+||--tltfile||str||An IMOD-like .tlt file containing 
+		alignment angles. If specified slices will be inserted using these angles in the 
+		IMOD convention||
+||--ppid||int||Set the PID of the parent process, 
+		used for cross platform PPID.||
+||--savesinograms|| ||If provided,
+		this option will save the sinogram for each 2-D slice (along Y) in the reconstruction 
+		to disk.||
+||--saveslices|| ||If provided,
+		this option will save each reconstructed 2-D slice (along Y) to disk.||
+||-h, --help|| ||show this help message and exit||
+||--beta||float||Specify the total-variation 
+		penalization/regularization weight parameter 'beta'. The default is 5.0.||
+||--verbose, -v||int||
+		verbose level [0-9], higner number means higher level of verboseness.||
+||--path||str||Directory in which 
+		results will be stored.||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||
+		verbose level [0-9], higner number means higher level of verboseness.||
+||--iter||int||Specify the number of 
+		iterative reconstructions to complete before returning the final reconstructed volume. 
+			The default number is 50.||
+||--subpix||int||Specify the number of linear 
+		subdivisions used to compute the projection of one image pixel onto a detector pixel.||
+||--inmemory|| ||If provided,
+		this option will keep certain files open in memory instead of writing them and
+		reading from disk every time. While this can be faster, it is very memory-intensive.||
+||-h, --help|| ||show this help message and exit||

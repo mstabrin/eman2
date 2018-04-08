@@ -1,2 +1,34 @@
-parser.add_argument("--path",type=str,default='',help="""Directory to store results in. 
+||option||type||description||
+||--input||str||"tiltseries to process. redundant with --tiltseries, or with providing images as arguments (separated by a space: e2tomopreproc.py stack1.hdf stack2.hdf), but --input takes precedence.||
+||--threshold||str||Default=None. A threshold processor applied to each image.||
+||--parallel||str||default=thread:1. Parallelism. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness.||
+||--maskbyanglesigma||float||Default=2.0. Number of sigmas for the width of the gaussian fall off in --maskbyangle and --maskbyanglefalloff||
+||--preprocess||str||Any processor (see 'e2help.py processors -v 10' at the command line) to be applied to each image.||
+||--path||str||Directory to store results in. 
 		The default is a numbered series of directories containing the prefix 'tomopreproc';
+		for example, tomopreproc_02 will be the directory by default if 'tomopreproc_01' 
+		already exists.||
+||--normproc||str||Default=None (see 'e2help.py processors -v 10' at the command line). Normalization processor applied to each image.||
+||--dontcleanup|| ||If specified, intermediate files will be kept.||
+||--tiltseries||str||"tiltseries to process. redundant with --input||
+||--maskbyangle|| ||Default=False. Requires --tltfile. This will mask out from tilted images the info that isn't present at the 0 tilt angle. It uses the tomo.tiltedgemask processor (type 'e2help.py processors' at the commandline to read a description of the processor and its parameters). Provide --maskbyanglefalloff and --maskbyanglesigma to modify the default parameters.||
+||--tltfile||str||".tlt file containing the tilt angles for --tiltseries||
+||--prenadminite||int||Default=0. Requires IMOD to be installed. Used to apply prenad filtering to a tiltseries. This is the --minite parameter in IMOD's preNAD program (minimum number of iterations).||
+||-h, --help|| ||show this help message and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness.||
+||--shrink||float||Default=0.0 (no shrinking). Can use decimal numbers, larger than 1.0. Optionally shrink the images by this factor. Uses processor math.fft.resample.||
+||--highpasspix||int||Default=0 (not used). Number of Fourier pixels to apply highpass filter at. The processor used is filter.highpass.gauss.||
+||--maskbyanglefalloff||int||Default=4. Number of pixels over which --maskbyangle will fall off to zero.||
+||--erasegold|| ||Default=False. Runs erase_gold.py on the stack.||
+||--clip||str||Default=None. This resizes the 2-D images in the tilt series. If one number is provided, then x and y dimensions will be made the same. To specify both dimensions, supply two numbers, --clip=x,y. Clipping will be about the center of the image.||
+||--lowpassfrac||float||Default=0.0 (not used). Fraction of Nyquist to lowpass at. The processor used is filter.lowpass.tanh||
+||--version|| ||show program's version number and exit||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--mask||str||Default=None. Masking processor applied to each image.||
+||--normalizeimod|| ||Default=False. This will apply 'newstack -float 2' to the input stack. Requires IMOD.||
+||--prenadsigma||int||Default=0. Requires IMOD to be installed. Used to apply prenad filtering to a tiltseries. This is the --sigma parameter in IMOD's preNAD program (initial sigma for 'smoothing structure tensor').||
+||--prenadmaxite||int||Default=0. Requires IMOD to be installed. Used to apply prenad filtering to a tiltseries. This is the --maxite parameter in IMOD's preNAD program (maximum number of iterations).||
+||--outmode||str||All EMAN2 programs write images with 4-byte floating point values when possible by default. This allows specifying an alternate format when supported: float, int8, int16, int32, uint8, uint16, uint32. Values are rescaled to fill MIN-MAX range.||
+||-h, --help|| ||show this help message and exit||

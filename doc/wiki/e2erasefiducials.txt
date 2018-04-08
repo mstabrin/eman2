@@ -1,14 +1,19 @@
-|| ||average||bool||Erase gold from average of input stack(s).||
-|| ||apix||float||Override Apix in image header.||
-|| ||lowpass||float||Multiply lowpass filter frequency by this constant when filtering noise image. Default is 1.11.||
-|| ||coords||string||Specify box file with x and y gold coordinates. Must follow standard box file format (x<tab>y<tab>xsize<ysize>) although box sizes are ignored.||
-|| ||keepdust||bool||Do not remove 'dust' from mask (include objects smaller than gold fiducials).||
-|| ||goldsize||float||Diameter (in pixels) of gold fiducials to erase.||
-|| ||oversample||int||Oversample noise image to smooth transitions from regions with different noise.||
-|| ||boxsize||int||Box size to use when computing local noise.||
-|| ||debug||bool||Save noise and mask/masked image(s).||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-|| ||parallel||string||Default=None (not used). Parallelism. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
-|| ||subset||int||Default=0 (not used). Apply algorithm to only a subset of images in each stack file.||
-|| ||nsigmas||float||Default=3.0. Number of standard deviations above the mean to determine pixels to mask out (erase).||
+||option||type||description||
+||--nsigmas||float||Default=3.0. Number of standard deviations above the mean to determine pixels to mask out (erase).||
+||--subset||int||Default=0 (not used). Apply algorithm to only a subset of images in each stack file.||
+||--lowpass||float||Multiply lowpass filter frequency by this constant when filtering noise image. Default is 1.11.||
+||--coords||str||Specify box file with x and y gold coordinates. Must follow standard box file format (x<tab>y<tab>xsize<ysize>) although box sizes are ignored.||
+||--parallel||str||Default=None (not used). Parallelism. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--boxsize||int||Box size to use when computing local noise.||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--apix||float||Override Apix in image header.||
+||--oversample||int||Oversample noise image to smooth transitions from regions with different noise.||
+||--keepdust|| ||Do not remove 'dust' from mask (include objects smaller than gold fiducials).||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--debug|| ||Save noise and mask/masked image(s).||
+||-h, --help|| ||show this help message and exit||
+||--goldsize||float||Diameter (in pixels) of gold fiducials to erase.||

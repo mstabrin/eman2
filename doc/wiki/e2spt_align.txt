@@ -1,9 +1,15 @@
-|| ||threads||int||Number of alignment threads to run in parallel on a single computer. This is the only parallelism supported by e2spt_align at present.||
-|| ||iter||int||Iteration number within path. Default = start a new iteration||
-|| ||goldstandard||float||If specified, will phase randomize the even and odd references past the specified resolution (in A, not 1/A)||
-|| ||goldcontinue||bool||Will use even/odd refs corresponding to specified reference to continue refining without phase randomizing again||
-|| ||saveali||bool||Save a stack file (aliptcls.hdf) containing the aligned subtomograms.||
-|| ||path||string||Path to a folder where results should be stored, following standard naming conventions (default = spt_XX)||
-|| ||sym||string||Symmetry of the input. Must be aligned in standard orientation to work properly.||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||option||type||description||
+||--threads||int||Number of alignment threads to run in parallel on a single computer. This is the only parallelism supported by e2spt_align at present.||
+||--goldcontinue|| ||Will use even/odd refs corresponding to specified reference to continue refining without phase randomizing again||
+||--saveali|| ||Save a stack file (aliptcls.hdf) containing the aligned subtomograms.||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--path||str||Path to a folder where results should be stored, following standard naming conventions (default = spt_XX)||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--sym||str||Symmetry of the input. Must be aligned in standard orientation to work properly.||
+||--goldstandard||float||If specified, will phase randomize the even and odd references past the specified resolution (in A, not 1/A)||
+||--iter||int||Iteration number within path. Default = start a new iteration||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||-h, --help|| ||show this help message and exit||

@@ -1,11 +1,14 @@
-|| ||path||string||Path to a folder containing current results (default = highest spt_XX)||
-|| ||iter||int||Iteration number within path. Default = auto||
-|| ||bins||int||Number of bins to use in the histogram||
-|| ||gui||bool||If set will open an interactive plot with the results||
-|| ||mode||string||Which variable to histogram, score, coverage, alt, az, phi, dx, dy, dz. default=score||
-|| ||extract||bool||If set, will convert the .json file to a .txt file suitable for plotting. No histogramming is involved, this is a per-particle conversion||
-|| ||threads||int||Number of alignment threads to run in parallel on a single computer. This is the only parallelism supported by e2spt_align at present.||
-|| ||goldstandard||float||If specified, will phase randomize the even and odd references past the specified resolution (in A, not 1/A)||
-|| ||saveali||bool||Save a stack file (aliptcls.hdf) containing the aligned subtomograms.||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||option||type||description||
+||--gui|| ||If set will open an interactive plot with the results||
+||--mode||str||Which variable to histogram, score, coverage, alt, az, phi, dx, dy, dz. default=score||
+||-h, --help|| ||show this help message and exit||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--version|| ||show program's version number and exit||
+||--path||str||Path to a folder containing current results (default = highest spt_XX)||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--iter||int||Iteration number within path. Default = auto||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--extract|| ||If set, will convert the .json file to a .txt file suitable for plotting. No histogramming is involved, this is a per-particle conversion||
+||-h, --help|| ||show this help message and exit||
+||--bins||int||Number of bins to use in the histogram||

@@ -1,29 +1,37 @@
-||-B||boxsize||int||Box size in pixels||
-|| ||write_dbbox||bool||Write coordinate file (eman1 dbbox) files||
-|| ||write_ptcls||bool||Write particles to disk||
-|| ||exclude_edges||bool||Don't generate output for any particles extending outside the micrograph||
-|| ||exclude_bad||bool||Don't generate output for any particles marked as exclude||
-||-f||force||bool||Force overwrite||
-|| ||format||bool||Format of the output particle images. For EMAN2 refinement must be HDF.||
-|| ||norm||string||Normalization processor to apply to written particle images. Should be normalize, normalize.edgemean,etc.Specifc "None" to turn this off||
-|| ||invert||bool||If writing outputt inverts pixel intensities||
-|| ||suffix||string||suffix which is appended to the names of output particle and coordinate files||
-|| ||dbls||string||data base list storage, used by the workflow. You can ignore this argument.||
-|| ||autoboxer||string||A key of the swarm_boxers dict in the local directory, used by the workflow.||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-|| ||gui||bool||Dummy option; used in older version of e2boxer||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
-|| ||gauss_autoboxer||string||Name of autoboxed file whose autoboxing parameters (obtained via some previous run of Gauss autoboxer via the GUI) should be used for automatic boxing.||
-|| ||do_ctf||string||Name of file whose ctf estimation parameters (obtained via some previous run of Gauss autoboxer via the GUI) should be used for automatic ctf estimation.||
-|| ||cter||bool||CTF estimation using cter||
-|| ||indir||string||Directory containing micrographs to be processed.||
-|| ||nameroot||string||Prefix of micrographs to be processed.||
-|| ||micsuffix||string||A string denoting micrograph type. For example 'mrc', 'hdf', 'ser' ...||
-|| ||wn||int||Size of window to use (should be slightly larger than particle box size)||
-|| ||Cs||float||Microscope Cs (spherical aberation)||
-|| ||voltage||float||Microscope voltage in KV||
-|| ||ac||float||Amplitude contrast (percentage, default=10)||
-|| ||kboot||int||kboot||
-|| ||MPI||bool||use MPI version||
-|| ||debug||bool||debug mode||
-|| ||apix||float||pixel size in Angstroms||
+||option||type||description||
+||--Cs||float||Microscope Cs (spherical aberation)||
+||--exclude_bad|| ||Don't generate output for any particles marked as exclude||
+||--boxsize, -B||int||Box size in pixels||
+||--autoboxer||str||A key of the swarm_boxers dict in the local directory, used by the workflow.||
+||--MPI|| ||use MPI version||
+||--dbls||str||data base list storage, used by the workflow. You can ignore this argument.||
+||--cter|| ||CTF estimation using cter||
+||--voltage||float||Microscope voltage in KV||
+||--nameroot||str||Prefix of micrographs to be processed.||
+||--force, -f|| ||Force overwrite||
+||--indir||str||Directory containing micrographs to be processed.||
+||--invert|| ||If writing outputt inverts pixel intensities||
+||-h, --help|| ||show this help message and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--gauss_autoboxer||str||Name of autoboxed file whose autoboxing parameters (obtained via some previous run of Gauss autoboxer via the GUI) should be used for automatic boxing.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--debug|| ||debug mode||
+||--ac||float||Amplitude contrast (percentage, default=10)||
+||--do_ctf||str||Name of file whose ctf estimation parameters (obtained via some previous run of Gauss autoboxer via the GUI) should be used for automatic ctf estimation.||
+||--force, -f|| ||Force overwrite||
+||--micsuffix||str||A string denoting micrograph type. For example 'mrc', 'hdf', 'ser' ...||
+||--boxsize, -B||int||Box size in pixels||
+||--version|| ||show program's version number and exit||
+||--gui|| ||Dummy option; used in older version of e2boxer||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--write_dbbox|| ||Write coordinate file (eman1 dbbox) files||
+||--exclude_edges|| ||Don't generate output for any particles extending outside the micrograph||
+||--wn||int||Size of window to use (should be slightly larger than particle box size)||
+||--kboot||int||kboot||
+||--norm||str||Normalization processor to apply to written particle images. Should be normalize, normalize.edgemean,etc.Specifc "None" to turn this off||
+||--format|| ||Format of the output particle images. For EMAN2 refinement must be HDF.||
+||--suffix||str||suffix which is appended to the names of output particle and coordinate files||
+||--apix||float||pixel size in Angstroms||
+||--write_ptcls|| ||Write particles to disk||
+||-h, --help|| ||show this help message and exit||

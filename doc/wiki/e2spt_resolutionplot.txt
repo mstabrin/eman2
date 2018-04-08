@@ -1,25 +1,27 @@
-parser.add_argument("--plotonly",type=str, help="""FSC curves to plot in separate plots. 
-		Skips fsc curve generation. Provide .txt. files separated by commas
-|| ||input||string||Volume or stack of volumes to be compared to --ref||
-|| ||path||string||Results directory. If not specified, defaults to e2sptfscs/||
-|| ||ref||string||Volume that will be 'static' (the 'reference' to which volumes in --input will be aligned to). The format MUST be '.hdf' or '.mrc' ||
-|| ||nocolor||bool||Turns the ouput png(s) into grey scale figures. Instead of using different colors to distinguish between various curves on the same plot, this option will have the program automatically use different markers in black and white for each curve.||
-|| ||sym||string||Will symmetrize --ref and --input prior to FSC computation.||
-|| ||mask||string||Mask processor applied to particles before fsc computation. Default is mask.sharp:outer_radius=-2||
-|| ||mirror||bool||If set, it will generate a mirrored version of --ref and recompute FSCs against it. This will be IN ADDITION to FSC computation of --input against the original, unmirrored --ref.||
-|| ||preproc||string||Any processor (as in e2proc3d.py) to be applied to each volumes prior to FSC computation. Typically this would be an automask.||
-|| ||savepreproc||bool||Default=False. Otherwise, save preprocessed/masked volumes for inspection.||
-|| ||averagefscs||bool||Default=False. Averages FSC curves if --input contains multiple images.||
-|| ||parallel||bool||Parallelism. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
-|| ||apix||float||Provide --apix for automatic FSC calculation if you supply --plotonly and no volumes for --input and --ref, or if the apix of these is wrong.||
-|| ||boxsize||float||(Probably not needed for anything)||
-|| ||maxres||float||How far in resolution to extend the FSC curve on the x axis; for example, to see up to 20anstroms, provide --maxres=1.0. Default=15||
-|| ||cutoff||string||Comma separated values of cutoff thresholds to plot as horizontal lines. Default=0.5, to turn of supply 'None'. ||
-|| ||smooth||bool||Smooth out FSC curves by taking the average of a low value with a subsequent maxima.||
-|| ||smooththresh||float||If --smooth is provided the curve will be smoothed only up to this resolution. Default is 100.||
-|| ||fit||bool||Smooth out FSC curves.||
-|| ||polydegree||int||Degree of the polynomial to fit.||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID.||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
-|| ||singleplot||bool||It --plotonly provided, all FSC curves will be on the same plot/figure||
+||option||type||description||
+||--input||str||Volume or stack of volumes to be compared to --ref||
+||--averagefscs|| ||Default=False. Averages FSC curves if --input contains multiple images.||
+||--singleplot|| ||It --plotonly provided, all FSC curves will be on the same plot/figure||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--path||str||Results directory. If not specified, defaults to e2sptfscs/||
+||--plotonly||str||FSC curves to plot in separate plots. 
+		Skips fsc curve generation. Provide .txt. files separated by commas 
+		--plotonly=file1.txt,file2.txt,file3.txt etc...||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--ref||str||Volume that will be 'static' (the 'reference' to which volumes in --input will be aligned to). The format MUST be '.hdf' or '.mrc' ||
+||--mirror|| ||If set, it will generate a mirrored version of --ref and recompute FSCs against it. This will be IN ADDITION to FSC computation of --input against the original, unmirrored --ref.||
+||--cutoff||str||Comma separated values of cutoff thresholds to plot as horizontal lines. Default=0.5, to turn of supply 'None'. ||
+||-h, --help|| ||show this help message and exit||
+||--maxres||float||How far in resolution to extend the FSC curve on the x axis; for example, to see up to 20anstroms, provide --maxres=1.0. Default=15||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--smooththresh||float||If --smooth is provided the curve will be smoothed only up to this resolution. Default is 100.||
+||--parallel|| ||Parallelism. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
+||--nocolor|| ||Turns the ouput png(s) into grey scale figures. Instead of using different colors to distinguish between various curves on the same plot, this option will have the program automatically use different markers in black and white for each curve.||
+||--polydegree||int||Degree of the polynomial to fit.||
+||--smooth|| ||Smooth out FSC curves by taking the average of a low value with a subsequent maxima.||
+||--version|| ||show program's version number and exit||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID.||
+||--mask||str||Mask processor applied to particles before fsc computation. Default is mask.sharp:outer_radius=-2||
+||--sym||str||Will symmetrize --ref and --input prior to FSC computation.||
+||--apix||float||Provide --apix for automatic FSC calculation if you supply --plotonly and no volumes for --input and --ref, or if the apix of these is wrong.||
+||-h, --help|| ||show this help message and exit||

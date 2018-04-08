@@ -1,10 +1,17 @@
-||-B||boxsize||int||Box size in pixels||
-|| ||write_boxes||bool||Write coordinate file (eman1 dbbox) files||
-|| ||write_ptcls||bool||Write particles to disk||
-|| ||format||bool||Format of the output particles images, should be hdf||
-|| ||shrink||int||Shrink the images by an integer, uses math.meanshrink||
-|| ||norm||string||Normalization processor to apply to written particle images. Should be normalize, normalize.edgemean,etc.Specifc "None" to turn this off||
-|| ||invert||bool||If writing outputt inverts pixel intensities||
-|| ||suffix||string||suffix which is appended to the names of output particle and coordinate files||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||option||type||description||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--norm||str||Normalization processor to apply to written particle images. Should be normalize, normalize.edgemean,etc.Specifc "None" to turn this off||
+||--boxsize, -B||int||Box size in pixels||
+||--invert|| ||If writing outputt inverts pixel intensities||
+||--write_ptcls|| ||Write particles to disk||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--write_boxes|| ||Write coordinate file (eman1 dbbox) files||
+||--suffix||str||suffix which is appended to the names of output particle and coordinate files||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--format|| ||Format of the output particles images, should be hdf||
+||--shrink||int||Shrink the images by an integer, uses math.meanshrink||
+||--boxsize, -B||int||Box size in pixels||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||-h, --help|| ||show this help message and exit||

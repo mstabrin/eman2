@@ -1,31 +1,63 @@
-||-AN||animorph||string||This will use a morph vector file (segment3d) to morph atom positions,#P [animorph=<n>,<apix>,<vecfile>]||
-||-A||apix||float||apix||
-||-S||scale||float||scale||
-||-C||center||string||center of the rotation, (0,0,0)||
-|| ||chains||string||String list of chain identifiers to include, eg 'ABEFG'||
-||-TR||trans||string||transform, (0,0,0)||
-|| ||include||string||savetype||
-|| ||mirror||bool||mirror||
-||-matrix||matrix||string||transform matrix.||
-|| ||rot||string||Rotate map. Specify az,alt,phi or convention:par=val:par=val:...  eg - mrc:psi=22:theta=15:omega=7||
-||-T||type||string||convention type||
-||-az||az||float||az in eman convention.||
-||-alt||alt||float||alt in eman convention.||
-||-phi||phi||float||phi.||
-||-alpha||alpha||float||alpha in imagic convention.||
-||-beta||beta||float||beta in imagic convention.||
-||-gamma||gamma||float||gamma in imagic convention.||
-||-theta||theta||float||theta.||
-||-psi||psi||float||psi in spider convention.||
-||-xtilt||xtilt||float||xtilt in xyz convention.||
-||-ytilt||ytilt||float||ytilt in xyz convention.||
-||-ztilt||ztilt||float||ztilt in xyz convention.||
-||-omega||omega||float||omega.||
-||-e0||e0||float||e0 in quaternion convention.||
-||-e1||e1||float||e1 in quaternion convention.||
-||-e2||e2||float||e2 in quaternion convention.||
-||-e3||e3||float||e3 in quaternion convention.||
-||-n1||n1||float||n1.||
-||-n2||n2||float||n2.||
-||-n3||n3||float||n3.||
-||-q||q||float||q in sgirot convention.||
+||option||type||description||
+||--e3, -e3||float||e3 in quaternion convention.||
+||--include||str||savetype||
+||--apix, -A||float||apix||
+||--theta, -theta||float||theta.||
+||--center, -C||str||center of the rotation, (0,0,0)||
+||--n1, -n1||float||n1.||
+||--phi, -phi||float||phi.||
+||--az, -az||float||az in eman convention.||
+||--rot||str||Rotate map. Specify az,alt,phi or convention:par=val:par=val:...  eg - mrc:psi=22:theta=15:omega=7||
+||--type, -T||str||convention type||
+||--beta, -beta||float||beta in imagic convention.||
+||--scale, -S||float||scale||
+||--beta, -beta||float||beta in imagic convention.||
+||--xtilt, -xtilt||float||xtilt in xyz convention.||
+||--n1, -n1||float||n1.||
+||--alt, -alt||float||alt in eman convention.||
+||--scale, -S||float||scale||
+||--alpha, -alpha||float||alpha in imagic convention.||
+||--trans, -TR||str||transform, (0,0,0)||
+||--center, -C||str||center of the rotation, (0,0,0)||
+||--alt, -alt||float||alt in eman convention.||
+||-h, --help|| ||show this help message and exit||
+||--psi, -psi||float||psi in spider convention.||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--q, -q||float||q in sgirot convention.||
+||--trans, -TR||str||transform, (0,0,0)||
+||--animorph, -AN||str||This will use a morph vector file (segment3d) to morph atom positions,#P [animorph=<n>,<apix>,<vecfile>]||
+||--n2, -n2||float||n2.||
+||--e0, -e0||float||e0 in quaternion convention.||
+||--matrix, -matrix||str||transform matrix.||
+||--n3, -n3||float||n3.||
+||--xtilt, -xtilt||float||xtilt in xyz convention.||
+||--ytilt, -ytilt||float||ytilt in xyz convention.||
+||--n2, -n2||float||n2.||
+||--n3, -n3||float||n3.||
+||--az, -az||float||az in eman convention.||
+||--q, -q||float||q in sgirot convention.||
+||--version|| ||show program's version number and exit||
+||--mirror||bool||mirror||
+||--e1, -e1||float||e1 in quaternion convention.||
+||--e0, -e0||float||e0 in quaternion convention.||
+||--ztilt, -ztilt||float||ztilt in xyz convention.||
+||--e2, -e2||float||e2 in quaternion convention.||
+||--gamma, -gamma||float||gamma in imagic convention.||
+||--omega, -omega||float||omega.||
+||--ytilt, -ytilt||float||ytilt in xyz convention.||
+||--animorph, -AN||str||This will use a morph vector file (segment3d) to morph atom positions,#P [animorph=<n>,<apix>,<vecfile>]||
+||--e1, -e1||float||e1 in quaternion convention.||
+||--alpha, -alpha||float||alpha in imagic convention.||
+||--e3, -e3||float||e3 in quaternion convention.||
+||--psi, -psi||float||psi in spider convention.||
+||--omega, -omega||float||omega.||
+||--matrix, -matrix||str||transform matrix.||
+||--phi, -phi||float||phi.||
+||--e2, -e2||float||e2 in quaternion convention.||
+||--type, -T||str||convention type||
+||--gamma, -gamma||float||gamma in imagic convention.||
+||--chains||str||String list of chain identifiers to include, eg 'ABEFG'||
+||--apix, -A||float||apix||
+||-h, --help|| ||show this help message and exit||
+||--ztilt, -ztilt||float||ztilt in xyz convention.||
+||--theta, -theta||float||theta.||

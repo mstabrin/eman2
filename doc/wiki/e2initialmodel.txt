@@ -1,13 +1,18 @@
-|| ||input||string||This file should contain good class-averages to use in constructing the initial model||
-|| ||iter||int||The total number of refinement iterations to perform, typically 5-10||
-|| ||tries||int||The number of different initial models to generate in search of a good one||
-|| ||shrink||int||Optionally shrink the input particles by an integer factor prior to reconstruction. Default=0, no shrinking||
-|| ||sym||bool||Specify symmetry - choices are: c<n>, d<n>, h<n>, tet, oct, icos||
-|| ||randorient||bool||Instead of seeding with a random volume, seeds by randomizing input orientations||
-|| ||maskproc||string||Default=none. If specified, this mask will be performed after the built-in automask, eg - mask.soft to remove the core of a virus||
-|| ||savemore||bool||Will cause intermediate results to be written to flat files||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
-|| ||orientgen||string||The type of orientation generator. Default is eman:delta=9.0:inc_mirror=0:perturb=1. See e2help.py orientgens||
-||-P||parallel||string||Run in parallel, specify type:<option>=<value>:<option>=<value>. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-|| ||dbls||string||data base list storage, used by the workflow. You can ignore this argument.||
+||option||type||description||
+||--sym|| ||Specify symmetry - choices are: c<n>, d<n>, h<n>, tet, oct, icos||
+||--input||str||This file should contain good class-averages to use in constructing the initial model||
+||--orientgen||str||The type of orientation generator. Default is eman:delta=9.0:inc_mirror=0:perturb=1. See e2help.py orientgens||
+||--maskproc||str||Default=none. If specified, this mask will be performed after the built-in automask, eg - mask.soft to remove the core of a virus||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--tries||int||The number of different initial models to generate in search of a good one||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--randorient|| ||Instead of seeding with a random volume, seeds by randomizing input orientations||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--shrink||int||Optionally shrink the input particles by an integer factor prior to reconstruction. Default=0, no shrinking||
+||--iter||int||The total number of refinement iterations to perform, typically 5-10||
+||--parallel, -P||str||Run in parallel, specify type:<option>=<value>:<option>=<value>. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||-h, --help|| ||show this help message and exit||
+||--parallel, -P||str||Run in parallel, specify type:<option>=<value>:<option>=<value>. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||

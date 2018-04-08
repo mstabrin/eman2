@@ -1,18 +1,24 @@
-|| ||apix||float||Default=0.0 (not used). Use this apix value where relevant instead of whatever is in the header of the reference and the particles. Will overwrite particle header as well.||
-|| ||clip||int||Default=0 (which means it's not used). Boxsize to clip particles. For example, the boxsize of the particles might be 100 pixels, but the particles are only 50 pixels in diameter. Aliasing effects are not always as deleterious for all specimens, and sometimes 2x padding isn't necessary.||
-|| ||highpass||string||Default=None. A highpass filtering processor (see 'e2help.py processors -v 10' at the command line) to be applied to each volume prior to COARSE alignment. Not applied to aligned particles before averaging.||
-|| ||input||string||Default=None. The name of the input volume stack. MUST be HDF since volume stack support is required.||
-|| ||lowpass||string||Default=None. A lowpass filtering processor (see 'e2help.py processors -v 10' at the command line) to be applied to each volume prior to COARSE alignment. Not applied to aligned particles before averaging.||
-|| ||mask||string||Default=None. Masking processor applied to particles before alignment. IF using --clip, make sure to express outer mask radii as negative pixels from the edge.||
-|| ||maskfile||string||Default=None. Mask file (3D IMAGE) applied to particles before alignment. Must be in HDF format. Default is None.||
-|| ||nopath||bool||If supplied, this option will save results in the directory where the command is run. A directory to store the results will not be made.||
-|| ||normproc||string||Default=None (see 'e2help.py processors -v 10' at the command line). Normalization processor applied to particles before alignment. If normalize.mask is used, results of the mask option will be passed in automatically. If you want to turn this option off specify 'None'||
-|| ||output||string||Default=None. Specific name of HDF file to write processed particles to.||
-|| ||path||string||Default=spt. Directory to store results in. The default is a numbered series of directories containing the prefix 'sptpreproc'; for example, sptpreproc_02 will be the directory by default if 'sptpreproc_01' already exists.||
-|| ||parallel||string||default=None. Parallelism. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
-|| ||ppid||int||Default=-1. Set the PID of the parent process, used for cross platform PPID||
-|| ||preprocess||string||Any processor (see 'e2help.py processors -v 10' at the command line) to be applied to each volume prior to COARSE alignment. Not applied to aligned particles before averaging.||
-|| ||shrink||int||Default=0 (no shrinking). Optionally shrink the input volumes by an integer amount for coarse alignment.||
-|| ||subset||int||Default=0 (not used). Refine only this substet of particles from the stack provided through --input||
-|| ||threshold||string||Default=None. A threshold applied to the subvolumes after normalization. For example, --threshold=threshold.belowtozero:minval=0 makes all negative pixels equal 0, so that they do not contribute to the correlation score.||
-||-v||verbose||int||Default=0. Verbose level [0-9], higner number means higher level of verboseness; 10-11 will trigger many messages that might make little sense since this level of verboseness corresponds to 'debugging mode'||
+||option||type||description||
+||--input||str||Default=None. The name of the input volume stack. MUST be HDF since volume stack support is required.||
+||--threshold||str||Default=None. A threshold applied to the subvolumes after normalization. For example, --threshold=threshold.belowtozero:minval=0 makes all negative pixels equal 0, so that they do not contribute to the correlation score.||
+||--parallel||str||default=None. Parallelism. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
+||--verbose, -v||int||Default=0. Verbose level [0-9], higner number means higher level of verboseness; 10-11 will trigger many messages that might make little sense since this level of verboseness corresponds to 'debugging mode'||
+||--preprocess||str||Any processor (see 'e2help.py processors -v 10' at the command line) to be applied to each volume prior to COARSE alignment. Not applied to aligned particles before averaging.||
+||--path||str||Default=spt. Directory to store results in. The default is a numbered series of directories containing the prefix 'sptpreproc'; for example, sptpreproc_02 will be the directory by default if 'sptpreproc_01' already exists.||
+||--normproc||str||Default=None (see 'e2help.py processors -v 10' at the command line). Normalization processor applied to particles before alignment. If normalize.mask is used, results of the mask option will be passed in automatically. If you want to turn this option off specify 'None'||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--subset||int||Default=0 (not used). Refine only this substet of particles from the stack provided through --input||
+||--lowpass||str||Default=None. A lowpass filtering processor (see 'e2help.py processors -v 10' at the command line) to be applied to each volume prior to COARSE alignment. Not applied to aligned particles before averaging.||
+||-h, --help|| ||show this help message and exit||
+||--nopath|| ||If supplied, this option will save results in the directory where the command is run. A directory to store the results will not be made.||
+||--maskfile||str||Default=None. Mask file (3D IMAGE) applied to particles before alignment. Must be in HDF format. Default is None.||
+||--shrink||int||Default=0 (no shrinking). Optionally shrink the input volumes by an integer amount for coarse alignment.||
+||--clip||int||Default=0 (which means it's not used). Boxsize to clip particles. For example, the boxsize of the particles might be 100 pixels, but the particles are only 50 pixels in diameter. Aliasing effects are not always as deleterious for all specimens, and sometimes 2x padding isn't necessary.||
+||--version|| ||show program's version number and exit||
+||--verbose, -v||int||Default=0. Verbose level [0-9], higner number means higher level of verboseness; 10-11 will trigger many messages that might make little sense since this level of verboseness corresponds to 'debugging mode'||
+||--ppid||int||Default=-1. Set the PID of the parent process, used for cross platform PPID||
+||--mask||str||Default=None. Masking processor applied to particles before alignment. IF using --clip, make sure to express outer mask radii as negative pixels from the edge.||
+||--highpass||str||Default=None. A highpass filtering processor (see 'e2help.py processors -v 10' at the command line) to be applied to each volume prior to COARSE alignment. Not applied to aligned particles before averaging.||
+||--output||str||Default=None. Specific name of HDF file to write processed particles to.||
+||--apix||float||Default=0.0 (not used). Use this apix value where relevant instead of whatever is in the header of the reference and the particles. Will overwrite particle header as well.||
+||-h, --help|| ||show this help message and exit||

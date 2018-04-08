@@ -1,4 +1,8 @@
-|| ||normproj||bool||Normalize the projections resulting from 'project', such that the length of each vector is 1||
-|| ||normalize||string||Normalize the input images using the named processor. Specify None to disable.||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||option||type||description||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-h, --help|| ||show this help message and exit||

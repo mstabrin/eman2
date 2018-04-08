@@ -1,7 +1,13 @@
-|| ||apix||float||Angstroms per pixel for all images||
-|| ||voltage||float||Microscope voltage in KV||
-|| ||cs||float||Microscope Cs (spherical aberation)||
-|| ||ac||float||Amplitude contrast (percentage, default=10)||
-|| ||samples||int||Number of samples in the plotted curve||
-|| ||apply||string||A 2-D image file which the CTF will be applied to in real-time||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||option||type||description||
+||--cs||float||Microscope Cs (spherical aberation)||
+||--voltage||float||Microscope voltage in KV||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--apix||float||Angstroms per pixel for all images||
+||--samples||int||Number of samples in the plotted curve||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--ac||float||Amplitude contrast (percentage, default=10)||
+||-h, --help|| ||show this help message and exit||
+||--apply||str||A 2-D image file which the CTF will be applied to in real-time||

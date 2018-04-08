@@ -1,10 +1,22 @@
-||-A||atoms||string||pseudoatoms file||
-||-P||atomswt||float||pseudoatom weight||
-||-C||coeff||string||helix correlation file||
-||-H||coeffwt||float||helix correlation weight||
-||-S||skeleton||string||skeleton file||
-||-T||sketype||string||skeleton type||
-||-W||skeletonwt||float||skeleton weight||
-||-L||helixlength||float||helix length om angstroms||
-||-D||da||float||helix angular search step||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||option||type||description||
+||--da, -D||float||helix angular search step||
+||--coeff, -C||str||helix correlation file||
+||--da, -D||float||helix angular search step||
+||--atoms, -A||str||pseudoatoms file||
+||--skeleton, -S||str||skeleton file||
+||--coeff, -C||str||helix correlation file||
+||--atoms, -A||str||pseudoatoms file||
+||--helixlength, -L||float||helix length om angstroms||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--helixlength, -L||float||helix length om angstroms||
+||--coeffwt, -H||float||helix correlation weight||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--skeletonwt, -W||float||skeleton weight||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--atomswt, -P||float||pseudoatom weight||
+||--skeleton, -S||str||skeleton file||
+||--skeletonwt, -W||float||skeleton weight||
+||--atomswt, -P||float||pseudoatom weight||
+||-h, --help|| ||show this help message and exit||
+||--coeffwt, -H||float||helix correlation weight||

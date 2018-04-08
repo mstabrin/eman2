@@ -1,10 +1,16 @@
-|| ||gui||bool||Start the GUI for interactive boxing||
-||-A||auto||string||Autobox using specified method: circle, ref, grid||
-||-T||threshold||float||Threshold for keeping particles. 0-4, 0 excludes all, 4 keeps all.||
-||-M||maxbad||int||Maximumum number of unassigned helices||
-||-H||minhelix||int||Minimum residues in a helix||
-||-E||maxpairerr||float||Maximum error match between pairs of helices, default=50||
-||-K||skelpath||string||Optional (recommended) output from the e2skelpath.py program||
-|| ||lengthmatchmatrix||string||Writes an image containing an exhaustive comparison of predicted vs SSE helix lengths as a matrix||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||option||type||description||
+||--maxpairerr, -E||float||Maximum error match between pairs of helices, default=50||
+||--skelpath, -K||str||Optional (recommended) output from the e2skelpath.py program||
+||--maxbad, -M||int||Maximumum number of unassigned helices||
+||--maxbad, -M||int||Maximumum number of unassigned helices||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--minhelix, -H||int||Minimum residues in a helix||
+||-h, --help|| ||show this help message and exit||
+||--skelpath, -K||str||Optional (recommended) output from the e2skelpath.py program||
+||--version|| ||show program's version number and exit||
+||--minhelix, -H||int||Minimum residues in a helix||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--maxpairerr, -E||float||Maximum error match between pairs of helices, default=50||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||-h, --help|| ||show this help message and exit||

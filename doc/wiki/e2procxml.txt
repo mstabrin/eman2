@@ -1,3 +1,9 @@
-|| ||fscxml2txt||bool||Convert the input XML FSC file into a text file||
-|| ||fsctxt2xml||string||Convert the input text FSC file into an xml file. The value provided is the title of the graph. For example: --fsctxt2xml="My Graph Title"||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||option||type||description||
+||--fscxml2txt|| ||Convert the input XML FSC file into a text file||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--fsctxt2xml||str||Convert the input text FSC file into an xml file. The value provided is the title of the graph. For example: --fsctxt2xml="My Graph Title"||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||-h, --help|| ||show this help message and exit||

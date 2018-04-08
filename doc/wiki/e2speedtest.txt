@@ -1,9 +1,15 @@
-|| ||slow||bool||rtf_slow alignment||
-|| ||best||bool||rtf_best alignment||
-|| ||short||bool||Fewer iterations, mainly for profiling||
-|| ||old||bool||old rtf+refine aligner||
-|| ||low||bool||low level test||
-|| ||size||int||Size of particles, 192 default for comparisons||
-|| ||simpleout||bool||Simpler 2 column output file (appends)||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||option||type||description||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--simpleout|| ||Simpler 2 column output file (appends)||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--best|| ||rtf_best alignment||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--size||int||Size of particles, 192 default for comparisons||
+||--short|| ||Fewer iterations, mainly for profiling||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--low|| ||low level test||
+||--slow|| ||rtf_slow alignment||
+||--old|| ||old rtf+refine aligner||
+||-h, --help|| ||show this help message and exit||

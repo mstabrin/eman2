@@ -1,19 +1,24 @@
-|| ||even||string||The filename of the map from the even 1/2 of the data||
-|| ||odd||string||The filename of the map from the odd 1/2 of the data||
-|| ||output||string||Filename for the final averaged/filtered result.||
-|| ||mass||float||The rough mass of the particle in kilodaltons, used to run normalize.bymass. Due to resolution effects, not always the true mass.||
-|| ||restarget||float||The specified target resolution to avoid underfiltering artifacts.||
-|| ||setsf||string||Force the structure factor to match a 'known' curve prior to postprocessing (<filename>, none). default=none||
-|| ||iter||int||Iteration number to generate FSC filenames||
-|| ||align||bool||Will do o to e alignment and test for handedness flips. Should not be repeated as it overwrites the odd file with the aligned result.||
-|| ||tophat||string||'global' or 'local'. Final Wiener filter disabled, and replaced by a tophat filter either across the map at 0.143 as Relion appears to do, or locally based on e2fsc.py results||
-|| ||ampcorrect||bool||Will perform amplitude correction via the specified method. The default choice is strucfac.||
-|| ||ncmult||float||Specify how much to multiply noise cutoff during flattening amplitude correction. Default is 1.05.||
-|| ||m3dpostprocess||string||Default=none. An arbitrary post-processor to run after all other automatic processing.||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-|| ||automaskexpand||int||Default=boxsize/20. Specify number of voxels to expand mask before soft edge. Only used if automask3d not specified.||
-|| ||automask3d||string||Default=auto. Specify as a processor, eg - mask.auto3d:threshold=1.1:radius=30:nshells=5:nshellsgauss=5.||
-|| ||automask3d2||string||Default=None. Specify as a processor. This will be applied to the mask produced by the first automask.||
-|| ||underfilter||bool||This will shift the computed Wiener filter to be about 10%% more resolution than has been achieved.||
-|| ||sym||string||Symmetry so we can decide how to align the particle.||
-|| ||threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
+||option||type||description||
+||--setsf||str||Force the structure factor to match a 'known' curve prior to postprocessing (<filename>, none). default=none||
+||-h, --help|| ||show this help message and exit||
+||--automaskexpand||int||Default=boxsize/20. Specify number of voxels to expand mask before soft edge. Only used if automask3d not specified.||
+||--ampcorrect|| ||Will perform amplitude correction via the specified method. The default choice is strucfac.||
+||--even||str||The filename of the map from the even 1/2 of the data||
+||--automask3d||str||Default=auto. Specify as a processor, eg - mask.auto3d:threshold=1.1:radius=30:nshells=5:nshellsgauss=5.||
+||--odd||str||The filename of the map from the odd 1/2 of the data||
+||--sym||str||Symmetry so we can decide how to align the particle.||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--automask3d2||str||Default=None. Specify as a processor. This will be applied to the mask produced by the first automask.||
+||--threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
+||--mass||float||The rough mass of the particle in kilodaltons, used to run normalize.bymass. Due to resolution effects, not always the true mass.||
+||--version|| ||show program's version number and exit||
+||--iter||int||Iteration number to generate FSC filenames||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--ncmult||float||Specify how much to multiply noise cutoff during flattening amplitude correction. Default is 1.05.||
+||--tophat||str||'global' or 'local'. Final Wiener filter disabled, and replaced by a tophat filter either across the map at 0.143 as Relion appears to do, or locally based on e2fsc.py results||
+||--m3dpostprocess||str||Default=none. An arbitrary post-processor to run after all other automatic processing.||
+||--output||str||Filename for the final averaged/filtered result.||
+||--align|| ||Will do o to e alignment and test for handedness flips. Should not be repeated as it overwrites the odd file with the aligned result.||
+||--underfilter|| ||This will shift the computed Wiener filter to be about 10%% more resolution than has been achieved.||
+||--restarget||float||The specified target resolution to avoid underfiltering artifacts.||
+||-h, --help|| ||show this help message and exit||

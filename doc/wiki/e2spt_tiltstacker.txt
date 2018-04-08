@@ -1,24 +1,31 @@
-|| ||anglesindxinfilename||int||Default=None. The filename of the images will be split at any occurence of the following delimiters: '_','-',',',' ' (the last one is a blank space). Provide the index (position) of the angle in the split filename. For example, if the filename of an image is "my_specimen-oct-10-2015_-50_deg-from_k2 camera.mrc", it will be split into ['my','specimen','oct','10','2015','','50','deg','from','k2','camera','mrc']. The angle '-50', is at position 6 (starting from 0). Therefore, you would provide --anglesindxinfilename=6, assuming all images to be stacked/processed are similarly named. No worries about the minus sign disappearing. The program will look at whether there's a minus sign immediately preceeding the position where the angle info is.||
-|| ||apix||float||True apix of images to be written on final stack.||
-|| ||bidirectional||bool||This will assume the first image is at 0 degrees and will stack images from --lowerend through 0, and then will stack the rest from 0+tiltstep throgh --upperend. If --negativetiltseries is supplied, images will be stacked from --upperend through 0, then from 0-tiltstep through --lowerend.||
-|| ||clip||string||Resize the 2-D images in the tilt series. If one number is provided, then x and y dimensions will be made the same. To specify both dimensions, supply two numbers, --clip=x,y. Clipping will be about the center of the image.||
-|| ||exclude||string||Comma separated list of numbers corresponding to images to exclude. --unstack or --restack must be supplied. You can also exclude by ranges. For example: Recall that the FIRST image INDEX is 0. --exclude=1,5-7,10,12,15-19 will exclude images 1,5,6,7,10,12,15,16,17,18,19||
-|| ||highesttilt||float||Highest tilt angle. If not supplied, it will be assumed to be 1* --tiltrange.||
-|| ||include||string||Comma separated list of numbers corresponding to images to include (all others will be excluded). --unstack or --restack must be supplied. Recall that the FIRST image INDEX is 0. --include=1,5-7,10,12,15-19 will include images 1,5,6,7,10,12,15,16,17,18,19||
-|| ||invert||bool||"This will multiply the pixel values by -1.||
-|| ||lowesttilt||float||Lowest tilt angle. If not supplied, it will be assumed to be -1* --tiltrange.||
-|| ||mirroraxis||string||Options are x or y, and the mirrored copy of the 2-D images will be generated before being put into the tilt series.||
-|| ||negativetiltseries||bool||This indicates that the tilt series goes from -tiltrange to +tiltrange, or 0 to -tiltrange, then +tiltstep to +tiltrange if --bidirectional is specified.||
-|| ||normalizeimod||bool||Default=False. This will apply 'newstack -float 2' to the input stack. Requires IMOD. Does not apply to --unstack or --restack.||
-|| ||outmode||string||All EMAN2 programs write images with 4-byte floating point values when possible by default. This allows specifying an alternate format when supported: float, int8, int16, int32, uint8, uint16, uint32. Values are rescaled to fill MIN-MAX range.||
-|| ||path||string||Directory to store results in. The default is a numbered series of directories containing the prefix 'sptstacker'; for example, sptstacker_02 will be the directory by default if 'sptstacker_01' already exists.||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-|| ||restack||string||.hdf, or 3D .st, .mrc, .ali, or .mrcs stack file to restack. This option can be used with --include or --exclude to unstack only specific images. Recall that the FIRST image INDEX is 0 (but unstacked image will be numbered from 1). --exclude=1,5-7,10,12,15-19 will exclude images 1,5,6,7,10,12,15,16,17,18,19||
-|| ||shrink||float||Default=0.0 (not used). Shrinking factor to do Fourier cropping of the images in a titlseries; can be a fractional number (for example, 1.5)||
-|| ||stackregardless||bool||"Stack images found with the common string provided through --stem2stack, even if the number of images does not match the predicted number of tilt angles.||
-|| ||stem2stack||string||String common to all the files to put into an .st stack, which is in .MRC format; for example, --stem2stack=.hdf will process all .hdf files in the current directory. If not specified, all valid EM imagefiles in the current directory will be put into an .st stack.||
-|| ||tltfile||string||".tlt file IF unstacking an aligned tilt series with --unstack=<stackfile> or restacking a tiltseries with --restack=<stackfile>||
-|| ||tiltrange||float||If provided, this will make --lowesttilt=-1*tiltrange and --highesttilt=tiltrange. If the range is asymmetric, supply --lowesttilt and --highesttilt directly.||
-|| ||tiltstep||float||Step between tilts. Required if using --stem2stack.||
-|| ||unstack||string||.hdf, or 3D .st, .mrc, .ali, or .mrcs stack file to unstack. This option can be used with --include or --exclude to unstack only specific images. Recall that the FIRST image INDEX is 0 (but unstacked image will be numbered from 1). --exclude=1,5-7,10,12,15-19 will exclude images 1,5,6,7,10,12,15,16,17,18,19||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness.||
+imported stuff
+||option||type||description||
+||--include||str||Comma separated list of numbers corresponding to images to include (all others will be excluded). --unstack or --restack must be supplied. Recall that the FIRST image INDEX is 0. --include=1,5-7,10,12,15-19 will include images 1,5,6,7,10,12,15,16,17,18,19||
+||--unstack||str||.hdf, or 3D .st, .mrc, .ali, or .mrcs stack file to unstack. This option can be used with --include or --exclude to unstack only specific images. Recall that the FIRST image INDEX is 0 (but unstacked image will be numbered from 1). --exclude=1,5-7,10,12,15-19 will exclude images 1,5,6,7,10,12,15,16,17,18,19||
+||--negativetiltseries|| ||This indicates that the tilt series goes from -tiltrange to +tiltrange, or 0 to -tiltrange, then +tiltstep to +tiltrange if --bidirectional is specified.||
+||--anglesindxinfilename||int||Default=None. The filename of the images will be split at any occurence of the following delimiters: '_','-',',',' ' (the last one is a blank space). Provide the index (position) of the angle in the split filename. For example, if the filename of an image is "my_specimen-oct-10-2015_-50_deg-from_k2 camera.mrc", it will be split into ['my','specimen','oct','10','2015','','50','deg','from','k2','camera','mrc']. The angle '-50', is at position 6 (starting from 0). Therefore, you would provide --anglesindxinfilename=6, assuming all images to be stacked/processed are similarly named. No worries about the minus sign disappearing. The program will look at whether there's a minus sign immediately preceeding the position where the angle info is.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness.||
+||-h, --help|| ||show this help message and exit||
+||--path||str||Directory to store results in. The default is a numbered series of directories containing the prefix 'sptstacker'; for example, sptstacker_02 will be the directory by default if 'sptstacker_01' already exists.||
+||--tiltstep||float||Step between tilts. Required if using --stem2stack.||
+||--exclude||str||Comma separated list of numbers corresponding to images to exclude. --unstack or --restack must be supplied. You can also exclude by ranges. For example: Recall that the FIRST image INDEX is 0. --exclude=1,5-7,10,12,15-19 will exclude images 1,5,6,7,10,12,15,16,17,18,19||
+||--tltfile||str||".tlt file IF unstacking an aligned tilt series with --unstack=<stackfile> or restacking a tiltseries with --restack=<stackfile>||
+||--highesttilt||float||Highest tilt angle. If not supplied, it will be assumed to be 1* --tiltrange.||
+||--stackregardless|| ||"Stack images found with the common string provided through --stem2stack, even if the number of images does not match the predicted number of tilt angles.||
+||--restack||str||.hdf, or 3D .st, .mrc, .ali, or .mrcs stack file to restack. This option can be used with --include or --exclude to unstack only specific images. Recall that the FIRST image INDEX is 0 (but unstacked image will be numbered from 1). --exclude=1,5-7,10,12,15-19 will exclude images 1,5,6,7,10,12,15,16,17,18,19||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness.||
+||--shrink||float||Default=0.0 (not used). Shrinking factor to do Fourier cropping of the images in a titlseries; can be a fractional number (for example, 1.5)||
+||--clip||str||Resize the 2-D images in the tilt series. If one number is provided, then x and y dimensions will be made the same. To specify both dimensions, supply two numbers, --clip=x,y. Clipping will be about the center of the image.||
+||--version|| ||show program's version number and exit||
+||--bidirectional|| ||This will assume the first image is at 0 degrees and will stack images from --lowerend through 0, and then will stack the rest from 0+tiltstep throgh --upperend. If --negativetiltseries is supplied, images will be stacked from --upperend through 0, then from 0-tiltstep through --lowerend.||
+||--stem2stack||str||String common to all the files to put into an .st stack, which is in .MRC format; for example, --stem2stack=.hdf will process all .hdf files in the current directory. If not specified, all valid EM imagefiles in the current directory will be put into an .st stack.||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--mirroraxis||str||Options are x or y, and the mirrored copy of the 2-D images will be generated before being put into the tilt series.||
+||--lowesttilt||float||Lowest tilt angle. If not supplied, it will be assumed to be -1* --tiltrange.||
+||--normalizeimod|| ||Default=False. This will apply 'newstack -float 2' to the input stack. Requires IMOD. Does not apply to --unstack or --restack.||
+||-h, --help|| ||show this help message and exit||
+||--apix||float||True apix of images to be written on final stack.||
+||--tiltrange||float||If provided, this will make --lowesttilt=-1*tiltrange and --highesttilt=tiltrange. If the range is asymmetric, supply --lowesttilt and --highesttilt directly.||
+||--outmode||str||All EMAN2 programs write images with 4-byte floating point values when possible by default. This allows specifying an alternate format when supported: float, int8, int16, int32, uint8, uint16, uint32. Values are rescaled to fill MIN-MAX range.||
+||--invert|| ||"This will multiply the pixel values by -1.||

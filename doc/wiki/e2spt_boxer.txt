@@ -1,20 +1,25 @@
-|| ||path||string||path||
-|| ||shrink||int||shrink||
-|| ||apix||float||apix||
-||-B||boxsize||int||Default=0. Used to extract particles without the GUI. Requires --coords. Box size in pixels||
-|| ||bruteaverage||bool||Default=False. If specified, this will generate an "as is" average of all the subvolumes (no alignment performed). This can be useful to see if, on average, particles correspond to the desired specimen and are reasonably centered.||
-|| ||coords||string||Default=None. Used to extract particles without the GUI. Provide a coordinates file that contains the center coordinates of the subvolumes you want to extract from the command line (without bringing up the GUI).||
-|| ||cshrink||int||Default=1 (not used; no scaling of --coords). Used to extract particles without the GUI. Requires --coords. Specifies the factor by which to multiply the coordinates in --coords, so that they can be at the same scale as the RAW tomogram (or whatever tomogram you intend for the particles to be extracted from).
-For example, provide --cshrink=2 if the coordinates were determined in a binned-by-2 (shrunk-by-2) tomogram,
-but you want to extract the subvolumes from a tomogram without binning/shrinking (which should be 2x larger).||
-|| ||invert||bool||Default=False. If on, this option means you want the contrast to me inverted while boxing, AND for the extracted sub-volumes.
+||option||type||description||
+||--inmemory|| ||Default=False. If on, this option will read the entire tomogram into memory. Much faster than reading 'from disk', but you must have enough RAM!||
+||--bruteaverage|| ||Default=False. If specified, this will generate an "as is" average of all the subvolumes (no alignment performed). This can be useful to see if, on average, particles correspond to the desired specimen and are reasonably centered.||
+||--boxsize, -B||int||Default=0. Used to extract particles without the GUI. Requires --coords. Box size in pixels||
+||--coords||str||Default=None. Used to extract particles without the GUI. Provide a coordinates file that contains the center coordinates of the subvolumes you want to extract from the command line (without bringing up the GUI).||
+||--invert|| ||Default=False. If on, this option means you want the contrast to me inverted while boxing, AND for the extracted sub-volumes.
 Remember that EMAN2 **MUST** work with "white" protein. You can very easily figure out what the original color
 of the protein is in your data by looking at the gold fiducials or the edge of the carbon hole in your tomogram.
 If they look black you MUST specify this option||
-|| ||inmemory||bool||Default=False. If on, this option will read the entire tomogram into memory. Much faster than reading 'from disk', but you must have enough RAM!||
-|| ||normproc||string||Default=normalize. Used to extract particles without the GUI. Requires --coords. Normalization processor applied to particles before extraction. Use --normproc=normalize.edgemean if the particles have a clear solvent background (i.e., they're not part of a larger complex or embeded in a membrane.||
-|| ||output||string||Default=None. Used to extract particles without the GUI. Requires --coords. If not specified, the suffix '_ptlcs' will be attached to the name of the input tomogram. Otherwise, specify here the name of the stack file where to write the extracted subvolumes.||
-|| ||path||string||Default=none (not used). Used to extract particles without the GUI. Requires --coords. Name of directory to save data to.||
-|| ||subset||int||Default=0 (not used). Used to extract particles without the GUI. Requires --coords. Specify how many subvolumes from --coords you want to extract; e.g, if you specify 10, the first 10 particles will be extracted.
+||--cshrink||int||Default=1 (not used; no scaling of --coords). Used to extract particles without the GUI. Requires --coords. Specifies the factor by which to multiply the coordinates in --coords, so that they can be at the same scale as the RAW tomogram (or whatever tomogram you intend for the particles to be extracted from).
+For example, provide --cshrink=2 if the coordinates were determined in a binned-by-2 (shrunk-by-2) tomogram,
+but you want to extract the subvolumes from a tomogram without binning/shrinking (which should be 2x larger).||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--path||str||Default=none (not used). Used to extract particles without the GUI. Requires --coords. Name of directory to save data to.||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--apix||float||apix||
+||--boxsize, -B||int||Default=0. Used to extract particles without the GUI. Requires --coords. Box size in pixels||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--subset||int||Default=0 (not used). Used to extract particles without the GUI. Requires --coords. Specify how many subvolumes from --coords you want to extract; e.g, if you specify 10, the first 10 particles will be extracted.
 0 means "box them all" because it makes no sense to box none.||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||-h, --help|| ||show this help message and exit||
+||--normproc||str||Default=normalize. Used to extract particles without the GUI. Requires --coords. Normalization processor applied to particles before extraction. Use --normproc=normalize.edgemean if the particles have a clear solvent background (i.e., they're not part of a larger complex or embeded in a membrane.||
+||--output||str||Default=None. Used to extract particles without the GUI. Requires --coords. If not specified, the suffix '_ptlcs' will be attached to the name of the input tomogram. Otherwise, specify here the name of the stack file where to write the extracted subvolumes.||

@@ -1,8 +1,13 @@
-|| ||input||string||This file should contain good class-averages to use in constructing the initial model||
-|| ||shrink||int||Optionally shrink the input particles by an integer factor prior to reconstruction. Default=0, no shrinking||
-|| ||sym||bool||Specify symmetry - choices are: c<n>, d<n>, h<n>, tet, oct, icos||
-|| ||orientgen||string||The type of orientation generator. Default is eman:delta=3.0:inc_mirror=0. See e2help.py orientgens||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
-|| ||threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-|| ||dbls||string||data base list storage, used by the workflow. You can ignore this argument.||
+||option||type||description||
+||--sym|| ||Specify symmetry - choices are: c<n>, d<n>, h<n>, tet, oct, icos||
+||--input||str||This file should contain good class-averages to use in constructing the initial model||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
+||--shrink||int||Optionally shrink the input particles by an integer factor prior to reconstruction. Default=0, no shrinking||
+||--orientgen||str||The type of orientation generator. Default is eman:delta=3.0:inc_mirror=0. See e2help.py orientgens||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||-h, --help|| ||show this help message and exit||

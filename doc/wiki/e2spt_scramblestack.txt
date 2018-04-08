@@ -1,3 +1,9 @@
-|| ||input||string||The name of the volumes stack that HAVE BEEN ALIGNED to a common reference||
-|| ||output||string||The name of the volumes stack that HAVE BEEN ALIGNED to a common reference||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||option||type||description||
+||--input||str||The name of the volumes stack that HAVE BEEN ALIGNED to a common reference||
+||--output||str||The name of the volumes stack that HAVE BEEN ALIGNED to a common reference||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||-h, --help|| ||show this help message and exit||

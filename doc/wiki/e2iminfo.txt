@@ -1,13 +1,27 @@
-||--header||||bool||Show all header information||
-||--number||||int||Image number for single image info||
-||--quality||||int||Include only images with a single quality value (integer 0-9)||
-|| ||dfmin||float||Include only images with defocus >= the specified value||
-|| ||dfmax||float||Include only images with defocus <= the specified value||
-|| ||nameonly||bool||Only display the matching filenames. No other info.||
-||--stat||||bool||Show statistical information about the image(s).||
-||--euler||||bool||Show Euler angles from header||
-||--all||||bool||Show info for all images in file||
-||--check||||bool||Checks to make sure all image numbers are populated with images, and that all images have valid CTF parameters||
-||--count||||bool||Just show a count of the number of particles in each file||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||option||type||description||
+||-E, --euler|| ||Show Euler angles from header||
+||-N, --number||int||Image number for single image info||
+||-C, --check|| ||Checks to make sure all image numbers are populated with images, and that all images have valid CTF parameters||
+||-N, --number||int||Image number for single image info||
+||-H, --header|| ||Show all header information||
+||-C, --check|| ||Checks to make sure all image numbers are populated with images, and that all images have valid CTF parameters||
+||-Q, --quality||int||Include only images with a single quality value (integer 0-9)||
+||-c, --count|| ||Just show a count of the number of particles in each file||
+||-E, --euler|| ||Show Euler angles from header||
+||-a, --all|| ||Show info for all images in file||
+||-c, --count|| ||Just show a count of the number of particles in each file||
+||-h, --help|| ||show this help message and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||-s, --stat|| ||Show statistical information about the image(s).||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||-a, --all|| ||Show info for all images in file||
+||--version|| ||show program's version number and exit||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--nameonly|| ||Only display the matching filenames. No other info.||
+||-Q, --quality||int||Include only images with a single quality value (integer 0-9)||
+||--dfmax||float||Include only images with defocus <= the specified value||
+||--dfmin||float||Include only images with defocus >= the specified value||
+||-H, --header|| ||Show all header information||
+||-s, --stat|| ||Show statistical information about the image(s).||
+||-h, --help|| ||show this help message and exit||

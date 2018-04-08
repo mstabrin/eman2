@@ -1,13 +1,19 @@
-|| ||boxing||bool||Boxing particles.||
-||-B||boxsize||int||Box size in pixels||
-|| ||segment||bool||Segment particles.||
-|| ||output||string||output file name. Default is the input particle file name plus _seg.hdf||
-|| ||buildset||bool||Segment particles.||
-|| ||particles_raw||string||Input raw particle file||
-|| ||particles_label||string||Input labels for particle file||
-|| ||boxes_negative||string||Input boxes of negative samples||
-|| ||ncopy||int||Number of copies for NEGATIVE samples. (number of copies of particles is calculated accordingly) ||
-|| ||trainset_output||string||output file name of the training set.Default is the input particle file name plus _trainset.hdf||
-|| ||zthick||int||Thickness in z ||
-|| ||validset||float||Propotion of particles in validation set. Default is 0.2 ||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||option||type||description||
+||--buildset|| ||Segment particles.||
+||--zthick||int||Thickness in z ||
+||--output||str||output file name. Default is the input particle file name plus _seg.hdf||
+||--boxing|| ||Boxing particles.||
+||--ncopy||int||Number of copies for NEGATIVE samples. (number of copies of particles is calculated accordingly) ||
+||--particles_label||str||Input labels for particle file||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--boxsize, -B||int||Box size in pixels||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--trainset_output||str||output file name of the training set.Default is the input particle file name plus _trainset.hdf||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--segment|| ||Segment particles.||
+||--boxsize, -B||int||Box size in pixels||
+||--boxes_negative||str||Input boxes of negative samples||
+||--validset||float||Propotion of particles in validation set. Default is 0.2 ||
+||--particles_raw||str||Input raw particle file||
+||-h, --help|| ||show this help message and exit||

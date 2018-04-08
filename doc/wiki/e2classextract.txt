@@ -1,13 +1,19 @@
-|| ||refinemulti||bool||Extracts particles based on the model_id header value in each class-average, normally produced by e2refinemulti||
-|| ||classlist||string||Filename of a text file containing a (comma or whitespace separated) list of class average numbers to operate on. ||
-|| ||orientedparticles||string||Filename of the set (.lst file) with the particles used for the --orientcls file||
-|| ||orientcls||string||Filename of a cls_result_xx or classmx_xx file. ||
-|| ||orientclassn||string||Specify a comma separated list of class numbers to extract in oriented particles mode.||
-|| ||input_set||string||Normally the set used to create the class-averages is used as input. Use this with another version of the same set of particles, for example '__ctf_flip_proc' instead of '__ctf_flip' ||
-|| ||setname||string||Name of the stack to build||
-|| ||evenoddmerge||bool||with --orientedparticles, if cls_result_xx is specified, will include both _even and _odd particles in the output.||
-|| ||excludebad||bool||Excludes the particles from the generated set(s). They are included by default.||
-|| ||noderef||bool||If particle file was .lst, normally the output .lst will reference the original image file. With this option, the output will reference the .lst file instead, creating a lst pointing to another lst.||
-|| ||sort||bool||If set, output .lst file will be sorted. The default is to leave the output grouped by class-average. If (and only if) sorted, duplicate entries will be removed.||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||option||type||description||
+||--refinemulti|| ||Extracts particles based on the model_id header value in each class-average, normally produced by e2refinemulti||
+||--orientedparticles||str||Filename of the set (.lst file) with the particles used for the --orientcls file||
+||--classlist||str||Filename of a text file containing a (comma or whitespace separated) list of class average numbers to operate on. ||
+||--noderef|| ||If particle file was .lst, normally the output .lst will reference the original image file. With this option, the output will reference the .lst file instead, creating a lst pointing to another lst.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--sort|| ||If set, output .lst file will be sorted. The default is to leave the output grouped by class-average. If (and only if) sorted, duplicate entries will be removed.||
+||-h, --help|| ||show this help message and exit||
+||--setname||str||Name of the stack to build||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--orientclassn||str||Specify a comma separated list of class numbers to extract in oriented particles mode.||
+||--orientcls||str||Filename of a cls_result_xx or classmx_xx file. ||
+||--evenoddmerge|| ||with --orientedparticles, if cls_result_xx is specified, will include both _even and _odd particles in the output.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--input_set||str||Normally the set used to create the class-averages is used as input. Use this with another version of the same set of particles, for example '__ctf_flip_proc' instead of '__ctf_flip' ||
+||-h, --help|| ||show this help message and exit||
+||--excludebad|| ||Excludes the particles from the generated set(s). They are included by default.||

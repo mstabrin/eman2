@@ -1,17 +1,23 @@
-|| ||invert||bool||Invert contrast||
-|| ||edgenorm||bool||Edge normalize||
-|| ||usefoldername||bool||If you have the same image filename in multiple folders, and need to import into the same project, this will prepend the folder name on each image name||
-|| ||xraypixel||bool||Filter X-ray pixels||
-|| ||ctfest||bool||Perform CTF fitting on the (tiled) frame||
-|| ||phaseplate||bool||Include phase/amplitude contrast in CTF estimation. For use with hole-less phase plates.||
-|| ||astigmatism||bool||Includes astigmatism in automatic fitting||
-|| ||moverawdata||bool||Move raw data to directory ./raw_micrographs after filtration||
-|| ||apix||float||Angstroms per pixel for all images||
-|| ||voltage||float||Microscope voltage in KV||
-|| ||cs||float||Microscope Cs (spherical aberation)||
-|| ||ac||float||Amplitude contrast (percentage, default=10)||
-|| ||threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
-|| ||defocusmin||float||Minimum autofit defocus||
-|| ||defocusmax||float||Maximum autofit defocus||
-||-v||verbose||int||verbosity [0-9]||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||option||type||description||
+||--defocusmax||float||Maximum autofit defocus||
+||--voltage||float||Microscope voltage in KV||
+||--verbose, -v||int||verbosity [0-9]||
+||--usefoldername|| ||If you have the same image filename in multiple folders, and need to import into the same project, this will prepend the folder name on each image name||
+||--phaseplate|| ||Include phase/amplitude contrast in CTF estimation. For use with hole-less phase plates.||
+||--cs||float||Microscope Cs (spherical aberation)||
+||--invert|| ||Invert contrast||
+||-h, --help|| ||show this help message and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbosity [0-9]||
+||--ac||float||Amplitude contrast (percentage, default=10)||
+||--ctfest|| ||Perform CTF fitting on the (tiled) frame||
+||--threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
+||--moverawdata|| ||Move raw data to directory ./raw_micrographs after filtration||
+||--version|| ||show program's version number and exit||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--edgenorm|| ||Edge normalize||
+||--defocusmin||float||Minimum autofit defocus||
+||--astigmatism|| ||Includes astigmatism in automatic fitting||
+||--apix||float||Angstroms per pixel for all images||
+||--xraypixel|| ||Filter X-ray pixels||
+||-h, --help|| ||show this help message and exit||

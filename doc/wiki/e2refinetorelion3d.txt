@@ -1,39 +1,31 @@
-#parser.add_argument("--inplaneang", type=float, help="In-plane angular sampling", default=row=26, col=0, rowspan=1, colspan=2, expert=True)
-#parser.add_argument("--refctfcorrected", action="store_true", help="Has the reference map been ctf corrected?")
-|| ||randomizemodel||bool||Optionally randomize the phases of the initial model to this resolution (in Angstroms)||
-|| ||greyscale||bool||Is the reference map in greyscale?||
-|| ||symmgroup||bool||Symmetry group||
-|| ||symmnumber||int||Symmetry number||
-|| ||ctfcorrect||bool||(T/F)Do CTF Correction?||
-|| ||dataphaseflipped||bool||(T/F)Has the data been phase flipped already?||
-|| ||ignoretofirstpeak||bool||(T/F)Ignore CTF's until the first peak?||
-|| ||lowpass||float||Initial low-pass filter for the reference map (Ang)||
-|| ||particle_mask_diameter||float||Diameter of the soft spherical image mask in angstroms||
-|| ||solventmask||string||Location of the mask to be used||
-|| ||healpix||string||Angular Sampling Interval (Degrees)||
-|| ||auto_healpix||string||Local angular search value||
-|| ||offsetrange||float||Offset search range (pix)||
-|| ||offsetstep||float||Offset search step (pix)||
-|| ||threads||int||# of threads||
-|| ||maxmemory||float||Maximum memory (in GB) available for each thread||
-|| ||amplitudecontrast||float||Amplitude Contrast value for the micrographs||
-|| ||intensitycorrection||bool||(T/F)Perform intensity-scale corrections on image groups?||
-|| ||print_symmetry||bool||Print all symmetry transformation matrices, and exit||
-|| ||nearest_neighbor||bool||Perform nearest-neighbor instead of linear Fourier-space interpolation||
-|| ||pad||int||Padding factor||
-|| ||oversampling||bool||Oversampling order||
-|| ||limit_tilt||int||Limited tilt angle: positive for keeping side views, negative for keeping top views||
-|| ||verbose||int||Set the level of verbosity for the code||
-|| ||onlyflipphase||bool||(T/F)Only flip phases?||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-|| ||refctfcorrected||bool||Has the reference map been ctf corrected?||
-|| ||maskrefstructure||bool||(T/F)Mask reference structures?||
-|| ||splithalves||bool||(T/F)Split data into random halves?||
-|| ||joinhalves||bool||(T/F)Join random halves?||
-|| ||regparam||float||Regularization Parameter T (weights experimental data vs. prior||
-|| ||local||float||Perform local angular search at what range?||
-|| ||nmpi||int||# of MPI procs to use||
-|| ||autosample||bool||Perform automated orientational sampling?||
-|| ||numiter||int||# of iterations||
-|| ||numclasses||int||# of classes||
+Running e2refinetorelion3d.py
+||option||type||description||
+||--pad||int||Padding factor||
+||--solventmask||str||Location of the mask to be used||
+||--healpix||str||Angular Sampling Interval (Degrees)||
+||--verbose||int||Set the level of verbosity for the code||
+||--offsetstep||float||Offset search step (pix)||
+||--print_symmetry|| ||Print all symmetry transformation matrices, and exit||
+||--ctfcorrect|| ||(T/F)Do CTF Correction?||
+||--amplitudecontrast||float||Amplitude Contrast value for the micrographs||
+||--lowpass||float||Initial low-pass filter for the reference map (Ang)||
+||--maxmemory||float||Maximum memory (in GB) available for each thread||
+||-h, --help|| ||show this help message and exit||
+||--intensitycorrection|| ||(T/F)Perform intensity-scale corrections on image groups?||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--symmnumber||int||Symmetry number||
+||--threads||int||# of threads||
+||--auto_healpix||str||Local angular search value||
+||--limit_tilt||int||Limited tilt angle: positive for keeping side views, negative for keeping top views||
+||--symmgroup|| ||Symmetry group||
+||--version|| ||show program's version number and exit||
+||--onlyflipphase|| ||(T/F)Only flip phases?||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--particle_mask_diameter||float||Diameter of the soft spherical image mask in angstroms||
+||--randomizemodel|| ||Optionally randomize the phases of the initial model to this resolution (in Angstroms)||
+||--dataphaseflipped|| ||(T/F)Has the data been phase flipped already?||
+||--greyscale|| ||Is the reference map in greyscale?||
+||--nearest_neighbor|| ||Perform nearest-neighbor instead of linear Fourier-space interpolation||
+||--ignoretofirstpeak|| ||(T/F)Ignore CTF's until the first peak?||
+||--offsetrange||float||Offset search range (pix)||
+||-h, --help|| ||show this help message and exit||

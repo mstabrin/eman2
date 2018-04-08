@@ -1,17 +1,23 @@
-|| ||import_particles||bool||Import particles||
-|| ||import_eman1||bool||This will import a phase-flipped particle stack from EMAN1||
-|| ||import_tomos||bool||Import tomograms||
-|| ||shrink||int||Shrink tomograms before importing. Dose not work while not copying.||
-|| ||invert||bool||Invert the contrast before importing tomograms||
-|| ||tomoseg_auto||bool||Default process for tomogram segmentation, including lowpass, highpass, normalize, clampminmax.||
-|| ||importation||bool||Specify mode move, copy or link, for importing tomograms only||
-|| ||preprocess||string||Other pre-processing operation before importing tomograms. Dose not work while not copying.||
-|| ||import_boxes||bool||Import boxes||
-|| ||extension||string||Extension of the micrographs that the boxes match||
-|| ||box_type||bool||Type of boxes to import, normally boxes, but for tilted data use tiltedboxes, and untiltedboxes for the tilted  particle partner||
-|| ||boxsize||int||Specify the boxsize for each particle.||
-|| ||curdefocushint||bool||Used with import_eman1, will use EMAN1 defocus as starting point||
-|| ||curdefocusfix||bool||Used with import_eman1, will use EMAN1 defocus unchanged (+-.001 um)||
-|| ||threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||option||type||description||
+||--import_tomos|| ||Import tomograms||
+||--extension||str||Extension of the micrographs that the boxes match||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--preprocess||str||Other pre-processing operation before importing tomograms. Dose not work while not copying.||
+||--importation|| ||Specify mode move, copy or link, for importing tomograms only||
+||--invert|| ||Invert the contrast before importing tomograms||
+||-h, --help|| ||show this help message and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--shrink||int||Shrink tomograms before importing. Dose not work while not copying.||
+||--threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
+||--curdefocushint|| ||Used with import_eman1, will use EMAN1 defocus as starting point||
+||--tomoseg_auto|| ||Default process for tomogram segmentation, including lowpass, highpass, normalize, clampminmax.||
+||--version|| ||show program's version number and exit||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--import_boxes|| ||Import boxes||
+||--box_type|| ||Type of boxes to import, normally boxes, but for tilted data use tiltedboxes, and untiltedboxes for the tilted  particle partner||
+||--import_particles|| ||Import particles||
+||--curdefocusfix|| ||Used with import_eman1, will use EMAN1 defocus unchanged (+-.001 um)||
+||--import_eman1|| ||This will import a phase-flipped particle stack from EMAN1||
+||--boxsize||int||Specify the boxsize for each particle.||
+||-h, --help|| ||show this help message and exit||

@@ -1,25 +1,37 @@
-||-c||cleanup||bool||This option will clean up the database cache so files can safely be moved or accessed on another computer via NFS.||
-||-F||force||bool||This will force an action that would normally fail due to failed checks.||
-|| ||delete||bool||This will delete (or at least empty) the named database(s)||
-||-a||all||bool||List per-particle info||
-||-l||long||bool||Long listing||
-||-s||short||bool||Dense listing of names only||
-|| ||filt||string||Only include dictionary names containing the specified string||
-|| ||filtexclude||string||Exclude dictionary names containing the specified string||
-|| ||match||string||Only include dictionaries matching the provided Python regular expression||
-|| ||exclude||string||The name of a database containing a list of exclusion keys||
-||-D||dump||bool||List contents of an entire database, eg 'e2bdb.py -D refine_01#register||
-|| ||smalldump||bool||Lists contents of an entire database, but only list 2 items per dictionary to better see headers||
-|| ||extractplots||bool||If a database contains sets of plots, such as bdb:refine_xx#convergence.results, this will extract the plots as text files.||
-|| ||check||bool||Check for self-consistency and errors in the structure of specified databases||
-|| ||nocache||bool||Don't use the database cache for this operation||
-|| ||merge||bool||This will merge the contents of BDB 2-N into BDB 1 (including BDB 1's contents)||
-|| ||makevstack||string||Creates a 'virtual' BDB stack with its own metadata, but the binary data taken from the (filtered) list of stacks||
-|| ||appendvstack||string||Appends to/creates a 'virtual' BDB stack with its own metadata, but the binary data taken from the (filtered) list of stacks||
-||-v||verbose||int||verbose level [0-9], higher number means higher level of verboseness||
-|| ||list||string||Specify the name of a file with a list of images to use in creation of virtual stacks. Please see source for details.||
-|| ||exlist||string||Specify the name of a file with a list of images to exclude in creation of virtual stacks. Please see source for details.||
-|| ||restore||string||Write changes in the derived virtual stack back to the original stack||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-|| ||checkctf||bool||Verfies that all images in the file contain CTF information, and gives some basic statistics||
-|| ||step||string||Specify <init>,<step>[,<max>]. Processes only a subset of the input data. For example, 0,2 would process only the even numbered particles||
+||option||type||description||
+||--dump, -D|| ||List contents of an entire database, eg 'e2bdb.py -D refine_01#register||
+||--force, -F|| ||This will force an action that would normally fail due to failed checks.||
+||--checkctf|| ||Verfies that all images in the file contain CTF information, and gives some basic statistics||
+||--extractplots|| ||If a database contains sets of plots, such as bdb:refine_xx#convergence.results, this will extract the plots as text files.||
+||--filtexclude||str||Exclude dictionary names containing the specified string||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--long, -l|| ||Long listing||
+||--check|| ||Check for self-consistency and errors in the structure of specified databases||
+||--delete|| ||This will delete (or at least empty) the named database(s)||
+||--filt||str||Only include dictionary names containing the specified string||
+||--exclude||str||The name of a database containing a list of exclusion keys||
+||--cleanup, -c|| ||This option will clean up the database cache so files can safely be moved or accessed on another computer via NFS.||
+||--all, -a|| ||List per-particle info||
+||--cleanup, -c|| ||This option will clean up the database cache so files can safely be moved or accessed on another computer via NFS.||
+||--long, -l|| ||Long listing||
+||-h, --help|| ||show this help message and exit||
+||--restore||str||Write changes in the derived virtual stack back to the original stack||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higher number means higher level of verboseness||
+||--makevstack||str||Creates a 'virtual' BDB stack with its own metadata, but the binary data taken from the (filtered) list of stacks||
+||--short, -s|| ||Dense listing of names only||
+||--list||str||Specify the name of a file with a list of images to use in creation of virtual stacks. Please see source for details.||
+||--all, -a|| ||List per-particle info||
+||--force, -F|| ||This will force an action that would normally fail due to failed checks.||
+||--appendvstack||str||Appends to/creates a 'virtual' BDB stack with its own metadata, but the binary data taken from the (filtered) list of stacks||
+||--step||str||Specify <init>,<step>[,<max>]. Processes only a subset of the input data. For example, 0,2 would process only the even numbered particles||
+||--version|| ||show program's version number and exit||
+||--nocache|| ||Don't use the database cache for this operation||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--exlist||str||Specify the name of a file with a list of images to exclude in creation of virtual stacks. Please see source for details.||
+||--merge|| ||This will merge the contents of BDB 2-N into BDB 1 (including BDB 1's contents)||
+||--smalldump|| ||Lists contents of an entire database, but only list 2 items per dictionary to better see headers||
+||--dump, -D|| ||List contents of an entire database, eg 'e2bdb.py -D refine_01#register||
+||--match||str||Only include dictionaries matching the provided Python regular expression||
+||--short, -s|| ||Dense listing of names only||
+||-h, --help|| ||show this help message and exit||

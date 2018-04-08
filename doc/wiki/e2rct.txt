@@ -1,20 +1,25 @@
-|| ||path||string||Path for the rct reconstruction, default=auto||
-|| ||untiltdata||string||Name of the tilted dataset||
-|| ||tiltdata||string||Name of the tilted dataset||
-|| ||classavg||string||Name of classavg file created by e2refine2d.py||
-|| ||stagetilt||float||Amount of tiliting of the cryo stage, default=0, get the stage tilt from particle attributes. Only possible if e2RCTboxer was used for particle picking||
-|| ||careject||string||class averages to reject, default=None||
-|| ||minproj||int||Minimum number of projections/images in a class average, for a class average to be used for a reconstruction, default=auto||
-|| ||align||bool||Switch on image alignment. This is only translational alignment for the tilted images, and uses a iterative method similar to EMAN1 centalignint||
-|| ||tiltaxis||bool||Do a tiltaxis correction(Takes into account variations in tilt axis from micrograph to micrograph. Only possible if e2RCTboxer was used for particle picking||
-|| ||maxshift||int||Maximun amount to shift the images during alignment||
-|| ||process||string||process RCT recons. Usually used to filter RCTS||
-|| ||avgrcts||bool||If set recons from each CA will be alinged and averaged.||
-|| ||reference||string||Reference used to align RCT recons to, needs to be aligned to symetry axis is --sym is specified||
-|| ||sym||bool||Set the symmetry; if no value is given then the model is assumed to have no symmetry.
+||option||type||description||
+||--tiltdata||str||Name of the tilted dataset||
+||--verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||--path||str||Path for the rct reconstruction, default=auto||
+||--stagetilt||float||Amount of tiliting of the cryo stage, default=0, get the stage tilt from particle attributes. Only possible if e2RCTboxer was used for particle picking||
+||--aligngran||float||Fineness of global search in e2align3d.py, default=10.0||
+||-h, --help|| ||show this help message and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--sym|| ||Set the symmetry; if no value is given then the model is assumed to have no symmetry.
 Choices are: i, c, d, tet, icos, or oct.||
-|| ||cuda||bool||Use CUDA for the alignment step.||
-|| ||aligngran||float||Fineness of global search in e2align3d.py, default=10.0||
-|| ||weightrecons||bool||Weight the reconstruction by particle numbers.||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-|| ||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||--careject||str||class averages to reject, default=None||
+||--weightrecons|| ||Weight the reconstruction by particle numbers.||
+||--minproj||int||Minimum number of projections/images in a class average, for a class average to be used for a reconstruction, default=auto||
+||--untiltdata||str||Name of the tilted dataset||
+||--version|| ||show program's version number and exit||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--cuda|| ||Use CUDA for the alignment step.||
+||--reference||str||Reference used to align RCT recons to, needs to be aligned to symetry axis is --sym is specified||
+||--process||str||process RCT recons. Usually used to filter RCTS||
+||--avgrcts|| ||If set recons from each CA will be alinged and averaged.||
+||--tiltaxis|| ||Do a tiltaxis correction(Takes into account variations in tilt axis from micrograph to micrograph. Only possible if e2RCTboxer was used for particle picking||
+||--align|| ||Switch on image alignment. This is only translational alignment for the tilted images, and uses a iterative method similar to EMAN1 centalignint||
+||--maxshift||int||Maximun amount to shift the images during alignment||
+||--classavg||str||Name of classavg file created by e2refine2d.py||
+||-h, --help|| ||show this help message and exit||

@@ -1,5 +1,9 @@
-||-R||res||float||Resolution in A, equivalent to Gaussian lowpass with 1/e width at 1/res||
-||-B||box||string||Box size in pixels, <xyz> or <x>,<y>,<z>||
-|| ||gui||bool||Use the GUI for display help||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--gui|| ||Use the GUI for display help||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||-h, --help|| ||show this help message and exit||

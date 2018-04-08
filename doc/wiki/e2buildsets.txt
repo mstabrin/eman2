@@ -1,15 +1,21 @@
-|| ||setname||string||Name of the stack to build||
-|| ||excludebad||bool||Exclude bad particles.||
-|| ||allparticles||bool||Will process all particle stacks stored in the particles subdirectory (if specified, list of files will be ignored)||
-|| ||withflipped||bool||Only include images with phase-flipped counterparts!||
-|| ||withbispec||bool||Only include images with bispectrum counterparts!||
-|| ||minptcl||int||Files with fewer than the specified number of particles will be skipped||
-|| ||minqual||int||Files with a quality value lower than specified will be skipped||
-|| ||mindf||float||Files with a defocus lower than specified will be skipped||
-|| ||maxdf||float||Files with a defocus higher than specified will be skipped||
-|| ||minlosnr||float||Integrated SNR from 1/200-1/20 1/A must be larger than this||
-|| ||minhisnr||float||Integrated SNR from 1/10-1/4 1/A must be larger than this||
-|| ||minbfactor||float||Files with a B-factor lower than specified will be skipped||
-|| ||maxbfactor||float||Files with a B-factor higher than specified will be skipped||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||option||type||description||
+||--withflipped|| ||Only include images with phase-flipped counterparts!||
+||--excludebad|| ||Exclude bad particles.||
+||--maxdf||float||Files with a defocus higher than specified will be skipped||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--maxbfactor||float||Files with a B-factor higher than specified will be skipped||
+||--minqual||int||Files with a quality value lower than specified will be skipped||
+||-h, --help|| ||show this help message and exit||
+||--setname||str||Name of the stack to build||
+||--version|| ||show program's version number and exit||
+||--withbispec|| ||Only include images with bispectrum counterparts!||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--minhisnr||float||Integrated SNR from 1/10-1/4 1/A must be larger than this||
+||--minlosnr||float||Integrated SNR from 1/200-1/20 1/A must be larger than this||
+||--minptcl||int||Files with fewer than the specified number of particles will be skipped||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--allparticles|| ||Will process all particle stacks stored in the particles subdirectory (if specified, list of files will be ignored)||
+||--mindf||float||Files with a defocus lower than specified will be skipped||
+||-h, --help|| ||show this help message and exit||
+||--minbfactor||float||Files with a B-factor lower than specified will be skipped||

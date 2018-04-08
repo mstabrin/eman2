@@ -1,15 +1,21 @@
-|| ||averager||string||Default=mean.tomo. The type of averager used to produce the class average.||
-|| ||averagehalves||bool||Default=False. This will average the even and odd volumes.||
-|| ||input||string||Default=None. Subtiltseries file to process. If processing a single file, --inputstem will work too, but you can also just provide the entire filename here --input=subt00.hdf||
-|| ||inputstem||string||Default=None. Aligned tilt series. String common to all files to be processed, in the current folder. For example, if you have many subtiltseries named subt00.hdf, subt01.hdf, ...subt99.hdf, you would supply --stem=subt to have all these processed.||
-|| ||nolog||bool||Default=False. Turn off recording of the command ran for this program onto the .eman2log.txt file||
-|| ||nonewpath||bool||Default=False. If True, a new --path directory will not be made. Therefore, whatever is sepcified in --path will be used as the output directory. Note that this poses the risk of overwriting data.||
-|| ||normproc||string||default=None. Normalization processor to apply to the reconstructed halves; e.g., --normproc=normalize.edgemean.||
-|| ||pad2d||float||Default=0.0. Padding factor (e.g., 2.0, to make the box twice as big) to zero-pad the 2d images in the tilt series for reconstruction purposes (the final reconstructed subvolumes will be cropped back to the original size though).||
-|| ||pad3d||float||Default=0.0. Padding factor (e.g., 2.0, to make the box twice as big) to zero-pad the volumes for reconstruction purposes (the final reconstructed subvolumes will be cropped back to the original size though).||
-|| ||path||string||Default=sptintrafsc. Directory to save the results.||
-|| ||ppid||int||default=-1. Set the PID of the parent process, used for cross platform PPID.||
-|| ||savehalftiltseries||bool||Default=False. If this parameter is on, the odd and even subtiltseries will be saved.||
-|| ||savehalfvolumes||bool||Default=False. If this parameter is on, the odd and even volumes will be saved.||
-|| ||reconstructor||string||Default=fourier:mode=gauss_2. The reconstructor to use to reconstruct the tilt series into a tomogram. Type 'e2help.py reconstructors' at the command line to see all options and parameters available. To specify the interpolation scheme for the fourier reconstructor, specify 'mode'. Options are 'nearest_neighbor', 'gauss_2', 'gauss_3', 'gauss_5'. For example --reconstructor=fourier:mode=gauss_5 ||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||option||type||description||
+||--input||str||Default=None. Subtiltseries file to process. If processing a single file, --inputstem will work too, but you can also just provide the entire filename here --input=subt00.hdf||
+||--savehalfvolumes|| ||Default=False. If this parameter is on, the odd and even volumes will be saved.||
+||--reconstructor||str||Default=fourier:mode=gauss_2. The reconstructor to use to reconstruct the tilt series into a tomogram. Type 'e2help.py reconstructors' at the command line to see all options and parameters available. To specify the interpolation scheme for the fourier reconstructor, specify 'mode'. Options are 'nearest_neighbor', 'gauss_2', 'gauss_3', 'gauss_5'. For example --reconstructor=fourier:mode=gauss_5 ||
+||--inputstem||str||Default=None. Aligned tilt series. String common to all files to be processed, in the current folder. For example, if you have many subtiltseries named subt00.hdf, subt01.hdf, ...subt99.hdf, you would supply --stem=subt to have all these processed.||
+||--ppid||int||default=-1. Set the PID of the parent process, used for cross platform PPID.||
+||--normproc||str||default=None. Normalization processor to apply to the reconstructed halves; e.g., --normproc=normalize.edgemean.||
+||-h, --help|| ||show this help message and exit||
+||--averagehalves|| ||Default=False. This will average the even and odd volumes.||
+||--path||str||Default=sptintrafsc. Directory to save the results.||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--nolog|| ||Default=False. Turn off recording of the command ran for this program onto the .eman2log.txt file||
+||--averager||str||Default=mean.tomo. The type of averager used to produce the class average.||
+||--pad3d||float||Default=0.0. Padding factor (e.g., 2.0, to make the box twice as big) to zero-pad the volumes for reconstruction purposes (the final reconstructed subvolumes will be cropped back to the original size though).||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--pad2d||float||Default=0.0. Padding factor (e.g., 2.0, to make the box twice as big) to zero-pad the 2d images in the tilt series for reconstruction purposes (the final reconstructed subvolumes will be cropped back to the original size though).||
+||--version|| ||show program's version number and exit||
+||--savehalftiltseries|| ||Default=False. If this parameter is on, the odd and even subtiltseries will be saved.||
+||-h, --help|| ||show this help message and exit||
+||--nonewpath|| ||Default=False. If True, a new --path directory will not be made. Therefore, whatever is sepcified in --path will be used as the output directory. Note that this poses the risk of overwriting data.||

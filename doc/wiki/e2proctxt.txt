@@ -1,4 +1,10 @@
-|| ||merge||string||Merge several files into a single output. All inputs must have the same number of rows. Row comments stripped.||
-|| ||sortcomment||bool||Sorts rows based on per-row comment (after #) before merging||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||option||type||description||
+||-h, --help|| ||show this help message and exit||
+||--sortcomment|| ||Sorts rows based on per-row comment (after #) before merging||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--merge||str||Merge several files into a single output. All inputs must have the same number of rows. Row comments stripped.||

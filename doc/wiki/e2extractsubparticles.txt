@@ -1,11 +1,15 @@
-|| ||output||string||Specify output filename, which will contain nptcl*sym particles. Default=sets/subparticles.hdf||
-|| ||sym||bool||Specify symmetry - choices are: c<n>, d<n>, tet, oct, icos.||
-|| ||subunitmask||string||Specify a 3-D mask containing the region to extract from each particle. Required.||
-|| ||outermask||string||A 3-D mask larger than subunitmask, containing the zone to be included in each subtracted particle||
-|| ||masked||bool||If specified, each particle will be masked based on the projection mask.||
-|| ||newbox||int||New box size for extracted regions||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
-|| ||debug||bool||Enable debugging mode with verbose output and image display. Not suitable for real runs.||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||-N||ncls||int||Number of classes to generate||
-||-A||average||bool||Average the particles within each class||
+||option||type||description||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--subunitmask||str||Specify a 3-D mask containing the region to extract from each particle. Required.||
+||--output||str||Specify output filename, which will contain nptcl*sym particles. Default=sets/subparticles.hdf||
+||--outermask||str||A 3-D mask larger than subunitmask, containing the zone to be included in each subtracted particle||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--sym|| ||Specify symmetry - choices are: c<n>, d<n>, tet, oct, icos.||
+||--newbox||int||New box size for extracted regions||
+||--debug|| ||Enable debugging mode with verbose output and image display. Not suitable for real runs.||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--masked|| ||If specified, each particle will be masked based on the projection mask.||
+||-h, --help|| ||show this help message and exit||

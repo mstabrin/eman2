@@ -1,14 +1,21 @@
-|| ||input||string||The name of the image file containing the particle data||
-|| ||model||string||The map to use as a starting point for refinement||
-|| ||filterout||bool||Filters output particles to match projections||
-|| ||angstep||float||Angular separation of projections. Default 9.0 degrees.||
-|| ||sym||bool||Specify symmetry - choices are: c<n>, d<n>, tet, oct, icos.||
-|| ||simalign||string||Default=auto. The name of an 'aligner' to use prior to comparing the images||
-|| ||simaligncmp||string||Default=auto. Name of the aligner along with its construction arguments||
-|| ||simralign||string||Default=auto. The name and parameters of the second stage aligner which refines the results of the first alignment||
-|| ||simraligncmp||string||Default=auto. The name and parameters of the comparitor used by the second stage aligner.||
-|| ||simcmp||string||Default=auto. The name of a 'cmp' to be used in comparing the aligned images||
-||-P||parallel||string||Run in parallel, specify type:<option>=<value>:<option>=<value>. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
-|| ||threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
-|| ||path||string||The name of a directory where results are placed. Default = create new ptclmap_xx||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||option||type||description||
+||--simalign||str||Default=auto. The name of an 'aligner' to use prior to comparing the images||
+||--input||str||The name of the image file containing the particle data||
+||--simcmp||str||Default=auto. The name of a 'cmp' to be used in comparing the aligned images||
+||--simralign||str||Default=auto. The name and parameters of the second stage aligner which refines the results of the first alignment||
+||--angstep||float||Angular separation of projections. Default 9.0 degrees.||
+||--parallel, -P||str||Run in parallel, specify type:<option>=<value>:<option>=<value>. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
+||-h, --help|| ||show this help message and exit||
+||--model||str||The map to use as a starting point for refinement||
+||--version|| ||show program's version number and exit||
+||--simraligncmp||str||Default=auto. The name and parameters of the comparitor used by the second stage aligner.||
+||--path||str||The name of a directory where results are placed. Default = create new ptclmap_xx||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--simaligncmp||str||Default=auto. Name of the aligner along with its construction arguments||
+||--threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
+||--sym|| ||Specify symmetry - choices are: c<n>, d<n>, tet, oct, icos.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--parallel, -P||str||Run in parallel, specify type:<option>=<value>:<option>=<value>. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
+||-h, --help|| ||show this help message and exit||
+||--filterout|| ||Filters output particles to match projections||

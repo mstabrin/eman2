@@ -1,11 +1,16 @@
-|| ||addfilename||bool||Adds the original filename of a file or stack to the header of each particle. This only works for .hdf files.||
-|| ||input||string||File or stack for which to fix header parameters. To indicate multiple files, do not use --input. Simply provide the program name followed by the string common to all files to process and *, followed by all parameters of interest. For example, to process all .mrc files in a directory, you would run e2fixheader.py *.mrc <parameters>.||
-|| ||output||string||File to write the fixed stack to. If not provided, the stack in --input will be overwritten.||
-|| ||params||string||Comma separated pairs of parameter:value. The parameter will be changed to the value specified.||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-|| ||refheader||string||If supplied, the header of this image will be copied to the header of all images in --input.||
-|| ||stem||string||Some parameters have common stems. For example, 'origin_x', 'origin_y', 'origin"x'. Supply the stem and all parameters containing it will be modified.||
-|| ||stemval||string||New value for all parameters containing --stem.||
-|| ||valtype||string||Type of the value to enforce. It can be: str, float, int, list, or transform.||
-|| ||addparam||bool||If you want to add a new parameter to the header opposed to overwriting an existing one, turn this option on.||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness.||
+||option||type||description||
+||--input||str||File or stack for which to fix header parameters. To indicate multiple files, do not use --input. Simply provide the program name followed by the string common to all files to process and *, followed by all parameters of interest. For example, to process all .mrc files in a directory, you would run e2fixheader.py *.mrc <parameters>.||
+||--output||str||File to write the fixed stack to. If not provided, the stack in --input will be overwritten.||
+||-h, --help|| ||show this help message and exit||
+||--stemval||str||New value for all parameters containing --stem.||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness.||
+||--params||str||Comma separated pairs of parameter:value. The parameter will be changed to the value specified.||
+||--valtype||str||Type of the value to enforce. It can be: str, float, int, list, or transform.||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness.||
+||--refheader||str||If supplied, the header of this image will be copied to the header of all images in --input.||
+||--addfilename|| ||Adds the original filename of a file or stack to the header of each particle. This only works for .hdf files.||
+||--stem||str||Some parameters have common stems. For example, 'origin_x', 'origin_y', 'origin"x'. Supply the stem and all parameters containing it will be modified.||

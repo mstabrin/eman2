@@ -1,7 +1,12 @@
-|| ||path||string||Path for the refinement, default=auto||
-|| ||input||string||The name of the file containing the particle data||
-|| ||ncls||int||Number of classes to generate||
-|| ||threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
-||-P||parallel||string||Run in parallel, specify type:<option>=<value>:<option>:<value>||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||option||type||description||
+||--threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
+||--input||str||The name of the file containing the particle data||
+||--ncls||int||Number of classes to generate||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--path||str||Path for the refinement, default=auto||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||-h, --help|| ||show this help message and exit||

@@ -1,55 +1,60 @@
-|| ||allparticles||bool||Will process all particle stacks stored in the particles subdirectory (no list of files required)||
-|| ||onlynew||bool||Will skip any files for which __ctf_flip files already exist.||
-|| ||onlynobispec||bool||Will skip any files for which __ctf_flip_bispec files already exist.||
-|| ||sortdefocus||bool||Sorts the micrographs in order by defocus||
-|| ||minptcl||int||Files with fewer than the specified number of particles will be skipped||
-|| ||minqual||int||Files with a quality value lower than specified will be skipped||
-|| ||chunk||string||<chunksize>,<nchunk>. Will process files in groups of chunksize, and process the <nchunk>th group. eg - 100,3 will read files 300-399 ||
-|| ||gui||bool||Start the GUI for interactive fitting||
-|| ||autofit||bool||Runs automated CTF fitting on the input images||
-|| ||wholeimage||bool||Display an additional curve using the whole micrograph, not just particles.||
-|| ||highdensity||bool||If particles are very close together, this will interfere with SSNR estimation. If set uses an alternative strategy, but may over-estimate SSNR.||
-|| ||zerook||bool||Normally particles with zero value on the edge are considered to be bad. This overrides that behavior, primarily for simulated data.||
-|| ||astigmatism||bool||Includes astigmatism in automatic fitting||
-|| ||phaseplate||bool||Include phase/amplitude contrast in CTF estimation. For use with hole-less phase plates.||
-|| ||curdefocushint||bool||Rather than doing the defocus from scratch, use existing values in the project as a starting point||
-|| ||curdefocusfix||bool||Fixes the defocus at the current determined value (if any) (+-.001 um), but recomputes SSNR, etc.||
-|| ||useframedf||bool||Use defocus/astig from whole frame even if particle-based value is present||
-|| ||bgmask||int||Background is computed using a soft mask of the center/edge of each particle with the specified radius. Default radius is boxsize/2.6.||
-|| ||fixnegbg||bool||Will perform a final background correction to avoid slight negative values near zeroes||
-|| ||computesf||bool||Will determine the structure factor*envelope for the aggregate set of images||
-|| ||apix||float||Angstroms per pixel for all images||
-|| ||voltage||float||Microscope voltage in KV||
-|| ||cs||float||Microscope Cs (spherical aberation)||
-|| ||ac||float||Amplitude contrast (percentage, default=10)||
-|| ||defocusmin||float||Minimum autofit defocus||
-|| ||defocusmax||float||Maximum autofit defocus||
-|| ||constbfactor||float||Set B-factor to fixed specified value, negative value autofits||
-|| ||autohp||bool||Automatic high pass filter of the SNR only to remove initial sharp peak, phase-flipped data is not directly affected (default false)||
-|| ||invert||bool||Invert the contrast of the particles in output files (default false)||
-|| ||nonorm||bool||Suppress per image real-space normalization||
-|| ||nosmooth||bool||Disable smoothing of the background (running-average of the log with adjustment at the zeroes of the CTF)||
-|| ||refinebysnr||bool||Refines the defocus value by looking at the high resolution smoothed SNR. Requires good starting defocus. Important: also replaces the SNR with a smoothed version.||
-|| ||phaseflip||bool||Perform phase flipping after CTF determination and writes to specified file.||
-|| ||phasefliphp||bool||Perform phase flipping with auto-high pass filter||
-|| ||extrapad||bool||If particles were boxed more tightly than EMAN requires, this will add some extra padding, but only to processed output particles||
-|| ||phaseflipsmall||bool||Produce an output set with 1/2 size particles for faster initial model work||
-|| ||wiener||bool||Wiener filter (optionally phaseflipped) particles.||
-|| ||proctag||bool||Tag added to the name of each particle when using the phaseflipproc options||
-|| ||phaseflipproc||bool||If specified _proc particles will be generated. Typical = filter.lowpass.gauss:cutoff_freq=.07||
-|| ||phaseflipproc2||bool||If specified _proc particles will be generated. Typical = filter.highpass.gauss:cutoff_freq=.005||
-|| ||phaseflipproc3||bool||If specified _proc particles will be generated. Typical = math.meanshrink:n=2||
-|| ||phaseflipproc4||bool||If specified _proc particles will be generated.||
-|| ||phaseflipproc5||bool||If specified _proc particles will be generated.||
-|| ||virtualout||string||Make a virtual stack copy of the input images with CTF parameters stored in the header. BDB only.||
-|| ||storeparm||bool||Output files will include CTF info. CTF parameters are used from the database, rather than values that may be present in the input image header. Critical to use this when generating output !||
-|| ||oversamp||int||Oversampling factor||
-|| ||classify||int||Highly experimental ! Subclassify particles (hopefully by defocus) into n groups.||
-|| ||sf||string||The name of a file containing a structure factor curve. Specify 'none' to use the built in generic structure factor. Default=auto||
-|| ||parallel||bool||parallelism argument. This program supports only thread:<n>||
-|| ||threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
-|| ||debug||bool|| ||
-|| ||dbds||string||Obsolete option for old e2workflow. Present only to provide warning messages.||
-|| ||source_image||string||Filters particles only with matching ptcl_source_image parameters in the header||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||option||type||description||
+||--defocusmax||float||Maximum autofit defocus||
+||--storeparm|| ||Output files will include CTF info. CTF parameters are used from the database, rather than values that may be present in the input image header. Critical to use this when generating output !||
+||--voltage||float||Microscope voltage in KV||
+||--phaseflipsmall|| ||Produce an output set with 1/2 size particles for faster initial model work||
+||--sortdefocus|| ||Sorts the micrographs in order by defocus||
+||--autofit|| ||Runs automated CTF fitting on the input images||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--chunk||str||<chunksize>,<nchunk>. Will process files in groups of chunksize, and process the <nchunk>th group. eg - 100,3 will read files 300-399 ||
+||--useframedf|| ||Use defocus/astig from whole frame even if particle-based value is present||
+||--phaseflipproc|| ||If specified _proc particles will be generated. Typical = filter.lowpass.gauss:cutoff_freq=.07||
+||--dbds||str||Obsolete option for old e2workflow. Present only to provide warning messages.||
+||--phasefliphp|| ||Perform phase flipping with auto-high pass filter||
+||--refinebysnr|| ||Refines the defocus value by looking at the high resolution smoothed SNR. Requires good starting defocus. Important: also replaces the SNR with a smoothed version.||
+||--defocusmin||float||Minimum autofit defocus||
+||--phaseplate|| ||Include phase/amplitude contrast in CTF estimation. For use with hole-less phase plates.||
+||--source_image||str||Filters particles only with matching ptcl_source_image parameters in the header||
+||--cs||float||Microscope Cs (spherical aberation)||
+||--proctag|| ||Tag added to the name of each particle when using the phaseflipproc options||
+||--extrapad|| ||If particles were boxed more tightly than EMAN requires, this will add some extra padding, but only to processed output particles||
+||--invert|| ||Invert the contrast of the particles in output files (default false)||
+||--onlynew|| ||Will skip any files for which __ctf_flip files already exist.||
+||--constbfactor||float||Set B-factor to fixed specified value, negative value autofits||
+||-h, --help|| ||show this help message and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--debug|| ||None||
+||--parallel|| ||parallelism argument. This program supports only thread:<n>||
+||--zerook|| ||Normally particles with zero value on the edge are considered to be bad. This overrides that behavior, primarily for simulated data.||
+||--threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
+||--highdensity|| ||If particles are very close together, this will interfere with SSNR estimation. If set uses an alternative strategy, but may over-estimate SSNR.||
+||--curdefocushint|| ||Rather than doing the defocus from scratch, use existing values in the project as a starting point||
+||--sf||str||The name of a file containing a structure factor curve. Specify 'none' to use the built in generic structure factor. Default=auto||
+||--wholeimage|| ||Display an additional curve using the whole micrograph, not just particles.||
+||--classify||int||Highly experimental ! Subclassify particles (hopefully by defocus) into n groups.||
+||--version|| ||show program's version number and exit||
+||--minqual||int||Files with a quality value lower than specified will be skipped||
+||--nonorm|| ||Suppress per image real-space normalization||
+||--gui|| ||Start the GUI for interactive fitting||
+||--oversamp||int||Oversampling factor||
+||--onlynobispec|| ||Will skip any files for which __ctf_flip_bispec files already exist.||
+||--allparticles|| ||Will process all particle stacks stored in the particles subdirectory (no list of files required)||
+||--computesf|| ||Will determine the structure factor*envelope for the aggregate set of images||
+||--fixnegbg|| ||Will perform a final background correction to avoid slight negative values near zeroes||
+||--autohp|| ||Automatic high pass filter of the SNR only to remove initial sharp peak, phase-flipped data is not directly affected (default false)||
+||--nosmooth|| ||Disable smoothing of the background (running-average of the log with adjustment at the zeroes of the CTF)||
+||--phaseflip|| ||Perform phase flipping after CTF determination and writes to specified file.||
+||--curdefocusfix|| ||Fixes the defocus at the current determined value (if any) (+-.001 um), but recomputes SSNR, etc.||
+||--minptcl||int||Files with fewer than the specified number of particles will be skipped||
+||--bgmask||int||Background is computed using a soft mask of the center/edge of each particle with the specified radius. Default radius is boxsize/2.6.||
+||--astigmatism|| ||Includes astigmatism in automatic fitting||
+||--apix||float||Angstroms per pixel for all images||
+||--phaseflipproc2|| ||If specified _proc particles will be generated. Typical = filter.highpass.gauss:cutoff_freq=.005||
+||--phaseflipproc3|| ||If specified _proc particles will be generated. Typical = math.meanshrink:n=2||
+||--wiener|| ||Wiener filter (optionally phaseflipped) particles.||
+||--ac||float||Amplitude contrast (percentage, default=10)||
+||-h, --help|| ||show this help message and exit||
+||--phaseflipproc4|| ||If specified _proc particles will be generated.||
+||--phaseflipproc5|| ||If specified _proc particles will be generated.||

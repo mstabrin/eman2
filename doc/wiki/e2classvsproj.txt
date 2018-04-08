@@ -1,12 +1,18 @@
-|| ||ang||float||Angle between projections if 3Dmap provided||
-|| ||sym||bool||Set the symmetry; if no value is given then the model is assumed to have no symmetry.
+||option||type||description||
+||--threads||int||Number of alignment threads to run in parallel on a single computer. This is the only parallelism supported by this program at present.||
+||--align||str||The name of an 'aligner' to use prior to comparing the images||
+||--cmp||str||The name of a 'cmp' to be used in comparing the aligned images||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--raligncmp||str||The name and parameters of the comparitor used by the second stage aligner. Default is ccc.||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--aligncmp||str||Name of the aligner along with its construction arguments||
+||--sym|| ||Set the symmetry; if no value is given then the model is assumed to have no symmetry.
 Choices are: i, c, d, tet, icos, or oct.||
-|| ||align||string||The name of an 'aligner' to use prior to comparing the images||
-|| ||aligncmp||string||Name of the aligner along with its construction arguments||
-|| ||ralign||string||The name and parameters of the second stage aligner which refines the results of the first alignment||
-|| ||raligncmp||string||The name and parameters of the comparitor used by the second stage aligner. Default is ccc.||
-|| ||cmp||string||The name of a 'cmp' to be used in comparing the aligned images||
-|| ||savesim||string||Save all of the similarity results to a text file. (ptcl#,proj#,alt,az,sim)||
-|| ||threads||int||Number of alignment threads to run in parallel on a single computer. This is the only parallelism supported by this program at present.||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||--ralign||str||The name and parameters of the second stage aligner which refines the results of the first alignment||
+||--savesim||str||Save all of the similarity results to a text file. (ptcl#,proj#,alt,az,sim)||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--ang||float||Angle between projections if 3Dmap provided||
+||-h, --help|| ||show this help message and exit||

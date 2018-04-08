@@ -1,8 +1,14 @@
-|| ||nkeep||int||Number of particles to keep||
-|| ||sym||string||Symmetry to search for||
-|| ||mirror||string||search for particles with mirror symmetry and write them out to outputfile.||
-|| ||rtp||bool||make a rotational footprint||
-|| ||mask||int||Mask radius||
-|| ||imask||int||Inside mask radius||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||option||type||description||
+||--mirror||str||search for particles with mirror symmetry and write them out to outputfile.||
+||--imask||int||Inside mask radius||
+||--rtp|| ||make a rotational footprint||
+||--mask||int||Mask radius||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--sym||str||Symmetry to search for||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--nkeep||int||Number of particles to keep||
+||-h, --help|| ||show this help message and exit||

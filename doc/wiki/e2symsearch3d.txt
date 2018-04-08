@@ -1,40 +1,47 @@
-|| ||align||string||Default=symalignquat. WARNING: The aligner cannot be changed for this program currently. Option ignored.||
-|| ||average||bool||Default=False. If supplied and a stack is provided through --input, the average of the aligned and/or symmetrized stack will also be saved.||
-|| ||averager||string||Default=mean.tomo. The type of averager used to produce the class average. Default=mean.tomo.||
-|| ||clip||int||Boxsize to clip particles as part of preprocessing to speed up alignment. For example, the boxsize of the particles might be 100 pixels, but the particles are only 50 pixels in diameter. Aliasing effects are not always as deleterious for all specimens, and sometimes 2x padding isn't necessary; still, there are some benefits from 'oversampling' the data during averaging; so you might still want an average of size 2x, but perhaps particles in a box of 1.5x are sufficiently good for alignment. In this case, you would supply --clip=75||
-|| ||cmp||string||The name of a 'cmp' to be used in comparing the symmtrized object to unsymmetrized||
-|| ||highpass||string||A highpass filtering processor (from e2proc3d.py, see e2help.py processors) to be applied to each volume prior to COARSE alignment. Not applied to aligned particles before averaging.||
-|| ||input||string||The name of input volume or hdf stack of volumes||
-|| ||keep||float||Fraction of particles to include if --average is on, after correlating the particles with the average.||
-|| ||keepsig||bool||Default=False. Causes theoptions.keep argument to be interpreted in standard deviations.||
-|| ||lowpass||string||A lowpass filtering processor (from e2proc3d.py; see e2help.py processors) to be applied to each volume prior to COARSE alignment. Not applied to aligned particles before averaging.||
-|| ||mask||string||Mask processor applied to particles before alignment. Default is mask.sharp:outer_radius=-2. IF using --clip, make sure to express outer mask radii as negative pixels from the edge.||
-|| ||maskfile||string||Mask file (3D IMAGE) applied to particles before alignment. Must be in HDF format. Default is None.||
-|| ||mirror||string||Axis across of which to generate a mirrored copy of --ref. All particles will be compared to it in addition to the unmirrored image in --ref if --keepsig is provided or if --keep < 1.0.||
-|| ||nolog||bool||If supplied, this option will prevent logging the command run in .eman2log.txt.||
-|| ||nopath||bool||If supplied, this option will save results in the directory where the command is run. A directory to store the results will not be made.||
-|| ||nopreprocprefft||bool||Turns off all preprocessing that happens only once before alignment (--normproc, --mask, --maskfile, --clip, --threshold; i.e., all preprocessing excepting filters --highpass, --lowpass, --preprocess, and --shrink.||
-|| ||normproc||string||Normalization processor applied to particles before alignment. Default is to use normalize. If normalize.mask is used, results of the mask option will be passed in automatically. If you want to turn this option off specify 'None'||
-||-P||parallel||string||Default=thread:1. Run in parallel, specify type:<option>=<value>:<option>:<value>||
-|| ||path||string||Name of path for output file||
-|| ||plots||bool||Default=False. Turn this option on to generate a plot of the ccc scores if --average is supplied. Running on a cluster or via ssh remotely might not support plotting.||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID.||
-|| ||preavgproc1||string||Default=None. A processor (see 'e2help.py processors -v 10' at the command line) to be applied to the raw particle after alignment but before averaging (for example, a threshold to exclude extreme values, or a highphass filter if you have phaseplate data.)||
-|| ||preavgproc2||string||Default=None. A processor (see 'e2help.py processors -v 10' at the command line) to be applied to the raw particle after alignment but before averaging (for example, a threshold to exclude extreme values, or a highphass filter if you have phaseplate data.)||
-|| ||preprocess||string||Any processor (as in e2proc3d.py) to be applied to each volume prior to COARSE alignment. Not applied to aligned particles before averaging.||
-|| ||ref||string||Default=None. If provided and --average is also provided and --keep < 1.0 or --keepsig is specified, 'good particles' will be determined by correlation to --ref.||
-|| ||saveali||bool||Save the stack of aligned/symmetrized particles.||
-|| ||savepreproc||bool||Default=False. Will save stacks of preprocessed particles (one for coarse alignment and one for fine alignment if preprocessing options are different).||
-|| ||savesteps||bool||If --avgiter > 1, save all intermediate averages and intermediate aligned kept stacks.||
-|| ||shrink||int||Optionally shrink the input particles by an integer amount prior to computing similarity scores. For speed purposes. Default=0, no shrinking||
-|| ||subset||int||Number of particles in a subset of particles from the --input stack of particles to run the alignments on.||
-|| ||sym||bool||Specify symmetry -choices are: c<n>, d<n>, h<n>, tet, oct, icos. For asymmetric reconstruction ommit this option or specify c1.||
-|| ||threshold||string||A threshold applied to the subvolumes after normalization. For example, --threshold=threshold.belowtozero:minval=0 makes all negative pixels equal 0, so that they do not contribute to the correlation score.||
-|| ||tweak||bool||WARNING: Not used for anything yet. This will perform a final alignment with no downsampling [without using --shrink or --shrinkfine] if --shrinkfine > 1.||
-||-v||verbose||int||verbose level [0-9], higner number means higher level ofoptions.verboseness.||
-|| ||weighbytiltaxis||string||Default=None. A,B, where A is an integer number and B a decimal. A represents the location of the tilt axis in the tomogram in pixels (eg.g, for a 4096x4096xZ tomogram, this value should be 2048), and B is the weight of the particles furthest from the tomogram. For example, --weighbytiltaxis=2048,0.5 means that praticles at the tilt axis (with an x coordinate of 2048) will have a weight of 1.0 during averaging, while the distance in the x coordinates of particles not-on the tilt axis will be used to weigh their contribution to the average, with particles at the edge(0+radius or 4096-radius) weighing 0.5, as specified by the value provided for B.||
-|| ||weighbyscore||bool||Default=False. This option will weigh the contribution of each subtomogram to the average by score/bestscore.||
-|| ||avgiter||int||Default=1. If --keep is different from 1.0 and --average is on, the initial average will include all the particles, but then the percent specified byoptions.keep will be kept (the rest thrown away) and a new average will be computed. If --avgiter > 1, this new average will be compared again against all the particles. The procedure will be repeated for however many iterations --avgiter is given, or the process will stop automatically if in two consecutive rounds exactly the same particles are kept||
-|| ||notmatchimgs||bool||Default=True. This option prevents applying filter.match.to to one image so that it matches the other's spectral profile during preprocessing for alignment purposes.||
-|| ||steps||int||Number of steps (for the MC). Default=10.||
-|| ||symmetrize||bool||Symmetrize volume after alignment.||
+||option||type||description||
+||--input||str||The name of input volume or hdf stack of volumes||
+||--threshold||str||A threshold applied to the subvolumes after normalization. For example, --threshold=threshold.belowtozero:minval=0 makes all negative pixels equal 0, so that they do not contribute to the correlation score.||
+||--parallel, -P||str||Default=thread:1. Run in parallel, specify type:<option>=<value>:<option>:<value>||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level ofoptions.verboseness.||
+||-h, --help|| ||show this help message and exit||
+||--preprocess||str||Any processor (as in e2proc3d.py) to be applied to each volume prior to COARSE alignment. Not applied to aligned particles before averaging.||
+||--path||str||Name of path for output file||
+||--normproc||str||Normalization processor applied to particles before alignment. Default is to use normalize. If normalize.mask is used, results of the mask option will be passed in automatically. If you want to turn this option off specify 'None'||
+||--nolog|| ||If supplied, this option will prevent logging the command run in .eman2log.txt.||
+||--parallel, -P||str||Default=thread:1. Run in parallel, specify type:<option>=<value>:<option>:<value>||
+||--weighbyscore|| ||Default=False. This option will weigh the contribution of each subtomogram to the average by score/bestscore.||
+||--ref||str||Default=None. If provided and --average is also provided and --keep < 1.0 or --keepsig is specified, 'good particles' will be determined by correlation to --ref.||
+||--mirror||str||Axis across of which to generate a mirrored copy of --ref. All particles will be compared to it in addition to the unmirrored image in --ref if --keepsig is provided or if --keep < 1.0.||
+||--subset||int||Number of particles in a subset of particles from the --input stack of particles to run the alignments on.||
+||--lowpass||str||A lowpass filtering processor (from e2proc3d.py; see e2help.py processors) to be applied to each volume prior to COARSE alignment. Not applied to aligned particles before averaging.||
+||--preavgproc1||str||Default=None. A processor (see 'e2help.py processors -v 10' at the command line) to be applied to the raw particle after alignment but before averaging (for example, a threshold to exclude extreme values, or a highphass filter if you have phaseplate data.)||
+||--preavgproc2||str||Default=None. A processor (see 'e2help.py processors -v 10' at the command line) to be applied to the raw particle after alignment but before averaging (for example, a threshold to exclude extreme values, or a highphass filter if you have phaseplate data.)||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--average|| ||Default=False. If supplied and a stack is provided through --input, the average of the aligned and/or symmetrized stack will also be saved.||
+||--nopath|| ||If supplied, this option will save results in the directory where the command is run. A directory to store the results will not be made.||
+||--maskfile||str||Mask file (3D IMAGE) applied to particles before alignment. Must be in HDF format. Default is None.||
+||--shrink||int||Optionally shrink the input particles by an integer amount prior to computing similarity scores. For speed purposes. Default=0, no shrinking||
+||--clip||int||Boxsize to clip particles as part of preprocessing to speed up alignment. For example, the boxsize of the particles might be 100 pixels, but the particles are only 50 pixels in diameter. Aliasing effects are not always as deleterious for all specimens, and sometimes 2x padding isn't necessary; still, there are some benefits from 'oversampling' the data during averaging; so you might still want an average of size 2x, but perhaps particles in a box of 1.5x are sufficiently good for alignment. In this case, you would supply --clip=75||
+||--avgiter||int||Default=1. If --keep is different from 1.0 and --average is on, the initial average will include all the particles, but then the percent specified byoptions.keep will be kept (the rest thrown away) and a new average will be computed. If --avgiter > 1, this new average will be compared again against all the particles. The procedure will be repeated for however many iterations --avgiter is given, or the process will stop automatically if in two consecutive rounds exactly the same particles are kept||
+||--sym|| ||Specify symmetry -choices are: c<n>, d<n>, h<n>, tet, oct, icos. For asymmetric reconstruction ommit this option or specify c1.||
+||--averager||str||Default=mean.tomo. The type of averager used to produce the class average. Default=mean.tomo.||
+||--version|| ||show program's version number and exit||
+||--savepreproc|| ||Default=False. Will save stacks of preprocessed particles (one for coarse alignment and one for fine alignment if preprocessing options are different).||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level ofoptions.verboseness.||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID.||
+||--steps||int||Number of steps (for the MC). Default=10.||
+||--cmp||str||The name of a 'cmp' to be used in comparing the symmtrized object to unsymmetrized||
+||--mask||str||Mask processor applied to particles before alignment. Default is mask.sharp:outer_radius=-2. IF using --clip, make sure to express outer mask radii as negative pixels from the edge.||
+||--tweak|| ||WARNING: Not used for anything yet. This will perform a final alignment with no downsampling [without using --shrink or --shrinkfine] if --shrinkfine > 1.||
+||--highpass||str||A highpass filtering processor (from e2proc3d.py, see e2help.py processors) to be applied to each volume prior to COARSE alignment. Not applied to aligned particles before averaging.||
+||--savesteps|| ||If --avgiter > 1, save all intermediate averages and intermediate aligned kept stacks.||
+||--weighbytiltaxis||str||Default=None. A,B, where A is an integer number and B a decimal. A represents the location of the tilt axis in the tomogram in pixels (eg.g, for a 4096x4096xZ tomogram, this value should be 2048), and B is the weight of the particles furthest from the tomogram. For example, --weighbytiltaxis=2048,0.5 means that praticles at the tilt axis (with an x coordinate of 2048) will have a weight of 1.0 during averaging, while the distance in the x coordinates of particles not-on the tilt axis will be used to weigh their contribution to the average, with particles at the edge(0+radius or 4096-radius) weighing 0.5, as specified by the value provided for B.||
+||--saveali|| ||Save the stack of aligned/symmetrized particles.||
+||--nopreprocprefft|| ||Turns off all preprocessing that happens only once before alignment (--normproc, --mask, --maskfile, --clip, --threshold; i.e., all preprocessing excepting filters --highpass, --lowpass, --preprocess, and --shrink.||
+||--notmatchimgs|| ||Default=True. This option prevents applying filter.match.to to one image so that it matches the other's spectral profile during preprocessing for alignment purposes.||
+||--plots|| ||Default=False. Turn this option on to generate a plot of the ccc scores if --average is supplied. Running on a cluster or via ssh remotely might not support plotting.||
+||--align||str||Default=symalignquat. WARNING: The aligner cannot be changed for this program currently. Option ignored.||
+||--keepsig|| ||Default=False. Causes theoptions.keep argument to be interpreted in standard deviations.||
+||--keep||float||Fraction of particles to include if --average is on, after correlating the particles with the average.||
+||-h, --help|| ||show this help message and exit||
+||--symmetrize|| ||Symmetrize volume after alignment.||

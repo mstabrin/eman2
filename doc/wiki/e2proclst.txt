@@ -1,20 +1,23 @@
-|| ||average||bool||Averages all input images (without alignment) and writes a single output image||
-|| ||create||string||to use this option, the input files should be image files. Specify an .lst or .lsx file to create here (e.g., --create mylst.lst) with references to all of the images in the inputs.||
-|| ||eosplit||bool||Will generate _even and _odd .lst files for each specified input .lst file||
-|| ||dereforig||string||Extract the data_source and data_n parameters from each image in the file and create a new .lst file referencing the original image(s)||
-|| ||exclude||string||only works if --create is supplied. comma-separated list of indexes from the input file(s) to EXCLUDE from the created .lst file.||
-|| ||first||int||Default=0 (first image index in input(s)). This will be the first particle index in the input images to put in the output lsx/lst file.||
-|| ||include||string||only works if --create is supplied. comma-separated list of indexes to take from the input file(s) to INCLUDE in the created .lst file. if you have the list of indexes to include in a .txt file, you can provide it through --list.||
-|| ||inplace||bool||only works with --create. if the stack specified in --create already exists, this will prevent appending to it. rather, the file will be modified in place.||
-|| ||last||string||Default=-1 (last image index in input (s)). This will be the first particle index in the input images to put in the output lsx/lst file.||
-|| ||list||string||only works if --create is supplied. .txt file with a list of indexes (one per line/row) to take from the input file(s) to INCLUDE in the created .lst file.||
-|| ||merge||string||Specify the output name here. This will concatenate all of the input .lst files into a single output||
-|| ||mergesort||string||Specify the output name here. This will merge all of the input .lst files into a single (resorted) output||
-|| ||mergeeo||bool||Merge even odd lst.||
-|| ||minhisnr||float||Integrated SNR from 1/10-1/4 1/A must be larger than this||
-|| ||minlosnr||float||Integrated SNR from 1/200-1/20 1/A must be larger than this||
-|| ||numaslist||string||extract the particle indexes (numbers) only from an lst file into a text file (one number per line).||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-|| ||range||string||Range of particles to use. Works only with --create option. Input of 0,10,2 means range(0,10, step=2).||
-|| ||retype||string||If a lst file is referencing a set of particles from particles/imgname__oldtype.hdf, this will change oldtype to the specified string in-place (modifies input files)||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||option||type||description||
+||--retype||str||If a lst file is referencing a set of particles from particles/imgname__oldtype.hdf, this will change oldtype to the specified string in-place (modifies input files)||
+||--include||str||only works if --create is supplied. comma-separated list of indexes to take from the input file(s) to INCLUDE in the created .lst file. if you have the list of indexes to include in a .txt file, you can provide it through --list.||
+||--numaslist||str||extract the particle indexes (numbers) only from an lst file into a text file (one number per line).||
+||--inplace|| ||only works with --create. if the stack specified in --create already exists, this will prevent appending to it. rather, the file will be modified in place.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--mergesort||str||Specify the output name here. This will merge all of the input .lst files into a single (resorted) output||
+||--exclude||str||only works if --create is supplied. comma-separated list of indexes from the input file(s) to EXCLUDE from the created .lst file.||
+||-h, --help|| ||show this help message and exit||
+||--range||str||Range of particles to use. Works only with --create option. Input of 0,10,2 means range(0,10, step=2).||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--create||str||to use this option, the input files should be image files. Specify an .lst or .lsx file to create here (e.g., --create mylst.lst) with references to all of the images in the inputs.||
+||--eosplit|| ||Will generate _even and _odd .lst files for each specified input .lst file||
+||--list||str||only works if --create is supplied. .txt file with a list of indexes (one per line/row) to take from the input file(s) to INCLUDE in the created .lst file.||
+||--minlosnr||float||Integrated SNR from 1/200-1/20 1/A must be larger than this||
+||--version|| ||show program's version number and exit||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--merge||str||Specify the output name here. This will concatenate all of the input .lst files into a single output||
+||--mergeeo|| ||Merge even odd lst.||
+||--dereforig||str||Extract the data_source and data_n parameters from each image in the file and create a new .lst file referencing the original image(s)||
+||--minhisnr||float||Integrated SNR from 1/10-1/4 1/A must be larger than this||
+||-h, --help|| ||show this help message and exit||

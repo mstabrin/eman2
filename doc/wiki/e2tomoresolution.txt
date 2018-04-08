@@ -1,4 +1,9 @@
-|| ||averager||string||The averager used to generate the averages. Default is 'mean'.||
-|| ||sym||string||The recon symmetry||
-|| ||mask||string||The mask to apply before FSC calculation||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||option||type||description||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--sym||str||The recon symmetry||
+||--averager||str||The averager used to generate the averages. Default is 'mean'.||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--mask||str||The mask to apply before FSC calculation||
+||-h, --help|| ||show this help message and exit||

@@ -1,5 +1,15 @@
-||-S||shrink||int||shrink factor for initial search, default=auto||
-||-N||num||int||Number of initial alternative positions, default=5||
-||-E||epsilon||float||final target accuracy, default=.01||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+WARNING: This program is currently considered experimental. Contact sludtke@bcm.edu before using it for any serious project
+||option||type||description||
+||--epsilon, -E||float||final target accuracy, default=.01||
+||--num, -N||int||Number of initial alternative positions, default=5||
+||--epsilon, -E||float||final target accuracy, default=.01||
+||--num, -N||int||Number of initial alternative positions, default=5||
+||-h, --help|| ||show this help message and exit||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--shrink, -S||int||shrink factor for initial search, default=auto||
+||--shrink, -S||int||shrink factor for initial search, default=auto||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||-h, --help|| ||show this help message and exit||

@@ -1,8 +1,15 @@
-||-S||scale||float||Scale factor||
-|| ||pingpong||bool||Cycle through the sequence forwards then backwards||
-||-C||contrast||float||Relative setting. Try 0.75 if images too bright. Default 1.0 ||
-||-M||last||int||Number of last image to use||
-|| ||mode||string||centering mode 'modeshift', 'censym' or 'region,<x>,<y>,<clipsize>,<alisize>||
-|| ||twopass||bool||Skip automatic tilt axis location, use fixed angle from x||
-|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
-||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||option||type||description||
+||--scale, -S||float||Scale factor||
+||--contrast, -C||float||Relative setting. Try 0.75 if images too bright. Default 1.0 ||
+||--pingpong|| ||Cycle through the sequence forwards then backwards||
+||--last, -M||int||Number of last image to use||
+||-h, --help|| ||show this help message and exit||
+||--contrast, -C||float||Relative setting. Try 0.75 if images too bright. Default 1.0 ||
+||--version|| ||show program's version number and exit||
+||--last, -M||int||Number of last image to use||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--scale, -S||float||Scale factor||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||-h, --help|| ||show this help message and exit||
