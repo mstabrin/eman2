@@ -518,9 +518,17 @@ class EMArgumentParser(argparse.ArgumentParser):
 		if version:
 			self.add_argument('--version', action='version', version=version)
 		self.add_argument("postionalargs", nargs="*")
+		self.add_argument('--generate_doc', action='store_true',
+						  help='Extract help strings of each command line argument and generate wiki table.')
 
 	def parse_args(self):
 		""" Masquerade as optpaser parse options """
+		if "--generate_doc" in self._option_string_actions:
+			print("||{}||{}||{}||".format("option", "type", "description"))
+			for key in self._option_string_actions:
+				val = self._option_string_actions[key]
+				print(val.option_strings, val.help)
+			self.exit()
 		parsedargs = argparse.ArgumentParser.parse_args(self)
 		return (parsedargs, parsedargs.postionalargs)
 
