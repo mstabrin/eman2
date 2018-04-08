@@ -1,0 +1,3 @@
+|| ||input||string||default=None. Filename of 3-D image or stack of 3-D images whose FFT amplitudes you want to see.||
+|| ||ppid||int||Default=-1. Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

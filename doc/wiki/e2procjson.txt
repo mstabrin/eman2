@@ -1,0 +1,6 @@
+|| ||allinfo||bool||Uses all of the .json files in info/ rather than specifying a list on the command line||
+|| ||extractkey||string||This will extract a single named value from each specified file. Output will be multicolumn if the referenced label is an object, such as CTF.||
+|| ||removekey||string||DANGER! This will remove all data associated with the named key from all listed .json files.||
+|| ||output||string||Output filename. default = jsoninfo.txt||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

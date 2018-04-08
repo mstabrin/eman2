@@ -1,0 +1,26 @@
+|| ||stacks||string||Comma separated list of HDF image stacks to process.||
+|| ||tomograms||string||Comma separated list of tomograms with REC extension from which all particles in --stacks came from.||
+|| ||output||string||The name of the output average volume.||
+|| ||rotationtype||string||Valid options are: eman,imagic,mrc,spider,quaternion,sgirot,spi,xyz||
+|| ||averager||string||The type of averager used to produce the class average. Default=mean||
+|| ||sym||string||Symmetry to impose - choices are: c<n>, d<n>, h<n>, tet, oct, icos||
+|| ||path||string||Name of directory where to save the output file.||
+|| ||alifile||string||.json file with alingment parameters, if raw stack supplied via --input.||
+||-B||boxsize||int||Default=0 (option not used). Provide a value for the boxsize of the output average in pixels. If not provided, the boxsize of --stacks will be used.||
+|| ||normproc||string||Normalization processor applied to particles before extraction. Default=normalize.edgemean. If using the latter, you must provide --masknorm, otherwise, a default --masknorm=mask.sharp:outer_radius=-2 will be used.||
+|| ||threshold||string||Threshold processor to apply to particles before writing them out to get rid of too high and/or too low pixel values.||
+|| ||usetomograms||bool||"Re-extract particles from the original tomogram.||
+|| ||useinverseali||bool||"Use the inverse of the value stored in xform.align3d in the header of each particle.||
+|| ||shrink||int||Shrink factor to shrink particles before averaging. Default=1, which means no shrinking.||
+|| ||lowpass||string||Lowpass filtering processor to apply to particles before averaging. Default=None.||
+|| ||preprocess||string||A processor (as in e2proc3d.py) to be applied to the tomogram before opening it. 
+For example, a specific filter with specific parameters you might like. 
+Type 'e2proc3d.py --processors' at the commandline to see a list of the available processors and their usage||
+|| ||invert||bool||Default=False. This parameer indicates you want the contrast to me inverted while boxing, AND for the extracted sub-volumes. Remember that EMAN2 **MUST** work with "white" protein. You can very easily figure out what the original color
+of the protein is in your data by looking at the gold fiducials or the edge of the carbon hole in your tomogram. If they look black you MUST specify this option||
+|| ||averager||string||The type of averager used to produce the class average. Default=mean.tomo||
+|| ||keep||float||The fraction of particles to keep in each class. Default=1.0||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness.||
+|| ||saveali||bool||If set, will save the 
+	#	aligned particle volumes in class_ptcl.hdf. Overwrites existing file.||

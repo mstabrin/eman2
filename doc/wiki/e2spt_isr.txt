@@ -1,0 +1,22 @@
+|| ||input||string||Comma separated files in .ali, .st .hdf format of the aligned subtiltseries.||
+|| ||inputstem||string||Alternative to supplying --input. This is a string common to multiple files to be processed in the CURERENT directory. The common string doesn't need to be at a particular location in the filenames. For example, a series of files "tiltA.hdf, tiltB.hdf, tiltC.hdf" could have either 'hdf', '.hdf', 't,','ti', 'til', 'tilt', etc., as a common string. The key is to choose a string shared ONLY by the files of interest. The files should be multiple subtiltseries in .hdf format; each file should correspond to an individual subtiltseries for a different particle: That is, each file should be a subtiltseries corresponding to an individual subtomogram, as extracted by e2spt_subtilt.py, or as simulated by e2spt_simulation.py||
+|| ||inputdir||string||Alternative to --input and --inputstem. Path to a directory containing individual subtiltseries stacks.||
+|| ||path||string||Directory to store results in. The default is a numbered series of directories containing the prefix 'sptisr'; for example, sptisr02 will be the directory by default if 'sptisr_01' already exists.||
+|| ||ppid||int||Default=1. Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||Default 0. Verbose level [0-9], higner number means higher level of verboseness||
+|| ||reconstructor||string||Default=fourier:mode=gauss_2. The reconstructor to use to reconstruct the tilt series into a tomogram. Type 'e2help.py reconstructors' at the command line to see all options and parameters available. To specify the interpolation scheme for the fourier reconstructor, specify 'mode'. Options are 'nearest_neighbor', 'gauss_2', 'gauss_3', 'gauss_5'. For example --reconstructor=fourier:mode=gauss_5 ||
+|| ||iter||int||Number of iterations to run algorithm for.||
+|| ||tltfile||string||IMOD-like .tlt file with tilt angles for the aligned tiltseries (or set of subtiltseries).||
+|| ||tiltaxis||string||Axis to produce projections about. Default is 'y'; the only other valid option is 'x'.||
+|| ||pad2d||float||Default=0.0. Padding factor (e.g., 2.0, to make the box twice as big) to zero-pad the 2d images in the tilt series for reconstruction purposes (the final reconstructed subvolumes will be cropped back to the original size though).||
+|| ||pad3d||float||Default=0.0. Padding factor (e.g., 2.0, to make the box twice as big) to zero-pad the volumes for reconstruction purposes (the final reconstructed subvolumes will be cropped back to the original size though).||
+|| ||savevols||bool||This option will save the reconstructed volumes at each iteration.||
+|| ||outxsize||int||Clip the output volume in x to this size. The default size is the nx size of the input images.||
+|| ||outysize||int||Clip the output volume in y to this size. The default size is the ny size of the input images.||
+|| ||outzsize||int||Clip the output volume in z to this size. The default size is the nx size of the input images.||
+|| ||mask||string||Default=None. Masking processor (see e2help.py --verbose=10) applied to the images to aid alignment. Default=None.||
+|| ||preprocess||string||Default=None. Any processor (see e2help.py --verbose=10) applied to the images to aid alignment.||
+|| ||lowpass||string||Default=None. A lowpass filtering processor (see e2help.py --verbose=10) applied to each volume prior to reprojection generation..||
+|| ||highpass||string||Default=None. A highpass filtering processor (see e2help.py --verbose=10) applied to each volume prior to reprojection generation.||
+|| ||threshold||string||Default=None. A threshold  processor (see e2help.py --verbose=10) applied to each volume prior to reprojection generation.||
+|| ||saveali||bool||Default=False. If set, will save the recentered subtiltseries after each iteration.||

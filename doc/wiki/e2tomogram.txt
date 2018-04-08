@@ -1,0 +1,17 @@
+|| ||rawtlt||string||Text file contains raw tilt angles||
+|| ||loadparam||string||Load from existing param file||
+|| ||zeroid||int||Index of the center tilt. Ignored when rawtlt is provided.||
+|| ||npk||int||Number of landmarks to use.||
+|| ||tltstep||float||Step between tilts. Ignored when rawtlt is provided.||
+|| ||tltax||float||Angle of the tilt axis. The program will calculate one if this option is not provided||
+|| ||pkeep||float||Fraction of landmarks to keep in the tracking.||
+|| ||tltkeep||float||Fraction of tilts to keep in the reconstruction.||
+|| ||minloss||float||Stop refinement when the loss is lower than this value.||
+|| ||bxsz||int||Box size of the particles for tracking||
+|| ||writetmp||bool||Write intermidiate files||
+|| ||rmgold||bool||Remove gold fiducials.||
+|| ||nofiducial||bool||Fiducial-less mode. This will change a few internal parameters to make it work.||
+|| ||reconmode||string||Reconstruction mode. Choose from nearest_neighbor, gauss_2, gauss_3, and gauss_5.||
+|| ||threads||int||Number of threads||
+|| ||niter||int||Number of iterations||
+|| ||verbose||int||Verbose||

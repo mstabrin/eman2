@@ -1,0 +1,18 @@
+|| ||allmicrographs||bool||Add all images from micrographs folder||
+|| ||unboxedonly||bool||Only include image files without existing box locations||
+||-B||boxsize||int||Box size in pixels||
+||-P||ptclsize||int||Longest axis of particle in pixels (diameter, not radius)||
+|| ||write_dbbox||bool||Export EMAN1 .box files||
+|| ||write_ptcls||bool||Extract selected particles from micrographs and write to disk||
+|| ||invert||bool||If specified, inverts input contrast. Particles MUST be white on a darker background.||
+|| ||no_ctf||bool||Disable CTF determination||
+|| ||suffix||string||Suffix of the micrographs used for particle picking (i.e. suffix=goodali will use micrographs end with __goodali.hdf). It is only useful when [allmicrographs] is True.||
+|| ||apix||float||Angstroms per pixel for all images||
+|| ||voltage||float||Microscope voltage in KV||
+|| ||cs||float||Microscope Cs (spherical aberation)||
+|| ||ac||float||Amplitude contrast (percentage, default=10)||
+|| ||autopick||string||Perform automatic particle picking. Provide mode and parameter string, eg - auto_local:threshold=5.5||
+|| ||gui||bool||Interactive GUI mode||
+|| ||threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

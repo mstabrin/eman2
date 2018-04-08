@@ -1,0 +1,101 @@
+parser.add_argument("--pad2d", type=float,default=0.0,help="""Padding factor to zero-pad
+		the 2d images in the tilt series prior to reconstruction.
+parser.add_argument("--pad3d", type=float,default=0.0,help="""Padding factor to zero-pad
+		the reconstruction volume. (The final reconstructed subvolumes will be cropped to
+parser.add_argument("--save3d",action='store_true',default=False,help="""If on, the CTF
+		corrected subtiltseries will be reconstrcuted into subvolumes and save into a stack.
+parser.add_argument("--outputstem",type=str,default='',help="""Stem common to all
+		output image stacks. For example, if --outputstem=myvirus and --save2d is provided,
+parser.add_argument("--icethickness", type=int,default=0,help="""This corresponds
+		to the Z dimension in pixels of the reconstructed raw tomogram (uncropped), at the same binning
+parser.add_argument("--firstfitglobal", action='store_true', default=False,help="""Default=False.
+		Supplying this option will tile the entire image first (for each tilt angle) and find the average
+parser.add_argument("--stripstep",type=int,default=0,help="""This will determine the
+		amount of strips and the overlap between them for defocus estimation. The default
+parser.add_argument("--icethicknessauto",action='store_true',default=False,help="""
+		If --subtiltsdir is provided (and if --icethickness is *not* provided), the thickness of the
+parser.add_argument("--framexsize",type=int,default=0,help="""This correspond to the X
+		size in pixes of the images/frames in the raw tilt series; that is, the size of the entire frame
+parser.add_argument("--phaseflipwhole", action='store_true',default=False,help="""This 
+		will perform phase flipping on the entire image for each image in an aligned tilt
+parser.add_argument("--phaseflipstrips",action='store_true',default=False,help="""This will
+		perform phase flipping on images of an aligned tilt series on a strip-by-strip basis,
+parser.add_argument("--prunetest",type=float,default=0.1,help="""Default=0.1.
+		Decimal number that indicates the percentage of --tilesize (in terms of side length)
+parser.add_argument("--tltfile",default='',type=str,help="""File containing a list of 
+		tilt angles corresponding to the tilt angles of images 0 to n of an aligned
+parser.add_argument("--ctfparamsfile",type=str,default='',help="""This should be a text file
+		with ctf parameters in the following format;
+parser.add_argument("--defocilist",type=str,default='',help='''Text file containing
+		a single column of defocus values in microns. The file should have as many
+parser.add_argument("--defocus", type=float,default=0.0,help="""Default=0. 
+		Target defocus at the tilt axis. In the absence of ctfparamsfile(s)
+parser.add_argument("--voltage", type=int,default=200,help="""Default=200. Voltage of
+		the microscope with which the images where collected. Supply it to replace the value
+parser.add_argument("--cs", type=float,default=2.1,help="""Default=2.1. Cs of the microscope
+		with which the images were collected. Supply it to replace the value in ctfparamsfile(s),
+parser.add_argument("--apix",type=float,default=0.0,help="""Default=whatever is on the header
+		of the images. Sampling of the images in angstroms/pixel.
+parser.add_argument("--bfactor",type=int,default=1000,help="""Default=1000. Bfactor or
+		temperature factor to use. Supply it to replace the value
+parser.add_argument("--ampcont",type=float,default=0.05,help="""Default=0.05. Amplitude 
+		contrast to use for CTF correction phase flipping. Supply it to replace the value
+parser.add_argument("--nozcorrection",action='store_true',default=False,help="""If you 
+		turn on this option and --subtiltsdir is provided, the position in Z of each subtomogram
+|| ||tiltseries||string||Aligned tilt series. File format must be MRC and must have .mrc or .st or .ali extension.||
+|| ||exclude||string||Comma-separated list of image indexes in the --tiltseries to exclude from CTF fitting. For example, --exclude 0,3,4,6,7.||
+|| ||skipstripping||string||Default=None. Comma-separated list of image indexes to exclude from strip-based fitting (in this case, only global defocus tiling the entire image wil be measured).||
+|| ||imagestem||string||Default=None. If the images to apply ctf correction on are already unstacked and are individual mrc files, supply a common string to all of them.||
+|| ||invert||bool||Invert the contrast of the output data, compared to the input data.||
+|| ||excludeedges||bool||Ignore 'excedent' (smaller than the width of a strip) at the edge of micrographs after dividing them into strips.||
+|| ||mintiles||int||Minimum number of 'good tiles' in strip to consider it.||
+|| ||defocusvariationlimit||float||default=0.1. total variation in defocus (in micrometers) tolerated within a strip and still consider it a region of 'constant defocus'.||
+|| ||infodir||string||Folder typically produced by e2evalimage.py or previous runs of this program containing info.json files, one per tilt image in a tilt series. Each .json file should contain the fitted ctf and all associated parameters for each tilt image.||
+|| ||output||string||Filename for the output CTF-corrected tilt series.||
+|| ||subtiltsdir||string||Provide a directory containing individual stacks, where each stack is a 'mini tilt series' or a 'subtilt series' for single particles. Then, each image for each particle in the dir will be phase-phlipped using the ctf parameters you provide. If each image in the subtilt series is at a different defocus, then the parameters should be provided through --ctfparamsfile, whith a different defocus value per row. (There should be as many rows as images in each subtiltseries).||
+|| ||path||string||Directory to store results in. The default is a numbered series of directories containing the prefix 'sptctf'; for example, sptctf_02 will be the directory by default if 'sptctf_01' already exists.||
+|| ||reconstructor||string||Default=fourier:mode=gauss_2. The reconstructor to use to reconstruct the tilt series into a tomogram. Type 'e2help.py reconstructors' at the command line to see all options and parameters available. To specify the interpolation scheme for the fourier reconstruction, specify 'mode'. Options are 'nearest_neighbor', 'gauss_2', 'gauss_3', 'gauss_5', 'gauss_5_slow', 'gypergeom_5', 'experimental'. For example --reconstructor=fourier:mode=gauss_5 ||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness.||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+|| ||save2d||bool||If on, the CTF
+		corrected subtiltseries will be saved as 2-D imag stacks [one per particle].||
+|| ||save2d||bool||If on, the CTF
+		corrected subtiltseries will be saved as 2-D imag stacks [one per particle].||
+|| ||savestriptiles||bool||Saves
+		all tiles for all strips, for all images, in one stack per strip.||
+|| ||saveffts||bool||Saves
+		ffts of each average of tiles per strip, for all images.||
+|| ||saveffts||bool||Saves
+		ffts of each average of tiles per strip, for all images.||
+|| ||autofit||bool||Runs automated
+		CTF fitting on the input images, based on tiling.||
+|| ||autofit||bool||Runs automated
+		CTF fitting on the input images, based on tiling.||
+|| ||tilesize||int||Tile size to use for strips
+		when --autofit is provided.||
+|| ||defocusmin||float|| If --autofit, minimum autofit defocus. Default=0.0, not used. A value will be estimated based on tilt angle and distance from the tilt axis.||
+|| ||defocusmax||float||Default=0.0, not used. If --autofit, maximum autofit defocus. A value will be estimated based on tilt angle and distance from the tilt axis.||
+|| ||defocusmax||float||Default=0.0, not used. If --autofit, maximum autofit defocus. A value will be estimated based on tilt angle and distance from the tilt axis.||
+|| ||subset||int||Requires --subtiltsdir. Specify how many subtiltseries (or particles) to ctf correct. If you specify 10, the first 10 subtiltseires in --subtiltsdir will be corrected. 0 means "process all" because it makes no sense to process none||
+|| ||subset||int||Requires --subtiltsdir. Specify how many subtiltseries (or particles) to ctf correct. If you specify 10, the first 10 subtiltseires in --subtiltsdir will be corrected. 0 means "process all" because it makes no sense to process none||
+|| ||radius||int||Radius of the particle in pixels.||
+|| ||radius||int||Radius of the particle in pixels.||
+|| ||radius||int||Radius of the particle in pixels.||
+|| ||radius||int||Radius of the particle in pixels.||
+|| ||radius||int||Radius of the particle in pixels.||
+|| ||radius||int||Radius of the particle in pixels.||
+|| ||coords||string||text file containing x y z (or just z) coordinates for the particles, used to calculate icethickness if --icethicknessauto is specified for ctf fitting. NOT needed if --subtiltsdir is provided for ctf correction.||
+|| ||coords||string||text file containing x y z (or just z) coordinates for the particles, used to calculate icethickness if --icethicknessauto is specified for ctf fitting. NOT needed if --subtiltsdir is provided for ctf correction.||
+|| ||coords||string||text file containing x y z (or just z) coordinates for the particles, used to calculate icethickness if --icethicknessauto is specified for ctf fitting. NOT needed if --subtiltsdir is provided for ctf correction.||
+|| ||coords||string||text file containing x y z (or just z) coordinates for the particles, used to calculate icethickness if --icethicknessauto is specified for ctf fitting. NOT needed if --subtiltsdir is provided for ctf correction.||
+|| ||coords||string||text file containing x y z (or just z) coordinates for the particles, used to calculate icethickness if --icethicknessauto is specified for ctf fitting. NOT needed if --subtiltsdir is provided for ctf correction.||
+|| ||coords||string||text file containing x y z (or just z) coordinates for the particles, used to calculate icethickness if --icethicknessauto is specified for ctf fitting. NOT needed if --subtiltsdir is provided for ctf correction.||
+|| ||coords||string||text file containing x y z (or just z) coordinates for the particles, used to calculate icethickness if --icethicknessauto is specified for ctf fitting. NOT needed if --subtiltsdir is provided for ctf correction.||
+|| ||coords||string||text file containing x y z (or just z) coordinates for the particles, used to calculate icethickness if --icethicknessauto is specified for ctf fitting. NOT needed if --subtiltsdir is provided for ctf correction.||
+|| ||coords||string||text file containing x y z (or just z) coordinates for the particles, used to calculate icethickness if --icethicknessauto is specified for ctf fitting. NOT needed if --subtiltsdir is provided for ctf correction.||
+|| ||coords||string||text file containing x y z (or just z) coordinates for the particles, used to calculate icethickness if --icethicknessauto is specified for ctf fitting. NOT needed if --subtiltsdir is provided for ctf correction.||
+|| ||defocustop||bool||Assumes the signal for defocus measurement (e.g., carbon film) is at the top layer of the tomogram.||
+|| ||defocusbottom||bool||Assumes the signal for defocus measurement (e.g., carbon film) is at the top layer of the tomogram.||

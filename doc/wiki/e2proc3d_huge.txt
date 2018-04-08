@@ -1,0 +1,8 @@
+|| ||streaksubtract||bool||This will subtract the histogram peak value along a single axis in the volume.||
+|| ||process||bool||apply a processor named 'processorname' with all its parameters/values. WARNING: this works by operating on fragments of the overall image at a time, and some processors won't work properly this way.||
+|| ||mult||bool||Scales the densities by a fixed number in the output||
+|| ||multfile||bool||Multiplies the volume by another volume of identical size. This can be used to apply masks, etc.||
+|| ||add||bool||Adds a constant 'f' to the densities||
+|| ||trans||bool||Translate map by dx,dy,dz ||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||bool||verbose level [0-9], higner number means higher level of verboseness||

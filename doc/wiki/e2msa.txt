@@ -1,0 +1,15 @@
+||-n||nbasis||int||Number of basis images to generate.||
+||-M||maskfile||string||File containing a mask defining the pixels to include in the Eigenimages||
+|| ||mask||int||Mask radius||
+|| ||varimax||bool||Perform a 'rotation' of the basis set to produce a varimax basis||
+||-L||lowmem||bool||Try to use less memory, with a possible speed penalty||
+|| ||simmx||string||Will use transformations from simmx on each particle prior to analysis||
+|| ||scratchfile||string||Specify an explicit scratch file to avoid multi-process conflicts||
+|| ||normalize||bool||Perform a careful normalization of input images before MSA. Otherwise normalization is not modified until after mean subtraction.||
+|| ||gsl||bool||Use gsl SVD algorithm||
+|| ||step||string||Specify <init>,<step>. Processes only a subset of the input data. For example, 0,2 would process only the even numbered particles||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+|| ||gui||bool||Start the GUI for interactive boxing||
+||-B||boxsize||int||Box size in pixels||
+||-D||dbin||string||Filename to read an existing box database from||

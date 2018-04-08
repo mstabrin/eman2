@@ -1,0 +1,13 @@
+|| ||newpath||string||Path to the classified results. Default = multinoali_XX||
+|| ||oldpath||string||Path to the original refinement||
+||--model||models||string||Comma separated list of reference maps used for classification. If a single map is provided, data will be split into two groups based on similarity to the single map.||
+|| ||simcmp||string||The name of a 'cmp' to be used in comparing the aligned images. eg- frc:minres=80:maxres=20. Default=ccc||
+|| ||threads||int||Number of threads.||
+|| ||randomphase||float||Randomize initial model to certain frequency.||
+|| ||parallel||string||Parallel option.||
+|| ||iter||int||Number of iterations.||
+|| ||mask||string||Name of an optional mask file. The mask is applied to the input models to focus the classification on a particular region of the map. Consider e2classifyligand.py instead.||
+|| ||breaksym||bool||breaksym||
+|| ||symcopy||bool||symcopy||
+|| ||nomask||bool||no mask||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

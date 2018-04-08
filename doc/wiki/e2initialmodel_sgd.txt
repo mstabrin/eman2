@@ -1,0 +1,15 @@
+|| ||path||string||Path to write initial model output. Default is initmodel_XX||
+|| ||ptcls||string||Class average or particles input.||
+|| ||sym||string||Specify symmetry - choices are: c<n>, d<n>, h<n>, tet, oct, icos||
+|| ||batchsize||int||Batch size of stochastic gradient desent. N particles are randomly selected to generate an initial model at each step.||
+|| ||niter||int||Number of iterations||
+|| ||ntry||int||The number of different initial models to generate in search of a good one||
+|| ||learnrate||float||Learning rate. i.e. how much the initial model changes toward the gradient direction in each iteration. Range from 0.0~1.0. Default is 0.3||
+|| ||lrdecay||float||Learning rate multiplier after each iteration.||
+|| ||addnoise||float||Add noise on particles at each iteration. Stablize convergence for some reason.||
+|| ||shrink||int||shrinking factor||
+|| ||writetmp||bool||Write output for each iteration||
+|| ||fullcov||bool||Assume the input particles covers most of the orientation of the model. This gives better performance when the model is relatively feature-less, but is more likely to fail when there are incorrect particles in the input.||
+|| ||threads||int||threads||
+||-v||verbose||int||Verbose||
+|| ||targetres||float||Target resolution||

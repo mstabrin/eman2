@@ -1,0 +1,16 @@
+|| ||normproj||bool||Normalize the projections resulting from 'project', such that the length of each vector is 1||
+|| ||normcomponent||bool||Normalize the dot product for each component of the output vector. If the basis spans the input vector, then the projected vector length will be 1, otherwise it will be less than 1.||
+|| ||normalize||string||Normalize the input images using the named processor. Specify 'tomean' for mean-based scaling. Specify None to disable.||
+|| ||mask||int||Mask radius||
+||-M||maskfile||string||File containing a mask to apply to the particles before normalization||
+|| ||mean1||bool||Indicates that the first image in the basis set is actually the mean image, which should be subtracted prior to projection. Output from e2msa requires this flag.||
+|| ||recalcmean||bool||This will recompute the mean from the input set and subtract before projection. Useful if a different normalization is used than in the original basis file.||
+|| ||txtout||bool||Output will be a multicolumn text file suitable for plotting||
+|| ||oneout||bool||Output is a single 2-D image rather than a set of 1-D images||
+||-n||nbasis||int||Will use the first n basis images from the input, excluding the mean if present||
+||-z||basislist||string||List of basis vectors to use, comma delimited.||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+|| ||gui||bool||Start the GUI for interactive boxing||
+||-B||boxsize||int||Box size in pixels||
+||-D||dbin||string||Filename to read an existing box database from||

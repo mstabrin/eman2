@@ -1,0 +1,8 @@
+||-S||scale||float||Scale factor||
+|| ||pingpong||bool||Cycle through the sequence forwards then backwards||
+||-C||contrast||float||Relative setting. Try 0.75 if images too bright. Default 1.0 ||
+||-M||last||int||Number of last image to use||
+|| ||mode||string||centering mode 'modeshift', 'censym' or 'region,<x>,<y>,<clipsize>,<alisize>||
+|| ||twopass||bool||Skip automatic tilt axis location, use fixed angle from x||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

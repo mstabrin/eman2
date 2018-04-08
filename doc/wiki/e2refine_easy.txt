@@ -1,0 +1,64 @@
+|| ||input||string||Image stack containing phase-flipped particles used for alignment||
+|| ||inputavg||string||Optional file containing alternate version of the particles to use for reconstruction after alignment||
+|| ||model||string||The map to use as a starting point for refinement||
+|| ||startfrom||string||Path to an existing refine_xx directory to continue refining from. Alternative to --input and --model.||
+|| ||targetres||float||Target resolution in A of this refinement run. Usually works best in at least two steps (low/medium resolution, then final resolution) when starting with a poor starting model. Usually 3-4 iterations is sufficient.||
+|| ||speed||int||(1-7) Balances speed vs precision. Larger values sacrifice a bit of potential resolution for significant speed increases. Set to 1 when really pushing resolution. Set to 7 for initial refinements. default=5||
+|| ||sym||bool||Specify symmetry - choices are: c<n>, d<n>, tet, oct, icos.||
+|| ||breaksym||bool||If selected, reconstruction will be asymmetric with sym= specifying a known pseudosymmetry, not an imposed symmetry.||
+|| ||tophat||string||'local' or 'global'. Instead of imposing a final Wiener filter, use a tophat filter (global similar to Relion). local determines local resolution and filters. danger of feature exaggeration||
+|| ||nogoldfinal||bool||If selected, the final iteration will turn off gold-standard behavior and both halves will be refined from the same model. Normally used with --tophat=local.||
+|| ||treeclassify||bool||Classify using a binary tree.||
+|| ||m3dold||bool||Use the traditional e2make3d program instead of the new e2make3dpar program||
+|| ||iter||int||The total number of refinement iterations to perform. Default=auto||
+|| ||mass||float||The ~mass of the particle in kilodaltons, used to run normalize.bymass. Due to resolution effects, not always the true mass.||
+|| ||bispec||bool||Will use bispectra for orientation determination (EXPERIMENTAL).||
+|| ||apix||float||The angstrom per pixel of the input particles. Normally set to 0, which will read the value from the header of the input file||
+|| ||sep||int||The number of classes each particle can contribute towards (normally 1). Increasing will improve SNR, but produce rotational blurring.||
+|| ||classkeep||float||The fraction of particles to keep in each class, based on the similarity score. (default=0.9 -> 90%%)||
+|| ||classautomask||bool||This will apply an automask to the class-average during iterative alignment for better accuracy. The final class averages are unmasked.||
+|| ||prethreshold||bool||Applies a threshold to the volume just before generating projections. A sort of aggressive solvent flattening for the reference.||
+|| ||eulerrefine||bool||Refines Euler angles of class-averages before reconstruction||
+|| ||m3dkeep||float||The fraction of slices to keep in e2make3d.py. Default=0.8 -> 80%%||
+|| ||m3dpostprocess||string||Default=none. An arbitrary post-processor to run after all other automatic processing. Maps are autofiltered, so a low-pass filter should not normally be used here.||
+||-P||parallel||string||Run in parallel, specify type:<option>=<value>:<option>=<value>. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
+|| ||threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
+|| ||path||string||The name of a directory where results are placed. Default = create new refine_xx||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+|| ||usefilt||string||Specify a particle data file that has been low pass or Wiener filtered. Has a one to one correspondence with your particle data. If specified will be used in projection matching routines, and elsewhere.||
+|| ||automaskexpand||int||Default=boxsize/20. Specify number of voxels to expand mask before soft edge. Use this if low density peripheral features are cut off by the mask.||
+|| ||automask3d||string||Default=auto. Specify as a processor, eg - mask.auto3d:threshold=1.1:radius=30:nshells=5:nshellsgauss=5.||
+|| ||automask3d2||string||Default=none. If specified, this mask will be multiplied by the result of the first mask, eg - using mask.soft to mask out the center of a virus.||
+|| ||projector||bool||Default=standard. Projector to use with parameters.||
+|| ||orientgen||string||Default=auto. Orientation generator for projections, eg - eman:delta=5.0:inc_mirror=0:perturb=1||
+|| ||simalign||string||Default=auto. The name of an 'aligner' to use prior to comparing the images||
+|| ||simaligncmp||string||Default=auto. Name of the aligner along with its construction arguments||
+|| ||simralign||string||Default=auto. The name and parameters of the second stage aligner which refines the results of the first alignment||
+|| ||simraligncmp||string||Default=auto. The name and parameters of the comparitor used by the second stage aligner.||
+|| ||simcmp||string||Default=auto. The name of a 'cmp' to be used in comparing the aligned images||
+|| ||simmask||string||Default=auto. A file containing a single 0/1 image to apply as a mask before comparison but after alignment||
+|| ||shrink||int||Default=auto. Optionally shrink the input particles by an integer amount prior to computing similarity scores. For speed purposes. 0 -> no shrinking||
+|| ||shrinks1||int||The level of shrinking to apply in the first stage of the two-stage classification process. Default=0 (autoselect)||
+|| ||prefilt||bool||Default=auto. Filter each reference (c) to match the power spectrum of each particle (r) before alignment and comparison. Applies both to classification and class-averaging.||
+|| ||cmpdiff||bool||Used only in binary tree classification. Use a mask that focus on the difference of two children.||
+|| ||treeincomplete||int||Used only in binary tree classification. Incompleteness of the tree on each level.Default=0||
+|| ||classkeepsig||bool||Change the keep ('--keep') criterion from fraction-based to sigma-based.||
+|| ||classiter||int||Default=auto. The number of iterations to perform.||
+|| ||classalign||string||Default=auto. If doing more than one iteration, this is the name and parameters of the 'aligner' used to align particles to the previous class average.||
+|| ||classaligncmp||string||Default=auto. This is the name and parameters of the comparitor used by the fist stage aligner.||
+|| ||classralign||string||Default=auto. The second stage aligner which refines the results of the first alignment in class averaging.||
+|| ||classraligncmp||string||Default=auto. The comparitor used by the second stage aligner in class averageing.||
+|| ||classaverager||string||Default=auto. The averager used to generate the class averages. Default is auto.||
+|| ||classcmp||string||Default=auto. The name and parameters of the comparitor used to generate similarity scores, when class averaging.||
+|| ||classnormproc||string||Default=auto. Normalization applied during class averaging||
+|| ||classrefsf||bool||Use the setsfref option in class averaging. This matches the filtration of the class-averages to the projections for easier comparison. Disabled when ampcorrect=flatten is used.||
+|| ||pad||int||Default=auto. To reduce Fourier artifacts, the model is typically padded by ~25 percent - only applies to Fourier reconstruction||
+|| ||recon||bool||Default=auto. Reconstructor to use see e2help.py reconstructors -v||
+|| ||m3dkeepsig||bool||Default=auto. The standard deviation alternative to the --m3dkeep argument||
+|| ||m3dsetsf||string||Default=auto. Name of a file containing a structure factor to apply after refinement||
+|| ||m3dpreprocess||string||Default=auto. Normalization processor applied before 3D reconstruction||
+|| ||ampcorrect||bool||Will perform amplitude correction via the specified method.  'flatten' requires a target resolution better than 8 angstroms (experimental). 'none' will disable amplitude correction (experimental).||
+|| ||classweight||bool||Alter the weight of each class in the reconstruction (experimental).||
+|| ||sqrtnorm||bool||If set, the sqrt of the number of particles in each class will be used to weight the direct fourier inversion.||
+|| ||lowmem||bool||Default=auto. Make limited use of memory when possible - useful on lower end machines||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

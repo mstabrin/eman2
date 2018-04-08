@@ -1,0 +1,10 @@
+||-A||atoms||string||pseudoatoms file||
+||-P||atomswt||float||pseudoatom weight||
+||-C||coeff||string||helix correlation file||
+||-H||coeffwt||float||helix correlation weight||
+||-S||skeleton||string||skeleton file||
+||-T||sketype||string||skeleton type||
+||-W||skeletonwt||float||skeleton weight||
+||-L||helixlength||float||helix length om angstroms||
+||-D||da||float||helix angular search step||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

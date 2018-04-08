@@ -1,0 +1,9 @@
+|| ||slow||bool||rtf_slow alignment||
+|| ||best||bool||rtf_best alignment||
+|| ||short||bool||Fewer iterations, mainly for profiling||
+|| ||old||bool||old rtf+refine aligner||
+|| ||low||bool||low level test||
+|| ||size||int||Size of particles, 192 default for comparisons||
+|| ||simpleout||bool||Simpler 2 column output file (appends)||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

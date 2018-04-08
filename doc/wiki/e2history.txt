@@ -1,0 +1,4 @@
+||-g||gui||bool||Open history in an interface with a sortable table.||
+||-a||all||bool||Show for all directories.||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

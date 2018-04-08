@@ -1,0 +1,8 @@
+|| ||sep||int||The number of classes a particle can contribute towards (default is 1)||
+|| ||simvec||bool||Instead of using the class for the peak value, uses the pattern of similarities for each orientation for assignment.||
+||-f||force||bool||Force overwrite the output file if it exists||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+|| ||nofilecheck||bool||Turns file checking off in the check functionality - used by e2refine.py.||
+||-c||check||bool||Performs a command line argument check only.||
+|| ||noalign||bool||Ignore the alignments||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

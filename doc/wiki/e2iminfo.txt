@@ -1,0 +1,13 @@
+||--header||||bool||Show all header information||
+||--number||||int||Image number for single image info||
+||--quality||||int||Include only images with a single quality value (integer 0-9)||
+|| ||dfmin||float||Include only images with defocus >= the specified value||
+|| ||dfmax||float||Include only images with defocus <= the specified value||
+|| ||nameonly||bool||Only display the matching filenames. No other info.||
+||--stat||||bool||Show statistical information about the image(s).||
+||--euler||||bool||Show Euler angles from header||
+||--all||||bool||Show info for all images in file||
+||--check||||bool||Checks to make sure all image numbers are populated with images, and that all images have valid CTF parameters||
+||--count||||bool||Just show a count of the number of particles in each file||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

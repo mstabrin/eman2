@@ -1,0 +1,17 @@
+|| ||gui||bool||Start the graphic user interface for boxing helices.||
+||-X||helix-coords||string||Save coordinates for helices to the file specified, which will have the EMAN1 *.box format:			x1-w/2        y1-w/2        w        w        -1                    x2-w/2        y2-w/2        w        w        -2||
+||-x||helix-images||string||Save images of the helices. The file name specified will have helix numbers added to it.||
+||-P||ptcl-coords||string||Save coordinates of the centers of particles to the specified formatted text file||
+||-p||ptcl-images||string||Save images of the particles. The file name specified will have helix numbers (and particle numbers if the file type does not support image stacks) added to it.||
+|| ||ptcl-images-stack-mode||string||Options for saving particle images to stack files. 'single' uses one stack file, 'multiple' (default) uses one stack file per helix, 'none' uses a file for each particle and is always used when the output file format does not support image stacks.||
+|| ||db-add-hcoords||string||Append any unique helix coordinates to the database from the specified file (in EMAN1 *.box format). Use --helix-width to specify a width for all boxes.||
+|| ||db-set-hcoords||string||Replaces the helix coordinates in the database with the coordinates from the specified file (in EMAN1 *.box format). Use --helix-width to specify a width for all boxes.||
+||-w||helix-width||int||Helix width in pixels. Overrides widths saved in the database or in an input file.||
+|| ||ptcl-overlap||int||Particle overlap in pixels||
+|| ||ptcl-length||int||Particle length in pixels||
+|| ||ptcl-width||int||Particle width in pixels||
+|| ||ptcl-not-rotated||bool||Particles are oriented as on the micrograph. They are square with length max(ptcl_length, ptcl_width).||
+|| ||ptcl-norm-edge-mean||bool||Apply the normalize.edgemean processor to each particle.||
+|| ||gridding||bool||Use a gridding method for rotation operations on particles. Requires particles to be square.||
+|| ||save-ext||string||The default file extension to use when saving 'particle' images. This is simply a convenience for improved workflow. If a format other than HDF is used, metadata will be lost when saving.||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

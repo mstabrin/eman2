@@ -1,0 +1,2 @@
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+|| ||icosahedral_symmetry||bool||Does it have icosahedral symmetry?||

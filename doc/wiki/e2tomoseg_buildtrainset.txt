@@ -1,0 +1,13 @@
+|| ||boxing||bool||Boxing particles.||
+||-B||boxsize||int||Box size in pixels||
+|| ||segment||bool||Segment particles.||
+|| ||output||string||output file name. Default is the input particle file name plus _seg.hdf||
+|| ||buildset||bool||Segment particles.||
+|| ||particles_raw||string||Input raw particle file||
+|| ||particles_label||string||Input labels for particle file||
+|| ||boxes_negative||string||Input boxes of negative samples||
+|| ||ncopy||int||Number of copies for NEGATIVE samples. (number of copies of particles is calculated accordingly) ||
+|| ||trainset_output||string||output file name of the training set.Default is the input particle file name plus _trainset.hdf||
+|| ||zthick||int||Thickness in z ||
+|| ||validset||float||Propotion of particles in validation set. Default is 0.2 ||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

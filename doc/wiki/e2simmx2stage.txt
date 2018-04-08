@@ -1,0 +1,18 @@
+|| ||align||string||The name of an 'aligner' to use prior to comparing the images||
+|| ||aligncmp||string||Name of the aligner along with its construction arguments||
+|| ||ralign||string||The name and parameters of the second stage aligner which refines the results of the first alignment||
+|| ||raligncmp||string||The name and parameters of the comparitor used by the second stage aligner. Default is dot.||
+|| ||cmp||string||The name of a 'cmp' to be used in comparing the aligned images||
+|| ||mask||string||File containing a single mask image to apply before similarity comparison||
+|| ||colmasks||string||File containing one mask for each column (projection) image, to be used when refining row (particle) image alignments.||
+|| ||saveali||bool||Save alignment values, output is c x r x 4 instead of c x r x 1||
+|| ||prefilt||bool||Filter each reference (c) to match the power spectrum of each particle (r) before alignment and comparison||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+|| ||lowmem||bool||prevent the bulk reading of the reference images - this will save meclen,mory but potentially increase CPU time||
+|| ||exclude||string||The named file should contain a set of integers, each representing an image from the input file to exclude. Matrix elements will still be created, but will be zeroed.||
+|| ||shrink||float||Optionally shrink the input particles by an integer amount prior to computing similarity scores. This will speed the process up but may change classifications.||
+|| ||shrinks1||float||Shrinking performed for first stage classification, default=2||
+|| ||finalstage||bool||Assume that existing preliminary particle classifications are correct, and only recompute final local orientations||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+|| ||parallel||string||Parallelism string||
+||-f||force||bool||Deprecated. Value ignored||

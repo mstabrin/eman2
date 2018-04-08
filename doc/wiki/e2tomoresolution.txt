@@ -1,0 +1,4 @@
+|| ||averager||string||The averager used to generate the averages. Default is 'mean'.||
+|| ||sym||string||The recon symmetry||
+|| ||mask||string||The mask to apply before FSC calculation||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

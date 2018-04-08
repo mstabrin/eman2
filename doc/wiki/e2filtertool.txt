@@ -1,0 +1,6 @@
+||-B||boxsize||int||Box size in pixels||
+|| ||shrink||int||Shrink factor for full-frame view, default=0 (auto)||
+|| ||apix||float||Override the A/pix value stored in the file header||
+|| ||force2d||bool||Display 3-D data as 2-D slices||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

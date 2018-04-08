@@ -1,0 +1,4 @@
+|| ||normproj||bool||Normalize the projections resulting from 'project', such that the length of each vector is 1||
+|| ||normalize||string||Normalize the input images using the named processor. Specify None to disable.||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

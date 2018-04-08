@@ -1,0 +1,3 @@
+|| ||vstack||bool||Will output to a bdb virtual stack instead of copying the image data. Input images must have been BDB for this to work.||
+|| ||classes||string||Comma separated list of class-numbers to extract particles for||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

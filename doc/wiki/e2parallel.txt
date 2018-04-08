@@ -1,0 +1,12 @@
+|| ||server||string||Specifies host of the server to connect to||
+|| ||port||int||Specifies server port, default is automatic assignment||
+|| ||clientpath||string||Scratch directory for DC clients. Default is current directory.||
+|| ||clientid||int||Internal use only||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+|| ||taskin||string||Internal use only. Used when executing local threaded tasks.||
+|| ||taskout||string||Internal use only. Used when executing local threaded tasks.||
+|| ||scratchdir||string||Internal use only. Used by the MPI client||
+|| ||cache||bool||Internal use only. Used by the MPI client||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+|| ||cpus||int||Number of CPUs/Cores for the clients to use on the local machine||
+|| ||idleonly||bool||Will only use CPUs on the local machine when idle||

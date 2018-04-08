@@ -1,0 +1,20 @@
+|| ||simcmp||string||The name of a 'cmp' to be used in comparing the after optional alignment (default=optvariance:keepzero=1:matchfilt=1)||
+|| ||simalign||string||The name of an 'aligner' to use prior to comparing the images (default=no alignment)||
+|| ||simmask||string||A file containing a mask to apply prior to comparisons, to focus the sort on one particular region||
+|| ||reverse||bool||Sort in order of least mutual similarity||
+|| ||byptcl||bool||Sort in order of number of particles represented in each class-average. No alignment, shrinking, etc. is performed||
+|| ||bykurtosis||bool||Sort by image Kurtosis. No alignment, shrinking, etc. is performed||
+|| ||byheader||string||Uses the named header parameter to sort the images||
+|| ||iterative||bool||Iterative approach for achieving a good 'consensus alignment' among the set of particles||
+|| ||useali||bool||Save aligned particles to the output file, note that if used with shrink= this will store the reduced aligned particles||
+|| ||seqali||bool||Align each particle to the previous particle before saving with rotate_translate_tree. No flip in alignment. Aligns stack #2 instead if provided.||
+|| ||seqalicen||bool||Align each particle to the previous particle before saving, with a postalignment recentering. No flip in alignment. Aligns stack #2 instead if provided.||
+|| ||center||bool||After alignment, particles are centered via center of mass before comparison||
+|| ||nsort||int||Number of output particles to generate (mainly for reverse mode)||
+|| ||ninput||int||Number of input particles to read (first n in the file)||
+|| ||shrink||int||Reduce the particles for comparisons||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||-T||tilt||float||Angular spacing between tilts (fixed)||
+||-M||maxshift||int||Maximum translational error between images (pixels), default=64||
+|| ||mode||string||centering mode 'modeshift', 'censym' or 'region,<x>,<y>,<clipsize>,<alisize>||

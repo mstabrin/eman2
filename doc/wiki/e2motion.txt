@@ -1,0 +1,4 @@
+|| ||threads||int||Number of alignment threads to run in parallel on a single computer. This is the only parallelism supported by e2spt_align at present.||
+|| ||path||string||Path for the refinement, default=auto||
+|| ||iter||int||Iteration number within path. Default = start a new iteration||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

@@ -1,0 +1,20 @@
+|| ||align_frames||bool||Perform whole-frame alignment of the stack||
+|| ||save_aligned||bool||Save aligned stack||
+|| ||dark||string||Perform dark image correction using the specified image file||
+|| ||gain||string||Perform gain image correction using the specified image file||
+|| ||gaink2||string||Perform gain image correction. Gatan K2 gain images are the reciprocal of DDD gain images.||
+|| ||step||string||Specify <first>,<step>,[last]. Processes only a subset of the input frames. ie- 0,2 would process all even . Same step used for all input files. [last] is exclusive. Default= 1,1 (first image skipped)||
+|| ||frames||bool||Save the dark/gain corrected frames||
+|| ||normalize||bool||Apply edgenormalization to input images after dark/gain||
+|| ||movie||int||Display an n-frame averaged 'movie' of the stack, specify number of frames to average||
+|| ||simpleavg||bool||Will save a simple average of the dark/gain corrected frames (no alignment or weighting)||
+|| ||avgs||bool||Testing||
+|| ||noalign||bool||Regenerates unaligned particle averages into __orig||
+|| ||invert||bool||Invert the contrast of the particles in output files (default false)||
+|| ||filefilt||string||Only processes image stacks where the filename contains the specified string. Mostly used for debugging.||
+|| ||frac||string||Processes a fraction of the data, used automatically by --threads. <n>,<ntot>||
+|| ||step||string||Specify <first>,<last>,<step>. Processes only a subset of the input frames. For example, 0,6,2 would process only frames 0,2,4. 1,5,1 would process frames 1,2,3 and 4, skipping frame 0. First is inclusive, last exclusive||
+|| ||parallel||bool||parallelism argument. This program supports only thread:<n>||
+|| ||threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

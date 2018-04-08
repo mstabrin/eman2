@@ -1,0 +1,2 @@
+parser.add_argument('--img2process', type=str, default='', help="""Path to the stack 
+		that needs to be processed to match img2match. If you want to process multiple stacks

@@ -1,0 +1,21 @@
+|| ||evalptclqual||bool||Evaluates the particle-map agreement using the refine_xx folder name. This may be used to identify bad particles.||
+|| ||evalclassqual||bool||Evaluates the class-average-projection agreement using the refine_xx folder name.||
+|| ||evalclassdetail||bool||If specified with evalclassqual, will generate individual FRC curves for each class average in the even subset||
+|| ||includeprojs||bool||If specified with --evalptclqual, projections will be written to disk for easy comparison.||
+|| ||anisotropy||int||Specify a class-number (more particles better). Will use that class to evaluate magnification anisotropy in the data. ||
+|| ||iter||int||If a refine_XX folder is being used, this selects a particular refinement iteration. Otherwise the last complete iteration is used.||
+|| ||mask||string||Mask to be used to focus --evalptclqual. May be useful for separating heterogeneous data.||
+|| ||sym||string||Symmetry to be used in searching adjacent unit cells||
+|| ||timing||bool||Report on the time required for each step of each refinement run||
+|| ||timingbypath||bool||Report on the CPU time required in each refine_xx folder||
+|| ||resolution||bool||generates a resolution and convergence plot for a single refinement run.||
+|| ||resolution_all||bool||generates resolution plot with the last iteration of all refine_xx directories||
+|| ||resolution_vsref||string||Computes the FSC between the last iteration of each refine_xx directory and a specified reference map. Map must be aligned, but will be rescaled if necessary.||
+|| ||threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
+|| ||parmcmp||bool||Compare parameters used in different refinement rounds||
+|| ||parmpair||string||Specify iter,iter to compare the parameters used between 2 itertions.||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+|| ||iter||int||The total number of refinement iterations to perform||
+||-c||check||bool||Checks the contents of the current directory to verify that e2refine.py command will work - checks for the existence of the necessary starting files and checks their dimensions. Performs no work ||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+|| ||input||string||The name of the image containing the particle data||

@@ -1,0 +1,42 @@
+|| ||tiltseries||string||File in .ali, .mrc or .hdf format of the aligned tiltseries.||
+|| ||tiltangles||string||File in .tlt or .txt format containing the tilt angle of each tilt image in the tiltseries.||
+|| ||coords3d||string||File in .txt format containing the coordinates of particles determined from the reconstructed tomogram of the supplied tiltseries.||
+|| ||coords2d||string||File in .txt format containing the coordinates of particles determined from the aligned 0 tilt image in the supplied tiltseries.||
+|| ||zerotiltindx||int||The default is the image at the middle of the stack. Since the stack might have more images to the left or the right of the actual 0-tilt (or lowest tilt) image, you can explicitly provide the index of the lowest tilt image here. This is used for tracking images.||
+|| ||centerzerotilt||bool||Default=False. If specified, this option will center the zerotilt (or least tilted image) for each particle by using as a reference a sharp-circle of radius=box/2 or the value specified through --radius.||
+|| ||excludeedge||float||Integer number of pixels away from the edge of each image in the tilt series to not extract particles from. For example, if you specify 100, and the images are 4096x4096 pixels, any particle with its center lying between 0 and 200 or 3896 and 4096 will nto be extracted.||
+|| ||cshrink||int||Specifies the factor by which to multiply the coordinates in the coordinates file, so that they can be at the same scale as the tomogram. For example, provide 2 if the coordinates are on a 2K x 2K scale, but you want to extract the particles' subtiltseries from the UN-shrunk 4K x 4Ktiltseries.||
+|| ||tomogram||string||Path to raw, unbinned tomogram.||
+|| ||saveanglestacks||string||Default=None. Comma separated values of tilt angle indexes for which you want to save all particles as a stack. For example, if you want all particles from the 0 tilt image, you would provide the index for that image in the tilt series. In a tilt series with 61 images (1-61), the 0 tilt image is probably image number 31, so you would say --saveanglestakcs=31, and all the particles from the 0 tilt image would be put into a single HDF stack.||
+|| ||tiltaxislocation||int||By default, the tilt axis will be assumed to run through the middle of the tomogram in X, parallel to the Y axis. For example, if the dimensions of the tomogram are 4096x3000x500, the tilt axis will be assumed to be at X=2048. Provide a different integer number to change the location of the tilt axis (it will still be assumed to be parallel to Y though).||
+|| ||tiltaxisptcls||int||Specifies the distance from the tilt axis to consider particles for extraction. By default, all particles will be extracted. However, if you provide, for example, --tiltaxisptls=10, only particles with centers -10 to 10 pixels away from the tilt axis will be extracted.||
+|| ||ntiltslow||int||Default=0 (not used). If you supply an even number 1 will be added to it (for example, 4 will be turned into 5). If --ntiltslow>0, it specifies the number of tiltimages to keep in each subtiltseries, starting from the zero-tilt image and incorporating particles from right and left, one at a time. For example, in a tiltseries from -60 to 60 degress with a step size of 2 degrees, --ntiltslow=5 would keep tiltimages at angles 0,2,-2,-4,-4.||
+|| ||ntiltslowneg||int||Default=0 (not used). If --ntiltslowneg>0, it specifies the number of tiltimages to keep in each subtiltseries, starting from the zero-tilt image and progressively incorporating particles from negatively tilted images only. For example, in a tiltseries from -60 to 60 degress with a step size of 2 degrees, --ntiltslowneg=5 would keep tiltimages at angles 0,-2,-4,-6,-8.||
+|| ||ntiltslowpos||int||Default=0 (not used). If --ntiltslowpos>0, it specifies the number of tiltimages to keep in each subtiltseries, starting from the zero-tilt image and progressively incorporating particles from positively tilted images only. For example, in a tiltseries from -60 to 60 degress with a step size of 2 degrees, --ntiltslowpos=5 would keep tiltimages at angles 0,+2,+4,+6,+8.||
+|| ||ntiltshighneg||int||Default=0 (not used). If --ntiltshighneg>0, it specifies the number of tiltimages to keep in each subtiltseries, starting from the zero-tilt image and progressively incorporating particles from negatively tilted images only. For example, in a tiltseries from -60 to 60 degress with a step size of 2 degrees, --ntiltshighneg=5 would keep tiltimages at angles -60,-58,-56,-54,-52.||
+|| ||ntiltshighpos||int||Default=0 (not used). If --ntiltshighpos>0, it specifies the number of tiltimages to keep in each subtiltseries, starting from the zero-tilt image and progressively incorporating particles from positvely tilted images only. For example, in a tiltseries from -60 to 60 degress with a step size of 2 degrees, --ntiltshighpos=5 would keep tiltimages at angles  +60,+58,+56,+54,+52.||
+|| ||tomosides||string||Comma separated values for the tomogram dimensions. Alternatively, provide the path to the tomogram itself through --tomogram.||
+|| ||icethicknessauto||bool||Default=False. If supplied, the thickness of the tomogram in Z will be calculated by computing the difference between the largest and the smallest Z coordinate found in the --coords3d coordinates file.||
+|| ||zshift||string||By default, the tomogram will be shifted -half the ice thickness so that the middle of the tomogram is at z=0. Provide a positive or negative integer to shift the z position by a different amount||
+|| ||radius||int||Default=0 (not used). Radius of the particle in pixels. 2*radius will be added to the icethickness if --radius AND --icethicknessauto are supplied.||
+|| ||invertangles||bool||Default=False. If True, this will multiple all angles by -1, in case the directionality is messed up.||
+|| ||path||string||Directory to save the results.||
+|| ||boxsize||int||Size of the 2D "tiles" or images for each particle from each image in the tiltseries.||
+|| ||apix||float||If provided, this value will be used for apix instead of the one read from the header of --tiltseries||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+|| ||subset||int||Specify how many sub-tiltseries (or particles) from the coordinates file you want to extract; e.g, if you specify 10, the first 10 particles will be boxed.
+0 means "box them all" because it makes no sense to box none||
+|| ||tomogramthickness||int||Z dimension of the reconstructed tomogram.||
+|| ||everyother||int||Pick every other tilt. For example, --tilt=3 would pick every third tilt only.||
+|| ||subtractbackground||bool||(Experimental. Not working yet). This will extract a box from the tomogram much larger than the subtomogram. Projections will be generated. You MUST provide --tomogram for this.||
+|| ||normproc||string||WARNING: Not used anywhere yet. Default=None||
+|| ||yshort||bool||Not used anywhere yet. Default=False||
+|| ||shrink||int||Default=1 (no shrinking). Integer shrinking factor, part of preprocessing to facilitate particle tracking.||
+|| ||lowpass||string||Default=None. Requires --track. Low pass filtering processor (see e2help.py processors at the command line), part of preprocessing to facilitate particle tracking.||
+|| ||highpass||string||Default=None (no highpass). High pass filtering processor (see e2help.py processors at the command line), part of preprocessing to facilitate particle tracking.||
+|| ||mask||string||Default=None. Requires --track. Masking processor (see e2help.py processors at the command line), part of preprocessing to facilitate particle tracking.||
+|| ||threshold||string||Default=None (no threshold). Requires --track. Thresholding processor (see e2help.py processors at the command line), part of preprocessing to facilitate particle tracking.||
+|| ||preprocess||string||Default=None (no additional preprocessing). Requires --track. Any additional preprocessing processor (see e2help.py processors at the command line), part of preprocessing to facilitate particle tracking.||
+|| ||track||bool||Default=False (not used). If supplied, this option will track particles from one tilt image to another.||
+|| ||trackytoo||bool||Default=False (not used). In theory, particles should not drift in Y with tilt angle. Still, this option can turn Y tracking on.||

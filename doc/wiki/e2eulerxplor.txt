@@ -1,0 +1,3 @@
+||-e||eulerdata||string||File for Eulerdata, Ryan style, if none is given, data is read from the DB.||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

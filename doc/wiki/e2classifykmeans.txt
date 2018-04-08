@@ -1,0 +1,16 @@
+||-N||ncls||int||Number of classes to generate||
+||-A||average||bool||Average the particles within each class||
+|| ||sigma||bool||with --average, this will also produce standard deviation images for each average||
+|| ||onein||bool||Read 1-d input images from a single 2-D image (oneout in e2basis.py)||
+|| ||oneinali||bool||Read 1-d input images from a single 2-D image where the first 4 elements on each row are da,dx,dy,flip||
+|| ||normavg||bool||Normalize averages||
+|| ||clsmx||string||Standard EMAN2 output suitable for use with e2classaverage, etc.||
+||-C||clsfiles||bool||Write EMAN 1 style cls files with members of each class||
+||-L||listout||bool||Output the results to 'class.list||
+|| ||mininclass||int||Try to eliminate classes with fewer than specified members. Default=2||
+||-O||original||string||If the input stack was derived from another stack, you can provide the name of the original stack here||
+|| ||exclude||string||The named file should contain a set of integers, each representing an image from the input file to exclude.||
+|| ||minchange||int||Minimum number of particles that change group before deicding to terminate. Default = len(data)/(#cls*25)||
+|| ||fastseed||bool||Will seed the k-means loop quickly, but may produce lest consistent results.||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

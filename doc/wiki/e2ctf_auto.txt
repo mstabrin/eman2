@@ -1,0 +1,23 @@
+|| ||hires||bool||Perform CTF processing for projects targeting 2-6 A resolution||
+|| ||midres||bool||Perform CTF processing for projects targeting 7-15 A resolution||
+|| ||lores||bool||Perform CTF processing for projects targeting 15-30 A resolution||
+|| ||apix||float||Angstroms per pixel for all images||
+|| ||voltage||float||Microscope voltage in KV||
+|| ||cs||float||Microscope Cs (spherical aberation)||
+|| ||fromscratch||bool||Force refitting of CTF from scratch, ignoring any previous fits.||
+|| ||curdefocusfix||bool||Recomputes everything, but maintains the current particle-based defocus/astigmatism, including any manual adjustments||
+|| ||forceframe||bool||Uses defocus/astigmatism from frames. Does not significantly modify based on particles||
+|| ||astigmatism||bool||Includes astigmatism in automatic fitting (use e2rawdata first)||
+|| ||phaseplate||bool||Include phase/amplitude contrast in CTF estimation. For use with hole-less phase plates.||
+|| ||extrapad||bool||If particles were boxed more tightly than EMAN requires, this will add some extra padding||
+|| ||highdensity||bool||If particles are very close together, this will interfere with SSNR estimation. If set uses an alternative strategy, but may over-estimate SSNR.||
+|| ||invert||bool||Invert the contrast of the particles in output files (default false)||
+|| ||outputonly||bool||Skips all of the initial steps, and just generates the final output, assuming previous steps completed successfully||
+|| ||defocusmin||float||Minimum defocus in autofitting||
+|| ||defocusmax||float||Maximum defocus in autofitting||
+|| ||constbfactor||float||Set B-factor to fixed specified value, negative value autofits||
+|| ||ac||float||Amplitude contrast (percentage, default 10)||
+|| ||threads||int||Number of threads to run in parallel on the local computer||
+|| ||minqual||int||Files with a quality value lower than specified will be skipped||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

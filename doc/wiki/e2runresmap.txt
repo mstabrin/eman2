@@ -1,0 +1,9 @@
+|| ||use_mask||bool||Use the final EMAN2 mask?||
+|| ||res_step||bool||Step size (in Angstroms)||
+|| ||res_min||bool||Minimum resolution (in Angstroms)||
+|| ||res_max||bool||Maximum resolution (in Angstroms)||
+|| ||p_value||bool||Confidence level (Usually between .01 and .05) ||
+|| ||optional_mask||string||Location of the optional mask to be used||
+|| ||resmapexe||bool||Full path to the ResMap executable||
+|| ||verbose||int||Set the level of verbosity for the code||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

@@ -1,0 +1,2 @@
+|| ||yes||bool||This will skip the 'are you sure' question, and proceed with the conversion||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

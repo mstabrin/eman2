@@ -1,0 +1,9 @@
+|| ||export_whole_project||bool||This option will create an emx directory, where it will export the eman2 project into EMX format||
+|| ||import_box_coordinates||string||Import box coordinates and corresponding micrographs||
+|| ||import_emx||string||Import emx information and corresponding micrographs||
+|| ||import_2d_alignment||string||Import particles and corresponding transformation information||
+|| ||refinedefocus||bool||Will use EMAN2 CTF fitting to refine the defocus by SNR optimization (+-0.1 micron from the current values, no astigmatism adjustment)||
+|| ||refitdefocus||bool||Will use EMAN2 CTF fitting to refit the defocus values (+-0.1 micron, astigmatism unchanged)||
+|| ||writeimages||bool||If specified, micrographs and particles will be written to the emx directory.||
+||-v||verbose||int||verbose level [0-9], higher number means higher level of verboseness||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

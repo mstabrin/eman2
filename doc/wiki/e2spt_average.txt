@@ -1,0 +1,14 @@
+|| ||threads||int||Number of alignment threads to run in parallel on a single computer. This is the only parallelism supported by e2spt_align at present.||
+|| ||iter||int||Iteration number within path. Default = start a new iteration||
+|| ||simthr||float||Similarity is smaller for better 'quality' particles. Specify the highest value to include from e2spt_hist.py. Default -0.1||
+|| ||replace||string||Replace the input subtomograms used for alignment with the specified file (used when the aligned particles were masked or filtered)||
+|| ||wedgesigma||float||Threshold for identifying missing data in Fourier space in terms of standard deviation of each Fourier shell. Default 3.0||
+|| ||minalt||float||Minimum alignment altitude to include. Default=0||
+|| ||maxalt||float||Maximum alignment altitude to include. Deafult=180||
+|| ||maxtilt||float||Explicitly zeroes data beyond specified tilt angle. Assumes tilt axis exactly on Y and zero tilt in X-Y plane. Default 90 (no limit).||
+|| ||listfile||string||Specify a filename containing a list of integer particle numbers to include in the average, one per line, first is 0. Additional exclusions may apply.||
+|| ||symalimasked||string||This will translationally realign each asymmetric unit to the specified (usually masked) reference ||
+|| ||sym||string||Symmetry of the input. Must be aligned in standard orientation to work properly.||
+|| ||path||string||Path to a folder containing current results (default = highest spt_XX)||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

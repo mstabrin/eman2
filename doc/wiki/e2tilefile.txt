@@ -1,0 +1,7 @@
+|| ||build||string||Build a new tile file from the specified image||
+|| ||buildpspec||float||Builds 1D and 2D power spectra for the images when building, Value is A/pix for image.||
+|| ||tilesize||int||Build a new tile file from this image||
+|| ||dump||bool||Dump the tile dictionary from the file||
+|| ||display||string||Displays a specific tile (level,x,y))||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

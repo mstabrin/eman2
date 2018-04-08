@@ -1,0 +1,4 @@
+|| ||merge||string||Merge several files into a single output. All inputs must have the same number of rows. Row comments stripped.||
+|| ||sortcomment||bool||Sorts rows based on per-row comment (after #) before merging||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

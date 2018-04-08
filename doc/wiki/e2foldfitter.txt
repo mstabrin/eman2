@@ -1,0 +1,5 @@
+||-S||shrink||int||shrink factor for initial search, default=auto||
+||-N||num||int||Number of initial alternative positions, default=5||
+||-E||epsilon||float||final target accuracy, default=.01||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

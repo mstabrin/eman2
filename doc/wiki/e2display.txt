@@ -1,0 +1,11 @@
+|| ||classmx||string||<classmx>,<#> Show particles in one class from a classification matrix. Pass raw particle file as first argument to command.||
+|| ||classes||string||<rawptcl>,<classmx> Show particles associated class-averages||
+|| ||pdb||string||<pdb file> Show PDB structure.||
+|| ||singleimage||bool||Display a stack in a single image view||
+|| ||plot||bool||Data file(s) should be plotted rather than displayed in 2-D||
+|| ||hist||bool||Data file(s) should be plotted as a histogram rather than displayed in 2-D.||
+|| ||plot3d||bool||Data file(s) should be plotted rather than displayed in 3-D||
+|| ||fullrange||bool||A specialized flag that disables auto contrast for the display of particles stacks and 2D images only.||
+|| ||newwidget||bool||Use the new 3D widgetD. Highly recommended!!!!||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

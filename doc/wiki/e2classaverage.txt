@@ -1,0 +1,37 @@
+|| ||input||string||The name of the input particle stack||
+|| ||output||string||The name of the output class-average stack||
+|| ||oneclass||int||Create only a single class-average. Specify the number.||
+|| ||classmx||string||The name of the classification matrix specifying how particles in 'input' should be grouped. If omitted, all particles will be averaged.||
+|| ||ref||string||Reference image(s). Used as an initial alignment reference and for final orientation adjustment if present. Also used to assign euler angles to the generated classes. This is typically the projections that were used for classification.||
+|| ||storebad||bool||Even if a class-average fails, write to the output. Forces 1->1 numbering in output||
+|| ||decayedge||bool||Applies an edge decay to zero on the output class-averages. A very good idea if you plan on 3-D reconstruction.||
+|| ||resultmx||string||Specify an output image to store the result matrix. This contains 5 images where row is particle number. Rows in the first image contain the class numbers and in the second image consist of 1s or 0s indicating whether or not the particle was included in the class. The corresponding rows in the third, fourth and fifth images are the refined x, y and angle (respectively) used in the final alignment, these are updated and accurate, even if the particle was excluded from the class.||
+|| ||iter||int||The number of iterations to perform. Default is 1.||
+|| ||prefilt||bool||Filter each reference (c) to match the power spectrum of each particle (r) before alignment and comparison||
+|| ||align||string||This is the aligner used to align particles to the previous class average. Default is None.||
+|| ||aligncmp||string||The comparitor used for the --align aligner. Default is ccc.||
+|| ||ralign||string||This is the second stage aligner used to refine the first alignment. This is usually the 'refine' aligner.||
+|| ||raligncmp||string||The comparitor used by the second stage aligner.||
+|| ||averager||string||The type of averager used to produce the class average.||
+|| ||setsfref||bool||This will impose the 1-D structure factor of the reference on the class-average (recommended when a reference is available)||
+|| ||cmp||string||The comparitor used to generate quality scores for the purpose of particle exclusion in classes, strongly linked to the keep argument.||
+|| ||keep||float||The fraction of particles to keep in each class.||
+|| ||keepsig||bool||Causes the keep argument to be interpreted in standard deviations.||
+|| ||automask||bool||Applies a 2-D automask before centering. Can help with negative stain data, and other cases where centering is poor.||
+|| ||center||string||If the default centering algorithm (xform.center) doesn't work well, you can specify one of the others here (e2help.py processor center)||
+|| ||bootstrap||bool||Ignored. Present for historical reasons only.||
+|| ||normproc||string||Normalization processor applied to particles before alignment. Default is normalize.edgemean. If you want to turn this option off specify 'None'||
+|| ||usefilt||bool||Specify a particle data file that has been low pass or Wiener filtered. Has a one to one correspondence with your particle data. If specified will be used to align particles to the running class average, however the original particle will be used to generate the actual final class average||
+|| ||idxcache||bool||Ignored. Present for historical reasons.||
+|| ||dbpath||bool||Ignored. Present for historical reasons.||
+|| ||resample||bool||If set, will perform bootstrap resampling on the particle data for use in making variance maps.||
+|| ||odd||bool||Used by EMAN2 when running eotests. Includes only odd numbered particles in class averages.||
+|| ||even||bool||Used by EMAN2 when running eotests. Includes only even numbered particles in class averages.||
+|| ||parallel||bool||parallelism argument||
+||-f||force||bool||Force overwrite the output file if it exists.||
+|| ||saveali||bool||Writes aligned particle images to aligned.hdf. Normally resultmx produces more useful informtation. This can be used for debugging.||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+||-d||debug||bool||Print debugging infromation while the program is running. Default is off.||
+|| ||nofilecheck||bool||Turns file checking off in the check functionality - used by e2refine.py.||
+||-c||check||bool||Performs a command line argument check only.||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

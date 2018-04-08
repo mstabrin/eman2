@@ -1,0 +1,5 @@
+||-S||box||int||size in pixels of the power spectra||
+||-N||norm||bool||Normalize the image before analysis||
+|| ||nopad||bool||No padding between boxes||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

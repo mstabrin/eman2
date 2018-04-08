@@ -1,0 +1,6 @@
+|| ||apix||float||The angstrom per pixel of the input particles.||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+|| ||fixeddefocus||bool||Defocus and astigmatism are used unchanged from STAR file||
+|| ||refinedefocus||bool||Will refit defocus to +-0.1 micron then further optimize using SSNR||
+|| ||refitdefocus||bool||Will use EMAN2 CTF fitting to refit the defocus values within +-0.1 micron, astigmatism unchanged||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

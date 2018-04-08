@@ -1,0 +1,20 @@
+|| ||shrink||int||Fractional amount to shrink the maps by, default=1||
+|| ||preprocess||string||preprocess maps before alignment||
+|| ||maskrad||int||Mask the recon using a spherical Gaussian mask (-1 = None), default=-1.0||
+|| ||maskfoff||float||Fall offf of the Gaussian mask, default=0.1||
+|| ||nsolns||int||number of peaks in the global search to refine, default=1.0||
+|| ||famps||float||fraction of Fourier amps to exclude from recons. 0 means that this option is not used, default=0.0||
+|| ||prec||float||Precison to determine what solutions are the 'same' used only statistics output, default=0.01||
+|| ||cuda||bool||Use CUDA for the alignment step.||
+|| ||delta||float||step size for the orrientation generator, default=30.0||
+|| ||dphi||float||step size for the inplane angle phi, default=30.0||
+|| ||phi0||float||lower bound for the inplane angle phi, default=0.0||
+|| ||phi1||float||Upper bound for the inplane angle phi, default=359.0||
+|| ||search||int||maximum extent of the translational search, default=10||
+|| ||sym||string||model symmetry (using sym, if present, speeds thing up a lot), default='c1'||
+|| ||cmp||string||comparitor and params to use for the 3D refiner, default='ccc'||
+|| ||dotrans||int||Do translational search, default=1||
+|| ||ralign||string||aligner to use for refine alignement, default='refine_3d:spin_coeff=1'||
+|| ||rcmp||string||comparitor and params to use for the 3D refiner, default='ccc'||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||Level of verboseness, default=0||

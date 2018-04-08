@@ -1,0 +1,16 @@
+|| ||mode||string||Mode to run FreAlign in: Mode 1 - Refinement and Reconstruction, Mode 3 - Simple Search and Refinement||
+|| ||fbeaut||bool||(T/F)Apply extra real space symmetry averaging and masking to beautify final map prior to output||
+|| ||ffilt||bool||(T/F)Apply Single Particle Wiener filter to final reconstruction||
+|| ||fstat||bool||(T/F)Calculate additional statistics in resolution table at end (QFACT, SSNR, CC, etc.). T Uses more than 50 percent more memory.||
+|| ||reslow||float||Resolution of the data included in the alignment. This is the low resolution value. ex:200||
+|| ||reshigh||float||Resolution of the data included in the alignment. This is the high resolution value. ex:25||
+|| ||rrec||float||Resolution of reconstruction in angstroms. It is the resolution to which the reconstruction is calculated.||
+|| ||rclas||float||High resloution limit used for classification||
+|| ||thresh||float||Phase Residual cutoff. Particles with a higher phase residual will not be included in the refinement ||
+|| ||mass||float||The ~mass of the particle in kilodaltons||
+|| ||interp||string||Type of interpolation: 0 - Nearest Neighbor, 1 - Trilinear Interpolation (More Time-Consuming)||
+|| ||randomizemodel||bool||Optionally randomize the phases of the initial model to this resolution (in Angstroms)||
+|| ||imem||string||Memory Usage: 0 - Least Memory, 3 - Most memory||
+|| ||verbose||int||Level of verbose; how much information do you want the program to output?(0-9)||
+|| ||mass||float||The ~mass of the particle in kilodaltons, used to run normalize.bymass. Due to resolution effects, not always the true mass.||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

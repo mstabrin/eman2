@@ -1,0 +1,11 @@
+|| ||addfilename||bool||Adds the original filename of a file or stack to the header of each particle. This only works for .hdf files.||
+|| ||input||string||File or stack for which to fix header parameters. To indicate multiple files, do not use --input. Simply provide the program name followed by the string common to all files to process and *, followed by all parameters of interest. For example, to process all .mrc files in a directory, you would run e2fixheader.py *.mrc <parameters>.||
+|| ||output||string||File to write the fixed stack to. If not provided, the stack in --input will be overwritten.||
+|| ||params||string||Comma separated pairs of parameter:value. The parameter will be changed to the value specified.||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+|| ||refheader||string||If supplied, the header of this image will be copied to the header of all images in --input.||
+|| ||stem||string||Some parameters have common stems. For example, 'origin_x', 'origin_y', 'origin"x'. Supply the stem and all parameters containing it will be modified.||
+|| ||stemval||string||New value for all parameters containing --stem.||
+|| ||valtype||string||Type of the value to enforce. It can be: str, float, int, list, or transform.||
+|| ||addparam||bool||If you want to add a new parameter to the header opposed to overwriting an existing one, turn this option on.||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness.||

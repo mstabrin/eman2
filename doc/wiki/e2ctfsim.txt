@@ -1,0 +1,7 @@
+|| ||apix||float||Angstroms per pixel for all images||
+|| ||voltage||float||Microscope voltage in KV||
+|| ||cs||float||Microscope Cs (spherical aberation)||
+|| ||ac||float||Amplitude contrast (percentage, default=10)||
+|| ||samples||int||Number of samples in the plotted curve||
+|| ||apply||string||A 2-D image file which the CTF will be applied to in real-time||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

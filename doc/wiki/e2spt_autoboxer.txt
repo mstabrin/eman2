@@ -1,0 +1,69 @@
+parser.add_argument("--template", type=str, default=None, help="""Default=None. Path to file containing the template 
+		to search for particles throughout the tomogram. Alternatively, provide --template=sphere
+parser.add_argument("--dilutionfactor", type=int, default=4,help="""Default=4. Determines how many particles will be pre-picked as putative particles. For example, if
+																if the tomogram is broken up into subregions of volume V to look for particles in each
+parser.add_argument("--cshrink", type=int, default=0, help="""If the tomogram was PREVIOUSLY shrunk, --cshrink is the factor by which the tomogram supplied through --tomogram was shrunk with respect to 
+														the raw (unshrunk) tomogram. This CAN work in conjuction with --shrinktomo, so be careful. If both parameters are specified,
+parser.add_argument("--gridoffset", type=str, help="""x,y amount of pixels to translate the cylindrical mask if the carbon hole in your tomogram is off center. 
+								The left bottom corner would be 0,0. Supply this parameter only if also supplying
+#parser.add_option("--outmode",type=str, default='', help="""Default=All EMAN2 programs 
+	#	write images with 4-byte floating point values when possible by default.
+|| ||parallel||string||Default=Auto. This program will detect the number of CPU cores on your machine and parallelize some of the tasks using all of them. To disable, provide --parallel=None||
+|| ||pad||bool||Provide this if the particles in the --particlestack used to create a template, or the template supplied 
+															through --template are in a tight box. The size||
+|| ||rotsearch||bool||At each translation position, vary euler angles as well when searching for particles.||
+|| ||tiltangles||string||File in .tlt or .txt format containing the tilt angle of each tilt image in the tiltseries.||
+|| ||tiltaxis||string||Axis to produce projections about. Default is 'y'; the only other valid option is 'x'.||
+|| ||tiltrange||float||Maximum angular value at which the highest tilt picture will be simulated. Projections will be simulated from -tiltrange to +titlrange. For example, if simulating a tilt series collected from -60 to 60 degrees, enter a --tiltrange value of 60. Note that this parameter will determine the size of the missing wedge.||
+|| ||nslices||int||This will determine the tilt step between slices, depending on tiltrange. For example, to simulate a 2 deg tilt step supply --nslices=61 --tiltrange=60. Recall that --tiltrange goes from - to + the supplied value, and that there is a central slice or projection at 0 deg, for symmetrical tilt series.||
+|| ||pruneccc||bool||Pruned based on ccc mean and sigma.||
+|| ||nbins||int||Used for histogram plot. Default=0 (not used). Number of bins for histogram. If not provided, the optimal bin number will be automatically calculated based on bin-width, computed using Scott's normal reference rule, width = (3.5*std)/cuberoot(n), where 'std' is the standard deviation of the distribution of scores and n is the number of values considered. Then, bins will be nbins = (max(scores) - min(scores)) / width.||
+|| ||inverttomo||bool||Multiply --tomogram subsections by -1 to invert the contrast BEFORE looking for particles.||
+|| ||inverttemplate||bool||Multiply --template subsections by -1 to invert the contrast BEFORE looking for particles.||
+|| ||simtemplatesn||int||Number of orientations to simulate templates (that is, --template will be put into --simtemplatesn different orientations, and a 'subtomogram' will be simulated for each through projections by calling e2spt_simulation.py using the information in --angles or --tiltrange and --nslices.||
+|| ||savepreprocessed||bool||Default=False. Will save the intermediate steps of preprocessing of the tomogram.||
+|| ||outmode||string||All EMAN2 programs write images with 4-byte floating point values when possible by default. This allows specifying an alternate format when supported (int8, int16, int32, uint8, uint16, uint32). Values are rescaled to fill MIN-MAX range.||
+|| ||normproc||string||Default=None. Normalization processor (e2help.py processors, applied through e2proc3d.py) applied to the tomogram before looking for particles.||
+|| ||clip||string||IMOD required for this option. Default=None. Provide x,y,z sizes to clip about the center of the tomogram. For example, specify --clip=2048,2048,250 to clip a tomogram originally sized 4096x4096x500 in half, around the center of the tomogram. To clip only in x and y but keep the full thickness in z, you would say --clip=2048,2048. If one variable is omitted, the default size from the tomogram will be used for that axis.||
+|| ||threshold||string||Default=None. Thresholding processor (e2help.py processors, applied through e2proc3d.py) applied to the tomogram before looking for particles.||
+|| ||automask||bool||Default=False. Will automask the tomogram 2 sigmas above mean.||
+|| ||prunerepeated||bool||Prune potential particles that are too close to eachother and thus are likely repeated hits.||
+|| ||pruneprj||bool||Generate a projection along the z-axis of potential particles, and compare to a projection of the template.||
+|| ||keep||float||Default=0.0 (not used). Percentage of particles, expressed as a fraction, to keep right before writing the coordinates file and output stack.||
+|| ||nkeep||int||Default=0 (not used). Total number of particles to keep right before writing the coordinates file and output stack. Supersedes --keep||
+|| ||tomogram||string||Name of the tomogram.||
+|| ||goldstack||string||Name of the stack containing a few gold particles picked from the tomogram.||
+|| ||ptclstack||string||Name of the stack containing a few sample particles picked from the tomogram, used to create an initial template.
+															with which to search for particles throughout the tomogram.||
+|| ||ptclstack||string||Name of the stack containing a few sample particles picked from the tomogram, used to create an initial template.
+															with which to search for particles throughout the tomogram.||
+|| ||backgroundstack||string||Name of the stack containing a few boxes picked from regions of the tomogram where there where no particles, 
+															no gold, and no carbon.||
+|| ||carbonstack||string||Name of the stack containing a few boxes picked from the grid hole (or carbon).||
+|| ||output||string||Name to output the auto-boxed particles.||
+|| ||boxsize||int||Size of the box to put the extracted particles in, and amount by which the subregions will overlap, when searching for particles in the tomogram.||
+|| ||shrinktomo||int||Requires IMOD. Default=0 (no shrinking). Integer factor by which the tomogram will be shrunk.||
+|| ||subsettrans||int||Default=0 (not used). Subset of particles to keep/consider after translational alignment.||
+|| ||subsettrans||int||Default=0 (not used). Subset of particles to keep/consider after translational alignment.||
+|| ||apix||float||The actual apix of the tomogram if for some reason it is wrong on the header.||
+|| ||ptclradius||int||The estimated radius of the particle in pixels.||
+|| ||ptclradius||int||The estimated radius of the particle in pixels.||
+|| ||boxsize||int||Boxsize to resize the template, either provided through --template or computed from --particlestack||
+|| ||preprocess||string||Any processor (as in e2proc3d.py) to be applied to the tomogram||
+|| ||lowpass||string||A lowpass filtering processor (as in e2proc3d.py) be applied to the tomogram||
+|| ||highpass||string||A highpass filtering processor (as in e2proc3d.py) to be applied to the tomogram.||
+|| ||mask||bool||If provided, a cylindrical mask will be created to mask out the carbon and keep only the grid hole.
+															--gridradius and --gridoffest must be specified.||
+|| ||gridradius||int||Radius of the grid in pixels. Supply this parameter only if also supplying --mask.||
+|| ||gridradius||int||Radius of the grid in pixels. Supply this parameter only if also supplying --mask.||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+|| ||path||string||Directory to store results in. The default is a numbered series of directories containing the prefix 'sptautobox'; 
+															for example, sptautobox_01 will be the directory by default if 'sptautobox' already exists.||
+|| ||path||string||Directory to store results in. The default is a numbered series of directories containing the prefix 'sptautobox'; 
+															for example, sptautobox_01 will be the directory by default if 'sptautobox' already exists.||
+|| ||yshort||bool||This means you have provided a --tomogram in which 'y' is the short axis.||
+|| ||test||bool||N.A.||
+|| ||templatethreshold||float||A binary threshold will be applied to the template which will zero out all the densities below the supplied value, 
+												and will make the densities above the supplied value equal to one.||
+|| ||goldthreshtomo||bool||Zero out all densities above mean of max and min.||

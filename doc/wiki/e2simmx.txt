@@ -1,0 +1,24 @@
+||-A||apix||float||A/voxel||
+||-B||box||string||Box size in pixels, <xyz> or <x>,<y>,<z>||
+|| ||het||bool||Include HET atoms in the map||
+|| ||align||string||The name of an 'aligner' to use prior to comparing the images||
+|| ||aligncmp||string||Name of the aligner along with its construction arguments||
+|| ||ralign||string||The name and parameters of the second stage aligner which refines the results of the first alignment||
+|| ||raligncmp||string||The name and parameters of the comparitor used by the second stage aligner. Default is dot.||
+|| ||cmp||string||The name of a 'cmp' to be used in comparing the aligned images||
+|| ||prefilt||bool||Filter each reference (c) to match the power spectrum of each particle (r) before alignment and comparison||
+|| ||mask||string||File containing a single mask image to apply after alignment, but before similarity comparison||
+|| ||colmasks||string||File containing one mask for each column (projection) image, to be used when refining row (particle) image alignments.||
+|| ||range||string||Range of images to process (c0,r0,c1,r1) c0,r0 inclusive c1,r1 exclusive||
+|| ||saveali||bool||Save alignment values, output is 5, c x r images instead of 1. Images are (score,dx,dy,da,flip). ||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+|| ||lowmem||bool||prevent the bulk reading of the reference images - this will save memory but potentially increase CPU time||
+|| ||init||bool||Initialize the output matrix file before performing 'range' calculations||
+|| ||fillzero||bool||Checks the existing output file, and fills only matrix elements which are exactly zero.||
+||-f||force||bool||Force overwrite the output file if it exists||
+|| ||exclude||string||The named file should contain a set of integers, each representing an image from the input file to exclude. Matrix elements will still be created, but will be zeroed.||
+|| ||shrink||float||Optionally shrink the input particles by an integer amount prior to computing similarity scores. This will speed the process up.||
+|| ||nofilecheck||bool||Turns file checking off in the check functionality - used by e2refine.py.||
+||-c||check||bool||Performs a command line argument check only.||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+|| ||parallel||string||Parallelism string||

@@ -1,0 +1,58 @@
+|| ||model||string||The map to use as a starting point for refinement||
+|| ||nmodels||int||The total number of different maps to generate. Specify with --model, but not with --models||
+|| ||mapfragment||bool||Generate initial maps by randomly removing portions of the input map rather than by phase randomizing.||
+|| ||randclassify||bool||Generate initial maps by randomly assigning the particles in each class to each model after the first iteration.||
+|| ||randphase||bool||Generate initial maps by randomizing the phase of the given model.||
+|| ||treeclassify||bool||Classify using a binary tree. This will call e2classifytree.py for particle classification, replacing e2simmx2stage.py and e2classify.py. This function is still experimental.||
+|| ||models||string||The map to use as a starting point for refinement||
+|| ||input||string||The name of the image file containing the particle data||
+|| ||targetres||float||Target resolution in A of the final single-model refinements.||
+|| ||speed||int||(1-7) Balances speed vs precision. Larger values sacrifice a bit of potential resolution for significant speed increases. Set to 1 when pushing resolution. default=5||
+|| ||sym||bool||Specify symmetry - choices are: c<n>, d<n>, tet, oct, icos. You can specify either a single value or one for each model.||
+|| ||breaksym||bool||If selected, reconstruction will be asymmetric with sym= specifying a known pseudosymmetry, not an imposed symmetry.||
+|| ||iter||int||The total number of refinement iterations to perform. Default=auto||
+|| ||mass||string||The ~mass of the particles in kilodaltons. May specify one number or one number for each map. Due to resolution effects, not always the true mass.||
+|| ||apix||float||The angstrom per pixel of the input particles. This argument is required if you specify the --mass argument. If unspecified (set to 0), the convergence plot is generated using either the project apix, or if not an apix of 1.||
+|| ||sep||int||The number of classes each particle can contribute towards (normally 1). Increasing will improve SNR, but produce rotational blurring.||
+|| ||classkeep||float||The fraction of particles to keep in each class, based on the similarity score. (default=0.9 -> 90%%)||
+|| ||classautomask||bool||This will apply an automask to the class-average during iterative alignment for better accuracy. The final class averages are unmasked.||
+|| ||prethreshold||bool||Applies a threshold to the volume just before generating projections. A sort of aggressive solvent flattening for the reference.||
+|| ||m3dkeep||float||The fraction of slices to keep in e2make3d.py. Default=0.8 -> 80%%||
+|| ||nosingle||bool||Normally the multi-model refinement will be followed by N single model refinements automatically. If this is set the job will finish after making the split data sets.||
+|| ||m3dpostprocess||string||Default=none. An arbitrary post-processor to run after all other automatic processing. Maps are autofiltered, so a low-pass filter is not required here.||
+||-P||parallel||string||Run in parallel, specify type:<option>=<value>:<option>=<value>. See http://blake.bcm.edu/emanwiki/EMAN2/Parallel||
+|| ||threads||int||Number of threads to run in parallel on a single computer when multi-computer parallelism isn't useful||
+|| ||path||string||The name of a directory where results are placed. Default = create new multi_xx||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+|| ||usefilt||string||Specify a particle data file that has been low pass or Wiener filtered. Has a one to one correspondence with your particle data. If specified will be used in projection matching routines, and elsewhere.||
+|| ||automask3d||string||Default=auto. Specify as a processor, eg - mask.auto3d:threshold=1.1:radius=30:nshells=5:nshellsgauss=5.||
+|| ||projector||bool||Default=standard. Projector to use with parameters.||
+|| ||orientgen||string||Default=auto. Orientation generator for projections, eg - eman:delta=5.0:inc_mirror=0:perturb=1||
+|| ||simalign||string||Default=auto. The name of an 'aligner' to use prior to comparing the images||
+|| ||simaligncmp||string||Default=auto. Name of the aligner along with its construction arguments||
+|| ||simralign||string||Default=auto. The name and parameters of the second stage aligner which refines the results of the first alignment||
+|| ||simraligncmp||string||Default=auto. The name and parameters of the comparitor used by the second stage aligner.||
+|| ||simcmp||string||Default=auto. The name of a 'cmp' to be used in comparing the aligned images||
+|| ||simmask||string||Default=auto. A file containing a single 0/1 image to apply as a mask before comparison but after alignment||
+|| ||shrink||int||Default=auto. Optionally shrink the input particles by an integer amount prior to computing similarity scores. For speed purposes. 0 -> no shrinking||
+|| ||shrinks1||int||The level of shrinking to apply in the first stage of the two-stage classification process. Default=0 (autoselect)||
+|| ||prefilt||bool||Default=auto. Filter each reference (c) to match the power spectrum of each particle (r) before alignment and comparison. Applies both to classification and class-averaging.||
+|| ||cmpdiff||bool||Used only in binary tree classification. Use a mask that focus on the difference of two children.||
+|| ||treeincomplete||int||Used only in binary tree classification. Incompleteness of the tree on each level.Default=0||
+|| ||classkeepsig||bool||Change the keep ('--keep') criterion from fraction-based to sigma-based.||
+|| ||classiter||int||Default=auto. The number of iterations to perform.||
+|| ||classalign||string||Default=auto. If doing more than one iteration, this is the name and parameters of the 'aligner' used to align particles to the previous class average.||
+|| ||classaligncmp||string||Default=auto. This is the name and parameters of the comparitor used by the fist stage aligner.||
+|| ||classralign||string||Default=auto. The second stage aligner which refines the results of the first alignment in class averaging.||
+|| ||classraligncmp||string||Default=auto. The comparitor used by the second stage aligner in class averageing.||
+|| ||classaverager||string||Default=auto. The averager used to generate the class averages. Default is 'mean'.||
+|| ||classcmp||string||Default=auto. The name and parameters of the comparitor used to generate similarity scores, when class averaging.||
+|| ||classnormproc||string||Default=auto. Normalization applied during class averaging||
+|| ||classrefsf||bool||Default=True. Use the setsfref option in class averaging to produce better filtered averages.||
+|| ||pad||int||Default=auto. To reduce Fourier artifacts, the model is typically padded by ~25 percent - only applies to Fourier reconstruction||
+|| ||recon||bool||Default=auto. Reconstructor to use see e2help.py reconstructors -v||
+|| ||m3dkeepsig||bool||Default=auto. The standard deviation alternative to the --m3dkeep argument||
+|| ||m3dsetsf||string||Default=auto. Name of a file containing a structure factor to apply after refinement||
+|| ||m3dpreprocess||string||Default=auto. Normalization processor applied before 3D reconstruction||
+|| ||lowmem||bool||Default=auto. Make limited use of memory when possible - useful on lower end machines||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

@@ -1,0 +1,11 @@
+|| ||path||string||Path to a folder containing current results (default = highest spt_XX)||
+|| ||iter||int||Iteration number within path. Default = auto||
+|| ||bins||int||Number of bins to use in the histogram||
+|| ||gui||bool||If set will open an interactive plot with the results||
+|| ||mode||string||Which variable to histogram, score, coverage, alt, az, phi, dx, dy, dz. default=score||
+|| ||extract||bool||If set, will convert the .json file to a .txt file suitable for plotting. No histogramming is involved, this is a per-particle conversion||
+|| ||threads||int||Number of alignment threads to run in parallel on a single computer. This is the only parallelism supported by e2spt_align at present.||
+|| ||goldstandard||float||If specified, will phase randomize the even and odd references past the specified resolution (in A, not 1/A)||
+|| ||saveali||bool||Save a stack file (aliptcls.hdf) containing the aligned subtomograms.||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

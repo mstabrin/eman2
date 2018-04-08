@@ -1,0 +1,14 @@
+|| ||first||int||First image to include in the plot.||
+|| ||last||int||Last image to include in the plot.||
+|| ||sf||string||The name of a file containing a structure factor curve.||
+|| ||noisemin||float||Minimum resolution to examine for determining the noise parameters.||
+|| ||noisemax||float||Maximum resolution to examine for determining the noise parameters.||
+|| ||ac||float||Set amplitude contrast (percentage, default=10).||
+|| ||bf||float||Set constant B-factor (as defined in EMAN1) for all images.||
+|| ||df||bool||Calculate defocus from entire CCD frame.||
+|| ||dfmin||float||Set minimum possible defocus value (positive is underfocus).||
+|| ||dfmax||float||Set maximum possible defocus value (positive is underfocus).||
+|| ||dfval||float||Set constant defocus for all images (positive is underfocus).||
+|| ||ctfcoverage||bool||Create a map showing the integrated SNR for the combined data.||
+|| ||debug||bool||Show debugging messages.||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

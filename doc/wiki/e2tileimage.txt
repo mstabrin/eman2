@@ -1,0 +1,8 @@
+|| ||boxsize||int||Box size for each tile in pixels. Default is 512.||
+|| ||xmin||int||Start tiling on this x-pixel. If -1, will start one boxsize inward.||
+|| ||xmax||int||Generate tiles in x-direction until this many pixels. If -1, will tile the entire image.||
+|| ||xstep||int||Step length in x-direction. If less than --boxsize, tiles will overlap. Default is 256.||
+|| ||ymin||int||Start tiling on this y-pixel. If -1, will start one boxsize inward.||
+|| ||ymax||int||Generate tiles in y-direction until this many pixels. If -1, will tile the entire image.||
+|| ||ystep||int||Step length in y-direction. If less than --boxsize, tiles will overlap. Default is 256.||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

@@ -1,0 +1,2 @@
+parser.add_argument("--path",type=str,default='',help="""Directory to store results in. 
+		The default is a numbered series of directories containing the prefix 'tomopreproc';

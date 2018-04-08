@@ -1,0 +1,8 @@
+|| ||nkeep||int||Number of particles to keep||
+|| ||sym||string||Symmetry to search for||
+|| ||mirror||string||search for particles with mirror symmetry and write them out to outputfile.||
+|| ||rtp||bool||make a rotational footprint||
+|| ||mask||int||Mask radius||
+|| ||imask||int||Inside mask radius||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

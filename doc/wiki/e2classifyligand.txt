@@ -1,0 +1,18 @@
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+|| ||ref1||string||Rather than using a mask, ref1/ref2 permit using a pair of volumes for classification.||
+|| ||ref2||string||Rather than using a mask, ref1/ref2 permit using a pair of volumes for classification.||
+|| ||pairmask||bool||Will use the ref1/ref2 pair to generate a mask which is applied after subtracting ref1 from the particle||
+|| ||alistacks||float||If sum of cmp results is less than the spefified value, will save the aligned particle to a per-class stack||
+|| ||cmp||string||The name of a 'cmp' to be used when pairmask is not specified||
+|| ||process||string||A processor to apply to the particle data before classifying||
+|| ||plotout||string||Name of a text file for the classification plot.||
+|| ||badgroup||bool||Split the data into 4 groups rather than 2. The extra two groups contain particles more likely to be bad.||
+|| ||badqualsig||float||When identifying 'bad' particles, particles with similarities >mean+sigma*badqualsig will be considered bad. Default 0.5||
+|| ||badsepsig||float||When identifying 'bad' particles, if s1/s2 are the similarities to reference 1/2, then those where |s1-s2| < sigma*badsepsig will be excluded. Default 0.25 ||
+|| ||postfix||string||This string will be appended to each set name to help differentiate the results from multiple runs||
+|| ||splitparticles||bool||Specify this to write new files containing the classified particles||
+|| ||tstcls||int||Will generate tst.hdf containing test images for a specified class-number||
+|| ||debug||bool||Enable debugging mode with verbose output and image display. Not suitable for real runs.||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-N||ncls||int||Number of classes to generate||
+||-A||average||bool||Average the particles within each class||

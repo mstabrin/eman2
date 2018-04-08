@@ -1,0 +1,22 @@
+|| ||output||string||Output file||
+|| ||mapfile||string||Density map file||
+|| ||start||int||Start ATOM||
+|| ||end||int||End ATOM||
+|| ||average||float||Average Ca-Ca length||
+|| ||mapweight||float||Weight of density, to balance between geometry and density score||
+|| ||mapthresh||float||Density threshold, bonds on density lower than threshold is not prefered||
+|| ||dmin||float||Mininum Ca-Ca length||
+|| ||dmax||float||Maximum Ca-Ca length||
+|| ||noise||float||Add Gaussian Noise||
+|| ||solver||string||Run TSP Solver: concorde or lkh||
+|| ||atomtype||string||Load Atom Type. Default: 'CA'. Options: 'C' or 'all'||
+|| ||chain||string||Load Chain. Default: load all chains||
+|| ||edgefile||string||Load fixed fragment file; one sequence of forced connections per line, separated by space.||
+||--edge||||bool||Forced edge: e.g. -e1,3||
+|| ||fixed||string||Same as --edgefile.||
+|| ||iterations||int||Iterations||
+|| ||json||int||If writing output pdb, also write JSON metadata. Default: 1. Options: 0, 1||
+|| ||overwrite||bool||Overwrite files without prompting||
+||-v||verbose||int||verbose level [0-9], higher number means higher level of verboseness||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+|| ||subunit||int||Number of subunits.||

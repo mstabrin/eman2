@@ -1,0 +1,5 @@
+|| ||refinedefocus||bool||Will refit defocus to +-0.1 micron then further optimize using SSNR||
+|| ||refitdefocus||bool||Will use EMAN2 CTF fitting to refit the defocus values within +-0.1 micron, astigmatism unchanged||
+|| ||fixeddefocus||bool||Will use defocus values from original HDF file.||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

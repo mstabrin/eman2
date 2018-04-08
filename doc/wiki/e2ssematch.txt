@@ -1,0 +1,10 @@
+|| ||gui||bool||Start the GUI for interactive boxing||
+||-A||auto||string||Autobox using specified method: circle, ref, grid||
+||-T||threshold||float||Threshold for keeping particles. 0-4, 0 excludes all, 4 keeps all.||
+||-M||maxbad||int||Maximumum number of unassigned helices||
+||-H||minhelix||int||Minimum residues in a helix||
+||-E||maxpairerr||float||Maximum error match between pairs of helices, default=50||
+||-K||skelpath||string||Optional (recommended) output from the e2skelpath.py program||
+|| ||lengthmatchmatrix||string||Writes an image containing an exhaustive comparison of predicted vs SSE helix lengths as a matrix||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

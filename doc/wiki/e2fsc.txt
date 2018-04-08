@@ -1,0 +1,17 @@
+|| ||input||string||Similarity matrix to analyze||
+|| ||refine||string||Automatically get parameters for a refine directory||
+|| ||output||string||Output .143 resolution volume||
+|| ||outfilt||string||Output locally filtered average volume||
+|| ||outfilte||string||Apply the local filter to the even map as well and write to specified file||
+|| ||outfilto||string||Apply the local filter to the odd map as well and write to specified file||
+|| ||localsize||int||Size in pixels of the local region to compute the resolution in||
+|| ||overlap||int||Amount of oversampling to use in local resolution windows. Larger value -> larger output map||
+|| ||apix||float||A/pix to use for the comparison (default uses Vol1 apix)||
+|| ||mask||string||Mask to apply to both input images before calculation||
+|| ||refs||string||Reference images from the similarity matrix (projections)||
+|| ||inimgs||string||Input image file||
+|| ||outimgs||string||Output image file||
+|| ||filtimgs||string||A python expression using Z[n], Q[n] and N[n] for selecting specific particles to output. n is the 0 indexed number of the input file||
+|| ||threads||int||Number of threads to run in parallel on the local computer||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbosity [0-9]. Larger values produce more output.||

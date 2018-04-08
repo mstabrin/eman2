@@ -1,0 +1,15 @@
+||-A||apix||float||A/voxel||
+||-R||res||float||Resolution in A, equivalent to Gaussian lowpass with 1/e width at 1/res||
+||-B||box||string||Box size in pixels, <xyz> or <x>,<y>,<z>||
+|| ||het||bool||Include HET atoms in the map||
+|| ||center||bool||Move the atomic center to the center of the box||
+|| ||chains||string||String list of chain identifiers to include, eg 'ABEFG'||
+|| ||info||bool||If this is specified, information on the PDB file is displayed, no conversion is performed.||
+|| ||full||bool||Apply non-crystallographic symmetry to obtain 'full' structure.||
+|| ||quiet||bool||Verbose is the default||
+|| ||model||int||Extract only a single numbered model from a multi-model PDB||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+|| ||quick||bool||Use a slight approximation to the Gaussian during insertion. Does not support B-factors.||
+|| ||addpdbbfactor||bool||Use the bfactor/temperature factor as the atom blurring radius, equivalent to Gaussian lowpass with 1/e width at 1/bfactor||
+|| ||omit||float||Randomly omit this percentage of atoms in the output map.||

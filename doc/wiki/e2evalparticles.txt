@@ -1,0 +1,3 @@
+|| ||gui||bool||Start the GUI for interactive use (default=True)||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

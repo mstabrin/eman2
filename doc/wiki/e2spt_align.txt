@@ -1,0 +1,9 @@
+|| ||threads||int||Number of alignment threads to run in parallel on a single computer. This is the only parallelism supported by e2spt_align at present.||
+|| ||iter||int||Iteration number within path. Default = start a new iteration||
+|| ||goldstandard||float||If specified, will phase randomize the even and odd references past the specified resolution (in A, not 1/A)||
+|| ||goldcontinue||bool||Will use even/odd refs corresponding to specified reference to continue refining without phase randomizing again||
+|| ||saveali||bool||Save a stack file (aliptcls.hdf) containing the aligned subtomograms.||
+|| ||path||string||Path to a folder where results should be stored, following standard naming conventions (default = spt_XX)||
+|| ||sym||string||Symmetry of the input. Must be aligned in standard orientation to work properly.||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

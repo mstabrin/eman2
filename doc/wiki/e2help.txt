@@ -1,0 +1,5 @@
+||-R||res||float||Resolution in A, equivalent to Gaussian lowpass with 1/e width at 1/res||
+||-B||box||string||Box size in pixels, <xyz> or <x>,<y>,<z>||
+|| ||gui||bool||Use the GUI for display help||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

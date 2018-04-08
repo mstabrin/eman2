@@ -1,0 +1,11 @@
+|| ||tomo||string||File name of reconstructed tomograms||
+|| ||ptclin||string||File name of input 3D particles.||
+|| ||edf||string||IMOD .edf file name||
+|| ||tlt||string||imod tlt file name||
+|| ||xtilt||float||imod xtilt value (from tomopitch.log)||
+|| ||unbin||float||Unbin factor from input particles/tomogram to raw tilt. If unspecified, the program will calculate from the Apix of the header.||
+|| ||boxsz||int||Box size of extracted 2D particles.||
+|| ||ptclout||string||File name of output 2D extracted particles.||
+|| ||ctffile||string||estimated ctf||
+|| ||defcol||int||which column of ctf file is the defocus||
+|| ||weight||bool||Weight the particles by the variance of defocus||

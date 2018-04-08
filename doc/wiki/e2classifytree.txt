@@ -1,0 +1,14 @@
+|| ||threads||int||||
+|| ||nodes||string||||
+|| ||clsmx||string||||
+|| ||output||string||||
+|| ||align||string||The name of an 'aligner' to use prior to comparing the images||
+|| ||aligncmp||string||Name of the aligner along with its construction arguments||
+|| ||ralign||string||The name and parameters of the second stage aligner which refines the results of the first alignment||
+|| ||raligncmp||string||The name and parameters of the comparitor used by the second stage aligner. Default is dot.||
+|| ||cmp||string||The name of a 'cmp' to be used in comparing the aligned images||
+|| ||cmpdiff||bool||Compare using the difference of the two children||
+|| ||incomplete||int||The degree of incomplete allowed in the tree on each level||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+|| ||parallel||bool||parallelism argument||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

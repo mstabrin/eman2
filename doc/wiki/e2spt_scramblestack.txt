@@ -1,0 +1,3 @@
+|| ||input||string||The name of the volumes stack that HAVE BEEN ALIGNED to a common reference||
+|| ||output||string||The name of the volumes stack that HAVE BEEN ALIGNED to a common reference||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

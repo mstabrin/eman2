@@ -1,0 +1,20 @@
+|| ||trainset||bool||Training set.||
+|| ||from_trained||string||Start from pre-trained neural network||
+|| ||netout||string||Output neural net file name||
+|| ||learnrate||float||Learning rate ||
+|| ||niter||int||Training iterations||
+|| ||ncopy||int||Number of copies for each particle||
+|| ||batch||int||Batch size for the stochastic gradient descent. Default is 20.||
+|| ||nkernel||string||Number of kernels for each layer, from input to output. The number of kernels in the last layer must be 1. ||
+|| ||ksize||string||Width of kernels of each layer, the numbers must be odd. Note the number of layers should be the same as the nkernel option. ||
+|| ||poolsz||string||Pooling size for each layer. Note the number of layers should be the same as the nkernel option. ||
+|| ||weightdecay||float||Weight decay. Used for regularization.||
+|| ||trainout||bool||Output the result of the training set||
+|| ||training||bool||Doing training||
+|| ||tomograms||string||Tomograms input.||
+|| ||applying||bool||Applying the neural network on tomograms||
+|| ||dream||bool||Iterativly applying the neural network on noise||
+|| ||to3d||bool||convert to result to 3D.||
+|| ||output||string||Segmentation out file name||
+|| ||threads||int||Number of thread to use when applying neural net on test images. Not used during trainning||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||

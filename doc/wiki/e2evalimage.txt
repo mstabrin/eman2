@@ -1,0 +1,12 @@
+|| ||gui||bool||This is a GUI-only program. This option is provided for self-consistency||
+|| ||apix||float||Angstroms per pixel for all images||
+|| ||constbfactor||float||Set B-factor to fixed specified value, negative value autofits||
+|| ||voltage||float||Microscope voltage in KV||
+|| ||cs||float||Microscope Cs (spherical aberation)||
+|| ||ac||float||Amplitude contrast (percentage, default=10)||
+|| ||phaseplate||bool||Include phase/amplitude contrast in CTF estimation. For use with hole-less phase plates.||
+|| ||astigmatism||bool||Includes astigmatism in automatic fitting||
+|| ||box||int||Forced box size in grid mode. Overrides any previous setting. ||
+|| ||usefoldername||bool||If you have the same image filename in multiple folders, and need to import into the same project, this will prepend the folder name on each image name||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

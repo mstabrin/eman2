@@ -1,0 +1,5 @@
+||-M||maxbad||int||Maximumum number of unassigned helices||
+||-H||minhelix||int||Minimum residues in a helix||
+||-P||apix||float||A/Pixel||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||

@@ -1,0 +1,18 @@
+|| ||apix||float||The angstrom per pixel of the micrographs||
+|| ||cs||float||The spherical aberration of the microscope||
+|| ||voltage||float||The voltage (in kV) of the microscope||
+|| ||ac||float||The amplitude contrast of the micrographs||
+||-v||verbose||int||verbose level [0-9], higner number means higher level of verboseness||
+|| ||importrelionstar||bool||Import CTFFIND3 data in Relion STAR format. Put STAR files in 'ctffind3' folder||
+|| ||importctffind3||bool||Import ctffind3 data?||
+|| ||importctffind4||bool||Import ctffind4 data?||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
+|| ||allmicrographs||bool||Run Ctffind3 on all micrographs in the micrographs directory?||
+|| ||maxres||float||The highest resolution to be fitted (Angstroms)||
+|| ||minres||float||The lowest resolution to be fitted (Angstroms)||
+|| ||defocusmin||float||The starting defocus value for grid search (microns)||
+|| ||defocusmax||float||The end defocus value for grid search (microns)||
+|| ||defocusstep||float||The step width for grid search (microns)||
+|| ||runctffind3||bool||Run ctffind3 on the selected micrographs?||
+|| ||runctffind4||bool||Run ctffind4 on the selected micrographs?||
+|| ||windowsize||int||The amplitude contrast of the micrographs||

@@ -1,0 +1,7 @@
+|| ||iteration||int||Refinement iteration to plot||
+|| ||pointwidth||float||The relative scale of the points plotted. The absoule size is dpenedent on particle count||
+|| ||sym||bool||Set the symmetry; if no value is given then the model is assumed to have no symmetry.
+Choices are: i, c, d, tet, icos, or oct.||
+|| ||norticklabels||bool||Disable radius tick labels||
+|| ||nothetaticklabels||bool||Disable Theta tick labels||
+|| ||ppid||int||Set the PID of the parent process, used for cross platform PPID||
