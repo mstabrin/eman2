@@ -36,7 +36,6 @@
 # todo: lp, hp, tlp vs apix
 from __future__ import print_function
 from EMAN2 import *
-from optparse import OptionParser
 import sys
 from math import *
 import os.path
@@ -86,7 +85,7 @@ def main():
 	'e2help.py processors -v 2' for a detailed list of available procesors
 
 """
-	parser = OptionParser(usage)
+	parser = EMArgumentParser(usage=usage,version=EMANVERSION)
 
 	parser.add_option("--add", metavar="f", type="float", help="Adds a constant 'f' to the densities")
 	parser.add_option("--addfile", type="string", action="append", help="Adds the volume to another volume of identical size")
