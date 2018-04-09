@@ -32,7 +32,6 @@ from __future__ import print_function
 
 import sys
 from EMAN2 import *
-from optparse import OptionParser
 import os
 import commands
 from sys import argv
@@ -76,7 +75,7 @@ def main():
 	Builds all possible chain traces
 	"""
 	
-	parser = OptionParser(usage=usage,version=EMANVERSION)
+	parser = EMArgumentParser(usage=usage,version=EMANVERSION)
 	(options, args) = parser.parse_args()
 
 	seqfile=open(args[1], "r")
