@@ -41,11 +41,6 @@ import shutil
 import matplotlib
 matplotlib.use('Agg',warn=False)	 
 
-#import pyemtbx.options
-#from pyemtbx.options import intvararg_callback
-#from pyemtbx.options import floatvararg_callback
-#from optparse import OptionParser
-
 import matplotlib.pyplot as plt
 import sys
 import numpy
