@@ -1,0 +1,14 @@
+||option||type||description||
+||--process||str||apply a processor named 'processorname' with all its parameters/values. WARNING: this works by operating on fragments of the overall image at a time, and some processors won't work properly this way.||
+||--mult||float||Scales the densities by a fixed number in the output||
+||--ppid||int||Set the PID of the parent process, used for cross platform PPID||
+||--multfile||str||Multiplies the volume by another volume of identical size. This can be used to apply masks, etc.||
+||-h, --help|| ||show this help message and exit||
+||--add||float||Adds a constant 'f' to the densities||
+||--version|| ||show program's version number and exit||
+||--generate_doc|| ||Extract help strings of each command line argument and generate wiki table.||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
+||--trans||str||Translate map by dx,dy,dz ||
+||--streaksubtract||str||This will subtract the histogram peak value along a single axis in the volume.||
+||-h, --help|| ||show this help message and exit||
+||--verbose, -v||int||verbose level [0-9], higner number means higher level of verboseness||
