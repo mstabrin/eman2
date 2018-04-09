@@ -527,7 +527,13 @@ class EMArgumentParser(argparse.ArgumentParser):
 			print("||{}||{}||{}||".format("option", "type", "description"))
 			for key in self._option_string_actions:
 				val = self._option_string_actions[key]
-				print(val.option_strings, val.help)
+				opt_text = str(val.option_strings)[1:-2].replace("'",'')
+				if val.type:
+					type_text = str(val.type).split("'")[1]
+				else:
+					type_text = ' '
+				help_text = val.help
+				print("||{}||{}||{}||".format(opt_text, type_text, help_text))
 			self.exit()
 		parsedargs = argparse.ArgumentParser.parse_args(self)
 		return (parsedargs, parsedargs.postionalargs)
