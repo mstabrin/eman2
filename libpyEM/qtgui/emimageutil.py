@@ -103,9 +103,9 @@ class EMTransformPanel:
 		self.phi.valueChanged.connect(self.slider_rotate)
 		self.src.currentIndexChanged[QString].connect(self.set_src)
 		self.scale.valueChanged.connect(self.target().set_scale)
-		self.x_trans.valueChanged[double].connect(self.target().set_cam_x)
-		self.y_trans.valueChanged[double].connect(self.target().set_cam_y)
-		self.z_trans.valueChanged[double].connect(self.target().set_cam_z)
+		self.x_trans.valueChanged[float].connect(self.target().set_cam_x)
+		self.y_trans.valueChanged[float].connect(self.target().set_cam_y)
+		self.z_trans.valueChanged[float].connect(self.target().set_cam_z)
 		
 		
 	def set_defaults(self):
