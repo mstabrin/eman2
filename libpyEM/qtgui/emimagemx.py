@@ -202,6 +202,17 @@ class EMMatrixPanel:
 #		print self.height,self.xsep,self.visiblecols
 
 class EMImageMXWidget(EMGLWidget, EMGLProjectionViewMatrices):
+
+	setsChanged = QtCore.pyqtSignal()
+	mx_boxdeleted = QtCore.pyqtSignal()
+	set_scale = QtCore.pyqtSignal()
+	origin_update = QtCore.pyqtSignal()
+	mx_image_selected = QtCore.pyqtSignal()
+	mx_image_double = QtCore.pyqtSignal()
+	mx_mousedrag = QtCore.pyqtSignal()
+	mx_mouseup = QtCore.pyqtSignal()
+	set_origin = QtCore.pyqtSignal()
+
 	def __init__(self, data=None,application=None,winid=None, parent=None, title=""):
 		self.emit_events = False
 
@@ -257,15 +268,6 @@ class EMImageMXWidget(EMGLWidget, EMGLProjectionViewMatrices):
 		self.mouse_modes = ["App", "Del", "Drag", "Sets"]
 		self.mmode="App"
 		self.class_window = None # used if people are looking at class averages and they double click, in which case a second window is opened showing the particles in the class
-		setsChanged = QtCore.pyqtSignal()
-		mx_boxdeleted = QtCore.pyqtSignal()
-		set_scale = QtCore.pyqtSignal()
-		origin_update = QtCore.pyqtSignal()
-		mx_image_selected = QtCore.pyqtSignal()
-		mx_image_double = QtCore.pyqtSignal()
-		mx_mousedrag = QtCore.pyqtSignal()
-		mx_mouseup = QtCore.pyqtSignal()
-		set_origin = QtCore.pyqtSignal()
 		self.downbutton=None
 
 		self.sets={}			# All available sets for the current data, key is set name, value is set of ints
