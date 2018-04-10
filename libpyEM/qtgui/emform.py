@@ -1087,7 +1087,7 @@ class EMFormWidget(QtGui.QWidget):
 	If cancel is clicked the "emform_cancel" signal is emmitted. No extra information is sent in this case
 	'''
 	emform_close = QtCore.pyqtSignal()
-	emform_ok = QtCore.pyqtSignal()
+	emform_ok = QtCore.pyqtSignal(dict)
 	emform_cancel = QtCore.pyqtSignal()
 	display_file = QtCore.pyqtSignal()
 
