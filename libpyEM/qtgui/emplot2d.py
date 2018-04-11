@@ -107,7 +107,7 @@ qt_color_map["gray"] = QtGui.QColor(127,127,127)
 class EMPlot2DWidget(EMGLWidget):
 	"""A QT widget for drawing 2-D plots using matplotlib
 	"""
-	selected = QtCore.pyqtSignal()
+	signal_selected = QtCore.pyqtSignal()
 
 	def __init__(self,application=None,winid=None,parent=None):
 
@@ -843,7 +843,7 @@ lc is the cursor selection point in plot coords"""
 
 
 
-		self.selected.emit(self.selected)
+		self.signal_selected.emit(self.selected)
 
 	def mousePressEvent(self, event):
 		lc=self.scr2plot(event.x(),event.y())
