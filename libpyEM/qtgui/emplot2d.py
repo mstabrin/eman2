@@ -107,7 +107,7 @@ qt_color_map["gray"] = QtGui.QColor(127,127,127)
 class EMPlot2DWidget(EMGLWidget):
 	"""A QT widget for drawing 2-D plots using matplotlib
 	"""
-	signal_selected = QtCore.pyqtSignal()
+	signal_selected = QtCore.pyqtSignal(list)
 
 	def __init__(self,application=None,winid=None,parent=None):
 

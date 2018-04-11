@@ -82,8 +82,8 @@ class ValSlider(QtGui.QWidget):
 	enableChanged = QtCore.pyqtSignal(int)
 	valueChanged = QtCore.pyqtSignal(float)
 	textChanged = QtCore.pyqtSignal(float)
-	sliderReleased = QtCore.pyqtSignal()
-	sliderPressed = QtCore.pyqtSignal()
+	signal_sliderReleased = QtCore.pyqtSignal(float)
+	signal_sliderPressed = QtCore.pyqtSignal(float)
 
 	def __init__(self, parent=None, rng=None, label=None, value=0,labelwidth=30,showenable=-1,rounding=3):
 		#if not parent: raise Exception,"ValSliders must have parents"
@@ -266,10 +266,10 @@ class ValSlider(QtGui.QWidget):
 		self.oldvalue=self.value
 	
 	def sliderReleased(self):
-		self.sliderReleased.emit(self.value)
+		self.signal_sliderReleased.emit(self.value)
 		
 	def sliderPressed(self):
-		self.sliderPressed.emit(self.value)
+		self.signal_sliderPressed.emit(self.value)
 	
 	def setLabel(self,label):
 		self.label.setText(label)
