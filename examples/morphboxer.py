@@ -361,7 +361,7 @@ class ErasingPanel: # copied for ideas for the morph panel
 
 			vbl.addLayout(hbl)
 			vbl.addWidget(self.unerase)
-			self.erase_rad_edit.sliderReleased.connect(self.new_erase_radius)
+			self.erase_rad_edit.signal_sliderReleased.connect(self.new_erase_radius)
 			self.unerase.clicked[bool].connect(self.unerase_checked)
 
 		return self.widget
