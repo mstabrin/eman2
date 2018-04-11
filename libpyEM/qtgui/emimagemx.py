@@ -584,7 +584,7 @@ class EMImageMXWidget(EMGLWidget, EMGLProjectionViewMatrices):
 		self.deleteLater()
 
 	def get_emit_signals_and_connections(self):
-		return {"set_origin":self.set_origin,"set_scale":self.set_scale,"origin_update":self.origin_update}
+		return {"set_origin":self.set_origin,"signal_set_scale":self.set_scale,"origin_update":self.origin_update}
 
 	def get_data(self):
 		'''
@@ -939,7 +939,7 @@ class EMImageMXWidget(EMGLWidget, EMGLProjectionViewMatrices):
 			self.draw_scroll = True
 			self.scroll_bar.update_target_ypos()
 
-		if self.emit_events: self.set_scale.emit(self.scale, adjust, update_gl)
+		if self.emit_events: self.signal_set_scale.emit(self.scale, adjust, update_gl)
 		if update_gl: self.updateGL()
 
 	def resize_event(self, width, height):
