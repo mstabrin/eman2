@@ -205,7 +205,7 @@ class EMImageMXWidget(EMGLWidget, EMGLProjectionViewMatrices):
 
 	setsChanged = QtCore.pyqtSignal()
 	mx_boxdeleted = QtCore.pyqtSignal()
-	set_scale = QtCore.pyqtSignal()
+	signal_set_scale = QtCore.pyqtSignal()
 	origin_update = QtCore.pyqtSignal()
 	mx_image_selected = QtCore.pyqtSignal()
 	mx_image_double = QtCore.pyqtSignal()
