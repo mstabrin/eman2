@@ -52,6 +52,15 @@ requirements:
         - {{ req }}
         {% endfor %}
 
+    run:
+        {% for req in reqs_run %}
+        - {{ req }}
+        {% endfor %}
+
+        {% for req in reqs_host %}
+        - {{ req }}
+        {% endfor %}
+
 build:
   script_env:
    - EMAN_TEST_SKIP  # [osx]
