@@ -35,12 +35,9 @@ requirements:
             "openmpi 2.0.2",  # [not win]
             "pydusa",         # [not win]
             "nose",
-            "mrcfile",
-            "opencv-python",
-            "imgaug",
             "keras",
             "h5py",
-            "tensorflow-gpu",
+            "tensorflow-gpu",  # [linux]
     ] %}
     
     build:
