@@ -36,7 +36,6 @@ requirements:
             "pydusa",         # [not win]
             "nose",
             "keras",
-            "h5py",
             "tensorflow-gpu",  # [linux]
     ] %}
     
