@@ -39,6 +39,7 @@ from EMAN2 import *
 from PyQt4 import QtGui,QtCore
 from eman2_gui.emimagemx import EMImageMXModule
 from eman2_gui.emglobjects import EM3DGLWidget
+import traceback
 
 	
 def main():
