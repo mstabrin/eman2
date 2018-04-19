@@ -365,7 +365,7 @@ class EMTaskCustomer:
 class EMTaskHandler:
 	"""This is the actual server object which talks to clients and customers. It coordinates task execution
  acts as a data clearinghouse. This parent class doesn't contain any real functionality. Subclasses are always
- used for acutual servers."""
+ used for actual servers."""
 	queue=None
 
 	def __init__(self,path=None):
@@ -701,7 +701,7 @@ class EMMpiClient():
 			self.log("Said HELO back")
 
 			self.rankjobs=[-1 for i in xrange(self.nrank)]		# Each element is a rank, and indicates which job that rank is currently running (-1 if idle)
-			self.rankjobs[0]=-2					# this makes sure we don't try to send a job to ourself
+			self.rankjobs[0]=-2					# this makes sure we don't try to send a job to ourselves
 			self.maxjob=-1						# current highest job number waiting for execution
 			self.nextjob=1						# next job waiting to run
 			self.status={}						# status of each job
@@ -1690,7 +1690,7 @@ class EMDCTaskHandler(EMTaskHandler,SocketServer.BaseRequestHandler):
 				sendobj(self.sockf,ret)
 				self.sockf.flush()
 
-			# Retreieve results for completed task
+			# Retrieve results for completed task
 			# request contains taskid
 			# return is a task object followed by a series of key/value pairs terminating with a None key
 			# initial return None if task incomplete
@@ -1774,7 +1774,7 @@ class EMDCTaskClient(EMTaskClient):
 		signal.signal(signal.SIGALRM,DCclient_alarm)	# this is used for network timeouts
 
 	def imalive(self,progress):
-		"""Executed code should call this periodically to inidicate that they are still running. This must be called at least once every 5 minutes
+		"""Executed code should call this periodically to indicate that they are still running. This must be called at least once every 5 minutes
 		with an integer in the range 0-100. 100 means about to exit, 0 means not started yet. A -1 indicates an error has occurred and the request
 		is being aborted. If this function returns False, the client should abort the task in progress."""
 		ret=True
@@ -1827,7 +1827,7 @@ class EMDCTaskClient(EMTaskClient):
 	def connectfromlist(self,hostlist):
 		"""Given a list of possible hostnames to connect to, try to connect to each in sequence until one
 		answers. Transmit the remainder of the list to the host after connection. Returns the connected socket or
-		None if no connection was sucessful. """
+		None if no connection was successful. """
 
 		fail=1
 		while fail :
