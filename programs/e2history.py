@@ -53,7 +53,7 @@ def main():
 	parser.add_argument("--gui", "-g",default=False, action="store_true",help="Open history in an interface with a sortable table.")
 	parser.add_argument("--all", "-a",default=False, action="store_true",help="Show for all directories.")
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-1)
-	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higner number means higher level of verboseness")
+	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higher number means higher level of verboseness")
 	
 	(options, args) = parser.parse_args()
 	

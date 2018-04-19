@@ -30,7 +30,7 @@ def main():
 	parser.add_argument("--batchsize", type=int,help="batch size", default=12)
 	parser.add_argument("--niter", type=int,help="iterations", default=50)
 	parser.add_argument("--learnrate", type=float,help="learnrate", default=.1)
-	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higner number means higher level of verboseness")
+	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higher number means higher level of verboseness")
 	
 	(options, args) = parser.parse_args()
 	logid=E2init(sys.argv)

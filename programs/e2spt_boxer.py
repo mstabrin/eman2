@@ -93,7 +93,7 @@ def main():
 
 	parser.add_argument('--subset', type=int, default=0, help='''Default=0 (not used). Used to extract particles without the GUI. Requires --coords. Specify how many subvolumes from --coords you want to extract; e.g, if you specify 10, the first 10 particles will be extracted.\n0 means "box them all" because it makes no sense to box none.''')
 		
-	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higner number means higher level of verboseness")
+	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higher number means higher level of verboseness")
 
 
 	(options, args) = parser.parse_args()

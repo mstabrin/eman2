@@ -76,7 +76,7 @@ run e2parallel.py dcclient on as many other machines as possible, pointing at th
 	parser.add_argument("--port",type=int,help="Specifies server port, default is automatic assignment",default=-1)
 	parser.add_argument("--clientpath",type=str,help="Scratch directory for DC clients. Default is current directory.",default=None)
 	parser.add_argument("--clientid",type=int,help="Internal use only",default=-1)
-	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higner number means higher level of verboseness")
+	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higher number means higher level of verboseness")
 	parser.add_argument("--taskin", type=str,help="Internal use only. Used when executing local threaded tasks.")
 	parser.add_argument("--taskout", type=str,help="Internal use only. Used when executing local threaded tasks.")
 	parser.add_argument("--scratchdir", type=str,help="Internal use only. Used by the MPI client",default="/tmp")

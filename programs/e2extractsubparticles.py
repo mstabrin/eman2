@@ -65,7 +65,7 @@ will be examined automatically to extract the corresponding particles and projec
 	parser.add_argument("--outermask",type=str,default=None,help = "A 3-D mask larger than subunitmask, containing the zone to be included in each subtracted particle")
 	parser.add_argument("--masked",action="store_true",default=False,help="If specified, each particle will be masked based on the projection mask.")
 	parser.add_argument("--newbox", type=int, help="New box size for extracted regions",default=-1)
-	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higner number means higher level of verboseness")
+	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n", type=int, default=0, help="verbose level [0-9], higher number means higher level of verboseness")
 	parser.add_argument("--debug",action="store_true",default=False,help="Enable debugging mode with verbose output and image display. Not suitable for real runs.")
 	parser.add_argument("--ppid", type=int, help="Set the PID of the parent process, used for cross platform PPID",default=-1)
 	#parser.add_argument("--ncls","-N",type=int,help="Number of classes to generate",default=-1)

@@ -157,7 +157,7 @@ def main():
 	
 	parser.add_argument("--targetdefocus", type=float,default=0.0,help="""Default=0 (not used). Target defocus at the tilt axis. In the absence of ctfparamsfile(s) this value will be assumed to be the defocus at the tilt axis for all tilt images and will be used to constrain calculation of the global defocus of each image.""")
 	
-	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n",type=int, default=0, help="verbose level [0-9], higner number means higher level of verboseness.")
+	parser.add_argument("--verbose", "-v", dest="verbose", action="store", metavar="n",type=int, default=0, help="verbose level [0-9], higher number means higher level of verboseness.")
 	
 	parser.add_argument("--voltage", type=int,default=200,help="""Default=200. Voltage of the microscope with which the images where collected. Supply it to replace the value in ctfparamsfile(s), or if ctfparamsfile(s) are lacking altogether.""")
 
