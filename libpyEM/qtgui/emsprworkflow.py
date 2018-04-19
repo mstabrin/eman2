@@ -4104,10 +4104,10 @@ class EMClassificationTools(ParticleWorkFlowTask):
 		if "twostage" not in params: params["twostage"] = 0
 		
 		if params["shrink"] <= 0:
-			error_message.append("The shrink argument in the simmx page must be atleast 1")
+			error_message.append("The shrink argument in the simmx page must be at least 1")
 
 		if params["twostage"] < 0:
-			error_message.append("The shrink argument in the simmx page must be atleast 0")
+			error_message.append("The shrink argument in the simmx page must be at least 0")
 			
 		options.shrink=params["shrink"]
 		options.twostage=params["twostage"]
@@ -4140,7 +4140,7 @@ class E2Refine2DTask(EMClassificationTools):
 		
 		project_db = db_open_dict("bdb:project")
 		#pncp = ParamDef(name="global.num_cpus",vartype="int",desc_short="Number of CPUs",desc_long="Number of CPUS available for e2refine2d to use",property=None,defaultunits=project_db.get("global.num_cpus",dfl=num_cpus()),choices=None)
-		pinitclasses =  ParamDef(name="initial",vartype="string",desc_short="Initial class averages",desc_long="A file (full path) containing starting class averages. If note specificed will generate starting class averages automatically.",property=None,defaultunits=db.get("initial",dfl=""),choices=[])	
+		pinitclasses =  ParamDef(name="initial",vartype="string",desc_short="Initial class averages",desc_long="A file (full path) containing starting class averages. If note specified will generate starting class averages automatically.",property=None,defaultunits=db.get("initial",dfl=""),choices=[])	
 		
 		#db_close_dict(self.form_db_name)
 		#db_close_dict("bdb:project")
@@ -4171,11 +4171,11 @@ class E2Refine2DTask(EMClassificationTools):
 			if not file_exists(options.initial):
 				error_message.append("The initial class averages file you specified (%s) does not exist." %(options.initial))
 	 		
-		if options.iter < 0: error_message.append("The number of e2refine2d iterations must be atleast 0.")
-		if options.naliref < 1:	error_message.append("The number alignment references must be atleast 1.")
-		if options.nbasisfp < 1: error_message.append("The number of MSA basis vectors must be atleast 1.")
-		if options.ncls < 2: error_message.append("The number of classes must be atleast 2.")
-		#if options.parallel < 1: error_message.append("The number CPUs availables must be atleast 1.")
+		if options.iter < 0: error_message.append("The number of e2refine2d iterations must be at least 0.")
+		if options.naliref < 1:	error_message.append("The number alignment references must be at least 1.")
+		if options.nbasisfp < 1: error_message.append("The number of MSA basis vectors must be at least 1.")
+		if options.ncls < 2: error_message.append("The number of classes must be at least 2.")
+		#if options.parallel < 1: error_message.append("The number CPUs available must be at least 1.")
   		
 		if len(error_message) != 0:
 			return error_message
@@ -4513,7 +4513,7 @@ documentation for other details. Don't forget the other tabs !\
 				self.show_error_message(error_message)
 #				self.display_errors(error_message)
 				return
-		# w'oh if we make it here a lot of checking has occured. Now get the args in order to spawn_single_task
+		# w'oh if we make it here a lot of checking has occurred. Now get the args in order to spawn_single_task
 		string_args = []
 		bool_args = []
 		additional_args = []
@@ -4662,8 +4662,8 @@ class E2InitialModel(ParticleWorkFlowTask):
 		error_message = []
 		if len(params["filenames"]) != 1: error_message.append("Please choose a single file to proceed")
 		
-		if params["iter"] < 0: error_message.append("Please specify an iter value of atleast 0")
-		if params["tries"] < 1: error_message.append("Please specify a number of tries that is atleast 1")
+		if params["iter"] < 0: error_message.append("Please specify an iter value of at least 0")
+		if params["tries"] < 1: error_message.append("Please specify a number of tries that is at least 1")
 		
 		
 		# copied from e2refine
@@ -4792,7 +4792,7 @@ class E2Make3DTools:
 		error_message = []
 		
 		if params["m3diter"] < 0:
-			error_message.append("The number of make3d iterations must be atleast 0")
+			error_message.append("The number of make3d iterations must be at least 0")
 		
 		if params["m3dkeepsig"] == False:
 			if params["m3dkeep"] < 0 or params["m3dkeep"] > 1:
@@ -4939,7 +4939,7 @@ class E2Make3DTools:
 		
 class E2RefineParticlesTaskBase(EMClassificationTools, E2Make3DTools):
 	'''
-	This class is a base class for eman refinements, to avoid massive code duplicantions
+	This class is a base class for eman refinements, to avoid massive code duplications
 	'''
 
 	def __init__(self,ptcls_list,usefilt_ptcls_list):
@@ -4949,7 +4949,7 @@ class E2RefineParticlesTaskBase(EMClassificationTools, E2Make3DTools):
 		'''
 		self.ptcls = ptcls_list
 		self.usefilt_ptcls = usefilt_ptcls_list
-		self.imt = None # will eventually become an E2IntialModelsTool
+		self.imt = None # will eventually become an E2InitialModelsTool
 		EMClassificationTools.__init__(self)
 		E2Make3DTools.__init__(self)
 	 	
@@ -5010,7 +5010,7 @@ class E2RefineParticlesTaskBase(EMClassificationTools, E2Make3DTools):
 				self.display_errors(error_message)
 				return	
 		self.write_db_entries(params)
-		# w'oh if we make it here a lot of checking has occured. Now get the args in order to spawn_single_task
+		# w'oh if we make it here a lot of checking has occurred. Now get the args in order to spawn_single_task
 		string_args = []
 		bool_args = []
 		
@@ -5034,7 +5034,7 @@ class E2RefineParticlesTaskBase(EMClassificationTools, E2Make3DTools):
 		self.form.close()
 		self.form = None
 
-# This functionality is being redesigned and pends a discussion with Steve ludtke with respect to the history mechanism
+# This functionality is being redesigned and pends a discussion with Steve Ludtke with respect to the history mechanism
 #	def write_db_parms(self,options,string_args,bool_args):
 #		db = db_open_dict("bdb:e2refine.args")
 #		
@@ -5236,7 +5236,7 @@ class E2RefineParticlesTaskBase(EMClassificationTools, E2Make3DTools):
 			image.write_image(new_model,0) # db got opened here
 
 			options.model = new_model
-			db_close_dict(new_model) # force synchronization so e2refine.py will definetely run -
+			db_close_dict(new_model) # force synchronization so e2refine.py will definitely run -
 		else:
 			options.model = model # all good
 			
@@ -5500,8 +5500,8 @@ sqeuclidean normto=1:zeromask=1 - similar to ccc, but with additional options to
 
 """
 	class_documentation = """These parameters address how class-averages are made. For the comparators see the previous tab:
-Averaging iterations - Use 6 or 7 when doing intial refinements to eliminate model bias. Use 2 (maybe 1) when pushing resolution
-Class separation - puts each particle in the best 'n' classes, a larger number here combined with a small angular step can somewhat mimic maximum liklihood methods (smoother map at the cost of resolution)
+Averaging iterations - Use 6 or 7 when doing initial refinements to eliminate model bias. Use 2 (maybe 1) when pushing resolution
+Class separation - puts each particle in the best 'n' classes, a larger number here combined with a small angular step can somewhat mimic maximum likelihood methods (smoother map at the cost of resolution)
 keep - determines how many 'bad' particles are thrown away either in terms of sigma, or an absolute value (1 keeps 100%, .8 keeps 80%)
 averager - either ctf.auto for ctf amplitude correction or mean for no CTF amplitude correction
 set sf proj - this will filter the class-averages to match the radial power spectrum of the projections. Not good for initial rounds of refinement, but may be useful later.
@@ -5548,8 +5548,8 @@ sqeuclidean normto=1:zeromask=1 - similar to ccc, but with additional options to
 
 """
 	class_documentation = """These parameters address how class-averages are made. For the comparators see the previous tab:
-Averaging iterations - Use 6 or 7 when doing intial refinements to eliminate model bias. Use 2 (maybe 1) when pushing resolution
-Class separation - puts each particle in the best 'n' classes, a larger number here combined with a small angular step can somewhat mimic maximum liklihood methods (smoother map at the cost of resolution)
+Averaging iterations - Use 6 or 7 when doing initial refinements to eliminate model bias. Use 2 (maybe 1) when pushing resolution
+Class separation - puts each particle in the best 'n' classes, a larger number here combined with a small angular step can somewhat mimic maximum likelihood methods (smoother map at the cost of resolution)
 keep - determines how many 'bad' particles are thrown away either in terms of sigma, or an absolute value (1 keeps 100%, .8 keeps 80%)
 averager - either ctf.auto for ctf amplitude correction or mean for no CTF amplitude correction
 set sf proj - this will filter the class-averages to match the radial power spectrum of the projections. Not good for initial rounds of refinement, but may be useful later.
@@ -5578,7 +5578,7 @@ post-process - This is an optional filter to apply to the model as a final step,
 				self.display_errors(error_message)
 				return	
 		self.write_db_entries(params)
-		# w'oh if we make it here a lot of checking has occured. Now get the args in order to spawn_single_task	
+		# w'oh if we make it here a lot of checking has occurred. Now get the args in order to spawn_single_task	
 		string_args = []
 		bool_args = []
 		
@@ -6201,7 +6201,7 @@ class ResolutionReportTask(ParticleWorkFlowTask):
 		if len(available_dirs) > 0:
 			p = EMParamTable(name="filenames",desc_short="Resolution Evaluation",desc_long="")
 			pnames = ParamDef(name="Dirs",vartype="stringlist",desc_short="Refinement Directory", desc_long="EMAN2 refinement directory", property=None,defaultunits=None,choices=available_dirs)
-			piter = ParamDef(name="Iterations",vartype="intlist",desc_short="Total Iterations",desc_long="The number of 3D refinement iterations that have occured in this directory",property=None,defaultunits=None,choices=total_iterations)
+			piter = ParamDef(name="Iterations",vartype="intlist",desc_short="Total Iterations",desc_long="The number of 3D refinement iterations that have occurred in this directory",property=None,defaultunits=None,choices=total_iterations)
 			peo = ParamDef(name="eo",vartype="stringlist",desc_short="e2eotest",desc_long="0.5 e2eotest resolution estimate",property=None,defaultunits=None,choices=eotest_res)
 			pres = ParamDef(name="res",vartype="stringlist",desc_short="e2resolution",desc_long="0.5 e2resolution resolution estimate",property=None,defaultunits=None,choices=e2resolution_res)
 			
@@ -6367,7 +6367,7 @@ those used during refinement."
 						break
 				if fail: break
 			
-			# might be some empyt ones so just forget those
+			# might be some empty ones so just forget those
 			if len(available_iters) > 0: 
 				available_iters.reverse()
 				self.dir_and_iter[dir] = available_iters
@@ -6455,7 +6455,7 @@ those used during refinement."
 			
 
 		self.write_db_entries(params)
-#		# w'oh if we make it here a lot of checking has occured. Now get the args in order to spawn_single_task
+#		# w'oh if we make it here a lot of checking has occurred. Now get the args in order to spawn_single_task
 		string_args = []
 		bool_args = []
 		
@@ -6523,7 +6523,7 @@ class E2ResolutionTask(WorkFlowTask):
 						break
 				if fail: break
 			
-			# might be some empyt ones so just forget those
+			# might be some empty ones so just forget those
 			if len(available_iters) > 0: 
 				available_iters.reverse()
 				self.dir_and_iter[dir] = available_iters
@@ -6540,7 +6540,7 @@ class E2ResolutionTask(WorkFlowTask):
 		params.append(ParamDef(name="path and iteration", vartype="dict",desc_short="Directory and iteration",desc_long="Select the directory containing the refinement and the iteration you wish to use as the input", property=None, defaultunits="",choices=self.dir_and_iter  ))
 		
 		project_db = db_open_dict("bdb:project")
-		papix = ParamDef(name="global.apix",vartype="float",desc_short="Angtsrom per pixel",desc_long="The physical distance represented by the pixel spacing",property=None,defaultunits=project_db.get("global.apix",dfl=1.1),choices=None)
+		papix = ParamDef(name="global.apix",vartype="float",desc_short="Angstrom per pixel",desc_long="The physical distance represented by the pixel spacing",property=None,defaultunits=project_db.get("global.apix",dfl=1.1),choices=None)
 		params.append(papix)
 		
 		#db_close_dict("bdb:project")
