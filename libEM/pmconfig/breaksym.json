@@ -67,14 +67,14 @@
   },
   {
     "TITLE":"Subtomogram symmetry",
-    "INST":"Choose the symmetry to search over. This symmetry must be the same as what the subtomograms are alsinged to.",
+    "INST":"Choose the symmetry to search over. This symmetry must be the same as what the subtomograms are aligned to.",
     "WIDGETS":[
       "sym"
     ]
   },
   {
     "TITLE":"Preprocess subtomos",
-    "INST":"If desired, select the processor to preprocess your subtomograms before alignment. The final average will not be affected by this step. If none is desired, choose 'None'. This can greatly help alignment if you have low contrasty subtomograrm and/or are trying to align a small asymmetric feature on an otherwise symmetric particle.",
+    "INST":"If desired, select the processor to preprocess your subtomograms before alignment. The final average will not be affected by this step. If none is desired, choose 'None'. This can greatly help alignment if you have low contrasty subtomogram and/or are trying to align a small asymmetric feature on an otherwise symmetric particle.",
     "WIDGETS":[
       "preprocess"
     ]
