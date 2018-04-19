@@ -38,7 +38,8 @@ from OpenGL import GL,GLU,GLUT
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from PyQt4 import QtGui,QtCore
-from PyQt4.QtCore import Qt
+from PyQt4.QtCore import Qt, QString
+from PyQt4.QtGui import QListWidgetItem
 from eman2_gui.emanimationutil import OrientationListAnimation,Animator
 from eman2_gui.emapplication import EMApp, get_application, error
 from eman2_gui.emglobjects import EM3DModel
@@ -707,7 +708,7 @@ def set_included_0(e):
 
 
 class EMAsymmetricUnitInspector(EMSymInspector):
-	au_selected = QtCore.pyqtSignal()
+	au_selected = QtCore.pyqtSignal(QString, QString)
 
 	def __init__(self,target,enable_trace=False,enable_og=False) :
 		EMSymInspector.__init__(self,target,enable_trace=enable_trace,enable_og=enable_og)
