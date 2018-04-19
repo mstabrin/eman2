@@ -1119,7 +1119,7 @@ if __name__ == "__main__":
 # 			nrg-=ccfs[(i,j)].sget_value_at_interp(int(cen+locs[j*2]-locs[i*2]),int(cen+locs[j*2+1]-locs[i*2+1]))*sqrt(float(n-fabs(i-j))/n)
 # 	return nrg
 
-		# Generates different possibilites for resolution-weighted, but unaligned, averages
+		# Generates different possibilities for resolution-weighted, but unaligned, averages
 
 		# xy=XYData()
 		# xy.set_size(2)
