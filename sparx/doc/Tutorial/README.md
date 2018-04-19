@@ -14,10 +14,10 @@
 
 4. Check if you did not do any mistakes in the syntax:  
  **make check\_docx**  
- This will create a new file **tutorial\_check.gfm**, that can be used to check the occuring errors.  
+ This will create a new file **tutorial\_check.gfm**, that can be used to check the occurring errors.  
  It also can also be used to create a diff with the .gfm file used in step 1.
 
-5. Fix occuring errors and repeat step 4.  
+5. Fix occurring errors and repeat step 4.  
  The errors:  
  ('|||URLEND|||>', 'not found')  
  ('|||URL|||<', 'not found')  

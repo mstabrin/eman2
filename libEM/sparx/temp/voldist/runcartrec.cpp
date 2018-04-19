@@ -333,7 +333,7 @@ idx = i;
 }
 	  }
 err = sqrt(err);  
-	  printf("Cumulative error for forward projection is %f with max error of %f occuring at %d\n", err, max, idx);
+	  printf("Cumulative error for forward projection is %f with max error of %f occurring at %d\n", err, max, idx);
 printf("Max error: compare %f and %f\n",allimages[idx], reproj[idx]);
 
 	  delete [] reproj;
