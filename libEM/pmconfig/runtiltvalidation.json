@@ -16,7 +16,7 @@
   },
   {
     "TITLE":"e2tiltvalidation options",
-    "INST": "The maximum tilt angle is the maximum allowed tilt angle allowed and computed angle above this threshold will be rejected. The quaternion checkbox, specifies that queernion mathematics are used for tilt axis/angle computation. Othervise, matrix mathematics are used.",
+    "INST": "The maximum tilt angle is the maximum allowed tilt angle allowed and computed angle above this threshold will be rejected. The quaternion checkbox, specifies that queernion mathematics are used for tilt axis/angle computation. Otherwise, matrix mathematics are used.",
     "WIDGETS":[
       "maxtiltangle",
       "quaternion"

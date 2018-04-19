@@ -78,7 +78,7 @@
     ]
   },
   {
-    "TITLE":"EMAN2 paralleism",
+    "TITLE":"EMAN2 parallelism",
     "INST":"Select the EMAN2 parallelism. You can choose thread(SMP) mpi, or dc(distributed computing)",
     "WIDGETS":[
       "parallel"
