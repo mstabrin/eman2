@@ -2,7 +2,7 @@
 [
   {
     "TITLE":"e2ctf autofit Wizard",
-    "INST":"This Wizard is to Help users from e2ctf in autofit mode. This program does the following: First it compute the foreground and background power. Background is defined as a circular region outside the particles. Next Fg-Bg spectra are computed and used for fitting. First defocus is fit via least squares, then defcous and B factor are fit via simplex multidimensional minimization using either a precomputed structure factor or the GroEL structure factors at high resolution domains. Finally all parameters are refined using the simplex algorithm",
+    "INST":"This Wizard is to Help users from e2ctf in autofit mode. This program does the following: First it computes the foreground and background powers. Background is defined as a circular region outside the particles. Next Fg-Bg spectra are computed and used for fitting. First defocus is fit via least squares, then defocus and B factor are fit via simplex multidimensional minimization using either a precomputed structure factor or the GroEL structure factors at high resolution domains. Finally all parameters are refined using the simplex algorithm",
     "WIDGETS":[]
   },
   {
