@@ -216,7 +216,7 @@ class WorkFlowTask:
 	def get_wd(self):
 		'''
 		Get the working directory, originally introduced to provide a centralized mechanism for accessing the working directory,
-		specificially for the purpose of spawning processes. Could be used more generally, however.
+		specifically for the purpose of spawning processes. Could be used more generally, however.
 		'''
 		return e2getcwd()
 
@@ -350,7 +350,7 @@ class WorkFlowTask:
 		
 	def get_latest_r2d_classes(self):
 		dirs = get_numbered_directories("r2d_")
-		# allright everything left in dirs is "r2d_??" where the ?? is castable to an int, so we should be safe now
+		# all right everything left in dirs is "r2d_??" where the ?? is castable to an int, so we should be safe now
 		class_files = []
 		class_dims = []
 		class_ptcls = []
@@ -372,7 +372,7 @@ class WorkFlowTask:
 						if i != 0 or j != 0:
 							cont = False
 							break
-						#else just check for 01 incase the user has specified the --initial arugment
+						#else just check for 01 in case the user has specified the --initial argument
 				if not cont:
 					break
 				
@@ -794,7 +794,7 @@ class EMRawDataReportTask(WorkFlowTask):
 	documentation_string = "This page shows raw micrographs/ccd frames currently associated with the project. It is possible to add additional images directly on this panel, which will \
 leave them in-place and not copy them into the project database. This will limit some later operations and leave the project with less metadata at the end, but will save disk space. \
 Note that the data cannot be filtered unless it is imported."
-	warning_string = "\n\n\nNOTE: There are no images currenty associated with the project. Please associate or import images"
+	warning_string = "\n\n\nNOTE: There are no images currently associated with the project. Please associate or import images"
 	def __init__(self):
 		WorkFlowTask.__init__(self)
 		self.window_title = "Micrographs In Project"
@@ -1199,7 +1199,7 @@ project database, and gives an opportunity to apply a number of common filters t
 		filenames = params["filenames"]
 		
 		# get the number of process operation - the progress dialog reflects image copying and image processing operations
-		num_processing_operations = 2 # there is atleast a copy and a disk write
+		num_processing_operations = 2 # there is at least a copy and a disk write
 		if params["invert"]: num_processing_operations += 1
 		if params["xraypixel"]: num_processing_operations += 1
 		if params["thumbs"]:num_processing_operations += 1
@@ -2015,7 +2015,7 @@ class E2BoxerTask(ParticleWorkFlowTask):
 		table,n = self.report_task.get_raw_data_table()
 		
 		data_dict = EMProjectDataDict(spr_ptcls_dict)
-		dict = data_dict.get_data_dict() # this is to protect against back compatibility problems. This is necessary for the columns_object to operate without throwing (in unusual circumstances the user deletes the particles, and this accomodates for it)
+		dict = data_dict.get_data_dict() # this is to protect against back compatibility problems. This is necessary for the columns_object to operate without throwing (in unusual circumstances the user deletes the particles, and this accommodates for it)
 	
 		from emform import EMFileTable,int_lt
 		table.insert_column_data(0,EMFileTable.EMColumnData("Stored Boxes",E2BoxerTask.get_boxes_in_database,"Boxes currently stored in the EMAN2 database",int_lt))
@@ -2053,7 +2053,7 @@ class E2BoxerTask(ParticleWorkFlowTask):
 								box = boxes[0]
 								dim = str(box.xsize) + "x"+str(box.ysize)
 				
-				if nbox == 0: nbox = "" # just so it appears as nothin in the interface			
+				if nbox == 0: nbox = "" # just so it appears as nothing in the interface			
 				box_maps[name] = [dim,nbox]
 		
 		nboxes = []
@@ -2677,7 +2677,7 @@ class E2BoxerProgramOutputTask(E2BoxerOutputTask):
 
 class E2CTFWorkFlowTask(EMParticleReportTask):
 	'''
-	Common functionality for E2CTF Work flow taskss
+	Common functionality for E2CTF Work flow tasks
 	'''
 	def __init__(self):
 		EMParticleReportTask.__init__(self)
@@ -2708,9 +2708,9 @@ class E2CTFWorkFlowTask(EMParticleReportTask):
 		self.other_column_data = E2CTFWorkFlowTask.MoreCTFColumns()
 		from emform import EMFileTable,int_lt
 		table.add_column_data(EMFileTable.EMColumnData("Phase flip",self.other_column_data.get_num_phase_flipped,"The number of phase flipped particles on disk",int_lt))
-		table.add_column_data(EMFileTable.EMColumnData("Phase flip dims",self.other_column_data.phase_flipped_dim,"The dimensions of the phase flippped particles"))
+		table.add_column_data(EMFileTable.EMColumnData("Phase flip dims",self.other_column_data.phase_flipped_dim,"The dimensions of the phase flipped particles"))
 		table.add_column_data(EMFileTable.EMColumnData("Phase flip hp",self.other_column_data.get_num_phase_flipped_hp,"The number of phase flipped high pass filtered particles on disk",int_lt))
-#		table.add_column_data(EMFileTable.EMColumnData("Phase flip hp dims",self.other_column_data.phase_flipped_dim,"The dimensions of the phase flippped particles"))
+#		table.add_column_data(EMFileTable.EMColumnData("Phase flip hp dims",self.other_column_data.phase_flipped_dim,"The dimensions of the phase flipped particles"))
 		table.add_column_data(EMFileTable.EMColumnData("Wiener filt",self.other_column_data.get_num_wein_filt,"The number of Wiener filtered particles on disk",int_lt))
 #		table.add_column_data(EMFileTable.EMColumnData("Wiener filt dims",self.other_column_data.wien_filt_dim,"The dimensions of the Wiener filtered particles"))
 		return table, n
@@ -2983,7 +2983,7 @@ the following pattern:
 		
 		error_message = []
 		if options.oversamp < 1:
-			error_message.append("You must specify a value for oversamp that is atleast 1.")
+			error_message.append("You must specify a value for oversamp that is at least 1.")
 		if options.apix <= 0:
 			error_message.append("You must specify a positive non zero value for the apix.")
 		if options.voltage <= 0:
@@ -3120,10 +3120,10 @@ class E2CTFOutputTask(E2CTFWorkFlowTask):
 		options.phasefliphp = params["phasefliphp"]
 		options.oversamp = params["oversamp"]
 		if not options.wiener and not options.phaseflip and not options.phasefliphp:
-			error_message.append("Please choose at atleast one of the phaseflip or Wiener options.")
+			error_message.append("Please choose at at least one of the phaseflip or Wiener options.")
 			
 		if options.oversamp < 1:
-			error_message.append("The oversampling factor must be atleast 1")
+			error_message.append("The oversampling factor must be at least 1")
 			
 		if len(error_message) > 0:
 			self.show_error_message(error_message)
@@ -3146,7 +3146,7 @@ class E2CTFOutputTask(E2CTFWorkFlowTask):
 			additional_args = ["--dbds=%s"  %spr_ptcls_dict]
 			temp_file_name = "e2ctf_output_stdout.txt"
 			self.spawn_single_task("e2ctf.py",options,string_args,bool_args,additional_args,temp_file_name)
-			# Steve directed that the output writing task should use a single thead on July 3rd 2009
+			# Steve directed that the output writing task should use a single thread on July 3rd 2009
 			#self.spawn_single_task("e2ctf.py",options,string_args,bool_args,additional_args,temp_file_name)
 			
 
@@ -3251,7 +3251,7 @@ class E2CTFOutputTaskGeneral(E2CTFOutputTask):
 	
 	def get_ctf_options(self,params):
 		'''
-		This is a way to get the ctf optiosn if one is using the "alternate" path, which means just in the context of general use of e2ctf (not the workflow)
+		This is a way to get the ctf options if one is using the "alternate" path, which means just in the context of general use of e2ctf (not the workflow)
 		'''
 		options = EmptyObject()
 		
@@ -3468,7 +3468,7 @@ class EMPartSetOptions:
 	
 class EMParticleOptions(EMPartSetOptions):
 	''' 
-	e2refine2d and e2refine, from with the worklfow setting, both want to know the same 
+	e2refine2d and e2refine, from with the workflow setting, both want to know the same 
 	thing, basically, what are the available particles (including filtered options)
 	'''
 	
@@ -3541,7 +3541,7 @@ class E2ParticleExamineTask(E2CTFWorkFlowTask):
 		table.insert_column_data(1,EMFileTable.EMColumnData("Bad Particles",bpc.num_bad_particles,"The number of particles you have identified as bad",int_lt))
 		table.register_animated_column("Bad Particles")
 		
-		p,n = self.get_particle_selection_table(self.particle_stacks,table) # I wish this came from a "has a" not an "is a" relationship. But too late to chaneg
+		p,n = self.get_particle_selection_table(self.particle_stacks,table) # I wish this came from a "has a" not an "is a" relationship. But too late to change
 		params.append(ParamDef(name="blurb",vartype="text",desc_short="",desc_long="",property=None,defaultunits=self.__doc__,choices=None))
 		params.append(p)
 
@@ -3702,7 +3702,7 @@ class E2MakeSetTask(E2ParticleExamineTask):
 			else:
 				EMErrorMessageDisplay.run("The generation of stacks for flat (non database) files is currently disabled. A particle set (%s) is being ignored" %stack_type_map[key], "Warning")
 				continue
-				# This will work eventually - the only problem is that the exclusioons are not factored in, that's all
+				# This will work eventually - the only problem is that the exclusions are not factored in, that's all
 				#success,cmd = self.make_stack(filenames,base_stack_root+key,"stacks/")
 				
 			if not success:
@@ -4057,10 +4057,10 @@ class EMClassificationTools(ParticleWorkFlowTask):
 		error_message = []
 		
 		if "sep" in params and params["sep"] <= 0: # sometimes this key is absent (from the e2eotest form)
-			error_message.append("The separation argument in the Class average page must be atleast 1")
+			error_message.append("The separation argument in the Class average page must be at least 1")
 		
 		if params["classiter"] < 0:
-			error_message.append("The number of class averaging iterations must be atleast 0")
+			error_message.append("The number of class averaging iterations must be at least 0")
 		
 		if params["classkeepsig"] == False:
 			if params["classkeep"] < 0 or params["classkeep"] > 1:
@@ -4077,7 +4077,7 @@ class EMClassificationTools(ParticleWorkFlowTask):
 		options.classiter = params["classiter"]
 		options.classrefsf=params["classrefsf"]
 		
-		options.classaverager = params["classaverager"] # at the moment there are no extra averager parameter, but if that changes then the parameteres would have to be checked
+		options.classaverager = params["classaverager"] # at the moment there are no extra averager parameter, but if that changes then the parameters would have to be checked
 		
 		return error_message
 
