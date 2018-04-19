@@ -883,7 +883,7 @@ class EMBrowser(EMBrowserType):
 				
 
 		QtCore.QObject.connect(menu,QtCore.SIGNAL("triggered(QAction*)"),self.menu_action_triggered)
-		self.action_list_widget = l # only set if the menu acutally triggers
+		self.action_list_widget = l # only set if the menu actually triggers
 		menu.exec_(event.globalPos())
 		
 	def menu_action_triggered(self,action):
@@ -1388,7 +1388,7 @@ class EMFileSystemDelegate(EMBrowseDelegate):
 		e = EMData()
 		item = None
 		# note, if this if statement is allowed to proceed on Windows in the case of a png then the program
-		# crashes. In December of 2008 I thus changed this if statement to automatically exclude unecessary files
+		# crashes. In December of 2008 I thus changed this if statement to automatically exclude unnecessary files
 		# such as pngs and jpges...etc.
 		if EMUtil.get_image_ext_type(extension) != IMAGE_UNKNOWN and extension not in ["png","jpeg","jpg","JPG"]:
 			try:
@@ -1426,7 +1426,7 @@ class EMListItem(QtGui.QListWidgetItem):
 		self.context_menu_options = {} # this is used for running context menu actions
 		self.icon = None
 		self.metadata = None # subclass objects can use this to cache metadata
-		self.data = None # subclassing objects can use this to cache data - actually this isn't used at the momemt for fear of memory hogging
+		self.data = None # subclassing objects can use this to cache data - actually this isn't used at the moment for fear of memory hogging
 		
 	def get_delegate(self): return self.delegate
 	
@@ -1965,7 +1965,7 @@ class EMBDBDelegate(EMBrowseDelegate):
 	def __get_bdb_directory_items(self,url):
 		
 		'''
-		Displays the file/folder information in the directory /home/someonone/data/EMAN2DB
+		Displays the file/folder information in the directory /home/someone/data/EMAN2DB
 		this will typically consist of .bdb (database) files, but may contain folders and other
 		EMAN2DB directories.
 		
