@@ -108,6 +108,7 @@ class EMPlot2DWidget(EMGLWidget):
 	"""A QT widget for drawing 2-D plots using matplotlib
 	"""
 	signal_selected = QtCore.pyqtSignal(list)
+	mousedown = QtCore.pyqtSignal(QtGui.QMouseEvent,tuple)
 
 	def __init__(self,application=None,winid=None,parent=None):
 
