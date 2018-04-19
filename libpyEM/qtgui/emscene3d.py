@@ -725,7 +725,7 @@ rulericon = [
 
 class EMScene3D(EMItem3D, EMGLWidget):
 	"""
-	Widget for rendering 3D objects. Uses a scne graph for rendering
+	Widget for rendering 3D objects. Uses a scene graph for rendering
 	"""
 	name = "SG"
 	def __init__(self, parentwidget=None, SGactivenodeset=set(), scalestep=0.5):
@@ -746,7 +746,7 @@ class EMScene3D(EMItem3D, EMGLWidget):
 		self.main_3d_inspector = None			# No inspector by default
 		self.apix = None				# No angstrom per pixel to begin with
 		self.item_inspector = None			# Get the inspector GUI
-		self.reset_camera = False			# Toogle flag to deterine if the clipping plane has changed and needs redrawing
+		self.reset_camera = False			# Toggle flag to determine if the clipping plane has changed and needs redrawing
 		self.zslicemode = False				# Set to true when making a Z slice
 		#self.SGactivenodeset = SGactivenodeset		# A set of all active nodes (currently not used)
 		self.scalestep = scalestep			# The scale factor stepsize
@@ -770,7 +770,7 @@ class EMScene3D(EMItem3D, EMGLWidget):
 		
 	def getEvalString(self):
 		"""
-		Retrun a string that after eval can reinstatiate the object
+		Return a string that after eval can reinstantiate the object
 		"""
 		return "SG"
 		
@@ -852,7 +852,7 @@ class EMScene3D(EMItem3D, EMGLWidget):
 		glMatrixMode(GL_MODELVIEW)
 		glPushMatrix()
 		glLoadIdentity()
-		self.camera.setCameraPosition(sfactor=1) # Factor of two to compensate for the samera already being set
+		self.camera.setCameraPosition(sfactor=1) # Factor of two to compensate for the camera already being set
 		self.render()
 		glPopMatrix()
 		
@@ -867,7 +867,7 @@ class EMScene3D(EMItem3D, EMGLWidget):
 	
 	def selectArea(self, xi, xf, yi, yf, togglearea=True):
 		"""
-		Set an area for selection. Need to switch bewteen viewport coords, where (0,0 is bottom left) to
+		Set an area for selection. Need to switch between viewport coords, where (0,0 is bottom left) to
 		volume view coords where 
 0,0) is center of the screen.
 		"""
@@ -903,7 +903,7 @@ class EMScene3D(EMItem3D, EMGLWidget):
 			glMaterialfv(GL_FRONT, GL_SPECULAR, [0.0,0.0,0.0,1.0])
 			glMaterialfv(GL_FRONT, GL_EMISSION, [0.0,1.0,0.0,1.0])
 			glBegin(GL_LINE_LOOP)
-			# set the box just in front of the cliping plane
+			# set the box just in front of the clipping plane
 			z = -self.camera.getClipNear() - self.camera.getZclip()
 			sfw = self.camera.getViewPortWidthScaling()
 			sfh = self.camera.getViewPortHeightScaling()
@@ -918,7 +918,7 @@ class EMScene3D(EMItem3D, EMGLWidget):
 	
 	def _IsAncestorSelected(self, item):
 		"""
-		If an Ancestor is selected don't deselct by selecting a decendant
+		If an Ancestor is selected don't deselect by selecting a descendant
 		"""
 		if item.getSelectedAncestorNodes():
 			return True
@@ -968,7 +968,7 @@ class EMScene3D(EMItem3D, EMGLWidget):
 	
 	def clearSelection(self):
 		"""
-		Clear all slected itemstodeselect
+		Clear all selected items to deselect
 		"""
 		for selected in self.getAllSelectedNodes():
 			selected.setSelectedItem(False)
@@ -1085,7 +1085,7 @@ class EMScene3D(EMItem3D, EMGLWidget):
 		node.setSelectedItem(True)
 		node.setHiddenSelected(self.getHiddenSelected()) # inherit hidden state from SG
 		self.insertNewNode(name, node)
-		node.setTransform(self.newnode.getParentMatrixProduct().inverse()*self.newnode.getTransform()) # so the object is not modied by parent transform upon insertion
+		node.setTransform(self.newnode.getParentMatrixProduct().inverse()*self.newnode.getTransform()) # so the object is not modified by parent transform upon insertion
 		
 	def _gettransformbasedonscreen(self, event, rescale=True):
 		""" Helper function to for mousePressEvent"""
@@ -1122,7 +1122,7 @@ class EMScene3D(EMItem3D, EMGLWidget):
 		if (event.buttons()&Qt.LeftButton and self.mousemode == "rotate"):
 			magnitude = math.sqrt(dx*dx + dy*dy)
 			# We want to remove the effect of self.camera.getViewPortWidthScaling() for rotation. For everything else the effect is desired
-			#Check to see if the cursor is in the 'virtual slider pannel'
+			#Check to see if the cursor is in the 'virtual slider panel'
 			try:
 				if  self.zrotate: # The lowest 5% of the screen is reserved from the Z spin virtual slider
 					self.updateMatrices([dx/self.camera.getViewPortWidthScaling(),0,0,-1], "rotate")
@@ -1146,7 +1146,7 @@ class EMScene3D(EMItem3D, EMGLWidget):
 			
 	def mouseReleaseEvent(self, event):
 		"""
-		Qt event handler. Returns the cursor to arrow unpon mouse button release
+		Qt event handler. Returns the cursor to arrow upon mouse button release
 		"""
 		if (event.buttons()&Qt.LeftButton and self.mousemode == "app"):
 			self.emit(QtCore.SIGNAL("sgmouserelease()"), [event.x(), event.y()])
@@ -1160,9 +1160,9 @@ class EMScene3D(EMItem3D, EMGLWidget):
 			
 	def wheelEvent(self, event):
 		"""
-		QT event handler. Scales the SG upon wheel movement, does so by chaning fovy or orthographic equilivant
+		QT event handler. Scales the SG upon wheel movement, does so by changing fovy or orthographic equivalent
 		"""
-		# Originally the wheel sclaed by zoom the viewport, but that caused all sorts of issues, so I now just scale the SG
+		# Originally the wheel scaled by zoom the viewport, but that caused all sorts of issues, so I now just scale the SG
 		# The 25 is a fudge factor that controls the speed of scaling, lower if slower scaling
 		if event.orientation() & Qt.Vertical:
 			self.cameraNeedsanUpdate()
@@ -1327,7 +1327,7 @@ class EMScene3D(EMItem3D, EMGLWidget):
 			
 	def setMouseMode(self, mousemode):
 		"""
-		Sets the mouse mode, used by the inpsector
+		Sets the mouse mode, used by the inspector
 		"""
 		self.mousemode = mousemode
 		
@@ -1352,7 +1352,7 @@ class EMScene3D(EMItem3D, EMGLWidget):
 		oldfar = self.camera.getClipFar()
 		self.zslicemode = True
 		# We want to see the full volume data rather than a clip, so move clipping planes to BIG
-		# BIG is a bit differnt for perspective and orthgraphic volumes
+		# BIG is a bit different for perspective and orthographic volumes
 		if self.camera.usingortho:
 			self.camera.setClipNear(-1000)
 			self.camera.setClipFar(1000)
@@ -1439,10 +1439,10 @@ class EMScene3D(EMItem3D, EMGLWidget):
 	def insertNewNode(self, name, node, parentnode=None, parentidx=None):
 		"""
 		Insert a new node in the SG, also takes care of inspector
-		if parent node is sepcified the node is inserted as a child of the parent
-		This function should be used to add nodes to the tree b/c it detemines where in the tree the node should be inserted
+		if parent node is specified the node is inserted as a child of the parent
+		This function should be used to add nodes to the tree b/c it determines where in the tree the node should be inserted
 		@param name The node name
-		@param node the node iteslf
+		@param node the node itself
 		@param parentnode, the parent node if there is one
 		@param the index to insert the child in. NOne, means append child to end of children 
 		"""
@@ -1477,7 +1477,7 @@ class EMScene3D(EMItem3D, EMGLWidget):
 		
 		self.makeCurrent()
 		# Clear old tree
-		children = tuple(self.getChildren()) # Need to create immutable so that list chaos does not ensue with prunnig down the list
+		children = tuple(self.getChildren()) # Need to create immutable so that list chaos does not ensue with pruning down the list
 		for child in children:
 			self.removeChild(child)
 		
@@ -1583,13 +1583,13 @@ class EMScene3D(EMItem3D, EMGLWidget):
 		
 	def cameraNeedsanUpdate(self):
 		"""
-		Tell the SG to restet the camera
+		Tell the SG to reset the camera
 		"""
 		self.reset_camera = True
 		
 	def setClearColor(self, r, g, b, a=0.0):
 		"""
-		Set the background colorambient
+		Set the background color ambient
 		"""
 		self.clearcolor = [r, g, b, a]
 		glClearColor(r, g, b, a)
@@ -1678,7 +1678,7 @@ class EMLight:
 		"""
 		@type light: GL_LIGHTX, where 0 =< X <= 8
 		@param light: an OpenGL light
-		The light properties are set to reasnonale defaults.
+		The light properties are set to reasonable defaults.
 		"""
 		self.light = light
 		self.setAmbient(0.3, 0.3, 0.3, 1.0)		# Default ambient color is light grey
@@ -1729,7 +1729,7 @@ class EMLight:
 		@param g: the green component of the diffuse and specular light
 		@param b: the blue component of the diffuse and specular light
 		@param a: the alpha component of the diffuse and specular light
-		Set the specualr light color
+		Set the specular light color
 		"""
 		self.colorspecular = [r, g, b, a]
 		glLightfv(self.light, GL_SPECULAR, self.colorspecular)
@@ -1740,7 +1740,7 @@ class EMLight:
 		@param y: The y component of the light position
 		@param z: The z component of the light position
 		@param w: The w component of the light position
-		Set the light position, in gomogenious corrds
+		Set the light position, in homogeneous coords
 		"""
 		self.position = [x, y, z, w]
 		glLightfv(self.light, GL_POSITION, self.position)
@@ -1749,7 +1749,7 @@ class EMLight:
 		"""
 		@param theta: The theta component of the light position in spherical coords
 		@param phi: The theta component of the light position in spherical coords
-		Set the light position in sphericla coords. This is only used by the lightwidget in the inspector
+		Set the light position in spherical coords. This is only used by the lightwidget in the inspector
 		"""
 		z = math.sin(math.radians(theta + 90))*math.cos(math.radians(phi))
 		y = math.sin(math.radians(theta + 90))*math.sin(math.radians(phi))
@@ -1759,7 +1759,7 @@ class EMLight:
 		
 	def getAngularPosition(self):
 		"""
-		Retun the light position as spherical coords
+		Return the light position as spherical coords
 		"""
 		return self.angularposition
 		
@@ -1816,7 +1816,7 @@ class EMLight:
 		self.setGlobalAmbient(self.colorglobalambient[0], self.colorglobalambient[1], self.colorglobalambient[2], self.colorglobalambient[3])
 		
 class EMCamera:
-	"""Implmentation of the camera"""
+	"""Implementation of the camera"""
 	def __init__(self, near, far, usingortho=True, fovy=60.0, boundingbox=50.0, screenfraction=0.5):
 		"""
 		@param fovy: The field of view angle
@@ -1844,7 +1844,7 @@ class EMCamera:
 		"""
 		@param width: The width of the window in pixels
 		@param height: The height of the window in pixels
-		updates the camera and viewport after windowresize
+		updates the camera and viewport after window resize
 		"""
 		if width: self.width = width
 		if height: self.height = height
@@ -1875,7 +1875,7 @@ class EMCamera:
 		self.setPseudoFovy((self.width*self.width)/(2*dims) - (self.width/2))
 		
 	def setViewPort(self, x, y, vpwidth, vpheight):
-		"""Set the viewport subject to openGL constraitns """
+		"""Set the viewport subject to openGL constraints """
 		if (vpwidth < self.maxviewport[0] and vpheight < self.maxviewport[1]):
 			glViewport(x, y, vpwidth, vpheight)
 		
@@ -1925,7 +1925,7 @@ class EMCamera:
 		
 	def getUseOrtho(self):
 		"""
-		Returns the projectrion state
+		Returns the projection state
 		"""
 		return self.usingortho
 		
@@ -1967,7 +1967,7 @@ class EMCamera:
 		
 	def setPseudoFovy(self, pseudofovy):
 		"""
-		Set PseudoFovy, a sort of fovy for orthogramphic projections, do bounds checking
+		Set PseudoFovy, a sort of fovy for orthographic projections, do bounds checking
 		"""
 		if ((self.width+2*pseudofovy) > 0 and (self.height+2*pseudofovy) > 0):
 			if ((int(self.width+2*pseudofovy) < self.maxviewport[0] and int(self.height+2*pseudofovy*self.aspectratio) < self.maxviewport[1]) or pseudofovy < self.pseudofovy): 
@@ -1978,25 +1978,25 @@ class EMCamera:
 	
 	def getPseudoFovyWidth(self):
 		"""
-		Return PseudoFovy, a sort of fovy for orthogramphic projections
+		Return PseudoFovy, a sort of fovy for orthographic projections
 		"""
 		return self.pseudofovy
 	
 	def getPseudoFovyHeight(self):
 		"""
-		Return PseudoFovy, a sort of fovy for orthogramphic projections
+		Return PseudoFovy, a sort of fovy for orthographic projections
 		"""
 		return self.pseudofovy*self.aspectratio
 		
 	def getViewPortWidthScaling(self):
 		"""
-		Return the scaling nesssary to insert move from the viewport to the actual viewport. Need this b/c of the crazy scaling scheme
+		Return the scaling necessary to insert move from the viewport to the actual viewport. Need this b/c of the crazy scaling scheme
 		"""
 		return float(self.getWidth())/float(self.getWidth() + 2*self.getPseudoFovyWidth())
 		
 	def getViewPortHeightScaling(self):
 		"""
-		Return the scaling nesssary to insert move from the viewport to the actual viewport. Need this b/c of the crazy scaling scheme
+		Return the scaling necessary to insert move from the viewport to the actual viewport. Need this b/c of the crazy scaling scheme
 		"""
 		return float(self.getHeight())/float(self.getHeight() + 2*self.getPseudoFovyHeight())
 		
@@ -2146,7 +2146,7 @@ class EMInspector3D(QtGui.QWidget):
 				if selecteditem: self.scenegraph().setCurrentSelection(selecteditem)
 			except:
 				pass
-			# Unsure unqiue selection
+			# Unsure unique selection
 			self.ensureUniqueTreeLevelSelection(selecteditem)
 			
 	def ensureUniqueTreeLevelSelection(self, item):
@@ -2170,7 +2170,7 @@ class EMInspector3D(QtGui.QWidget):
 
 	def _recursiveAdd(self, parentitem, parentnode,depth=0):
 		"""
-		Helper function to laod the SG
+		Helper function to load the SG
 		"""
 		for child in parentnode.getChildren():
 			if not child.getLabel(): child.setLabel(child.name)
