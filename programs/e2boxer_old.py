@@ -2783,7 +2783,7 @@ class GaussBoxer:
 
 		del ccfs
 
-		if self.gui_mode: self.target().set_status_message("Auboxing Done",1000)
+		if self.gui_mode: self.target().set_status_message("Autoboxing Done",1000)
 
 		if self.gui_mode: self.target().set_status_message("Updating Positions",0)
 		if self.gui_mode: self.target().set_status_message("Done",1000)
@@ -2856,7 +2856,7 @@ class GaussBoxer:
 
 		gbdb = js_open_dict(GaussPanel.GDB_NAME)
 		# Don't set gbdb to None but just set it's 'clear' flag to true.
-		# If GUI is invoked next time, alternate image will NOT be generated adn GUI will start from clean slate. However, if gauss mode autoboxing or ctf is invoked via command line, the paramters used for boxing will still be there for autoboxing and ctf est to work.
+		# If GUI is invoked next time, alternate image will NOT be generated adn GUI will start from clean slate. However, if gauss mode autoboxing or ctf is invoked via command line, the parameters used for boxing will still be there for autoboxing and ctf est to work.
 		gbdb['clear']=True
 
 	def get_small_image(self,imgname,modecmd=False,boxsize=128,ret_dummy=False):
@@ -2957,7 +2957,7 @@ class GaussBoxer:
 
 	def get_alternate(self,filename):
 		# if there is a subsampled image in cache then user was probably using that the last time
-		# if we use subsampled image from cache then also have to reload all the previous parameters, mosti mportantly box size and in/output pixel size
+		# if we use subsampled image from cache then also have to reload all the previous parameters, most importantly box size and in/output pixel size
 
 		#self.small_img = get_idd_image_entry(filename,'subsampled_image')
 

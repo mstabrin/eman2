@@ -2009,7 +2009,7 @@ class ProjectDialog(QtGui.QDialog):
 		grid = QtGui.QGridLayout()
 		# add intro
 		textbox = QtGui.QTextEdit("")
-		textbox.setHtml("Welcome to the EMAN2 project manager. Please add project specific paramters below. For Questions email: <a href='mailto:sludtke@bcm.edu'>sludtke@bcm.edu<\a>")
+		textbox.setHtml("Welcome to the EMAN2 project manager. Please add project specific parameters below. For Questions email: <a href='mailto:sludtke@bcm.edu'>sludtke@bcm.edu<\a>")
 		textbox.setMaximumHeight(66)
 		textbox.setReadOnly(True)
 		textbox.viewport().setCursor(QtCore.Qt.ArrowCursor)
