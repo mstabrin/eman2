@@ -612,10 +612,10 @@ class Record(DictMixin):
 	storage for the record.
 	
 	Mechanisms for changing existing params are a bit complicated. In a sense, as in a 
-	physical lab notebook, an original value can never be changed, only superceded. 
+	physical lab notebook, an original value can never be changed, only superseded. 
 	All records have a 'magic' field called 'comments', which is an extensible array
 	of text blocks with immutable entries. 'comments' entries can contain new field
-	definitions, which will supercede the original definition as well as any previous
+	definitions, which will supersede the original definition as well as any previous
 	comments. Changing a field will result in a new comment being automatically generated
 	describing and logging the value change.
 	
@@ -648,7 +648,7 @@ class Record(DictMixin):
 	def __init__(self,d=None,ctx=None, **kwargs):
 		"""Normally the record is created with no parameters, then setContext is called by the
 		Database object. However, for initializing from a dictionary (ie - XMLRPC call, this
-		may be done at initiailization time."""
+		may be done at initialization time."""
 		kwargs.update(d or {})
 		## recognized keys
 		# recid -- 32 bit integer recordid (within the current database)
