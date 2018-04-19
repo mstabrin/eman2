@@ -229,7 +229,7 @@ projectrot <basis input> <image input> <simmx input> <projection output>
 					sys.stdout.flush()
 				im=EMData(args[2],i)
 				
-				# find the best orienteation from the similarity matrix, and apply the transformation
+				# find the best orientation from the similarity matrix, and apply the transformation
 				best=(1.0e23,0,0,0,0)
 				
 				for j in range(simmx.get_xsize()): 
@@ -284,7 +284,7 @@ projectrot <basis input> <image input> <simmx input> <projection output>
 					sys.stdout.flush()
 				im=EMData(args[2],i)
 				
-				# find the best orienteation from the similarity matrix, and apply the transformation
+				# find the best orientation from the similarity matrix, and apply the transformation
 				best=(1.0e23,0,0,0,0)
 				
 				for j in range(simmx.get_xsize()): 
@@ -296,7 +296,7 @@ projectrot <basis input> <image input> <simmx input> <projection output>
 				if maskfile!=None : im*=maskfile
 				if options.normalize!=None:
 					try: im.process_inplace(options.normalize)
-					except: print("Warning: Normazation failed")
+					except: print("Warning: Normalization failed")
 				if mean!=None : im-=mean
 				
 				proj=EMData(len(basis),1,1)
