@@ -62,10 +62,10 @@ class EMShapeBase(EMItem3D):
 		self.shininess = 25.0		
 		
 	def getEvalString(self):
-		raise NotImplementedError("Not to reimplemnt this function")
+		raise NotImplementedError("Not to reimplement this function")
 	
 	def getItemInspector(self):
-		raise NotImplementedError("Not to reimplemnt this function")
+		raise NotImplementedError("Not to reimplement this function")
 	
 	def setAmbientColor(self, red, green, blue, alpha=1.0):
 		self.ambient = [red, green, blue, alpha]
@@ -128,7 +128,7 @@ class EMShapeBase(EMItem3D):
 			glPopAttrib()
 			
 	def renderShape(self):
-		raise NotImplementedError("Not to reimplemnt this function")	
+		raise NotImplementedError("Not to reimplement this function")	
 	
 class EMRuler(EMShapeBase):
 	"""
@@ -142,14 +142,14 @@ class EMRuler(EMShapeBase):
 		"""
 		Return a cube control widget for the stacked_widget
 		"""
-		raise NotImplementedError("Not yet implmented")
+		raise NotImplementedError("Not yet implemented")
 	
 	@staticmethod
 	def getNodeForDialog(attribdict):
 		"""
 		Create a new node using a attribdict
 		"""
-		raise NotImplementedError("Not yet implmented")
+		raise NotImplementedError("Not yet implemented")
 			
 	def __init__(self, x1, y1, z1, x2, y2, z2, apix, scaling, transform=None):
 		EMShapeBase.__init__(self, parent=None, children=set(), transform=transform)
@@ -425,7 +425,7 @@ class EMScatterPlot3D(EMShapeBase):
 		EMShapeBase.__init__(self, parent=None, children=set(), transform=transform)
 		
 	def setData(self, data, pointsize):
-		""" Set the dat to plot. Format is a [X, Y, Z] whereX Y and Z are lists of the smae length """
+		""" Set the dat to plot. Format is a [X, Y, Z] whereX Y and Z are lists of the same length """
 		if len(data) != 3:
 			raise ValueError("Data must have 3 dimensions")
 		if len(data[0]) != len(data[1]) or len(data[1]) != len(data[2]):
@@ -482,13 +482,13 @@ class EMCylinder(EMShapeBase):
 		"""
 		cyliderwidget = QtGui.QWidget()
 		grid = QtGui.QGridLayout()
-		cylider_radius_label = QtGui.QLabel("Cylider Radius")
+		cylider_radius_label = QtGui.QLabel("Cylinder Radius")
 		attribdict["cylider_radius"] = QtGui.QLineEdit("50")
 		grid.addWidget(cylider_radius_label, 0, 0, 1, 2)
 		grid.addWidget(attribdict["cylider_radius"], 0, 2, 1, 2)
-		cylider_height_label = QtGui.QLabel("Cylider Height")
+		cylider_height_label = QtGui.QLabel("Cylinder Height")
 		attribdict["cylider_height"] = QtGui.QLineEdit("50")
-		node_name_label = QtGui.QLabel("Cylider Name")
+		node_name_label = QtGui.QLabel("Cylinder Name")
 		attribdict["node_name"] = QtGui.QLineEdit(str(EMCylinder.name))
 		grid.addWidget(cylider_height_label, 1, 0, 1, 2)
 		grid.addWidget(attribdict["cylider_height"], 1, 2, 1, 2)
