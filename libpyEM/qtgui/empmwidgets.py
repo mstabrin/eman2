@@ -31,7 +31,7 @@ from __future__ import print_function
 #
 #
 
-# These are widgets that e2projectmanger instantiates to make a GUI interface for the e2 programs.There should be enough widgets to represent
+# These are widgets that e2projectmanager instantiates to make a GUI interface for the e2 programs.There should be enough widgets to represent
 # just about any e2program, but if you feel the desire to make a new one, just subclass PMBaseWidget, and implement getValue and setValue.
 # You may also need to reimplement getArgument (which returns the argument used in calling the e2program), if the default will not work for you.
 # In addition, you'll need to add a line in the class PMGUIWidget (e2projectmanager) to instantiate the widget based on the value of 'guitype'
@@ -81,7 +81,7 @@ class PMBaseWidget(QtGui.QWidget):
 		return self.name
 
 	def setPositional(self, position):
-		""" Set whether or not this is a postional argument """
+		""" Set whether or not this is a positional argument """
 		self.postional = position
 
 	def getPositional(self):
@@ -97,13 +97,13 @@ class PMBaseWidget(QtGui.QWidget):
 		return self.mode
 
 	def getArgument(self):
-		# If the value is None or blank then do not yeild an option. Obviously this will nver happen for Int bool or float
+		# If the value is None or blank then do not yield an option. Obviously this will never happen for Int bool or float
 		if str(self.getValue()) == "" or self.noarg:
 			return ""
 		elif  str(self.getValue()).upper() == "NONE" and not self.returnNone:
 			return ""
 		else:
-			""" There are two sorts of arguments: Posional and optional """
+			""" There are two sorts of arguments: Positional and optional """
 			if self.getPositional():
 				return str(self.getValue())
 			else:
@@ -118,7 +118,7 @@ class PMBaseWidget(QtGui.QWidget):
 		return self.errormessage
 
 class PMIntEntryWidget(PMBaseWidget):
-	""" A Widget for geting Int values. Type and range is checked """
+	""" A Widget for getting Int values. Type and range is checked """
 
 	@staticmethod
 	def copyWidget(widget):
@@ -156,8 +156,8 @@ class PMIntEntryWidget(PMBaseWidget):
 			self._confirm_bounds()
 		except ValueError:
 			self.intbox.setText("")
-			self.setErrorMessage("Invalid type, Int neeeded in %s"%self.getName())
-			if self.isVisible() and not quiet: self.emit(QtCore.SIGNAL("pmmessage(QString)"),"Invalid type, Int neeeded in %s"%self.getName())
+			self.setErrorMessage("Invalid type, Int needed in %s"%self.getName())
+			if self.isVisible() and not quiet: self.pmmessage.emit("Invalid type, Int needed in %s"%self.getName())
 
 	def _confirm_bounds(self):
 		if self.lrange != None and (self.value < self.lrange):
@@ -178,7 +178,7 @@ class PMIntEntryWidget(PMBaseWidget):
 		self.intbox.setEnabled(state)
 
 class PMShrinkEntryWidget(PMIntEntryWidget):
-	""" A widget for shink options. If this entry is set to <= 1 then no argument is returned """
+	""" A widget for shrink options. If this entry is set to <= 1 then no argument is returned """
 
 	@staticmethod
 	def copyWidget(widget):
@@ -201,8 +201,8 @@ class PMShrinkEntryWidget(PMIntEntryWidget):
 		except ValueError:
 			self.value = self.lrange - 1
 			self.intbox.setText(str(self.lrange-1))
-			self.setErrorMessage("Invalid type, Int neeeded in %s"%self.getName())
-			if self.isVisible() and not quiet: self.emit(QtCore.SIGNAL("pmmessage(QString)"),"Invalid type, Int neeeded in %s"%self.getName())
+			self.setErrorMessage("Invalid type, Int needed in %s"%self.getName())
+			if self.isVisible() and not quiet: self.pmmessage.emit("Invalid type, Int needed in %s"%self.getName())
 
 	def _confirm_bounds(self):
 		if self.lrange != None and (self.value < self.lrange):
@@ -213,7 +213,7 @@ class PMShrinkEntryWidget(PMIntEntryWidget):
 		self.noarg = False
 
 class PMFloatEntryWidget(PMBaseWidget):
-	""" A Widget for geting Float values. Type and range is checked """
+	""" A Widget for getting Float values. Type and range is checked """
 
 	@staticmethod
 	def copyWidget(widget):
@@ -272,7 +272,7 @@ class PMFloatEntryWidget(PMBaseWidget):
 		self.floatbox.setEnabled(state)
 
 class PMStringEntryWidget(PMBaseWidget):
-	""" A Widget for geting String values. Type is checked """
+	""" A Widget for getting String values. Type is checked """
 
 	@staticmethod
 	def copyWidget(widget):
@@ -299,7 +299,7 @@ class PMStringEntryWidget(PMBaseWidget):
 		self.string = str(self.stringbox.text())
 
 	def getValue(self):
-		# What to do with None tpye values? For strings, just set None to "". This should be equivilent
+		# What to do with None type values? For strings, just set None to "". This should be equivalent
 		return self.string
 
 	def setValue(self, string, quiet=False):
@@ -334,7 +334,7 @@ class PMHeaderWidget(PMBaseWidget):
 		self.setErrorMessage(None)
 
 	def getArgument(self):
-		""" Obvioulsy the hear does give an argument """
+		""" Obviously the hear does give an argument """
 		return None
 
 class PMBoolWidget(PMBaseWidget):
@@ -378,7 +378,7 @@ class PMBoolWidget(PMBaseWidget):
 			return ""
 
 class PMFileNameWidget(PMBaseWidget):
-	""" A Widget for geting filenames. Type is checked """
+	""" A Widget for getting filenames. Type is checked """
 	@staticmethod
 	def copyWidget(widget):
 		""" Basically a copy constructor to get around QT and python limitations """
@@ -435,7 +435,7 @@ class PMFileNameWidget(PMBaseWidget):
 		# Check to see if the file exists
 		filename = str(filename)
 		if filename.upper() == "NONE": filename=""	# If none is passed set to blank
-		# Posional arguments must be space delimted for multiple files, whereas options must be comma delimted
+		# Positional arguments must be space delimited for multiple files, whereas options must be comma delimited
 		if not self.getPositional():
 			filename = filename.replace(" ",",")
 		# In some cases a file is optional
@@ -454,7 +454,7 @@ class PMFileNameWidget(PMBaseWidget):
 		self.emit(QtCore.SIGNAL("pmfilename(QString)"),self.getValue())
 
 	def _checkfiles(self, filename):
-		# Posional arguments must be space delimted for multiple files, whereas options must be comma delimted
+		# Positional arguments must be space delimited for multiple files, whereas options must be comma delimited
 		if self.getPositional():
 			files = filename.split()
 		else:
@@ -498,7 +498,7 @@ class PMFileNameWidget(PMBaseWidget):
 		if self.isVisible() and not quiet: self.emit(QtCore.SIGNAL("pmmessage(QString)"),"File '%s' from field '%s' does not exist"%(filename,self.getName()))
 
 class PMDirectoryWidget(PMBaseWidget):
-	""" A Widget for display dircories of a certian type """
+	""" A Widget for display directories of a certain type """
 
 	@staticmethod
 	def copyWidget(widget):
@@ -574,7 +574,7 @@ class PMComboWidget(PMBaseWidget):
 
 	def getValue(self):
 		if str(self.combobox.currentText()) == "None":
-			# In the e2 programs we actually need to specify None otherwise default behaviour will be implmented
+			# In the e2 programs we actually need to specify None otherwise default behaviour will be implemented
 			return "None"
 		return self.datatype(self.combobox.currentText())
 
@@ -627,7 +627,7 @@ class PMComboParamsWidget(PMBaseWidget):
 	def getValue(self):
 		""" Return the value. Concatenate if necessary """
 		if str(self.combobox.currentText()) == "None":
-			# In the e2 programs we actually need to specify None otherwise default behaviour will be implmented
+			# In the e2 programs we actually need to specify None otherwise default behaviour will be implemented
 			return "None"
 		if self.params.text() == "":
 			return str(self.combobox.currentText())
@@ -795,7 +795,7 @@ class PMAutoMask3DWidget(PMBaseWidget):
 
 class PMTableBase(PMBaseWidget):
 	""" A base widget for making tables. To make a table class subclass this base and add a line to PMGUIWidget in e2projectmanager.py
-	inorder to instatiate it using directions from an e2program. See Wiki for more info """
+	in order to instantiate it using directions from an e2program. See Wiki for more info """
 	def __init__(self, name, mode, postional=False, initdefault=None):
 		PMBaseWidget.__init__(self, name, mode)
 		self.setPositional(postional)
@@ -808,15 +808,15 @@ class PMTableBase(PMBaseWidget):
 		self.setLayout(gridbox)
 
 	def updateTable(self):
-		""" Update FSC table. You must implment this function to build the table"""
+		""" Update FSC table. You must implement this function to build the table"""
 		raise NotImplementedError("Sub class must reimplement 'getValue' function")
 
 	def getValue(self):
-		""" must implment this to, to return a value from the table """
+		""" must implement this to, to return a value from the table """
 		raise NotImplementedError("Sub class must reimplement 'getValue' function")
 
 	def setValue(self):
-		""" must implemnt this function to set a value in the table """
+		""" must implement this function to set a value in the table """
 		raise NotImplementedError("Sub class must reimplement 'getValue' function")
 
 class PMFSCTableWidget(PMTableBase):
