@@ -241,7 +241,7 @@ def detectThreads(options):
 			print("\nfound cores n={}".format(nparallel))
 			print("setting --parallel={}".format(options.parallel))
 		else:
-			print("\n(EMAN2_utils)(detectThreads) nothing to do; mpi paralellism specified; options.parallel={}".format(otpions.parallel)) 
+			print("\n(EMAN2_utils)(detectThreads) nothing to do; mpi parallelism specified; options.parallel={}".format(otpions.parallel)) 
 	
 	elif options.parallel == 'None' or options.parallel == 'none':
 		options.parallel = None
@@ -269,7 +269,7 @@ def checkinput(options):
 
 def runcmd(options,cmd,cmdsfilepath=''):
 	"""
-	Runs commands "properly" at the commnad line
+	Runs commands "properly" at the command line
 	Author: Jesus Montoya, jgalaz@gmail.com
 	"""
 	if options.verbose > 9:
@@ -677,7 +677,7 @@ def writeParameters( options, program, tag ):
 	Used by many SPT programs. Function to write the parameters used for every run of the program to parameters.txt inside the path specified by --path.
 	Unfortunately, the usability of the .eman2log.txt file is limited when it is overcrowded with commands; e.g., a program that iteratively runs other EMAN2 programs at the command line
 	will SWARM the log file with commands that will obscure the command you wanted to log. Having a parameters file explicitly record what was the state of every parameter used by the program
-	is useful, as it also explicitly records values for parameters that were used by DEFAULT and not set by the user at the commnadline.
+	is useful, as it also explicitly records values for parameters that were used by DEFAULT and not set by the user at the commandline.
 
 	Author: Jesus Montoya, jgalaz@gmail.com
 	'''
