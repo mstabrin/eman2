@@ -2,7 +2,7 @@
 [
   {
     "TITLE":"e2ctf generate output Wizard",
-    "INST":"This Wizard is to Help users from e2ctf in generate output mode. Two distint type of output are posssible: CTF corrected particles using phase flipping, and CTF corrected particles using Wiener filtration",
+    "INST":"This Wizard is to Help users from e2ctf in generate output mode. Two distinct types of output are possible: CTF corrected particles using phase flipping, and CTF corrected particles using Wiener filtration",
     "WIDGETS":[]
   },
   {

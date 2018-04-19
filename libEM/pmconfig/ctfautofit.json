@@ -13,8 +13,8 @@
     ]
   },
   {
-    "TITLE":"Microscope paramaters",
-    "INST":"List the microscope parameters used during data collection to paramatize the CTF equation ",
+    "TITLE":"Microscope parameters",
+    "INST":"List the microscope parameters used during data collection to parametrize the CTF equation ",
     "WIDGETS":[
       "apix",
       "voltage",
