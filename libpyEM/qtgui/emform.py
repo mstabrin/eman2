@@ -53,7 +53,7 @@ class EMButtonDialog:
 		'''
 		@param desc_short that which will appear as the main text on the button
 		@param desc_long the tool tip for the button
-		@param icon if specificed this is a QtGui.QIcon, and will become the icon of the button
+		@param icon if specified this is a QtGui.QIcon, and will become the icon of the button
 		'''
 		self.target = None
 		self.vartype = "EMButtonDialog"
@@ -83,7 +83,7 @@ class EMButtonDialog:
 		Inheriting classes must supply this function
 		The slot that is connected to the signal emitted when the button is clicked
 		'''
-		raise NotImplementedError("Inheriting classes are menat to supply this function")
+		raise NotImplementedError("Inheriting classes are meant to supply this function")
 		
 class EMOrientationDistDialog(EMButtonDialog):
 	'''
@@ -221,7 +221,7 @@ class EMParamTable(list):
 					if str(choice) not in exclusions:
 						item.setFlags(flag2|flag3)
 					else:
-						# exluded items are displayed but they are not selectable
+						# excluded items are displayed but they are not selectable
 						# this was originally added for e2boxer -the write output form needs to show which images are are excluded
 						item.setFlags(flag3)
 						item.setTextColor(QtGui.QColor(0,128,0))
@@ -419,7 +419,7 @@ class EMFileTable(QtGui.QTableWidget):
 		'''
 		Get the display name for this file name
 		@param name a file name - The file should exist on disk
-		@return the display nane
+		@return the display name
 		Internally caches the originally name in a dictionary so it can be recovered
 		Redefine self.convert_name to achieve your custom-desired display name
 		'''
@@ -457,7 +457,7 @@ class EMFileTable(QtGui.QTableWidget):
 				item.setFlags(flag2|flag3)
 				item.setToolTip(name)
 			else:
-				# exluded items are displayed but they are not selectable
+				# excluded items are displayed but they are not selectable
 				# this was originally added for e2boxer -the write output form needs to show which images are are excluded
 				item.setFlags(flag3)
 				item.setTextColor(QtGui.QColor(0,128,0))
@@ -1082,7 +1082,7 @@ class EMFormWidget(QtGui.QWidget):
 	'''
 	See the example in __main__ below
 	If ok is clicked the "emform_ok" signal is emitted along with a dictionary containing all of the form entries
-	If cancel is clicked the "emform_cancel" signal is emmitted. No extra information is sent in this case
+	If cancel is clicked the "emform_cancel" signal is emitted. No extra information is sent in this case
 	'''
 	def __init__(self,params=None,disable_ok_cancel=False):
 		QtGui.QWidget.__init__(self,None)
@@ -1960,7 +1960,7 @@ class BoolDependentsEventHandler:
 		'''
 		self.target = weakref.ref(target)
 		self.checkbox = checkbox
-		self.dependents = dependents # a list of depent names (ParamDef.name)
+		self.dependents = dependents # a list of dependent names (ParamDef.name)
 		self.invert_logic = invert_logic
 		QtCore.QObject.connect(self.checkbox, QtCore.SIGNAL("stateChanged(int)"),self.checkbox_state_changed)
 		
@@ -1983,7 +1983,7 @@ class EMTableFormWidget(EMFormWidget):
 	'''
 	See the example in __main__ below
 	If ok is clicked the "emform_ok" signal is emitted along with a dictionary containing all of the form entries
-	If cancel is clicked the "emform_cancel" signal is emmitted. No extra information is sent in this case
+	If cancel is clicked the "emform_cancel" signal is emitted. No extra information is sent in this case
 	'''
 	def __init__(self,params=None):
 		EMFormWidget.__init__(self,params)
