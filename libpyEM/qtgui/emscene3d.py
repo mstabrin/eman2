@@ -2192,7 +2192,7 @@ class EMInspector3D(QtGui.QWidget):
 		Add a node (item3d) to the TreeWidget if not parent node, otherwise add a child to parent node
 		We need to get a GUI for the treeitem. The treeitem and the GUI need know each other so they can talk
 		The Treeitem also needs to know the node, so it can talk to the node.
-		You can think of this as a three way conversation (the alterative it to use a mediator, but that is not worth it w/ only three players)
+		You can think of this as a three way conversation (the alternative it to use a mediator, but that is not worth it w/ only three players)
 		"""
 		tree_item = EMQTreeWidgetItem(QtCore.QStringList(name), item3d, parentitem)	# Make a QTreeItem widget, and let the TreeItem talk to the scenegraph node and its GUI
 		item3d.setEMQTreeWidgetItem(tree_item)				# Reference to the EMQTreeWidgetItem
@@ -2234,7 +2234,7 @@ class EMInspector3D(QtGui.QWidget):
 		"""
 		self.stacked_widget.setCurrentWidget(item.item3d().getItemInspector())
 		item.setSelectionState(item.checkState(0))
-		# This code is to prevent both decendents and childer from being selected....
+		# This code is to prevent both descendants and children from being selected....
 		if item.checkState(0) == QtCore.Qt.Checked: self.ensureUniqueTreeLevelSelection(item.item3d())
 		if not item.item3d().isSelectedItem(): item.item3d().getItemInspector().updateItemControls() # This is too update a widget, translation and rotation may change in parent nodes change
 		self.scenegraph().setCurrentSelection(item.item3d())
@@ -2616,7 +2616,7 @@ class EMInspector3D(QtGui.QWidget):
 		
 	def getUtilsWidget(self):
 		"""
-		Return the utilites widget
+		Return the utilities widget
 		"""
 		uwidget = QtGui.QWidget()
 		uvbox = QtGui.QVBoxLayout()
@@ -2708,7 +2708,7 @@ class EMInspector3D(QtGui.QWidget):
 		
 	def updateInspector(self):
 		"""
-		Update Inspector,is called whenever the scence changes
+		Update Inspector,is called whenever the scene changes
 		"""
 		#tool buttons
 		if self.scenegraph().getMouseMode() == "selection": self.selectiontool.setDown(True)
@@ -2784,7 +2784,7 @@ class EMInspector3D(QtGui.QWidget):
 
 class EMSGNodeInspector(EMItem3DInspector):
 	"""
-	Inspector for the SG node, allows special fucntionality for the SG node
+	Inspector for the SG node, allows special functionality for the SG node
 	"""
 	def __init__(self, name, item3d):
 		EMItem3DInspector.__init__(self, name, item3d)
@@ -2798,7 +2798,7 @@ class EMSGNodeInspector(EMItem3DInspector):
 			self.addTab(tabwidget, "misc")
 		
 	def addExtraTabAllObjects(self,gridbox):
-		self.getthresh = QtGui.QLabel("Iso-threshod")
+		self.getthresh = QtGui.QLabel("Iso-threshold")
 		self.isothr_box=QtGui.QLineEdit("0.0")
 		gridbox.addWidget(self.getthresh, 1, 0, 1, 1)
 		gridbox.addWidget(self.isothr_box, 1, 1, 1, 1)
@@ -2862,7 +2862,7 @@ class EMSGNodeInspector(EMItem3DInspector):
 			# Use modulo arith to distribute
 			if hasattr(child, 'getBoundingBoxDimensions'):
 				dims = child.getBoundingBoxDimensions()
-				# distribute alogn X not matter what the SG root matrix
+				# distribute along X not matter what the SG root matrix
 				self._set_transformSTDCorrd(child, math.pow(-1,(count%2))*distcount*dims[0], 0.0, 0.0)
 				if (count + 1) % 2: distcount += 1
 				count += 1
@@ -2950,11 +2950,11 @@ class EMQTreeWidgetItem(QtGui.QTreeWidgetItem):
 		self.visible = QtGui.QIcon(QtGui.QPixmap(visibleicon))
 		self.invisible = QtGui.QIcon(QtGui.QPixmap(invisibleicon))
 		self.getVisibleState()
-		self.setToolTip(0, 'Click on the checkbox to select\nMiddle click to edit\nRight click to toogle visible')
+		self.setToolTip(0, 'Click on the checkbox to select\nMiddle click to edit\nRight click to toggle visible')
 	
 	def setSelectionState(self, state):
 		""" 
-		Toogle selection state on and off
+		Toggle selection state on and off
 		"""
 		if state == QtCore.Qt.Checked:
 			self.item3d().setSelectedItem(True)
@@ -2964,7 +2964,7 @@ class EMQTreeWidgetItem(QtGui.QTreeWidgetItem):
 		
 	def toggleVisibleState(self):
 		""" 
-		Toogle visible state on and off
+		Toggle visible state on and off
 		"""
 		self.item3d().setVisibleItem(not self.item3d().isVisibleItem())
 		self.getVisibleState()
@@ -3028,14 +3028,14 @@ class NodeEditDialog(QtGui.QDialog):
 	
 class NodeDialog(QtGui.QDialog):
 	"""
-	Generate a dialog to add or remove node. If reome is chosen 'item' node is removed
+	Generate a dialog to add or remove node. If remove is chosen 'item' node is removed
 	If add node is chosen, a node is inserted just below this node.
 	"""
 	def __init__(self, inspector, item):
 		QtGui.QDialog.__init__(self)
 		self.item = item
 		self.inspector = weakref.ref(inspector)
-		self.setWindowTitle('Node Controler')
+		self.setWindowTitle('Node Controller')
 		self.setMaximumWidth(300)
 		self.transformgroup = {}
 		vbox = QtGui.QVBoxLayout(self)
@@ -3177,8 +3177,8 @@ class NodeDialog(QtGui.QDialog):
 		
 		insertion_node.setLabel(node_name)
 		self.inspector().scenegraph().insertNewNode(node_name, insertion_node, parentnode=parentnode)
-		insertion_node.setTransform(insertion_node.getParentMatrixProduct().inverse()*insertion_node.getTransform()) # Move to standard coordinatre system
-		insertion_node.getTransform().set_scale(1.0)	# The scale can be adverly affected by the above line of code. This may or may not be optimal I'll have to think about it....
+		insertion_node.setTransform(insertion_node.getParentMatrixProduct().inverse()*insertion_node.getTransform()) # Move to standard coordinate system
+		insertion_node.getTransform().set_scale(1.0)	# The scale can be adversely affected by the above line of code. This may or may not be optimal I'll have to think about it....
 		#if reverttrans: insertion_node.getTransform().set_trans(float(d[0].text()),float(d[1].text()),float(d[2].text()))
 		self.inspector().updateSceneGraph()
 		self.done(0)
