@@ -119,7 +119,7 @@ def askFileExists() :
 #---------------------------------------------------------------------------
 
 class EMFileType(object) :
-	"""This is a base class for handling interaction with files of different types. It includes a number of excution methods common to
+	"""This is a base class for handling interaction with files of different types. It includes a number of execution methods common to
 	several different subclasses"""
 
 	# A class dictionary keyed by EMDirEntry filetype string with value beign a single subclass of EMFileType. filetype strings are unique
@@ -163,7 +163,7 @@ class EMFileType(object) :
 
 	@staticmethod
 	def isValid(path, header) :
-		"""Returns (size, n, dim) if the referenced path is a file of this type, false if not valid. The first 4k block of data from the file is provided as well to avoid unnecesary file access."""
+		"""Returns (size, n, dim) if the referenced path is a file of this type, false if not valid. The first 4k block of data from the file is provided as well to avoid unnecessary file access."""
 
 		return False
 
