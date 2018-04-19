@@ -928,7 +928,7 @@ class PMFSCTableWidget(PMTableBase):
 
 			
 
-	# I lifted this code from Daivids SPR workflow module
+	# I lifted this code from Daivid's SPR workflow module
 	def find_first_point_5_crossing(self,xaxis,yaxis,thr=0.5):
 		'''
 		Find the first 0.5 crossing in the FSC - interpolate and try to return an accurate estimate

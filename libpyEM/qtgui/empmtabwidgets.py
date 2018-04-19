@@ -31,7 +31,7 @@ from __future__ import print_function
 #
 #
 
-# These classes are subclasses of EMBrowserWidget to provide additonal models to represent various types of files in the GUI.
+# These classes are subclasses of EMBrowserWidget to provide additional models to represent various types of files in the GUI.
 
 from EMAN2 import *
 import os
@@ -162,7 +162,7 @@ class EMModelsEntry(EMDirEntry):
 		# Should only be this:
 		self.filetype="Image"
 
-		# get image counts Needed for get info. Requiring this in in a reimplemeted function is a bad design... I din't do this :)
+		# get image counts Needed for get info. Requiring this in in a reimplemented function is a bad design... I din't do this :)
 		try:
 			self.nimg = EMUtil.get_image_count(self.path())
 		except:
@@ -390,7 +390,7 @@ class EMParticlesEntry(EMDirEntry):
 			if a:
 				self.particledim = a.get_xsize()
 
-			# get partivle set type
+			# get particle set type
 			try:
 				self.typ = str(self.path().split('_ctf_')[1])
 			except:
@@ -553,7 +553,7 @@ class EMCTFParticlesEntry(EMDirEntry):
 			if a:
 				self.particledim = a.get_xsize()
 
-			# get partivle set type
+			# get particle set type
 			try:
 				self.typ = str(self.path().split('_ctf_')[1])
 			except:
