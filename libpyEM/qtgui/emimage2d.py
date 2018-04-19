@@ -129,7 +129,7 @@ class EMImage2DWidget(EMGLWidget):
 
 		self.shapes={}				# dictionary of shapes to draw, see add_shapes
 		self.shapechange=1			# Set to 1 when shapes need to be redrawn
-		self.active=(None,0,0,0)	# The active shape and a hilight color (n,r,g,b)
+		self.active=(None,0,0,0)	# The active shape and a highlight color (n,r,g,b)
 
 		self.extras = []			# an empty set of extras - other images that can be rendered over this one
 
@@ -1274,7 +1274,7 @@ class EMImage2DWidget(EMGLWidget):
 		#context = OpenGL.contextdata.getContext(None)
 		#print "Image2D context is", context,"display list is",self.shapelist
 
-		# make our own cirle rather than use gluDisk or somesuch
+		# make our own circe rather than use gluDisk or somesuch
 		emshape.EMShape.font_renderer=self.font_renderer		# Important !  Each window has to have its own font_renderer. Only one context active at a time, so this is ok.
 		glNewList(self.shapelist,GL_COMPILE)
 
@@ -2352,13 +2352,13 @@ class EMImageInspector2D(QtGui.QWidget):
 
 	def do_saveimg(self,du) :
 		if self.target().data==None : return
-		fsp=QtGui.QFileDialog.getSaveFileName(self, "Select output file, format extrapolated from file extenstion")
+		fsp=QtGui.QFileDialog.getSaveFileName(self, "Select output file, format extrapolated from file extension")
 		fsp=str(fsp)
 		self.target().data.write_image(fsp,-1)
 
 	def do_savestack(self,du) :
 		if self.target().list_data==None : return
-		fsp=str(QtGui.QFileDialog.getSaveFileName(self, "Select root output file, format extrapolated from file extenstion"))
+		fsp=str(QtGui.QFileDialog.getSaveFileName(self, "Select root output file, format extrapolated from file extension"))
 		#fsp=str(fsp).split(".")
 		#if len(fsp)==1 :
 			#fsp1=fsp[0]
@@ -2372,7 +2372,7 @@ class EMImageInspector2D(QtGui.QWidget):
 			im.write_image(fsp,-1)
 
 	def do_makemovie(self,du) :
-		fsp=QtGui.QFileDialog.getSaveFileName(self, "Select output file, format extrapolated from file extenstion. ffmpeg must be installed")
+		fsp=QtGui.QFileDialog.getSaveFileName(self, "Select output file, format extrapolated from file extension. ffmpeg must be installed")
 		if self.target().list_data==None : return
 
 		for i in range(self.stminsb.value()-1,self.stmaxsb.value()):

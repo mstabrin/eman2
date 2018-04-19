@@ -1343,7 +1343,7 @@ class DragListWidget(QtGui.QListWidget):
 
 	def keyPressEvent(self,event):
 		if event.key() == Qt.Key_Backspace:
-			name=str(self.currentItem().text())		# currently hilighted item
+			name=str(self.currentItem().text())		# currently highlighted item
 			nbins=len(self.datasource().target().hist_edges)
 			self.datasource().target().set_data(None,key=name,alpha=0.8,width=0.8,nbins=nbins)
 		else: QtGui.QListWidget.keyPressEvent(self,event)
