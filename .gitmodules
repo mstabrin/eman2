@@ -1,0 +1,4 @@
+[submodule "tests/gui/data"]
+	path = tests/gui/data
+	url = /Volumes/Mac HD/data/Files/eclipse_workspace/workspace_work/eman-test-data
+	branch = master
