@@ -2,6 +2,10 @@
 
 set -xe
 
+if [ "$(uname -s)" == "Darwin" ];then
+    LDFLAGS="-Wl,-pie -Wl,-headerpad_max_install_names"
+fi
+
 build_dir="${SRC_DIR}/../build_eman"
 
 rm -rf $build_dir
