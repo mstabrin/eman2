@@ -3,7 +3,7 @@
 set -xe
 
 if [ "$(uname -s)" == "Darwin" ];then
-    LDFLAGS="-Wl,-pie -Wl,-headerpad_max_install_names"
+    LDFLAGS=${LDFLAGS/-Wl,-dead_strip_dylibs/}
 fi
 
 build_dir="${SRC_DIR}/../build_eman"
