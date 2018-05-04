@@ -39,31 +39,6 @@ function(ADD_PYSTE_LIB libname)
 	install(TARGETS ${libname} DESTINATION ${SP_DIR})
 endfunction()
 
-ADD_PYSTE_LIB(pyAligner2)
-ADD_PYSTE_LIB(pyAverager2)
-ADD_PYSTE_LIB(pyCmp2)
-ADD_PYSTE_LIB(pyProcessor2)
-ADD_PYSTE_LIB(pyReconstructor2) 
-ADD_PYSTE_LIB(pyProjector2)
-ADD_PYSTE_LIB(pyEMObject2) 
-ADD_PYSTE_LIB(pyEMData2)
-target_sources(pyEMData2 PRIVATE emdata_wrapitems.cpp)
-ADD_PYSTE_LIB(pyGeometry2)
-ADD_PYSTE_LIB(pyTransform2)
-ADD_PYSTE_LIB(pyPointArray2)
-ADD_PYSTE_LIB(pyUtils2)
-ADD_PYSTE_LIB(pyBoxingTools2)
-ADD_PYSTE_LIB(pyFundamentals2)
-ADD_PYSTE_LIB(pyTypeConverter2)
-target_sources(pyTypeConverter2 PRIVATE typeconverter.cpp)
-ADD_PYSTE_LIB(pyPolarData2)
-ADD_PYSTE_LIB(pyAnalyzer2)
-ADD_PYSTE_LIB(pyPDBReader2)
-
-if(NOT WIN32)
-	ADD_PYSTE_LIB(pyTomoSeg2)
-endif()
-
 if(ENABLE_OPENGL)
 	ADD_PYSTE_LIB(pyGLUtils2)
 	ADD_PYSTE_LIB(pyMarchingCubes2)
@@ -75,16 +50,16 @@ if(ENABLE_OPENGL)
 				   ${CMAKE_SOURCE_DIR}/libEM/emftgl.cpp
 				   ${CMAKE_SOURCE_DIR}/libEM/glutil.cpp
 				   )
-#	target_link_libraries(pyMarchingCubes2 OpenGL::OpenGL)
+	target_link_libraries(pyMarchingCubes2 OpenGL::OpenGL)
 	target_link_libraries(pyGLUtils2       pyMarchingCubes2 FTGL::FTGL)
-	target_include_directories(pyMarchingCubes2
-    PRIVATE OpenGL::OpenGL
+#	target_include_directories(pyMarchingCubes2
+#    PRIVATE OpenGL::OpenGL
 #        $<INSTALL_INTERFACE:include>    
 #        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 #        OpenGL::OpenGL
 #    PRIVATE
 #        ${CMAKE_CURRENT_SOURCE_DIR}/src
-)
+#)
 	
 	get_target_property(prop_march_inc            pyMarchingCubes2 INCLUDE_DIRECTORIES)
 	get_target_property(prop_march_inc_interface  pyMarchingCubes2 INTERFACE_INCLUDE_DIRECTORIES)
@@ -99,17 +74,3 @@ if(ENABLE_OPENGL)
 	message_var(prop_march_inc_interface)
 	message_var(prop_march_lib)
 endif()
-
-file(GLOB empythonlibs "${CMAKE_CURRENT_SOURCE_DIR}/*.py")
-install(FILES ${empythonlibs}
-		DESTINATION ${SP_DIR}
-		COMPONENT PythonFiles
-		)
-
-add_subdirectory(qtgui)
-
-target_link_libraries(pyUtils2         NumPy)
-target_link_libraries(pyTypeConverter2 NumPy)
-target_link_libraries(pyTransform2     NumPy)
-target_link_libraries(pyAligner2       NumPy)
-target_link_libraries(pyEMData2        NumPy)
