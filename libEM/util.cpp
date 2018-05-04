@@ -37,7 +37,7 @@
 #include "emassert.h"
 #include "emdata.h"
 #include "util.h"
-#include "marchingcubes.h"
+//#include "marchingcubes.h"
 #include "randnum.h"
 
 #include <fcntl.h>
