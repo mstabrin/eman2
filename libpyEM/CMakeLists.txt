@@ -16,10 +16,6 @@ if(WIN32)
 	ADD_DEFINITIONS(-DBOOST_DISABLE_ASSERTS)
 endif()
 
-IF(CMAKE_SYSTEM MATCHES "IRIX.*")
-    INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR}/boost/compatibility/cpp_c_headers)
-ENDIF()
-
 function(ADD_PYSTE_LIB libname)
 	add_library(${libname} SHARED lib${libname}.cpp)
 	
@@ -39,27 +35,27 @@ function(ADD_PYSTE_LIB libname)
 	install(TARGETS ${libname} DESTINATION ${SP_DIR})
 endfunction()
 
-if(ENABLE_OPENGL)
-	ADD_PYSTE_LIB(pyGLUtils2)
+#	ADD_PYSTE_LIB(pyGLUtils2)
 	ADD_PYSTE_LIB(pyMarchingCubes2)
 	
 	target_sources(pyMarchingCubes2 PRIVATE
 				   ${CMAKE_SOURCE_DIR}/libEM/marchingcubes.cpp
 				   )
-	target_sources(pyGLUtils2 PRIVATE
-				   ${CMAKE_SOURCE_DIR}/libEM/emftgl.cpp
-				   ${CMAKE_SOURCE_DIR}/libEM/glutil.cpp
-				   )
+#	target_sources(pyGLUtils2 PRIVATE
+#				   ${CMAKE_SOURCE_DIR}/libEM/emftgl.cpp
+#				   ${CMAKE_SOURCE_DIR}/libEM/glutil.cpp
+#				   )
 	target_link_libraries(pyMarchingCubes2 OpenGL::OpenGL)
-	target_link_libraries(pyGLUtils2       pyMarchingCubes2 FTGL::FTGL)
-#	target_include_directories(pyMarchingCubes2
-#    PRIVATE OpenGL::OpenGL
+#	target_link_libraries(pyGLUtils2       pyMarchingCubes2 FTGL::FTGL)
+	target_include_directories(pyMarchingCubes2
+    PUBLIC /usr/include
+#OpenGL::OpenGL
 #        $<INSTALL_INTERFACE:include>    
 #        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 #        OpenGL::OpenGL
 #    PRIVATE
 #        ${CMAKE_CURRENT_SOURCE_DIR}/src
-#)
+)
 	
 	get_target_property(prop_march_inc            pyMarchingCubes2 INCLUDE_DIRECTORIES)
 	get_target_property(prop_march_inc_interface  pyMarchingCubes2 INTERFACE_INCLUDE_DIRECTORIES)
@@ -73,4 +69,3 @@ if(ENABLE_OPENGL)
 	message_var(prop_march_inc)
 	message_var(prop_march_inc_interface)
 	message_var(prop_march_lib)
-endif()
