@@ -19,5 +19,5 @@ message("OPENGL_INCLUDE_DIR: ${OPENGL_INCLUDE_DIR}")
 
 target_sources(libA PRIVATE a.cpp)
 set_target_properties(libA PROPERTIES
-					  INCLUDE_DIRECTORIES   "${OPENGL_INCLUDE_DIR};${CMAKE_SOURCE_DIR}/B1"
+					  INCLUDE_DIRECTORIES   "${OPENGL_INCLUDE_DIR}/../include;${CMAKE_SOURCE_DIR}/B1"
 					  )
