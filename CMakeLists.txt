@@ -4,7 +4,7 @@ PROJECT(AAA
 		LANGUAGES CXX
 		)
 
-OPTION(CMAKE_VERBOSE_MAKEFILE "if all commands will be echoed to the console during the make" ON)
+OPTION(CMAKE_VERBOSE_MAKEFILE "verbose Makefile" ON)
 OPTION(DEBUG_CMAKE_TARGETS "enable debug output for cmake target properties" ON)
 if(DEBUG_CMAKE_TARGETS)
 	set(CMAKE_DEBUG_TARGET_PROPERTIES
@@ -16,29 +16,34 @@ if(DEBUG_CMAKE_TARGETS)
 		)
 endif()
 
-set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
+add_library(libA SHARED A.cpp)
 
-SET(CMAKE_MACOSX_RPATH ON)
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-set(CMAKE_INCLUDE_CURRENT_DIR_IN_INTERFACE ON)
+find_package(OpenGL REQUIRED)
+message("OPENGL_INCLUDE_DIR: ${OPENGL_INCLUDE_DIR}")
+#set(MY_INCLUDE_DIR "${CMAKE_SYSROOT}/usr/include;${CMAKE_SOURCE_DIR}/dir1")
+set(MY_INCLUDE_DIR "${OPENGL_INCLUDE_DIR}/../include;${CMAKE_SOURCE_DIR}/dir1")
+target_sources(libA PRIVATE
+			   A.cpp
+			   )
+set_target_properties(libA PROPERTIES
+#					  INTERFACE_INCLUDE_DIRECTORIES "${MY_INCLUDE_DIR};/usr/include"
+					  INCLUDE_DIRECTORIES           "${MY_INCLUDE_DIR}"
+#					  INTERFACE_LINK_LIBRARIES      "${OPENGL_LIBRARIES}"
+#					  INTERFACE_COMPILE_DEFINITIONS USE_OPENGL
+					  )
 
-#INCLUDE_DIRECTORIES("/usr/include")
+	
+get_target_property(prop_march_inc            libA INCLUDE_DIRECTORIES)
+get_target_property(prop_march_inc_interface  libA INTERFACE_INCLUDE_DIRECTORIES)
 
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I/usr/include")
-get_property(dirs DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
-message("dirs:")
-message("${dirs}")
-ADD_SUBDIRECTORY(libpyEM)
+message("prop_march_inc:           ${prop_march_inc}")
+message("prop_march_inc_interface: ${prop_march_inc_interface}")
 
-get_property(dirs1 DIRECTORY ${CMAKE_SOURCE_DIR}/libpyEM PROPERTY INCLUDE_DIRECTORIES)
-message("dirs1:")
-message("${dirs1}")
-
-get_property(incA TARGET pyA PROPERTY INCLUDE_DIRECTORIES)
+get_property(incA TARGET libA PROPERTY INCLUDE_DIRECTORIES)
 message("incA:")
 message("${incA}")
 
 
-get_property(incA1 TARGET pyA PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
+get_property(incA1 TARGET libA PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
 message("incA1:")
 message("${incA1}")
