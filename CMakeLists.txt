@@ -1,12 +1,11 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.7)
-PROJECT(EMAN
-		VERSION 2.21
+PROJECT(AAA
+		VERSION 1
 		LANGUAGES CXX
 		)
 
-include(cmake/functions.cmake)
-
-OPTION(DEBUG_CMAKE_TARGETS "enable debug output for cmake target properties" OFF)
+OPTION(CMAKE_VERBOSE_MAKEFILE "if all commands will be echoed to the console during the make" ON)
+OPTION(DEBUG_CMAKE_TARGETS "enable debug output for cmake target properties" ON)
 if(DEBUG_CMAKE_TARGETS)
 	set(CMAKE_DEBUG_TARGET_PROPERTIES
 		INCLUDE_DIRECTORIES
@@ -17,19 +16,29 @@ if(DEBUG_CMAKE_TARGETS)
 		)
 endif()
 
-INCLUDE(${CMAKE_ROOT}/Modules/CheckIncludeFiles.cmake)
-INCLUDE(${CMAKE_ROOT}/Modules/CheckFunctionExists.cmake)
-INCLUDE(${CMAKE_ROOT}/Modules/CheckTypeSize.cmake)
-
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 SET(CMAKE_MACOSX_RPATH ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_INCLUDE_CURRENT_DIR_IN_INTERFACE ON)
 
-MARK_AS_ADVANCED(CLEAR CMAKE_VERBOSE_MAKEFILE)
-OPTION(CMAKE_VERBOSE_MAKEFILE "if all commands will be echoed to the console during the make" ON)
-
 #INCLUDE_DIRECTORIES("/usr/include")
 
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I/usr/include")
+get_property(dirs DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
+message("dirs:")
+message("${dirs}")
 ADD_SUBDIRECTORY(libpyEM)
+
+get_property(dirs1 DIRECTORY ${CMAKE_SOURCE_DIR}/libpyEM PROPERTY INCLUDE_DIRECTORIES)
+message("dirs1:")
+message("${dirs1}")
+
+get_property(incA TARGET pyA PROPERTY INCLUDE_DIRECTORIES)
+message("incA:")
+message("${incA}")
+
+
+get_property(incA1 TARGET pyA PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
+message("incA1:")
+message("${incA1}")

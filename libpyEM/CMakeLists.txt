@@ -1,44 +1,44 @@
-function(ADD_PYSTE_LIB libname)
-	add_library(${libname} SHARED lib${libname}.cpp)
-	
-	if(WIN32)
-		set(suffix .pyd)
-	else()
-		set(suffix .so)
-	endif()
+add_library(pyA SHARED libpyA.cpp)
 
-	set_target_properties(${libname}
-			PROPERTIES
-			PREFIX lib
-			SUFFIX ${suffix}
-			)
+set_target_properties(pyA
+		PROPERTIES
+		PREFIX lib
+		SUFFIX .so
+		)
 	
-endfunction()
+#INCLUDE_DIRECTORIES("/usr/include")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I/usr/include")
+set(OPENGL_INCLUDE_DIR /usr/include)
+target_sources(pyA PRIVATE
+			   A.cpp
+			   )
+set_target_properties(pyA PROPERTIES
+					  INTERFACE_INCLUDE_DIRECTORIES "${OPENGL_INCLUDE_DIR}"
+					  INCLUDE_DIRECTORIES "${OPENGL_INCLUDE_DIR}"
+#					  INTERFACE_LINK_LIBRARIES      "${OPENGL_LIBRARIES}"
+#					  INTERFACE_COMPILE_DEFINITIONS USE_OPENGL
+					  )
 
-	ADD_PYSTE_LIB(pyMarchingCubes2)
-	
-	target_sources(pyMarchingCubes2 PRIVATE
-				   marchingcubes.cpp
-				   )
-	target_include_directories(pyMarchingCubes2
-    PRIVATE "/usr/include"
+
+#target_include_directories(pyA
+#    PRIVATE "/usr/include"
 #OpenGL::OpenGL
 #        $<INSTALL_INTERFACE:include>    
 #        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 #        OpenGL::OpenGL
 #    PRIVATE
 #        ${CMAKE_CURRENT_SOURCE_DIR}/src
-)
+#)
 	
-	get_target_property(prop_march_inc            pyMarchingCubes2 INCLUDE_DIRECTORIES)
-	get_target_property(prop_march_inc_interface  pyMarchingCubes2 INTERFACE_INCLUDE_DIRECTORIES)
-	get_target_property(prop_march_lib            pyMarchingCubes2 INTERFACE_LINK_LIBRARIES)
+	get_target_property(prop_march_inc            pyA INCLUDE_DIRECTORIES)
+	get_target_property(prop_march_inc_interface  pyA INTERFACE_INCLUDE_DIRECTORIES)
+#	get_target_property(prop_march_lib            pyA INTERFACE_LINK_LIBRARIES)
 #	get_target_property(prop_opengl_inc           OpenGL::OpenGL   INTERFACE_INCLUDE_DIRECTORIES)
 #	get_target_property(prop_opengl_inc_interface OpenGL::OpenGL   INTERFACE_INCLUDE_DIRECTORIES)
 
-	message_var(prop_opengl_inc)
-	message_var(prop_opengl_inc_interface)
-
-	message_var(prop_march_inc)
-	message_var(prop_march_inc_interface)
-	message_var(prop_march_lib)
+#	message(prop_opengl_inc)
+#	message(prop_opengl_inc_interface)
+#
+	message("prop_march_inc:           ${prop_march_inc}")
+	message("prop_march_inc_interface: ${prop_march_inc_interface}")
+#	message("prop_march_lib:           ${prop_march_lib}")

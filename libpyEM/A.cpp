@@ -1,6 +1,6 @@
-#include "marchingcubes.h"
+#include "A.h"
 
-static const int a2fVertexOffset[8][3] =
+static const int arr[8][3] =
 {
 		{0, 0, 0},{1, 0, 0},{1, 1, 0},{0, 1, 0},
 		{0, 0, 1},{1, 0, 1},{1, 1, 1},{0, 1, 1}
