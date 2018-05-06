@@ -17,3 +17,7 @@ cmake $SRC_DIR
 make -j${CPU_COUNT}
 make install
 make test-verbose
+
+if [ "$(uname -s)" == "Linux" ];then
+    rm -v ${CONDA_PREFIX}/include/GL
+fi
