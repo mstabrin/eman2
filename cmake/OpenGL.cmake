@@ -26,4 +26,10 @@ if(OpenGL_FOUND AND NOT TARGET OpenGL)
 						  INTERFACE_COMPILE_DEFINITIONS USE_OPENGL
 						  )
 	target_link_libraries(OpenGL INTERFACE OpenGL::GL OpenGL::GLU)
+		
+	if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+		execute_process(
+				COMMAND ${CMAKE_COMMAND} -E create_symlink ${OPENGL_INCLUDE_DIR}/GL ${EMAN_PREFIX_INC}/GL
+		)
+	endif()
 endif()
