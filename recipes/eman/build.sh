@@ -12,6 +12,10 @@ if [ "$(uname -s)" == "Darwin" ];then
     LDFLAGS=${LDFLAGS/-Wl,-dead_strip_dylibs/}
 fi
 
+if [ "$(uname -s)" == "Linux" ];then
+    rm -vf ${CONDA_PREFIX}/include/GL
+fi
+
 cmake $SRC_DIR
 
 make -j${CPU_COUNT}
