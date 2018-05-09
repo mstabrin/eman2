@@ -30,17 +30,13 @@ def notifyEmail() {
     }
 }
 
-def isReleaseBuild() {
-    return GIT_BRANCH ==~ /.*\/release.*/
-}
-
 def isBinaryBuild() {
     def buildOS = ['linux': CI_BUILD_LINUX,
                    'mac':   CI_BUILD_MAC,
                    'win':   CI_BUILD_WIN
                   ]
     
-    return (CI_BUILD == "1" || buildOS[SLAVE_OS] == "1")
+    return true
 }
 
 def testPackage() {
