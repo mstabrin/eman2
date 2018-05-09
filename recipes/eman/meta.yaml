@@ -181,7 +181,7 @@ requirements:
         "defaults::wheel                              0.30.0 py27h2bc6bb2_1",    # [linux]    
         "defaults::xz                                 5.2.3 h55aa19d_2",    # [linux]         
         "defaults::zlib                               1.2.11 ha838bed_2",    # [linux]                 
-        ] %}",
+        ] %},
     
     build:
         {% for req in reqs_common %}
