@@ -43,7 +43,7 @@ def isRelease() {
 }
 
 def isCurrentRelease() {
-    return (GIT_BRANCH ==~ /origin\/release\/2.21a/) && (JOB_TYPE == "push")
+    return false
 }
 
 def runCronJob() {
