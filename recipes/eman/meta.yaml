@@ -6,8 +6,7 @@ source:
     path: {{ RECIPE_DIR }}/../..
 
 requirements:
-    {% set reqs_common = [
-    ] %}
+    {% set reqs_common = [                         
     "defaults::appnope     0.1.0 py27hb466136_0",  # [osx]      
     "defaults::backports     1.0 py27hb4f9756_1",  # [osx]        
     "defaults::backports.functools_lru_cache     1.4 py27h2aca819_1",  # [osx]        
@@ -97,6 +96,7 @@ requirements:
     "defaults::wheel     0.30.0 py27h677a027_1",  # [osx]     
     "defaults::xz     5.2.3 h0278029_2",  # [osx]          
     "defaults::zlib     1.2.11 hf3cbc9b_2",  # [osx]         
+        ] %}",
     
     build:
         {% for req in reqs_common %}
