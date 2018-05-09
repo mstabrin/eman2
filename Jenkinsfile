@@ -22,160 +22,136 @@ def notifyGitHub(status) {
 
 def notifyEmail() {
     if(JOB_TYPE == "push") {
-        emailext(recipientProviders: [[$class: 'DevelopersRecipientProvider']],  
-                 subject: '[JenkinsCI/$PROJECT_NAME/push] ' + "($GIT_BRANCH_SHORT - ${GIT_COMMIT_SHORT})" + ' #$BUILD_NUMBER - $BUILD_STATUS!',
+        emailext(to: "$GIT_AUTHOR_EMAIL",  
+                 subject: '[JenkinsCI/$PROJECT_NAME] ' + "($GIT_BRANCH_SHORT - ${GIT_COMMIT_SHORT})" + ' #$BUILD_NUMBER - $BUILD_STATUS!',
                  body: '''${SCRIPT, template="groovy-text.template"}''',
                  attachLog: true
                  )
+    }
+}
+
+def isReleaseBuild() {
+    return GIT_BRANCH ==~ /.*\/release.*/
+}
+
+def isBinaryBuild() {
+    def buildOS = ['linux': CI_BUILD_LINUX,
+                   'mac':   CI_BUILD_MAC,
+                   'win':   CI_BUILD_WIN
+                  ]
+    
+    return (CI_BUILD == "1" || buildOS[SLAVE_OS] == "1")
+}
+
+def testPackage() {
+    if(SLAVE_OS != 'win')
+        sh "bash tests/test_binary_installation.sh ${INSTALLERS_DIR} eman2.${SLAVE_OS}.sh"
+    else
+        sh 'ci_support/test_wrapper.sh'
+}
+
+def deployPackage() {
+    def installer_base_name = ['Centos6': 'centos6',
+                               'Centos7': 'centos7',
+                               'MacOSX' : 'mac',
+                              ]
+    if(isBinaryBuild()) {
+        if(SLAVE_OS != 'win')
+            sh "rsync -avzh --stats ${INSTALLERS_DIR}/eman2.${SLAVE_OS}.sh ${DEPLOY_DEST}/continuous_build/eman2." + installer_base_name[JOB_NAME] + ".unstable.sh"
+        else
+            bat 'ci_support\\rsync_wrapper.bat'
+    }
+}
+
+def getHomeDir() {
+    def result = ''
+    if(SLAVE_OS == "win") {
+        result = "${USERPROFILE}"
+    }
+    else {
+        result = "${HOME}"
     }
     
-    if(JOB_TYPE == "cron") {
-        emailext(to: '$DEFAULT_RECIPIENTS',
-                 subject: '[JenkinsCI/$PROJECT_NAME/cron] ' + "($GIT_BRANCH_SHORT - ${GIT_COMMIT_SHORT})" + ' #$BUILD_NUMBER - $BUILD_STATUS!',
-                 body: '''${SCRIPT, template="groovy-text.template"}''',
-                 attachLog: true
-                 )
-    }
-}
-
-def isRelease() {
-    return (GIT_BRANCH ==~ /.*\/release.*/) && (JOB_TYPE == "push")
-}
-
-def isCurrentRelease() {
-    return false
-}
-
-def runCronJob() {
-    sh "bash ${HOME}/workspace/build-scripts-cron/cronjob.sh $STAGE_NAME $GIT_BRANCH_SHORT"
-    if(isCurrentRelease())
-      sh "rsync -avzh --stats ${INSTALLERS_DIR}/eman2.${STAGE_NAME}.unstable.sh ${DEPLOY_DEST}"
-}
-
-def setUploadFlag() {
-    if(getJobType() == "cron") {
-        return '0'
-    } else {
-        return '1'
-    }
-}
-
-def resetBuildScripts() {
-    if(JOB_TYPE == "cron" || isRelease())
-        sh 'cd ${HOME}/workspace/build-scripts-cron/ && git checkout -f master'
+    return result
 }
 
 pipeline {
   agent {
-    node { label 'jenkins-slave-1' }
+    node { label "${JOB_NAME}-slave" }
   }
   
-  options { disableConcurrentBuilds() }
-  
-  triggers {
-    cron('0 3 * * *')
+  options {
+    disableConcurrentBuilds()
+    timestamps()
   }
   
   environment {
-    SKIP_UPLOAD = setUploadFlag()
     JOB_TYPE = getJobType()
     GIT_BRANCH_SHORT = sh(returnStdout: true, script: 'echo ${GIT_BRANCH##origin/}').trim()
     GIT_COMMIT_SHORT = sh(returnStdout: true, script: 'echo ${GIT_COMMIT:0:7}').trim()
-    INSTALLERS_DIR = '${HOME}/workspace/${STAGE_NAME}-installers'
-    DEPLOY_DEST    = 'zope@ncmi.grid.bcm.edu:/home/zope/zope-server/extdata/reposit/ncmi/software/counter_222/software_136/'
-    NUMPY_VERSION='1.9'
-    BUILD_SCRIPTS_BRANCH='jenkins-release'
+    GIT_AUTHOR_EMAIL = sh(returnStdout: true, script: 'git log -1 --format="%ae"').trim()
+    HOME_DIR = getHomeDir()
+    INSTALLERS_DIR = '${HOME_DIR}/workspace/${JOB_NAME}-installers'
+
+    CI_BUILD       = sh(script: "! git log -1 | grep '.*\\[ci build\\].*'",       returnStatus: true)
+    CI_BUILD_WIN   = sh(script: "! git log -1 | grep '.*\\[ci build win\\].*'",   returnStatus: true)
+    CI_BUILD_LINUX = sh(script: "! git log -1 | grep '.*\\[ci build linux\\].*'", returnStatus: true)
+    CI_BUILD_MAC   = sh(script: "! git log -1 | grep '.*\\[ci build mac\\].*'",   returnStatus: true)
   }
   
   stages {
     // Stages triggered by GitHub pushes
     stage('notify-pending') {
-      when {
-        expression { JOB_TYPE == "push" }
-      }
-      
       steps {
         notifyGitHub('PENDING')
+        sh 'env | sort'
       }
     }
     
-    stage('build') {
+    stage('build-local') {
       when {
-        not { expression { JOB_TYPE == "cron" } }
-        not { expression { isRelease() } }
-      }
-      
-      parallel {
-        stage('recipe') {
-          steps {
-            sh 'bash ci_support/build_recipe.sh'
-          }
-        }
-        
-        stage('no_recipe') {
-          steps {
-            sh 'source $(conda info --root)/bin/activate eman-env && bash ci_support/build_no_recipe.sh'
-          }
-        }
-      }
-    }
-    
-    // Stages triggered by cron or by a release branch
-    stage('build-scripts-checkout') {
-      when {
-        anyOf {
-          expression { JOB_TYPE == "cron" }
-          expression { isRelease() }
-        }
+        not { expression { isBinaryBuild() } }
+        expression { JOB_NAME != 'Win' }
       }
       
       steps {
-        sh 'cd ${HOME}/workspace/build-scripts-cron/ && git fetch --prune && (git checkout -f $BUILD_SCRIPTS_BRANCH || git checkout -t origin/$BUILD_SCRIPTS_BRANCH) && git pull --rebase'
+        sh 'source $(conda info --root)/bin/activate eman-deps-9 && bash ci_support/build_no_recipe.sh'
       }
     }
     
-    stage('centos6') {
-      when {
-        anyOf {
-          expression { JOB_TYPE == "cron" }
-          expression { isRelease() }
-        }
-        expression { SLAVE_OS == "linux" }
-      }
-      
+    stage('build-recipe') {
       steps {
-        runCronJob()
+        sh 'bash ci_support/build_recipe.sh'
       }
     }
     
-    stage('centos7') {
+    stage('package') {
       when {
-        anyOf {
-          expression { JOB_TYPE == "cron" }
-          expression { isRelease() }
-        }
-        expression { SLAVE_OS == "linux" }
+        expression { isBinaryBuild() }
       }
       
       steps {
-        runCronJob()
+        sh "bash ci_support/package.sh ${INSTALLERS_DIR} " + '${WORKSPACE}/ci_support/'
       }
     }
     
-    stage('mac') {
+    stage('test-package') {
       when {
-        anyOf {
-          expression { JOB_TYPE == "cron" }
-          expression { isRelease() }
-        }
-        expression { SLAVE_OS == "mac" }
-      }
-      environment {
-        EMAN_TEST_SKIP=1
+        expression {isBinaryBuild() }
       }
       
       steps {
-        runCronJob()
+        testPackage()
+      }
+    }
+    
+    stage('deploy') {
+      when {
+        expression {isBinaryBuild() }
+      }
+      
+      steps {
+        deployPackage()
       }
     }
   }
@@ -195,7 +171,6 @@ pipeline {
     
     always {
       notifyEmail()
-      resetBuildScripts()
     }
   }
 }
