@@ -17,11 +17,9 @@ keep_pkgs: True
 ignore_duplicate_files: True
 
 specs:
-  - eman2 2.21
   - conda
   - conda-build
   - pip
-  - cryoem::openmpi
   - console_shortcut  # [win]
   - menuinst          # [win]
 
