@@ -22,6 +22,8 @@ unset HOST
 unset LDFLAGS
 unset _PYTHON_SYSCONFIGDATA_NAME
 
+conda list --export --explicit > "${SRC_DIR}/ci_support/packages.txt"
+
 build_dir="${SRC_DIR}/../build_eman"
 
 rm -rf $build_dir
