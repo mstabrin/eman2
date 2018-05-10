@@ -7,6 +7,8 @@ MYDIR="$(cd "$(dirname "$0")"; pwd -P)"
 e2version.py
 e2speedtest.py
 
+bash "${MYDIR}/test_git_hash.sh"
+
 python "${MYDIR}/test_EMAN2DIR.py"
 
 if [ $(whoami) != "root" ];then
