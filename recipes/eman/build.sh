@@ -35,3 +35,7 @@ cmake $SRC_DIR
 make -j${CPU_COUNT}
 make install
 make test-verbose
+
+conda list --export --explicit > "${SRC_DIR}/ci_support/packages.txt"
+
+cat "${SRC_DIR}/ci_support/packages.txt"
