@@ -34,6 +34,7 @@ make -j${CPU_COUNT}
 make install
 make test-verbose
 
-conda list --export --explicit > "${RECIPE_DIR}/../../ci_support/packages.txt"
+PACKAGES_SPEC_FILE="${RECIPE_DIR}/../../ci_support/packages.txt"
+conda list --export --explicit > ${PACKAGES_SPEC_FILE}
 
-cat "${SRC_DIR}/ci_support/packages.txt"
+cat ${PACKAGES_SPEC_FILE}
