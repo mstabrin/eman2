@@ -7,7 +7,9 @@ MYDIR="$(cd "$(dirname "$0")"; pwd -P)"
 e2version.py
 e2speedtest.py
 
-bash "${MYDIR}/test_git_hash.sh"
+if [ $CONDA_BUILD -ne 1 ];then
+    bash "${MYDIR}/test_git_hash.sh"
+fi
 
 python "${MYDIR}/test_EMAN2DIR.py"
 
