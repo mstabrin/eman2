@@ -13,6 +13,7 @@ fi
 # Build and install eman2
 rm -vf ${CONDA_PREFIX}/bin/e2*.py
 
+env | sort
 conda info -a
 conda list
 
