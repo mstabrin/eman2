@@ -21,6 +21,7 @@ specs:
   - conda
   - conda-build
   - pip
+  - cryoem::openmpi
   - console_shortcut  # [win]
   - menuinst          # [win]
 
