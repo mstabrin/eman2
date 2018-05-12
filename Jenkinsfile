@@ -55,11 +55,20 @@ def deployPackage() {
                                'Centos7': 'centos7',
                                'MacOSX' : 'mac',
                               ]
+    if(CI_BUILD) {
+        upload_dir = 'continuous_build'
+        upload_ext = 'unstable'
+    }
+    if(CI_BUILD_EXP) {
+        upload_dir = 'experimental'
+        upload_ext = 'experimental'
+    }
+    
     if(isBinaryBuild()) {
         if(SLAVE_OS != 'win')
-            sh "rsync -n -avzh --stats ${INSTALLERS_DIR}/eman2.${SLAVE_OS}.sh ${DEPLOY_DEST}/continuous_build/eman2." + installer_base_name[JOB_NAME] + ".unstable.sh"
+            sh "rsync -n -avzh --stats ${INSTALLERS_DIR}/eman2.${SLAVE_OS}.sh ${DEPLOY_DEST}/" + upload_dir + "/eman2." + installer_base_name[JOB_NAME] + "." + upload_ext + ".sh"
         else
-            bat 'ci_support\\rsync_wrapper.bat'
+            bat 'ci_support\\rsync_wrapper.bat ' + upload_dir + ' ' + upload_ext
     }
 }
 
