@@ -40,7 +40,10 @@ def isBinaryBuild() {
                    'win':   CI_BUILD_WIN
                   ]
     
-    return (CI_BUILD == "1" || buildOS[SLAVE_OS] == "1")
+    return (   (CI_BUILD == "1"     && GIT_BRANCH_SHORT == "master") 
+            || (CI_BUILD_EXP == "1" && GIT_BRANCH_SHORT != "master") 
+            || buildOS[SLAVE_OS] == "1"
+           )
 }
 
 def testPackage() {
