@@ -97,6 +97,7 @@ pipeline {
     CI_BUILD_WIN   = sh(script: "! git log -1 | grep '.*\\[ci build win\\].*'",   returnStatus: true)
     CI_BUILD_LINUX = sh(script: "! git log -1 | grep '.*\\[ci build linux\\].*'", returnStatus: true)
     CI_BUILD_MAC   = sh(script: "! git log -1 | grep '.*\\[ci build mac\\].*'",   returnStatus: true)
+    CI_BUILD_EXP   = sh(script: "! git log -1 | grep '.*\\[ci build exp\\].*'",   returnStatus: true)
   }
   
   stages {
