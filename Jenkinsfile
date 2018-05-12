@@ -57,7 +57,7 @@ def deployPackage() {
                               ]
     if(isBinaryBuild()) {
         if(SLAVE_OS != 'win')
-            sh "rsync -avzh --stats ${INSTALLERS_DIR}/eman2.${SLAVE_OS}.sh ${DEPLOY_DEST}/continuous_build/eman2." + installer_base_name[JOB_NAME] + ".unstable.sh"
+            sh "rsync -n -avzh --stats ${INSTALLERS_DIR}/eman2.${SLAVE_OS}.sh ${DEPLOY_DEST}/continuous_build/eman2." + installer_base_name[JOB_NAME] + ".unstable.sh"
         else
             bat 'ci_support\\rsync_wrapper.bat'
     }
@@ -115,13 +115,13 @@ pipeline {
       }
       
       steps {
-        sh 'source $(conda info --root)/bin/activate eman-deps-9 && bash ci_support/build_no_recipe.sh'
+        echo 'source $(conda info --root)/bin/activate eman-deps-9 && bash ci_support/build_no_recipe.sh'
       }
     }
     
     stage('build-recipe') {
       steps {
-        sh 'bash ci_support/build_recipe.sh'
+        echo 'bash ci_support/build_recipe.sh'
       }
     }
     
@@ -131,7 +131,7 @@ pipeline {
       }
       
       steps {
-        sh "bash ci_support/package.sh ${INSTALLERS_DIR} " + '${WORKSPACE}/ci_support/'
+        echo "bash ci_support/package.sh ${INSTALLERS_DIR} " + '${WORKSPACE}/ci_support/'
       }
     }
     
@@ -141,7 +141,7 @@ pipeline {
       }
       
       steps {
-        testPackage()
+        echo 'testPackage()'
       }
     }
     
