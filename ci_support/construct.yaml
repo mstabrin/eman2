@@ -24,16 +24,10 @@ specs:
 
 exclude:
   - python
-  - boost
-  - fftw-mpi
-  - numpy
-  - ftgl
-  - freetype
-  - gsl
   - hdf5
   - jpeg
-  - libtiff
   - libpng
+  - libtiff
 
 welcome_image: images/EMAN2Icon.png    # [win]
 icon_image:    images/eman.ico         # [win]
