@@ -23,7 +23,6 @@ specs:
   - menuinst          # [win]
 
 exclude:
-  - python
   - hdf5
   - jpeg
   - libpng
