@@ -7,6 +7,10 @@ conda list
 
 conda install eman-deps=9 -c cryoem -c defaults -c conda-forge -y
 
+if [ "$(uname -s)" == "Linux" ];then
+    conda install "cudatoolkit=8.*" "cudnn=7.*" -y
+fi
+
 cat <<EOF
 
 INSTALLATION IS NOW COMPLETE
