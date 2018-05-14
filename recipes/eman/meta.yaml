@@ -28,6 +28,3 @@ requirements:
         {% for req in reqs_common %}
         - {{ req }}
         {% endfor %}
-
-    run:
-        - python 2.7.14
