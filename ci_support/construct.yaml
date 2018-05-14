@@ -27,6 +27,7 @@ exclude:
   - jpeg
   - libpng
   - libtiff
+  - freetype  # [osx]
 
 welcome_image: images/EMAN2Icon.png    # [win]
 icon_image:    images/eman.ico         # [win]
