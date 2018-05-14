@@ -5,9 +5,7 @@ source ${PREFIX}/bin/activate
 conda info -a
 conda list
 
-if [ "$(uname -s)" == "Linux" ];then
-    conda install eman-deps=9 -c cryoem -c defaults -c conda-forge -y
-fi
+conda install eman-deps=9 -c cryoem -c defaults -c conda-forge -y
 
 cat <<EOF
 
